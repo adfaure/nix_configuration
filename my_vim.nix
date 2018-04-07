@@ -2,7 +2,7 @@
  vim_configurable.customize {
     name = "v";
 
-    # add imy custom .vimrc
+    # add my custom .vimrc
     vimrcConfig.customRC = my_vim_config;
 
     # store your plugins in Vim packages
