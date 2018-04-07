@@ -16,6 +16,8 @@ rec {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      #taken from: https://github.com/ttuegel/nixos-config/blob/207f14e40489835801e2bdb572ded43e58f7f80d/programs/emacs.nix
+      ./my_emacs.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -52,6 +54,7 @@ rec {
     zsh
     pass
     franz
+    nox
     ctags
     (callPackage ./my_vim.nix { my_vim_config = builtins.readFile("${my_dotfiles}/files/vimrc"); })
     ((pkgs.callPackage ./pkgs/nix-home.nix) {})
