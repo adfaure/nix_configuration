@@ -18,6 +18,7 @@ rec {
       ./hardware-configuration.nix
       #taken from: https://github.com/ttuegel/nixos-config/blob/207f14e40489835801e2bdb572ded43e58f7f80d/programs/emacs.nix
       ./my_emacs.nix
+      ./modipy.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -57,6 +58,7 @@ rec {
     ctags
     (callPackage ./my_vim.nix { my_vim_config = builtins.readFile("${my_dotfiles}/files/vimrc"); })
     ((pkgs.callPackage ./pkgs/nix-home.nix) {})
+    mopidy
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -120,7 +122,7 @@ rec {
 
   # enable cron table
   services.cron.enable = true;
-
+  nixpkgs.config.allowUnfree = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.adfaure = {
     isNormalUser = true;
