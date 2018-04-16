@@ -30,6 +30,7 @@
           tmux-navigator
           rainbow_parentheses
           vim-trailing-whitespace
+	  csv
         ];
       # manually loadable by calling `:packadd $plugin-name`
       opt = [  ];

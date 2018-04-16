@@ -26,6 +26,15 @@ let
     visual-fill-column
     melpaStablePackages.idris-mode helm-idris
     langtool
+    babel 
+    ess
+    htmlize
+    openwith
+    # From spacemacs
+    better-defaults
+    company
+    ivy
+    git
   ]);
 
   autostartEmacsDaemon = pkgs.writeTextFile {

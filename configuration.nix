@@ -59,6 +59,32 @@ rec {
     (callPackage ./my_vim.nix { my_vim_config = builtins.readFile("${my_dotfiles}/files/vimrc"); })
     ((pkgs.callPackage ./pkgs/nix-home.nix) {})
     mopidy
+    spotify
+    htop
+    unrar
+    file
+    tree
+    ncdu
+    libcaca   # video
+    highlight # code
+    atool     # archives
+    w3m       # web
+    poppler   # PDF
+    mediainfo # audio and video   
+    jq
+    aspellDicts.fr
+    aspellDicts.en
+    gnome3.polari
+    vlc
+    xorg.xkill
+    git-cola
+    cmake
+    inkscape    
+    fortune
+    cups # Print utilities (lp) 
+    stress
+    gcc
+    gnumake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -141,5 +167,10 @@ rec {
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "18.03"; # Did you read the comment?
-
+  # Try fix chrome extension error
+  services.dbus.socketActivated = true;
+  services.xserver.desktopManager.gnome3.sessionPath = [
+    pkgs.json_glib
+    pkgs.glib_networking
+    pkgs.libgtop ];
 }
