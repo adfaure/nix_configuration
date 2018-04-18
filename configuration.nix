@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib,... }:
 let
 
 in
@@ -85,6 +85,10 @@ rec {
     stress
     gcc
     gnumake
+    psmisc
+    # latex
+    rubber
+    texlive.combined.scheme-full 
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -143,12 +147,16 @@ rec {
       displayManager.gdm.enable = true;
   };
 
+  services.gnome3.evolution-data-server.enable = lib.mkForce false;  
+
   # enable thefuck!
   programs.thefuck.enable = false;
 
   # enable cron table
   services.cron.enable = true;
+
   nixpkgs.config.allowUnfree = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.adfaure = {
     isNormalUser = true;
