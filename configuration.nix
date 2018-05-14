@@ -25,7 +25,6 @@ rec {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   networking.hostName = "adchire"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -56,7 +55,7 @@ rec {
     franz
     nox
     ctags
-    (callPackage ./my_vim.nix { my_vim_config = builtins.readFile("${my_dotfiles}/files/vimrc"); })
+    (callPackage ./my_vim.nix {})
     ((pkgs.callPackage ./pkgs/nix-home.nix) {})
     mopidy
     spotify

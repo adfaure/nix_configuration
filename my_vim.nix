@@ -1,13 +1,10 @@
-{vim_configurable, vimPlugins, my_vim_config}:
- vim_configurable.customize {
+{vim_configurable, vimPlugins }:
+  vim_configurable.customize {
     name = "v";
 
-    # add my custom .vimrc
-    vimrcConfig.customRC = my_vim_config;
-
-    # store your plugins in Vim packages
     vimrcConfig.packages.myVimPackage = with vimPlugins; {
       # loaded on launch
+
       start = [
           youcompleteme
           fugitive
@@ -30,11 +27,247 @@
           tmux-navigator
           rainbow_parentheses
           vim-trailing-whitespace
+          vim-colorschemes
+          peskcolor
 	  csv
-        ];
+      ];
+
       # manually loadable by calling `:packadd $plugin-name`
       opt = [  ];
       # To automatically load a plugin when opening a filetype, add vimrc lines like:
       # autocmd FileType php :packadd phpCompletion
+
     };
+
+    # add my custom .vimrc
+    vimrcConfig.customRC = ''
+      set nocompatible               " be iMproved
+      filetype off                   " required!
+      set encoding=utf-8
+
+      set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
+
+      set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
+
+      set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
+                          " Spaces are used in indents with the '>' and '<' commands
+                          " and when 'autoindent' is on. To insert a real tab when
+                          " 'expandtab' is on, use CTRL-V <Tab>.
+
+      set smarttab        " When on, a <Tab> in front of a line inserts blanks
+                          " according to 'shiftwidth'. 'tabstop' is used in other
+                          " places. A <BS> will delete a 'shiftwidth' worth of space
+                          " at the start of the line.
+
+      set showcmd         " Show (partial) command in status line.
+
+      set number          " Show line numbers.
+
+      set showmatch       " When a bracket is inserted, briefly jump to the matching
+                          " one. The jump is only done if the match can be seen on the
+                          " screen. The time to show the match can be set with
+                          " 'matchtime'.
+
+      set hlsearch        " When there is a previous search pattern, highlight all
+                          " its matches.
+
+      set incsearch       " While typing a search command, show immediately where the
+                          " so far typed pattern matches.
+
+      set ignorecase      " Ignore case in search patterns.
+
+      set smartcase       " Override the 'ignorecase' option if the search pattern
+                          " contains upper case characters.
+
+      set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
+                          " and CTRL-U in Insert mode. This is a list of items,
+                          " separated by commas. Each item allows a way to backspace
+                          " over something.
+
+      set autoindent      " Copy indent frm current line when starting a new line
+                          " (typing <CR> in Insert mode or when using the "o" or "O"
+                          " command).
+
+      set textwidth=80    " Maximum width of text that is being inserted. A longer
+                          " line will be broken after white space to get this width.
+
+      set formatoptions=c,q,r,t " This is a sequence of letters which describes how
+                          " automatic formatting is to be done.
+                          "
+                          " letter    meaning when present in formatoptions
+                          " ------    ---------------------------------------
+                          " c         Auto-wrap comments using textwidth, inserting
+                          "           the current comment leader automatically.
+                          " q         Allow formatting of comments with "gq".
+                          " r         Automatically insert the current comment leader
+                          "           after hitting <Enter> in Insert mode.
+                          " t         Auto-wrap text using textwidth (does not apply
+                          "           to comments)
+
+      set ruler           " Show the line and column number of the cursor position,
+                          " separated by a comma.
+
+      set background=dark " When set to "dark", Vim will try to use colors that look
+                          " good on a dark background. When set to "light", Vim will
+                          " try to use colors that look good on a light background.
+                          " Any other value is illegal.
+                          "
+
+      nnoremap gV `[v`]   " highlight last inserted text
+
+      let g:autoformat_autoindent = 0
+      let g:autoformat_retab = 0
+      let g:autoformat_remove_trailing_spaces = 0
+
+      set mouse=a         " Enable the use of the mouse.
+
+      set wildmenu        " Cool tab completion stuff
+      set wildmode=list:longest,full
+
+      set laststatus=2    " Activate Status bar even without split
+
+      set foldlevel=99    " Don't fold by default
+
+      set shell=/bin/sh   " Needed by https://github.com/vim-syntastic/syntastic/issues/1131
+
+
+      filetype plugin indent on     " required!
+      syntax on
+
+      set showmode
+
+      cmap w!! w !sudo tee > /dev/null %
+
+      set grepprg=grep\ -nH\ $*
+      let g:tex_flavor = "latex"
+
+      function! SynStack()
+        if !exists("*synstack")
+          return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+      endfunc
+
+      function! SynGroup()
+          let l:s = synID(line('.'), col('.'), 1)
+          echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+        endfun
+
+      "set spell
+      "set spelllang=en,fr
+      set spelllang=en
+      "set spellfile=~/.vim/spell/en.utf-8.add
+      "set spell spelllang=en_us
+
+      hi clear SpellBad
+      if version >= 700
+        hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=16 ctermbg=53  term=underline cterm=underline
+        hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=underline
+        hi SpellRare  guisp=blue   gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=underline
+        hi SpellLocal guisp=orange gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=underline
+      endif
+
+      " Ctr-c is actually copying on the X clipboard
+      vmap <C-c> "+y
+
+      " type jj to extract from insert mode
+      imap jj <Esc>
+
+      "" Make sur the backup files are not spread out anywhere
+      "set backup
+      "set backupdir=~/.vim/
+      "set directory=~/.vim/
+
+      " for a better leader
+      let mapleader='!'
+
+      " NERDTree toggle with <F2>
+      map <leader><F2> :NERDTreeToggle<CR>
+
+      map <silent> <C-w> :NERDTreeTabsToggle<CR>
+
+      " Easy pane navigation with Alt+arrows
+      nmap <silent> <A-Up> :wincmd k<CR>
+      nmap <silent> <A-Down> :wincmd j<CR>
+      nmap <silent> <A-Left> :wincmd h<CR>
+      nmap <silent> <A-Right> :wincmd l<CR>
+
+      " bind Ctrl-Arrow to word move
+      nnoremap <silent> <C-Right> w
+      nnoremap <silent> <C-Left> b
+
+      " more natural split placement
+      set splitbelow
+      set splitright
+
+      " Turn off rope from Python plugin
+      let g:pymode_rope = 0
+
+      """"""" Riv config
+      " Change Riv leader from C-e to !
+      let g:riv_global_leader = ';'
+
+      " Dont fold
+      let g:riv_fold_auto_update = 0
+      let g:riv_disable_folding = 0
+
+      " Let the blank line at the fold end
+      let g:riv_fold_blank = 0
+
+      " Check spell for RST files
+      autocmd BufNewFile,BufRead *.rst setlocal spell spelllang=en
+
+      """"""" Python IDE config
+      " Want to see the docstrings for folded code
+      let g:SimpylFold_docstring_preview=1
+
+      " Set Flake8 option and map
+      let g:flake8_show_in_gutter=1
+      "autocmd BufWritePost *.py call flake8#Flake8UnplaceMarkers()
+
+      " YouCompleteMe customization
+      let g:ycm_autoclose_preview_window_after_completion=1
+      map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+      " make it pretty
+      let python_highlight_all=1
+
+      autocmd BufNewFile,BufRead *.py call SetPythonOptions()
+      function SetPythonOptions()
+        setlocal tabstop=4
+        setlocal softtabstop=4
+        setlocal shiftwidth=4
+        setlocal textwidth=79
+        setlocal expandtab
+        setlocal autoindent
+        setlocal fileformat=unix
+        setlocal cc=80
+        highlight ColorColumn ctermbg=8
+      endfunction
+
+      "autoformat
+      noremap <Leader>f :Autoformat<CR><CR>
+
+      " Make slime works for Tmux
+      let g:slime_target="tmux"
+      let g:slime_default_config={"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
+      let g:slime_python_ipython=1
+
+      " Press Space to turn off highlighting and clear any message already displayed.
+      nnoremap m :nohlsearch<Bar>:echo<CR>
+
+      " # https://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
+      if has("mouse_sgr")
+          set ttymouse=sgr
+      else
+          set ttymouse=xterm2
+      end
+
+      " http://vim.wikia.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+      map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+      colorscheme dracula
+'';
+
  }
