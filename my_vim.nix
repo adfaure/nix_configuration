@@ -1,4 +1,4 @@
-{vim_configurable, vimPlugins }:
+{ pkgs, vim_configurable, vimPlugins }:
   vim_configurable.customize {
     name = "v";
 
@@ -28,6 +28,8 @@
           rainbow_parentheses
           vim-trailing-whitespace
           vim-colorschemes
+          pkgs.aspellDicts.en
+          pkgs.aspellDicts.fr          
           peskcolor
 	  csv
       ];
@@ -267,7 +269,9 @@
       map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
       colorscheme dracula
+      highlight Pmenu ctermbg=brown  guibg=black
 '';
 
  }

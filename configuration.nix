@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib,... }:
+{ config, pkgs, lib, ... }:
 let
 
 in
@@ -11,8 +11,7 @@ let
   mypkgs = import /home/adfaure/Projects/myPkgs { };
   my_dotfiles = builtins.fetchTarball "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
 
-in
-rec {
+in rec {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -38,6 +37,7 @@ rec {
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
+  
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -52,7 +52,6 @@ rec {
     tdesktop
     zsh
     pass
-    franz
     nox
     ctags
     (callPackage ./my_vim.nix {})
@@ -87,7 +86,23 @@ rec {
     psmisc
     # latex
     rubber
-    texlive.combined.scheme-full 
+    rambox
+    biber
+    texlive.combined.scheme-full
+    virtualbox
+    qemu
+    arandr
+    unzip
+    zip
+    screen-message
+    pdftk
+    chromium
+    dia
+    pciutils
+    pandoc
+    texmaker    
+    direnv
+    nixops
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -108,7 +123,6 @@ rec {
   environment.shellAliases = {
     "vim"="v";
   };
-
 
   programs = {
     # Enable system wide zsh and ssh agent
@@ -140,13 +154,17 @@ rec {
       layout = "fr";
       xkbOptions = "eurosign:e";
       libinput.enable = true;
-
       # Enable the Gnome Desktop Environment.
       desktopManager.gnome3.enable = true;
       displayManager.gdm.enable = true;
+
+      #
+      # windowManager.default = "i3";
+      # windowManager.i3.enable = true;
   };
 
-  services.gnome3.evolution-data-server.enable = lib.mkForce false;  
+  hardware.opengl.driSupport32Bit = true;
+  # services.gnome3.evolution-data-server.enable = lib.mkForce false;  
 
   # enable thefuck!
   programs.thefuck.enable = false;
@@ -165,6 +183,11 @@ rec {
     uid = 1000;
   };
 
+  # Add virtualbox and docker
+  virtualisation = {
+    virtualbox.host.enable = true;
+    docker.enable = true;
+  };
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.channel = https://nixos.org/channels/nixos-18.03;

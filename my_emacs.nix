@@ -7,13 +7,13 @@ let
     rainbow-delimiters smartparens
     /* Evil */ evil-surround evil-indent-textobject evil-cleverparens avy undo-tree
     helm
-    /* Git */ magit git-timemachine
+    /* Git */ magit
     /* LaTeX */ auctex helm-bibtex cdlatex
     markdown-mode
     flycheck
-    pkgs.ledger
-    yaml-mode
-    company
+    #pkgs.ledger
+    #yaml-mode
+    #company
     /* Haskell */ haskell-mode flycheck-haskell
     /* Org */ org org-ref
     rust-mode cargo flycheck-rust
@@ -26,7 +26,7 @@ let
     visual-fill-column
     melpaStablePackages.idris-mode helm-idris
     langtool
-    babel 
+    babel
     ess
     htmlize
     openwith
