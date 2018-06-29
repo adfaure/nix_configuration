@@ -1,5 +1,8 @@
 { pkgs, vim_configurable, vimPlugins }:
-  vim_configurable.customize {
+
+let
+
+  vim = vim_configurable.customize {
     name = "v";
 
     vimrcConfig.packages.myVimPackage = with vimPlugins; {
@@ -29,7 +32,7 @@
           vim-trailing-whitespace
           vim-colorschemes
           pkgs.aspellDicts.en
-          pkgs.aspellDicts.fr          
+          pkgs.aspellDicts.fr
           peskcolor
 	  csv
       ];
@@ -113,7 +116,6 @@
                           " good on a dark background. When set to "light", Vim will
                           " try to use colors that look good on a light background.
                           " Any other value is illegal.
-                          "
 
       nnoremap gV `[v`]   " highlight last inserted text
 
@@ -272,6 +274,10 @@
 
       colorscheme dracula
       highlight Pmenu ctermbg=brown  guibg=black
-'';
+    '';
+};
 
- }
+in
+{
+  environment.systemPackages = [ vim ];
+}

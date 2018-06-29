@@ -15,9 +15,9 @@ in rec {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #taken from: https://github.com/ttuegel/nixos-config/blob/207f14e40489835801e2bdb572ded43e58f7f80d/programs/emacs.nix
+      # taken from: https://github.com/ttuegel/nixos-config/blob/207f14e40489835801e2bdb572ded43e58f7f80d/programs/emacs.nix
       ./my_emacs.nix
-      ./modipy.nix
+      ./my_vim.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -37,7 +37,6 @@ in rec {
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -158,13 +157,12 @@ in rec {
       desktopManager.gnome3.enable = true;
       displayManager.gdm.enable = true;
 
-      #
       # windowManager.default = "i3";
       # windowManager.i3.enable = true;
   };
 
   hardware.opengl.driSupport32Bit = true;
-  # services.gnome3.evolution-data-server.enable = lib.mkForce false;  
+  # services.gnome3.evolution-data-server.enable = lib.mkForce false;
 
   # enable thefuck!
   programs.thefuck.enable = false;
@@ -202,5 +200,7 @@ in rec {
   services.xserver.desktopManager.gnome3.sessionPath = [
     pkgs.json_glib
     pkgs.glib_networking
-    pkgs.libgtop ];
+    pkgs.libgtop
+  ];
+
 }
