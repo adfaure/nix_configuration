@@ -1,11 +1,11 @@
-{ pkgs, vim_configurable, vimPlugins }:
+{ config, pkgs, vim_configurable, vimPlugins, ...}:
 
 let
 
-  vim = vim_configurable.customize {
+  my_vim = pkgs.vim_configurable.customize {
     name = "v";
 
-    vimrcConfig.packages.myVimPackage = with vimPlugins; {
+    vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
       # loaded on launch
 
       start = [
@@ -279,5 +279,5 @@ let
 
 in
 {
-  environment.systemPackages = [ vim ];
+  environment.systemPackages = [ my_vim ];
 }

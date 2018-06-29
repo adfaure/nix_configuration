@@ -15,7 +15,8 @@ in rec {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # taken from: https://github.com/ttuegel/nixos-config/blob/207f14e40489835801e2bdb572ded43e58f7f80d/programs/emacs.nix
+      # taken from: 
+      # https://github.com/ttuegel/nixos-config/emacs.nix
       ./my_emacs.nix
       ./my_vim.nix
     ];
@@ -25,7 +26,9 @@ in rec {
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "adchire"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  
 
   # Select internationalisation properties.
   i18n = {
@@ -40,68 +43,75 @@ in rec {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    wget
+    ((pkgs.callPackage ./pkgs/nix-home.nix) {})
+    # dev
     vim
     emacs
+    gcc
+    gnumake
+    cmake
     git
+    git-cola
+    ctags
+
+    # latex
+    rubber
+    rambox
+    biber
+    texlive.combined.scheme-full
+    
+    # nixops
+    virtualbox
+    qemu
+    nixops
+    
+    # Desktop
+    tdesktop
+    aspellDicts.fr
+    aspellDicts.en
+    gnome3.polari
+    xorg.xkill
+    inkscape    
+    spotify
+    vlc
+    arandr
+    chromium
     sakura
     tmux
     firefox
     ranger
-    tdesktop
+
+    # tools
+    jq
+    htop
+    nox
+    wget
+    unzip
+    zip
+    screen-message
+    pdftk
+    dia
+    pciutils
+    pandoc
+    texmaker    
+    direnv
     zsh
     pass
-    nox
-    ctags
-    (callPackage ./my_vim.nix {})
-    ((pkgs.callPackage ./pkgs/nix-home.nix) {})
-    mopidy
-    spotify
-    htop
+    nixops
     unrar
     file
     tree
     ncdu
+    psmisc
+    cups # Print utilities (lp) 
     libcaca   # video
     highlight # code
     atool     # archives
     w3m       # web
     poppler   # PDF
     mediainfo # audio and video   
-    jq
-    aspellDicts.fr
-    aspellDicts.en
-    gnome3.polari
-    vlc
-    xorg.xkill
-    git-cola
-    cmake
-    inkscape    
     fortune
-    cups # Print utilities (lp) 
     stress
-    gcc
-    gnumake
-    psmisc
-    # latex
-    rubber
-    rambox
-    biber
-    texlive.combined.scheme-full
-    virtualbox
-    qemu
-    arandr
-    unzip
-    zip
-    screen-message
-    pdftk
-    chromium
-    dia
-    pciutils
-    pandoc
-    texmaker    
-    direnv
-    nixops
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
