@@ -1,6 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# Edit this configuration file to define what should be installed on your
+# system.  Help is available in the configuration.nix(5) man page and in the
+# NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
 let
@@ -9,13 +9,14 @@ in
 let
 
   mypkgs = import /home/adfaure/Projects/myPkgs { };
-  my_dotfiles = builtins.fetchTarball "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
+  my_dotfiles = builtins.fetchTarball
+    "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
 
 in rec {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # taken from: 
+      # taken from:
       # https://github.com/ttuegel/nixos-config/emacs.nix
       ./my_emacs.nix
       ./my_vim.nix
@@ -25,10 +26,11 @@ in rec {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking.networkmanager.enable = true;
   networking.hostName = "adchire"; # Define your hostname.
 
   # Enables wireless support via wpa_supplicant.
-  # networking.wireless.enable = true;  
+  # networking.wireless.enable = true;
 
   # Select internationalisation properties.
   i18n = {
@@ -45,7 +47,6 @@ in rec {
   environment.systemPackages = with pkgs; [
     ((pkgs.callPackage ./pkgs/nix-home.nix) {})
     # dev
-    vim
     emacs
     gcc
     gnumake
@@ -59,29 +60,36 @@ in rec {
     rambox
     biber
     texlive.combined.scheme-full
-    
+
     # nixops
     virtualbox
     qemu
     nixops
-    
+
     # Desktop
     tdesktop
     aspellDicts.fr
     aspellDicts.en
     gnome3.polari
     xorg.xkill
-    inkscape    
+    inkscape
     spotify
     vlc
     arandr
     chromium
     sakura
     tmux
-    firefox
+    sublime3
+    # firefox
     ranger
 
     # tools
+    # networkmanager_dmenu
+    networkmanagerapplet
+    xorg.xkbcomp
+    libnotify
+    dunst
+    xsel
     jq
     htop
     nox
@@ -93,7 +101,7 @@ in rec {
     dia
     pciutils
     pandoc
-    texmaker    
+    texmaker
     direnv
     zsh
     pass
@@ -103,15 +111,16 @@ in rec {
     tree
     ncdu
     psmisc
-    cups # Print utilities (lp) 
+    cups # Print utilities (lp)
     libcaca   # video
     highlight # code
     atool     # archives
     w3m       # web
     poppler   # PDF
-    mediainfo # audio and video   
+    mediainfo # audio and video
     fortune
     stress
+    pkgs.firefoxWrapper
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -149,27 +158,39 @@ in rec {
         '';
       };
 
-    mtr.enable = true;
-    gnupg.agent = { enable = true; enableSSHSupport = true; };
+     mtr.enable = true;
+     gnupg.agent = { enable = true; enableSSHSupport = true; };
 
-    command-not-found.enable = true;
+     command-not-found.enable = true;
   };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
   # Enable the X11 windowing system.
-  services.xserver = {
+
+   services.xserver = {
       enable = true;
       layout = "fr";
-      xkbOptions = "eurosign:e";
+      xkbVariant = "bepo";
       libinput.enable = true;
       # Enable the Gnome Desktop Environment.
-      desktopManager.gnome3.enable = true;
+      # desktopManager.gnome3.enable = true;
+      # displayManager.gdm.enable = true;
+
+      windowManager.i3.enable = true;
+      windowManager.default = "i3";
       displayManager.gdm.enable = true;
+
+      desktopManager = {
+        default = "xfce";
+        xterm.enable = false;
+        xfce.enable = true;
+      };
 
       # windowManager.default = "i3";
       # windowManager.i3.enable = true;
   };
+
 
   hardware.opengl.driSupport32Bit = true;
   # services.gnome3.evolution-data-server.enable = lib.mkForce false;
@@ -179,20 +200,28 @@ in rec {
 
   # enable cron table
   services.cron.enable = true;
+  nixpkgs.config = {
 
-  nixpkgs.config.allowUnfree = true;
+    allowUnfree = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+    firefox = {
+     enableGoogleTalkPlugin = true;
+     enableAdobeFlash = true;
+    };
+    pulseaudio = true;
+  };
+
   users.extraUsers.adfaure = {
     isNormalUser = true;
     home = "/home/adfaure";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
     uid = 1000;
   };
 
   # Add virtualbox and docker
   virtualisation = {
+    virtualbox.guest.enable = true;
     virtualbox.host.enable = true;
     docker.enable = true;
   };
@@ -207,10 +236,29 @@ in rec {
   system.stateVersion = "18.03"; # Did you read the comment?
   # Try fix chrome extension error
   services.dbus.socketActivated = true;
-  services.xserver.desktopManager.gnome3.sessionPath = [
-    pkgs.json_glib
-    pkgs.glib_networking
-    pkgs.libgtop
+  programs.dconf.enable = true;
+  services.dbus.packages = [ pkgs.gnome3.dconf ];
+  # services.xserver.desktopManager.gnome3.sessionPath = [
+  #   pkgs.json_glib
+  #   pkgs.glib_networking
+  #   pkgs.libgtop
+  # ];
+
+  fonts.enableFontDir = true;
+  fonts.enableGhostscriptFonts = true;
+  fonts.fonts = with pkgs; [
+    anonymousPro
+    dejavu_fonts
+    freefont_ttf
+    liberation_ttf
+    source-code-pro
+    terminus_font
+    font-awesome_5
+    material-icons
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    #noto-fonts-extra
   ];
 
 }
