@@ -25,6 +25,7 @@ in
     unzip
     unrar
     # tools
+    pass
     zsh
     tmux
     ranger
@@ -38,6 +39,9 @@ in
     # my vim config
     (pkgs.callPackage ./my_vim.nix { })
     (pkgs.callPackage ./my_emacs.nix { })
+    # nixops
+    qemu
+    nixops
   ];
 
   graphical = [
@@ -72,6 +76,7 @@ in
     git-cola
     gitg
     sakura
+
     # storage
     ntfs3g
     exfat
@@ -84,13 +89,16 @@ in
     gnupg
     rofi-pass
 
+    virtualbox
+
     # Graphic tools
     gcolor3
     graphviz
     imagemagick
     inkscape
     libreoffice
-
+    sublime3
+    rambox
   ];
 
   development =
@@ -108,7 +116,6 @@ in
     entr
     pandoc
     # Editors
-    emacs
     neovim
     # Web Site
     hugo
