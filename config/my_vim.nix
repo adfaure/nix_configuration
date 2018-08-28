@@ -1,8 +1,6 @@
 { config, pkgs, vim_configurable, vimPlugins, ...}:
 
-let
-
-  my_vim = pkgs.vim_configurable.customize {
+  pkgs.vim_configurable.customize {
     name = "v";
 
     vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
@@ -366,9 +364,4 @@ let
       :nmap <F4> <Plug>(grammarous-move-to-info-window)
 
     '';
-};
-
-in
-{
-  environment.systemPackages = [ my_vim ];
 }
