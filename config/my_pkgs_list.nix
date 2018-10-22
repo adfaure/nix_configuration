@@ -76,6 +76,7 @@ in
     git-cola
     gitg
     sakura
+    evince
 
     # storage
     ntfs3g
@@ -85,6 +86,7 @@ in
     sysstat
     gsmartcontrol
     linuxPackages.perf
+    spotify
     # Password
     gnupg
     rofi-pass

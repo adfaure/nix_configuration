@@ -1,23 +1,29 @@
 { config, lib, pkgs, ... }:
 let
+
   pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
+  my_users = import ../config/my_users.nix { inherit pkgs; };
   cfg = config.environment.adfaure.common;
+
 in
+
 with lib;
+
 {
-  options.environments.adfaure.common = {
+  options.environment.adfaure.common = {
     enable = mkEnableOption "common";
     keys = mkOption {
-      type = types.listOf types.string;
-      default = [];
-      example = [];
-      description = ''
-        The list of Ssh keys allowed to log.
-      '';
+        type = types.listOf types.string;
+        default = [];
+        example = [];
+        description = ''
+          The list of Ssh keys allowed to log.
+        '';
     };
   };
 
-  config = mkIf config.environments.adfaure.common.enable {
+  config = mkIf config.environment.adfaure.common.enable {
+
     environment.systemPackages = pkgs_lists.common;
 
     # use Vim by default
@@ -26,6 +32,7 @@ with lib;
     environment.shellAliases = {
       "vim"="v";
     };
+
 
     # Select internationalisation properties.
     i18n = {
@@ -39,6 +46,7 @@ with lib;
       zsh.enable = true;
       # ssh.startAgent = true;
 
+      zsh.enableCompletion = true;
       bash = {
         enableCompletion = true;
         # Make shell history shared and saved at each command
@@ -63,6 +71,7 @@ with lib;
         Defaults   insults
     '';
 
+    nixpkgs.config.allowUnfree = true;
     nixpkgs.config.packageOverrides = pkgs:
     {
       sudo = pkgs.sudo.override { withInsults = true; };
@@ -76,12 +85,8 @@ with lib;
     '';
 
     # Add my user
-    users.extraUsers.adfaure = {
-      isNormalUser = true;
-      home = "/home/adfaure";
-      shell = pkgs.zsh;
-      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
-      uid = 1000;
+    users.extraUsers = {
+      adfaure = my_users.adfaure;
     };
 
     services.cron.enable = true;

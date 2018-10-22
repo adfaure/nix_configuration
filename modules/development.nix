@@ -5,7 +5,7 @@ let
 in
   with lib;
   {
-    options.environments.adfaure.development = {
+    options.environment.adfaure.development = {
       enable = mkEnableOption "development";
       keys = mkOption {
         type = types.listOf types.string;
@@ -17,7 +17,7 @@ in
       };
     };
 
-    config = mkIf config.environments.adfaure.development.enable {
+    config = mkIf config.environment.adfaure.development.enable {
       environment.systemPackages = pkgs_lists.development;
 
       nix = {

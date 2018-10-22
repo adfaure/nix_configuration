@@ -5,7 +5,7 @@ let
 in
   with lib;
   {
-    options.environments.adfaure.graphical = {
+    options.environment.adfaure.graphical = {
       enable = mkEnableOption "graphical";
       keys = mkOption {
         type = types.listOf types.string;
@@ -17,7 +17,7 @@ in
       };
     };
 
-    config = mkIf config.environments.adfaure.graphical.enable {
+    config = mkIf config.environment.adfaure.graphical.enable {
       environment.systemPackages = pkgs_lists.graphical;
 
       services = {
