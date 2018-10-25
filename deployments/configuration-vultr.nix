@@ -25,46 +25,53 @@ let
 
 in rec
 {
-  network.description = "Adrien Faure Personal Network";
+  network.description = "Adrien Faure Persoal Network";
 
   vps =
   { config, pkgs, nodes, lib, ... }:
   rec {
 
     nixpkgs.config.allowUnfree = true;
-    require = [ ../modules/common.nix ];
-    imports = [ ../modules/common.nix ];
+
+    imports = [
+      ../modules/common.nix
+      ./hardware-vultr.nix
+    ];
 
     system.stateVersion = "18.03";
+    deployment.targetHost = "217.69.0.69";
+
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
-    services.openssh.permitRootLogin = "yes";
+    # services.openssh.permitRootLogin = "yes";
 
     environment.adfaure.common = {
       enable = true;
     };
 
-
-
-
     #*************#
     #    Nginx    #
     #*************#
     services.nginx = {
+
       enable = true;
 
       appendHttpConfig = ''
         server_names_hash_bucket_size 64;
       '';
 
-      virtualHosts."_" =
+      virtualHosts."adrien-faure.fr" =
       {
+        forceSSL = true;
+        enableACME = true;
+
         locations."/" = {
           root = "${my.kodama}";
         };
 
         # Add reverse proxy for radicale
         locations."/radicale/" = {
+
           proxyPass = "http://localhost:${toString radicalePort}/";
           extraConfig = ''
             proxy_set_header     X-Script-Name /radicale;

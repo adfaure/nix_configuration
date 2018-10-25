@@ -38,7 +38,6 @@ in
     mediainfo # audio and video
     # my vim config
     (pkgs.callPackage ./my_vim.nix { })
-    (pkgs.callPackage ./my_emacs.nix { })
     # nixops
     qemu
     nixops
@@ -63,14 +62,11 @@ in
     #qtox
     #skype
     #tdesktop
-    gnome3.polari
     liferea
-    rambox
 
     # Media
     vlc
     # Utils
-    gnome3.gnome-disk-utility
     xorg.xkill
     wireshark-gtk
     git-cola
@@ -89,7 +85,6 @@ in
     spotify
     # Password
     gnupg
-    rofi-pass
 
     virtualbox
 
@@ -98,16 +93,12 @@ in
     graphviz
     imagemagick
     inkscape
-    libreoffice
     sublime3
-    rambox
   ];
 
   development =
   [
     gitAndTools.gitFull
-    python3
-    python2
     gcc
     ctags
     gnumake
@@ -118,8 +109,6 @@ in
     entr
     pandoc
     # Editors
-    neovim
-    # Web Site
     hugo
     # Misc
     cloc
@@ -131,7 +120,7 @@ in
     # fun
     fortune
     sl
-    wesnoth-dev
+    sshfs
   ];
 
 }
