@@ -25,7 +25,7 @@ let
 
 in rec
 {
-  network.description = "Adrien Faure Persoal Network";
+  network.description = "Adrien Faure Personal Network";
 
   vps =
   { config, pkgs, nodes, lib, ... }:
@@ -105,7 +105,25 @@ in rec
       '';
     };
 
-    #*************#
+    services.cron.enable = true;
+    services.cron.systemCronJobs = let
+      # Contact and Calendar backups
+      radicaleBackups = "/data/backups/radicale";
+
+      backupScript = pkgs.writeScript "backup.sh" ''
+        #!/usr/bin/env bash
+
+        COLLECTIONS="${radicaleCollection}"
+        # adapt to where you want to back up information
+        BACKUP="${radicaleBackups}"
+        tar zcf "$BACKUP/dump-`date +%V`.tgz" "$COLLECTIONS"
+      '';
+
+    in [
+      "@weekly radicale ${backupScript} > /tmp/log 2>&1"
+    ];
+
+    #*************# grep CRON /var/log/syslog
     # Admin tools #
     #*************#
     environment.systemPackages = with pkgs; [
