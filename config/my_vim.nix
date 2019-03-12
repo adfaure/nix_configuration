@@ -18,6 +18,7 @@
           vim-easytags
           vim-misc
           #LanguageClient-neovim
+          rust-vim
           Tagbar
           vim-orgmode
           multiple-cursors
@@ -32,7 +33,7 @@
           pkgs.aspellDicts.en
           pkgs.aspellDicts.fr
           vim-grammarous
-          peskcolor
+          # peskcolor
 	        csv
       ];
 

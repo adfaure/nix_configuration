@@ -58,8 +58,11 @@ with lib;
         '';
       };
 
+      # Start ssh agent
+      # ssh.startAgent = true;
+
       mtr.enable = true;
-      gnupg.agent = { enable = true; enableSSHSupport = true; };
+      gnupg.agent = { enable = true; enableSSHSupport= true; };
 
       # Whether interactive shells should show which Nix package (if any)
       # provides a missing command.

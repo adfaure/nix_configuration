@@ -1,5 +1,4 @@
 let
-  nixpkgs-stable = (fetchTarball "https://github.com/NixOS/nixpkgs/archive/18.03.tar.gz");
 
   my = import ../pkgs/default.nix {};
 
@@ -38,7 +37,8 @@ in rec
       ./hardware-vultr.nix
     ];
 
-    system.stateVersion = "18.03";
+    system.stateVersion = "19.03";
+
     deployment.targetHost = "217.69.0.69";
 
     # Enable the OpenSSH daemon.

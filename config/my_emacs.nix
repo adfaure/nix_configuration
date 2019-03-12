@@ -15,7 +15,7 @@ pkgs.emacsWithPackages (epkgs: with epkgs; [
     /* Haskell */ haskell-mode flycheck-haskell
     /* Org */ org org-ref
     rust-mode cargo flycheck-rust
-    /* mail */ notmuch messages-are-flowing
+    /* mail */messages-are-flowing
     /* Nix */ pkgs.nix nix-buffer
     spaceline # modeline beautification
     winum eyebrowse # window management
@@ -27,7 +27,7 @@ pkgs.emacsWithPackages (epkgs: with epkgs; [
     babel
     ess
     htmlize
-    openwith
+    # penwith
     # From spacemacs
     # better-default
     company

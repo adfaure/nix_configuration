@@ -38,9 +38,10 @@ in
     mediainfo # audio and video
     # my vim config
     (pkgs.callPackage ./my_vim.nix { })
+    (pkgs.callPackage ./my_emacs.nix { })
     # nixops
     qemu
-    nixops
+    taskwarrior
   ];
 
   graphical = [
@@ -55,12 +56,12 @@ in
 
     # Web
     firefox
+    chromium
     # Dictionnaries
     aspellDicts.fr
     aspellDicts.en
     # Message and RSS
     #qtox
-    #skype
     #tdesktop
     liferea
 
@@ -94,6 +95,9 @@ in
     imagemagick
     inkscape
     sublime3
+
+    rambox
+    godot
   ];
 
   development =

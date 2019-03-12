@@ -20,12 +20,18 @@ in
     config = mkIf config.environment.adfaure.graphical.enable {
       environment.systemPackages = pkgs_lists.graphical;
 
+     programs.light.enable = true;
       services = {
 
         # Install but disable open SSH
         openssh = {
           enable = false;
           permitRootLogin = "false";
+        };
+
+        redshift = {
+          enable = false; 
+          provider = "geoclue2";
         };
 
         # Enable CUPS to print documents.
@@ -49,13 +55,13 @@ in
 
           windowManager.i3.enable = true;
           windowManager.default = "i3";
-          displayManager.gdm.enable = true;
+          # displayManager.gdm.enable = true;
 
-          desktopManager = {
-            default = "xfce";
-            xterm.enable = false;
-            xfce.enable = true;
-          };
+          # desktopManager = {
+          #  default = "xfce";
+          #  xterm.enable = false;
+          #  xfce.enable = true;
+          #};
 
           # windowManager.default = "i3";
           # windowManager.i3.enable = true;
