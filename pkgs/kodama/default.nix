@@ -8,8 +8,8 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = "https://gitlab.com/adfaure/kodama/";
     fetchSubmodules = true;
-    sha256 = "1k7j91n7dghy3a7rwlg1ybhj40k8dnk9arv45s9cz2yf5zx0blnh";
-    rev = "8f7d57a940d9552133885a1f6e38dd3f3ec4fc22";
+    sha256 = "0arw6vklmyxc7xvijz0x2i3qshi73jy1ahc8n9b9r89bq5fvszvw";
+    rev = "8188d9ea49822ada1d00f42dd3d90db059b3e5cd";
     # branchName = "master";
   };
 

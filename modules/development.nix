@@ -20,6 +20,19 @@ in
     config = mkIf config.environment.adfaure.development.enable {
       environment.systemPackages = pkgs_lists.development;
 
+      services.taskserver = {
+        enable = false;
+        user = "adfaure";
+        listenHost = "adchire";
+        dataDir = "/var/lib/taskserver";
+#        fqdn = "adchire";
+#        organisations = {
+#          phd = {
+#            users = [ "adfaure" ];
+#          };
+#        };
+      };
+
       nix = {
         # make sure dependencies are well defined
         useSandbox = true;

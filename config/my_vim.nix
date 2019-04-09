@@ -121,7 +121,7 @@
 
       " Mapping pour bépo
       " Save sur A
-      
+ 
       " {W} -> [É]
       " ——————————
       " On remappe W sur É :
@@ -338,9 +338,9 @@
       noremap <Leader>f :Autoformat<CR><CR>
 
       " Make slime works for Tmux
-      let g:slime_target="tmux"
-      let g:slime_default_config={"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
-      let g:slime_python_ipython=1
+      " let g:slime_target="tmux"
+      " let g:slime_default_config={"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
+      " let g:slime_python_ipython=1
 
       " Press Space to turn off highlighting and clear any message already displayed.
       nnoremap m :nohlsearch<Bar>:echo<CR>
@@ -364,5 +364,7 @@
       :nmap <F5> <Plug>(grammarous-open-info-window)
       :nmap <F4> <Plug>(grammarous-move-to-info-window)
 
+      " Disable physical line wrapping
+      set textwidth=0 wrapmargin=0
     '';
 }

@@ -3,12 +3,25 @@ let
 
   pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
   my_users = import ../config/my_users.nix { inherit pkgs; };
+
   cfg = config.environment.adfaure.common;
+  backup_tasks_cron = pkgs.writeScript "backup_tasks.sh" ''
+#!/usr/bin/env bash
+
+TASK_BACKUP_DIR=/home/adfaure/Data/taskwarrior-backup
+TASK_DIR=`task diagnostics|grep Data:| sed -e "s/ \+/ /g"|cut -d " " -f 3`
+
+cd $TASK_BACKUP_DIR && tar -czf task-backup-$(date +'%Y%m%d').tar.gz -C $TASK_DIR .
+
+TIMEW_BACKUP_DIR=/home/adfaure/Data/taskwarrior-backup
+TIMEW_DIR=`timew diagnostics|grep Database:| sed -e "s/ \+/ /g"|cut -d " " -f 3`
+
+cd $TIMEW_BACKUP_DIR && tar -czf timew-backup-$(date +'%Y%m%d').tar.gz -C $TIMEW_DIR .
+'';
 
 in
 
 with lib;
-
 {
   options.environment.adfaure.common = {
     enable = mkEnableOption "common";
@@ -33,7 +46,12 @@ with lib;
       "vim"="v";
     };
 
-
+    services.cron = {
+      enable = true;
+      systemCronJobs = with backup_tasks_cron; [
+        "*/5 * * * *      adfaure ${backup_tasks_cron} >> /tmp/cron.log  2>&1"
+      ];
+    };
     # Select internationalisation properties.
     i18n = {
       consoleFont = "Lat2-Terminus16";
@@ -91,8 +109,6 @@ with lib;
     users.extraUsers = {
       adfaure = my_users.adfaure;
     };
-
-    services.cron.enable = true;
 
   };
 }

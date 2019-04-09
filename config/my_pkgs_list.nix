@@ -42,6 +42,7 @@ in
     # nixops
     qemu
     taskwarrior
+    timewarrior
   ];
 
   graphical = [
@@ -102,6 +103,8 @@ in
 
   development =
   [
+    taskwarrior
+    taskserver
     gitAndTools.gitFull
     gcc
     ctags
