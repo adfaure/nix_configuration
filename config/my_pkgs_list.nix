@@ -27,6 +27,7 @@ in
     # tools
     pass
     zsh
+    any-nix-shell
     tmux
     ranger
     # ranger previews
@@ -41,6 +42,7 @@ in
     (pkgs.callPackage ./my_emacs.nix { })
     # nixops
     qemu
+    python3
     taskwarrior
     timewarrior
   ];
@@ -99,6 +101,7 @@ in
 
     rambox
     godot
+    libreoffice
   ];
 
   development =
