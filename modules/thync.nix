@@ -17,7 +17,7 @@ in
     };
 
     config = mkIf config.environment.adfaure.thync.enable {
-      # environment.systemPackages = pkgs_lists.thync;
+      environment.systemPackages = with  pkgs;  [ taskserver ];
 
       services.syncthing = {
         enable = true;

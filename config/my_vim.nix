@@ -8,17 +8,18 @@
 
       start = [
           youcompleteme
-          fugitive
+          vim-fugitive
           ctrlp
           airline
           Syntastic
           gitgutter
           The_NERD_tree
           vim-nerdtree-tabs
+          vimtex
           vim-easytags
           vim-misc
-          #LanguageClient-neovim
-          rust-vim
+          # LanguageClient-neovim
+          # rust-vim
           Tagbar
           vim-orgmode
           multiple-cursors
@@ -121,7 +122,7 @@
 
       " Mapping pour bépo
       " Save sur A
-      
+
       " {W} -> [É]
       " ——————————
       " On remappe W sur É :
@@ -363,6 +364,9 @@
       " grammarous
       :nmap <F5> <Plug>(grammarous-open-info-window)
       :nmap <F4> <Plug>(grammarous-move-to-info-window)
+
+      :set textwidth=0
+      :set wrapmargin=0
 
     '';
 }

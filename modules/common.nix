@@ -93,6 +93,7 @@ with lib;
     };
 
     services.cron.enable = true;
+    services.keybase.enable = true;
 
   };
 }

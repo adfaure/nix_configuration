@@ -30,7 +30,7 @@ in
         };
 
         redshift = {
-          enable = false; 
+          enable = false;
           provider = "geoclue2";
         };
 
@@ -49,22 +49,22 @@ in
           layout = "fr";
           xkbVariant = "bepo";
           libinput.enable = true;
-          # Enable the Gnome Desktop Environment.
-          # desktopManager.gnome3.enable = true;
-          # displayManager.gdm.enable = true;
 
-          windowManager.i3.enable = true;
-          windowManager.default = "i3";
-          # displayManager.gdm.enable = true;
+          desktopManager = {
+            default = "none";
+            xterm.enable = false;
+          };
 
-          # desktopManager = {
-          #  default = "xfce";
-          #  xterm.enable = false;
-          #  xfce.enable = true;
-          #};
+          windowManager.i3 = {
+            enable = true;
+            extraPackages = with pkgs; [
+              dmenu #application launcher most people use
+              i3status # gives you the default i3 status bar
+              i3lock #default i3 screen locker
+              i3blocks #if you are planning on using i3blocks over i3status
+           ];
+          };
 
-          # windowManager.default = "i3";
-          # windowManager.i3.enable = true;
         };
 
         clamav.updater.enable = true;

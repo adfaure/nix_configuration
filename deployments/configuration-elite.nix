@@ -16,7 +16,7 @@ in rec {
 
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-adchire.nix
+      ./hardware-elite.nix
     ];
 
     require = [
@@ -26,6 +26,7 @@ in rec {
       ../modules/development.nix
       ../modules/graphical.nix
       ../modules/gitlab_runners.nix
+      ../modules/taskserver.nix
       ../modules/thync.nix
     ];
 
@@ -39,6 +40,7 @@ in rec {
 
   environment.adfaure.graphical.enable = true;
   environment.adfaure.thync.enable = true;
+  environment.adfaure.taskserver.enable = true;
   environment.adfaure.development.enable = true;
   environment.adfaure.gitlabrunners.enable = false;
 
@@ -64,20 +66,21 @@ in rec {
   services.cron.enable = true;
 
   nixpkgs.config = {
+
     allowUnfree = true;
     pulseaudio = true;
 
   };
 
   # Add virtualbox and docker
-  virtualisation = {
-    virtualbox.guest.enable = true;
-    virtualbox.host.enable = true;
-    docker.enable = true;
-  };
+  # virtualisation = {
+  #   virtualbox.guest.enable = true;
+  #   virtualbox.host.enable = true;
+  #   docker.enable = true;
+  # };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-unstable;
+  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.03;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
