@@ -110,5 +110,8 @@ with lib;
       adfaure = my_users.adfaure;
     };
 
+    # services.cron.enable = true;
+    services.keybase.enable = true;
+
   };
 }

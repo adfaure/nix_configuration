@@ -50,18 +50,17 @@ in
           xkbVariant = "bepo";
           libinput.enable = true;
           # Enable the Gnome Desktop Environment.
-          # desktopManager.gnome3.enable = true;
-          # displayManager.gdm.enable = true;
+          desktopManager.gnome3.enable = true;
+          displayManager.gdm.enable = true;
 
-          windowManager.i3.enable = true;
-          windowManager.default = "i3";
-          displayManager.lightdm.enable = true;
+          # windowManager.i3.enable = true;
+          # windowManager.default = "i3";
 
-          desktopManager = {
-            default = "none";
-            xterm.enable = false;
-            xfce.enable = false;
-          };
+          # desktopManager = {
+          #  default = "xfce";
+          #  xterm.enable = false;
+          #  xfce.enable = true;
+          #};
 
           # windowManager.default = "i3";
           # windowManager.i3.enable = true;
@@ -75,9 +74,7 @@ in
       fonts.fontconfig = {
         enable = true;
         ultimate.enable = true;
-        defaultFonts.serif = [ "open-dyslexic" ];
       };
-
       # Add micro$oft fonts
       fonts.fonts = [ pkgs.corefonts ];
       # Add Workaround for USB 3 Scanner for SANE
