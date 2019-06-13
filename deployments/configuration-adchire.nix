@@ -17,6 +17,7 @@ in rec {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-adchire.nix
+      ../modules/lorri.nix
     ];
 
     require = [
@@ -25,8 +26,9 @@ in rec {
       ../modules/common.nix
       ../modules/development.nix
       ../modules/graphical.nix
-      ../modules/gitlab_runners.nix
       ../modules/thync.nix
+
+      ../services/gitlab_runners.nix
     ];
 
    environment.adfaure.common = {
@@ -40,7 +42,8 @@ in rec {
   environment.adfaure.graphical.enable = true;
   environment.adfaure.thync.enable = true;
   environment.adfaure.development.enable = true;
-  environment.adfaure.gitlabrunners.enable = false;
+
+  services.gitlabrunners.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -64,28 +67,27 @@ in rec {
   services.cron.enable = true;
 
   nixpkgs.config = {
-
     allowUnfree = true;
     pulseaudio = true;
-
   };
 
   # Add virtualbox and docker
   virtualisation = {
-    virtualbox.guest.enable = true;
+    # virtualbox.guest.enable = true;
     virtualbox.host.enable = true;
     docker.enable = true;
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-unstable;
-
+  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.03;
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
+
   system.stateVersion = "19.03"; # Did you read the comment?
   # Try fix chrome extension error
+
   services.dbus.socketActivated = true;
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gnome3.dconf ];

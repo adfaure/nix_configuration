@@ -9,6 +9,7 @@ pkgs.emacsWithPackages (epkgs: with epkgs; [
     /* LaTeX */ auctex helm-bibtex cdlatex
     markdown-mode
     flycheck
+    smooth-scrolling
     #pkgs.ledger
     #yaml-mode
     #company

@@ -72,7 +72,7 @@ in
     vlc
     # Utils
     xorg.xkill
-    wireshark-gtk
+    # wireshark-gtk
     git-cola
     gitg
     sakura
@@ -98,6 +98,7 @@ in
     imagemagick
     inkscape
     sublime3
+    pavucontrol
 
     rambox
     godot

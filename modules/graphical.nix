@@ -30,7 +30,7 @@ in
         };
 
         redshift = {
-          enable = false; 
+          enable = false;
           provider = "geoclue2";
         };
 
@@ -55,13 +55,13 @@ in
 
           windowManager.i3.enable = true;
           windowManager.default = "i3";
-          # displayManager.gdm.enable = true;
+          displayManager.lightdm.enable = true;
 
-          # desktopManager = {
-          #  default = "xfce";
-          #  xterm.enable = false;
-          #  xfce.enable = true;
-          #};
+          desktopManager = {
+            default = "none";
+            xterm.enable = false;
+            xfce.enable = false;
+          };
 
           # windowManager.default = "i3";
           # windowManager.i3.enable = true;
@@ -75,7 +75,9 @@ in
       fonts.fontconfig = {
         enable = true;
         ultimate.enable = true;
+        defaultFonts.serif = [ "open-dyslexic" ];
       };
+
       # Add micro$oft fonts
       fonts.fonts = [ pkgs.corefonts ];
       # Add Workaround for USB 3 Scanner for SANE
