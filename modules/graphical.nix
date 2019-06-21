@@ -44,17 +44,17 @@ in
         avahi.enable = true;
         avahi.nssmdns = true;
 
-        xserver = {
+      xserver = {
           enable = true;
           layout = "fr";
           xkbVariant = "bepo";
           libinput.enable = true;
           # Enable the Gnome Desktop Environment.
-          desktopManager.gnome3.enable = true;
+          # desktopManager.gnome3.enable = true;
           displayManager.gdm.enable = true;
 
-          # windowManager.i3.enable = true;
-          # windowManager.default = "i3";
+          windowManager.i3.enable = true;
+          windowManager.default = "i3";
 
           # desktopManager = {
           #  default = "xfce";

@@ -2,12 +2,11 @@
 let
   vimrc = builtins.readFile(./vimrc);
 in
+
 pkgs.vim_configurable.customize {
   name = "v";
 
   vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
-    # loaded on launch
-
     start = [
         youcompleteme
         fugitive
@@ -35,15 +34,13 @@ pkgs.vim_configurable.customize {
         pkgs.aspellDicts.en
         pkgs.aspellDicts.fr
         vim-grammarous
+        Spacegray-vim
         # peskcolor
         csv
         LanguageClient-neovim
    ];
 
-   # manually loadable by calling `:packadd $plugin-name`
-   opt = [  ];
-   # To automatically load a plugin when opening a filetype, add vimrc lines like:
-   # autocmd FileType php :packadd phpCompletion
+   opt = with pkgs.vimPlugins; [ youcompleteme fugitive elm-vim ];
 
   };
 
