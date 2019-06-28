@@ -8,6 +8,7 @@ pkgs.vim_configurable.customize {
 
   vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
     start = [
+        meson
         youcompleteme
         fugitive
         ctrlp
