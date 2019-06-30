@@ -11,39 +11,19 @@ let
   mypkgs = import /home/adfaure/Projects/myPkgs { };
   my_dotfiles = builtins.fetchTarball
   "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
+  modules = import ../modules/module-list.nix;
 
 in rec {
 
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-adchire.nix
-      ../modules/lorri.nix
     ];
 
-    require = [
-      # taken from:
-      # https://github.com/ttuegel/nixos-config/emacs.nix
-      ../modules/common.nix
-      ../modules/development.nix
-      ../modules/graphical.nix
-      ../modules/thync.nix
-
-      ../services/gitlab_runners.nix
-    ];
-
-   environment.adfaure.common = {
-     enable = true;
-     keys = [
-       (lib.readFile ./keys/mael.pub)
-       (lib.readFile ./keys/id_rsa.pub)
-     ];
-   };
+  require = modules;
 
   environment.adfaure.graphical.enable = true;
-  environment.adfaure.thync.enable = true;
-  environment.adfaure.development.enable = true;
-
-  services.gitlabrunners.enable = true;
+  environment.adfaure.headless.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

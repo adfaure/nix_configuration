@@ -4,6 +4,7 @@ let
 in
 
 pkgs.vim_configurable.customize {
+
   name = "v";
 
   vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {

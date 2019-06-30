@@ -1,30 +1,17 @@
 { config, lib, pkgs, ... }:
 let
 
-  pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
-  my_users = import ../config/my_users.nix { inherit pkgs; };
+  # pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
+  # my_users = import ../config/my_users.nix { inherit pkgs; };
 
-  cfg = config.environment.adfaure.common;
-  backup_tasks_cron = pkgs.writeScript "backup_tasks.sh" ''
-#!/usr/bin/env bash
-
-TASK_BACKUP_DIR=/home/adfaure/Data/taskwarrior-backup
-TASK_DIR=`task diagnostics|grep Data:| sed -e "s/ \+/ /g"|cut -d " " -f 3`
-
-cd $TASK_BACKUP_DIR && tar -czf task-backup-$(date +'%Y%m%d').tar.gz -C $TASK_DIR .
-
-TIMEW_BACKUP_DIR=/home/adfaure/Data/taskwarrior-backup
-TIMEW_DIR=`timew diagnostics|grep Database:| sed -e "s/ \+/ /g"|cut -d " " -f 3`
-
-cd $TIMEW_BACKUP_DIR && tar -czf timew-backup-$(date +'%Y%m%d').tar.gz -C $TIMEW_DIR .
-'';
+  cfg = config.environment.adfaure.headless;
 
 in
 
 with lib;
 {
-  options.environment.adfaure.common = {
-    enable = mkEnableOption "common";
+  options.environment.adfaure.headless = {
+    enable = mkEnableOption "headless";
     keys = mkOption {
         type = types.listOf types.string;
         default = [];
@@ -35,22 +22,25 @@ with lib;
     };
   };
 
-  config = mkIf config.environment.adfaure.common.enable {
+  config = mkIf config.environment.adfaure.headless.enable {
 
-    environment.systemPackages = pkgs_lists.common;
+    #  environment.systemPackages = pkgs_lists.headless;
 
+    environment.adfaure.programs.zsh.enable=true;
+    environment.adfaure.programs.vim.enable=true;
+    environment.adfaure.environments.headless.enable=true;
     # use Vim by default
-    environment.sessionVariables.EDITOR="v";
-    environment.sessionVariables.VISUAL="v";
+#    environment.sessionVariables.EDITOR="v";
+#    environment.sessionVariables.VISUAL="v";
     environment.shellAliases = {
-      "vim"="v";
+       "vim"="v";
     };
 
     services.cron = {
       enable = true;
-      systemCronJobs = with backup_tasks_cron; [
-        "*/5 * * * *      adfaure ${backup_tasks_cron} >> /tmp/cron.log  2>&1"
-      ];
+      # systemCronJobs = with backup_tasks_cron; [
+      #   "*/5 * * * *      adfaure ${backup_tasks_cron} >> /tmp/cron.log  2>&1"
+      # ];
     };
     # Select internationalisation properties.
     i18n = {
@@ -61,10 +51,9 @@ with lib;
 
     programs = {
     # Enable system wide zsh and ssh agent
-      zsh.enable = true;
       # ssh.startAgent = true;
 
-      zsh.enableCompletion = true;
+
       bash = {
         enableCompletion = true;
         # Make shell history shared and saved at each command
@@ -105,13 +94,23 @@ with lib;
       set completion-ignore-case on
     '';
 
-    # Add my user
-    users.extraUsers = {
-      adfaure = my_users.adfaure;
+    users.extraUsers.adfaure = {
+      isNormalUser = true;
+      home = "/home/adfaure";
+      shell = pkgs.zsh;
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
+      openssh.authorizedKeys.keys = [
+          (lib.readFile ../deployments/keys/mael.pub)
+          (lib.readFile ../deployments/keys/id_rsa.pub)
+      ];
+      hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
+      uid = 1000;
     };
+
 
     # services.cron.enable = true;
     services.keybase.enable = true;
+
 
   };
 }
