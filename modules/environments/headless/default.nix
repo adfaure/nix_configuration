@@ -61,7 +61,6 @@ in
       zsh
       any-nix-shell
       tmux
-      ranger
       # ranger previews
       libcaca   # video
       highlight # code

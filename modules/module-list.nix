@@ -7,4 +7,5 @@
 
   programs/zsh
   programs/vim
+  programs/ranger
 ]

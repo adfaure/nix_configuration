@@ -24,7 +24,7 @@ export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'page faults from disk:     %F'$'\n'\
 'other page faults:         %R'
 
-prompt adam2
+# prompt adam2
 
 # Set vim bindings
 bindkey -v

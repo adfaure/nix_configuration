@@ -28,6 +28,7 @@ with lib;
 
     environment.adfaure.programs.zsh.enable=true;
     environment.adfaure.programs.vim.enable=true;
+    environment.adfaure.programs.ranger.enable=true;
     environment.adfaure.environments.headless.enable=true;
     # use Vim by default
 #    environment.sessionVariables.EDITOR="v";

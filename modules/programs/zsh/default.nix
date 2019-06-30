@@ -8,18 +8,15 @@ in
 {
 
   options.environment.adfaure.programs.zsh = {
-
     enable = mkEnableOption "zsh";
-
   };
 
   config = mkIf config.environment.adfaure.programs.zsh.enable {
 
-
     programs.zsh = {
-
       enable = true;
       enableCompletion = true;
+
       autosuggestions = {
         enable = true;
       };
@@ -29,19 +26,15 @@ in
         v = "vim";
       };
 
-      interactiveShellInit = ''
-        imagprint() {
-          lp -h print.imag.fr:631 -d lig-copieur-439-nb $1
-      }
-
-      '';
-
       ohMyZsh = {
         enable = true;
-        plugins = [ "git" "colored-man-pages" "command-not-found" ];
         theme = "norm";
       };
 
+      shellInit = ''
+        # source "${builtins.toPath ./zshrc}"
+        source "${builtins.toPath ./zshrc.local}"
+      '';
     };
 
     environment.systemPackages = [
