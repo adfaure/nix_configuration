@@ -7,7 +7,6 @@ imagprint() {
     lp -h print.imag.fr:631 -d lig-copieur-439-nb $1
 }
 
-
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/home/adfaure/.gem/ruby/2.4.0/bin
 export PATH=$PATH:$HOME/bin
@@ -24,30 +23,11 @@ export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'page faults from disk:     %F'$'\n'\
 'other page faults:         %R'
 
-# prompt adam2
-
 # Set vim bindings
 bindkey -v
 
 # Start ranger file navigator
-alias r='ranger'
-alias gs='git status'
-alias gl='git l'
-
-_ranger () {
- command ranger "$(pwd)" <$TTY
- print -n "\033[A"
- zle && zle -I
- cd "$(grep \^\' ~/.config/ranger/bookmarks | cut -b3-)"
-}
-
-zle -N _ranger
-bindkey -v '^N' _ranger
-
 bindkey '^a' history-incremental-search-backward
-
-# Activate direnv
-# eval "$(direnv hook zsh)"
 
  # On remappe pour le bépo
 bindkey -a c vi-backward-char
@@ -64,4 +44,4 @@ bindkey -a L vi-replace
 bindkey -a k vi-substitute
 
 # nix shell hook
-#  any-nix-shell zsh --info-right | source /dev/stdin
+any-nix-shell zsh --info-right | source /dev/stdin

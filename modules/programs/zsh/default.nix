@@ -23,16 +23,16 @@ in
 
       shellAliases = {
         r = "ranger";
-        v = "vim";
+        vim = "v";
       };
 
       ohMyZsh = {
         enable = true;
         theme = "norm";
+        plugins = [ "git" "command-not-found" "tig" ];
       };
 
-      shellInit = ''
-        # source "${builtins.toPath ./zshrc}"
+      interactiveShellInit = ''
         source "${builtins.toPath ./zshrc.local}"
       '';
     };
@@ -42,6 +42,7 @@ in
       pkgs.fasd
       pkgs.zsh-completions
       pkgs.zsh-navigation-tools
+      pkgs.tig
       #adfaurePkgs.direnv
     ];
 
