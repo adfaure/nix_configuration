@@ -8,4 +8,5 @@
   programs/zsh
   programs/vim
   programs/ranger
+  programs/emacs
 ]

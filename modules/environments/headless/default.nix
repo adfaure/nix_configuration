@@ -76,6 +76,7 @@ in
       python3
       taskwarrior
       timewarrior
+      nitrokey-app
     ];
   };
 }

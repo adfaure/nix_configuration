@@ -47,13 +47,12 @@ with lib;
     i18n = {
       consoleFont = "Lat2-Terminus16";
       consoleKeyMap = "fr";
-      defaultLocale = "fr_FR.UTF-8";
+      defaultLocale = "en_US.UTF-8";
     };
 
     programs = {
     # Enable system wide zsh and ssh agent
       # ssh.startAgent = true;
-
 
       bash = {
         enableCompletion = true;
@@ -65,13 +64,10 @@ with lib;
           HISTSIZE=5000
         '';
       };
-
       # Start ssh agent
       # ssh.startAgent = true;
-
       mtr.enable = true;
       gnupg.agent = { enable = true; enableSSHSupport= true; };
-
       # Whether interactive shells should show which Nix package (if any)
       # provides a missing command.
       command-not-found.enable = true;
@@ -101,17 +97,14 @@ with lib;
       shell = pkgs.zsh;
       extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
       openssh.authorizedKeys.keys = [
-          (lib.readFile ../deployments/keys/mael.pub)
-          (lib.readFile ../deployments/keys/id_rsa.pub)
+          (lib.readFile ../../../deployments/keys/id_rsa.pub)
       ];
       hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
       uid = 1000;
     };
 
-
     # services.cron.enable = true;
     services.keybase.enable = true;
-
 
   };
 }

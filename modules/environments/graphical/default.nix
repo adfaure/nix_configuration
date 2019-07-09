@@ -62,6 +62,7 @@ with lib;
       rambox
       godot
       libreoffice
+      zotero
     ];
   };
 }

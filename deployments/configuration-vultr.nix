@@ -5,7 +5,6 @@ let
   pkgs = import <nixpkgs> {};
 
   pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
-  users = import ../config/my_users.nix { inherit pkgs; };
 
   radicaleCollection = "/data/radicale";
 
@@ -13,15 +12,14 @@ let
   webSslPort = 443;
   radicalePort = 5232;
 
+  modules = import ../modules/module-list.nix;
+
   inherit (pkgs.lib) concatStrings flip mapAttrsToList;
 
-  users_list = users;
-  htpasswd = pkgs.writeText "radicale.users" (concatStrings
-    (flip mapAttrsToList users_list (name: user:
-      name + ":" + user.hashedPassword + "\n"
-    ))
-  );
-
+  # Find a way to get it from defined users
+  htpasswd = pkgs.writeText "radicale.users"  ''
+    adfaure:$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/
+  '';
 in rec
 {
   network.description = "Adrien Faure Personal Network";
@@ -33,21 +31,19 @@ in rec
     nixpkgs.config.allowUnfree = true;
 
     imports = [
-      ../modules/common.nix
       ./hardware-vultr.nix
     ];
 
-    system.stateVersion = "19.03";
+    require = modules;
 
+    environment.adfaure.headless.enable = true;
+
+    system.stateVersion = "19.03";
     deployment.targetHost = "217.69.0.69";
 
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
     # services.openssh.permitRootLogin = "yes";
-
-    environment.adfaure.common = {
-      enable = true;
-    };
 
     #*************#
     #    Nginx    #
@@ -105,23 +101,23 @@ in rec
       '';
     };
 
-    services.cron.enable = true;
-    services.cron.systemCronJobs = let
-      # Contact and Calendar backups
-      radicaleBackups = "/data/backups/radicale";
+   # services.cron.enable = true;
+   # services.cron.systemCronJobs = let
+   #   # Contact and Calendar backups
+   #   radicaleBackups = "/data/backups/radicale";
 
-      backupScript = pkgs.writeScript "backup.sh" ''
-        #!/usr/bin/env bash
+   #   backupScript = pkgs.writeScript "backup.sh" ''
+   #     #!/usr/bin/env bash
 
-        COLLECTIONS="${radicaleCollection}"
-        # adapt to where you want to back up information
-        BACKUP="${radicaleBackups}"
-        tar zcf "$BACKUP/dump-`date +%V`.tgz" "$COLLECTIONS"
-      '';
+   #     COLLECTIONS="${radicaleCollection}"
+   #     # adapt to where you want to back up information
+   #     BACKUP="${radicaleBackups}"
+   #     tar zcf "$BACKUP/dump-`date +%V`.tgz" "$COLLECTIONS"
+   #   '';
 
-    in [
-      "@weekly radicale ${backupScript} > /tmp/log 2>&1"
-    ];
+   # in [
+   #   "@weekly radicale ${backupScript} > /tmp/log 2>&1"
+   # ];
 
     #*************# grep CRON /var/log/syslog
     # Admin tools #
@@ -131,7 +127,7 @@ in rec
       wget
       git # Needed for radicale backup
       rsync # for backups
-    ] ++ pkgs_lists.common;
+    ]; # ++ pkgs_lists.common;
 
     #*************#
     #   Network   #

@@ -20,8 +20,10 @@ in
     config = mkIf config.environment.adfaure.graphical.enable {
       environment.adfaure.environments.graphical.enable=true;
 
+      environment.adfaure.programs.emacs.enable=true;
       programs.light.enable = true;
-       services = {
+
+      services = {
 
          # Install but disable open SSH
          openssh = {
@@ -44,28 +46,28 @@ in
          avahi.enable = true;
          avahi.nssmdns = true;
 
-       xserver = {
-           enable = true;
-           layout = "fr";
-           xkbVariant = "bepo";
-           resolutions =  [{x = 1920; y = 1080;}];
-           libinput.enable = true;
-           # Enable the Gnome Desktop Environment.
-           # desktopManager.gnome3.enable = true;
-           displayManager.gdm.enable = true;
+      xserver = {
+        enable = true;
+        layout = "fr";
+        xkbVariant = "bepo";
+        resolutions =  [{x = 1920; y = 1080;}];
+        libinput.enable = true;
+        # Enable the Gnome Desktop Environment.
+        # desktopManager.gnome3.enable = true;
+        displayManager.gdm.enable = true;
 
-           windowManager.i3.enable = true;
-           windowManager.default = "i3";
+        windowManager.i3.enable = true;
+        windowManager.default = "i3";
 
-           # desktopManager = {
-           #  default = "xfce";
-           #  xterm.enable = false;
-           #  xfce.enable = true;
-           #};
+        # desktopManager = {
+        #  default = "xfce";
+        #  xterm.enable = false;
+        #  xfce.enable = true;
+        #};
 
-           # windowManager.default = "i3";
-           # windowManager.i3.enable = true;
-         };
+        # windowManager.default = "i3";
+        # windowManager.i3.enable = true;
+      };
 
          clamav.updater.enable = true;
 
