@@ -79,6 +79,7 @@ with lib;
     '';
 
     nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.firefox.enableBrowserpass = true;
     nixpkgs.config.packageOverrides = pkgs:
     {
       sudo = pkgs.sudo.override { withInsults = true; };
