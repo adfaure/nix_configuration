@@ -169,8 +169,6 @@ set laststatus=2    " Activate Status bar even without split
 
 set foldlevel=99    " Don't fold by default
 
-set shell=/bin/sh   " Needed by https://github.com/vim-syntastic/syntastic/issues/1131
-
 
 filetype plugin indent on     " required!
 syntax on
@@ -181,18 +179,6 @@ cmap w!! w !sudo tee > /dev/null %
 
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
-
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-function! SynGroup()
-    let l:s = synID(line('.'), col('.'), 1)
-    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-  endfun
 
 "set spell
 "set spelllang=en,fr
@@ -221,17 +207,6 @@ imap jj <Esc>
 
 " for a better leader
 let mapleader='!'
-
-" NERDTree toggle with <F2>
-map <leader><F2> :NERDTreeToggle<CR>
-
-map <silent> <C-w> :NERDTreeTabsToggle<CR>
-
-" Easy pane navigation with Alt+arrows
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
 
 " bind Ctrl-Arrow to word move
 nnoremap <silent> <C-Right> w
@@ -289,21 +264,8 @@ endfunction
 "autoformat
 noremap <Leader>f :Autoformat<CR><CR>
 
-" Make slime works for Tmux
-" let g:slime_target="tmux"
-" let g:slime_default_config={"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
-" let g:slime_python_ipython=1
-
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap m :nohlsearch<Bar>:echo<CR>
-
-" # https://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
-" if has("mouse_sgr")
-"     set ttymouse=sgr
-" else
-"     set ttymouse=xterm2
-" end
-
 
 " http://vim.wikia.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -319,3 +281,23 @@ highlight Pmenu ctermbg=brown  guibg=black
 
 " Disable physical line wrapping
 set textwidth=0 wrapmargin=0
+
+" some more rust
+let g:LanguageClient_loadSettings = 1 " this enables you to have per-projects languageserver settings in .vim/settings.json
+let g:rustfmt_autosave = 1
+let g:rust_conceal = 1
+
+set hidden
+au BufEnter,BufNewFile,BufRead *.rs syntax match rustEquality "==\ze[^>]" conceal cchar=≟
+au BufEnter,BufNewFile,BufRead *.rs syntax match rustInequality "!=\ze[^>]" conceal cchar=≠
+" let's autoindent c files
+au BufWrite *.c call LanguageClient#textDocument_formatting()
+" run language server for python, rust and c
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+\ 'rust': [ 'rls' ],
+\ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gl :call LanguageClient#textDocument_hover()<CR> " hit :pc to close the preview window
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>

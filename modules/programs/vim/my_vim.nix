@@ -14,14 +14,10 @@ pkgs.vim_configurable.customize {
         fugitive
         ctrlp
         airline
-        Syntastic
         gitgutter
-        The_NERD_tree
-        vim-nerdtree-tabs
         vim-easytags
         vim-misc
         #LanguageClient-neovim
-        rust-vim
         Tagbar
         vim-orgmode
         multiple-cursors
@@ -40,12 +36,11 @@ pkgs.vim_configurable.customize {
         # peskcolor
         csv
         LanguageClient-neovim
+        rust-vim
    ];
-
-   opt = with pkgs.vimPlugins; [ youcompleteme fugitive elm-vim ];
-
   };
 
   # add my custom .vimrc
-  vimrcConfig.customRC = vimrc;
+  vimrcConfig.customRC = vimrc + ''
+  '' ;
 }

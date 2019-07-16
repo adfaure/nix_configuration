@@ -18,6 +18,10 @@ in
       (pkgs.callPackage ./my_vim.nix { })
       pkgs.ctags
       pkgs.ack
+#      pkgs.cargo
+#      pkgs.rustfmt
+#      pkgs.rustc
+#      pkgs.rls
     ];
   };
 }
