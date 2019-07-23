@@ -24,15 +24,14 @@ with lib;
 
   config = mkIf config.environment.adfaure.headless.enable {
 
-    #  environment.systemPackages = pkgs_lists.headless;
-
+    # environment.systemPackages = pkgs_lists.headless;
     environment.adfaure.programs.zsh.enable=true;
     environment.adfaure.programs.vim.enable=true;
     environment.adfaure.programs.ranger.enable=true;
+    environment.adfaure.programs.lorri.enable=true;
     environment.adfaure.environments.headless.enable=true;
+
     # use Vim by default
-#    environment.sessionVariables.EDITOR="v";
-#    environment.sessionVariables.VISUAL="v";
     environment.shellAliases = {
        "vim"="v";
     };

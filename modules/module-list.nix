@@ -9,4 +9,5 @@
   programs/vim
   programs/ranger
   programs/emacs
+  programs/lorri
 ]

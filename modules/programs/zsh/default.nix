@@ -24,7 +24,6 @@ in
       shellAliases = {
         r = "ranger";
         vim = "v";
-        j = "nohup emacs /home/adfaure/Projects/Notes/Notes/Journal.org >/dev/null 2>&1 &";
       };
 
       ohMyZsh = {

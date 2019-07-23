@@ -34,6 +34,7 @@ pkgs.vim_configurable.customize {
         vim-grammarous
         Spacegray-vim
         # peskcolor
+        clang_complete
         csv
         LanguageClient-neovim
         rust-vim

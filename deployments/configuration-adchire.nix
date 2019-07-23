@@ -8,6 +8,10 @@ let
 in
 let
 
+  lorri = import (fetchTarball {
+    url = https://github.com/target/lorri/archive/rolling-release.tar.gz;
+  }) {};
+
   mypkgs = import /home/adfaure/Projects/myPkgs { };
   my_dotfiles = builtins.fetchTarball
   "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
@@ -29,7 +33,6 @@ in rec {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   networking.networkmanager.enable = true;
   networking.hostName = "adchire"; # Define your hostname.
 
@@ -38,7 +41,7 @@ in rec {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ lorri ];
 
   hardware.opengl.driSupport32Bit = true;
   # services.gnome3.evolution-data-server.enable = lib.mkForce false;
