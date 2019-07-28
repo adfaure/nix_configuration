@@ -74,9 +74,10 @@ in
 
        # Make fonts better...
        fonts.fontconfig = {
-         enable = true;
-         ultimate.enable = true;
+         # enable = true;
+         # ultimate.enable = true;
        };
+
        # Add micro$oft fonts
        fonts.fonts = [ pkgs.corefonts ];
        # Add Workaround for USB 3 Scanner for SANE
