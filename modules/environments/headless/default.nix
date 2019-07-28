@@ -73,7 +73,7 @@ in
 #      (pkgs.callPackage ./my_emacs.nix { })
       # nixops
       qemu
-      python3
+      # python3
       taskwarrior
       timewarrior
       nitrokey-app
