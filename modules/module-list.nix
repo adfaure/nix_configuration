@@ -10,4 +10,6 @@
   programs/ranger
   programs/emacs
   programs/lorri
+
+  services/i3
 ]

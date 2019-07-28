@@ -19,6 +19,11 @@ in
 
     config = mkIf config.environment.adfaure.graphical.enable {
       environment.adfaure.environments.graphical.enable=true;
+      environment.adfaure.services.i3.enable=true;
+      environment.adfaure.services.i3.extraI3Conf= ''
+        exec feh --bg-scale '${./wallpapers/totoro.jpg}'
+      '';
+
 
       environment.adfaure.programs.emacs.enable=true;
       programs.light.enable = true;
@@ -54,19 +59,13 @@ in
         libinput.enable = true;
         # Enable the Gnome Desktop Environment.
         # desktopManager.gnome3.enable = true;
-        displayManager.gdm.enable = true;
-
-        windowManager.i3.enable = true;
-        windowManager.default = "i3";
-
-        # desktopManager = {
-        #  default = "xfce";
-        #  xterm.enable = false;
-        #  xfce.enable = true;
-        #};
-
-        # windowManager.default = "i3";
-        # windowManager.i3.enable = true;
+        displayManager.sddm.enable = true;
+        # displayManager.sessionCommands = ''
+        #   feh --bg-fill ${./wallpapers/totoro.jpg}
+        # '';
+        # extraConfig = ''
+        #  ${pkgs.feh}/bin/feh --bg-fill ${./wallpapers/totoro.jpg}'
+        # '';
       };
 
          clamav.updater.enable = true;

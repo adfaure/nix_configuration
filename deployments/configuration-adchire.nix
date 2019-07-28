@@ -1,22 +1,14 @@
 # Edit this configuration file to define what should be installed on your
 # system.  Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 let
-
-in
-let
-
   lorri = import (fetchTarball {
     url = https://github.com/target/lorri/archive/rolling-release.tar.gz;
   }) {};
-
   mypkgs = import /home/adfaure/Projects/myPkgs { };
-  my_dotfiles = builtins.fetchTarball
-  "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
+  my_dotfiles = builtins.fetchTarball "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
   modules = import ../modules/module-list.nix;
-
 in rec {
 
   imports =
@@ -74,5 +66,4 @@ in rec {
   services.dbus.socketActivated = true;
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gnome3.dconf ];
-
 }
