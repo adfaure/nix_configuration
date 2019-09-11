@@ -1,9 +1,11 @@
-
 { config, lib, pkgs, ... }:
-
 with lib;
 let
-  frePkgs = import ../../../pkgs { };
+  kapack =  import (fetchTarball {
+    name = "kapack";
+    url = "https://github.com/oar-team/kapack/archive/84f1cb9a595d14a2c6f1cf44119d83ba2965ca4c.tar.gz";
+    sha256 = "1hzlnc5gv6y8m04cxpjz9c34jb9qrwizadvpi41drlswzsm6s8md";
+  }) { };
 in
 {
   options.environment.adfaure.environments.headless = {
@@ -26,7 +28,6 @@ in
       entr
       pandoc
       # Editors
-      hugo
       # Misc
       cloc
       jq
@@ -46,16 +47,6 @@ in
       pmutils
       nmap
       htop
-      usbutils
-      iotop
-      stress
-      tcpdump
-      # files
-      file
-      tree
-      ncdu
-      unzip
-      unrar
       # tools
       pass
       zsh
@@ -77,6 +68,9 @@ in
       taskwarrior
       timewarrior
       nitrokey-app
+      # pdftool
+      pdftk
+      kapack.cgvg
     ];
   };
 }

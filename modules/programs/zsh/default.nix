@@ -29,7 +29,7 @@ in
       ohMyZsh = {
         enable = true;
         theme = "norm";
-        plugins = [ "git" "command-not-found" "tig" ];
+        plugins = [ "git" "command-not-found" "tig" "sudo" ];
       };
 
       interactiveShellInit = ''

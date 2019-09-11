@@ -49,7 +49,7 @@ in rec {
   # Add virtualbox and docker
   virtualisation = {
     # virtualbox.guest.enable = true;
-    virtualbox.host.enable = true;
+    # virtualbox.host.enable = true;
     docker.enable = true;
   };
 

@@ -24,64 +24,43 @@ in
         exec feh --bg-scale '${./wallpapers/totoro.jpg}'
       '';
 
-
       environment.adfaure.programs.emacs.enable=true;
       programs.light.enable = true;
 
       services = {
+        # Install but disable open SSH
+        openssh = {
+          enable = false;
+          permitRootLogin = "false";
+        };
 
-         # Install but disable open SSH
-         openssh = {
-           enable = false;
-           permitRootLogin = "false";
-         };
+        # Enable CUPS to print documents.
+        printing = {
+          enable = true;
+          browsing = true;
+          drivers = [ pkgs.samsung-unified-linux-driver ];
+        };
 
-         redshift = {
-           enable = false;
-           provider = "geoclue2";
-         };
+        # Needed for printer discovery
+        avahi.enable = true;
+        avahi.nssmdns = true;
 
-         # Enable CUPS to print documents.
-         printing = {
-           enable = true;
-           browsing = true;
-           drivers = [ pkgs.samsung-unified-linux-driver ];
-         };
-         # Needed for printer discovery
-         avahi.enable = true;
-         avahi.nssmdns = true;
+        xserver = {
+          enable = true;
+          layout = "fr";
+          xkbVariant = "bepo";
+          resolutions =  [ {x = 1920; y = 1080;} ];
+          libinput.enable = true;
+          # Enable the Gnome Desktop Environment.
+          # desktopManager.gnome3.enable = true;
+          displayManager.sddm.enable = true;
+        };
 
-      xserver = {
-        enable = true;
-        layout = "fr";
-        xkbVariant = "bepo";
-        resolutions =  [{x = 1920; y = 1080;}];
-        libinput.enable = true;
-        # Enable the Gnome Desktop Environment.
-        # desktopManager.gnome3.enable = true;
-        displayManager.sddm.enable = true;
-        # displayManager.sessionCommands = ''
-        #   feh --bg-fill ${./wallpapers/totoro.jpg}
-        # '';
-        # extraConfig = ''
-        #  ${pkgs.feh}/bin/feh --bg-fill ${./wallpapers/totoro.jpg}'
-        # '';
-      };
-
-         clamav.updater.enable = true;
-
-       };
-
-       # Make fonts better...
-       fonts.fontconfig = {
-         # enable = true;
-         # ultimate.enable = true;
-       };
-
-       # Add micro$oft fonts
-       fonts.fonts = [ pkgs.corefonts ];
-       # Add Workaround for USB 3 Scanner for SANE
-       # See http://sane-project.org/ Note 3
-       environment.variables.SANE_USB_WORKAROUND = "1";
+       #clamav.updater.enable = true;
      };
-  }
+
+     # Add Workaround for USB 3 Scanner for SANE
+     # See http://sane-project.org/ Note 3
+     environment.variables.SANE_USB_WORKAROUND = "1";
+  };
+}

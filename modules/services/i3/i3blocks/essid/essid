@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copyright (C) 2018 borgified <borgified@gmail.com>
 # Copyright (C) 2014 Alexander Keller <github@nycroth.com>
 
@@ -28,7 +28,7 @@ INTERFACE="${INTERFACE:-wlan0}"
 
 #------------------------------------------------------------------------
 
-ESSID=$(/sbin/iwconfig $INTERFACE | perl -n -e'/ESSID:"(.*?)"/ && print $1')
+ESSID=$(iwconfig $INTERFACE | perl -n -e'/ESSID:"(.*?)"/ && print $1')
 
 #------------------------------------------------------------------------
 

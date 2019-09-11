@@ -90,7 +90,7 @@ in
     # Password
     gnupg
 
-    virtualbox
+    # virtualbox
 
     # Graphic tools
     gcolor3

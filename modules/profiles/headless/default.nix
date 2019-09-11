@@ -34,6 +34,8 @@ with lib;
     # use Vim by default
     environment.shellAliases = {
        "vim"="v";
+       "t"="task";
+       "tls" = "task ls";
     };
 
     services.cron = {
@@ -44,7 +46,7 @@ with lib;
     };
     # Select internationalisation properties.
     i18n = {
-      consoleFont = "Lat2-Terminus16";
+      consoleFont = "PowerLine";
       consoleKeyMap = "fr";
       defaultLocale = "en_US.UTF-8";
     };
@@ -103,6 +105,44 @@ with lib;
       uid = 1000;
     };
 
+    fonts = {
+      enableFontDir = true;
+      enableGhostscriptFonts = true;
+      fontconfig = {
+        enable = true;
+        allowBitmaps = true;
+        antialias = true;
+        hinting.enable = true;
+        includeUserConf = true;
+        penultimate.enable = true;
+        defaultFonts = {
+          monospace = ["Fira Mono"];
+          sansSerif = ["Fira Sans"];
+          serif = ["DejaVu Serif"];
+        };
+        ultimate.enable = true;
+      };
+      fonts = with pkgs; [
+        # nerdfonts
+        emojione
+        # noto-fonts
+        # noto-fonts-cjk
+        # noto-fonts-emoji
+        liberation_ttf
+        fira-code-symbols
+        mplus-outline-fonts
+        dina-font
+        proggyfonts
+        fira-code
+        fira-mono
+        # noto-fonts
+        # noto-fonts-emoji
+        font-awesome_5
+        font-awesome_4
+        hasklig
+        wqy_zenhei
+      ];
+    };
     # services.cron.enable = true;
     services.keybase.enable = true;
 

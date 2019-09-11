@@ -15,7 +15,6 @@ with lib;
       glib_networking
       chrome-gnome-shell
       arandr
-
       # Web
       firefox
       chromium
@@ -36,6 +35,7 @@ with lib;
       gitg
       sakura
       evince
+      llpp
 
       # storage
       ntfs3g
@@ -49,7 +49,7 @@ with lib;
       # Password
       gnupg
 
-      virtualbox
+      # virtualbox
 
       # Graphic tools
       gcolor3
@@ -59,10 +59,12 @@ with lib;
       sublime3
       pavucontrol
 
-      rambox
       godot
       libreoffice
       zotero
+      rambox
+      # franz
+      flameshot
     ];
   };
 }

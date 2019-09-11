@@ -45,3 +45,4 @@ bindkey -a k vi-substitute
 
 # nix shell hook
 any-nix-shell zsh --info-right | source /dev/stdin
+# eval "$(starship init zsh)"

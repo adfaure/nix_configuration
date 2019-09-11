@@ -20,11 +20,7 @@
   useClang ? false
 }:
 let
-
   callPackage = pkgs.lib.callPackageWith pkgs;
-
 in rec {
-
-   kodama = callPackage ./kodama {};
-
+  kodama = callPackage ./kodama {};
 }

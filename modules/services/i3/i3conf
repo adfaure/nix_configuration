@@ -156,8 +156,8 @@ bindsym $mod+m mode "resize"
 # finds out, if available)
 bar {
   font pango:monospace 11
-  # status_command 2>/tmp/i3blocks.err i3blocks -vvv -c /etc/i3blocks.conf | tee /tmp/i3blocks.out
-  status_command i3blocks
+  status_command 2>/tmp/i3blocks.err i3blocks -vvv -c /etc/i3blocks.conf | tee /tmp/i3blocks.out
+  # status_command i3blocks
   # status_command i3status
 }
 

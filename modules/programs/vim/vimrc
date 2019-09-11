@@ -71,6 +71,8 @@ set background=dark " When set to "dark", Vim will try to use colors that look
 
 nnoremap gV `[v`]   " highlight last inserted text
 
+:map <C-v> "+p
+
 " Mapping pour bépo
 " Save sur A
 
@@ -301,3 +303,8 @@ let g:LanguageClient_serverCommands = {
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> gl :call LanguageClient#textDocument_hover()<CR> " hit :pc to close the preview window
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+" Show space, and non breaking space
+:set list
+":set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+:set listchars=tab:→\ ,nbsp:␣
