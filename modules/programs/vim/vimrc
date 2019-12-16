@@ -196,8 +196,6 @@ if version >= 700
   hi SpellLocal guisp=orange gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=underline
 endif
 
-" Ctr-c is actually copying on the X clipboard
-vmap <C-c> "+y
 
 " type jj to extract from insert mode
 imap jj <Esc>
@@ -308,3 +306,11 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 :set list
 ":set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 :set listchars=tab:→\ ,nbsp:␣
+
+:inoremap <C-v> <ESC>"+pa
+:vnoremap <C-c> "+y
+:vnoremap <C-d> "+d
+
+" use clipboard as default register
+" https://vim.fandom.com/wiki/Accessing_the_system_clipboard
+set clipboard=unnamed

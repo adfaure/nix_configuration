@@ -68,7 +68,7 @@ with lib;
       # Start ssh agent
       # ssh.startAgent = true;
       mtr.enable = true;
-      gnupg.agent = { enable = true; enableSSHSupport= true; };
+      gnupg.agent = { enable = true; enableSSHSupport= true; pinentryFlavor = "gtk2"; };
       # Whether interactive shells should show which Nix package (if any)
       # provides a missing command.
       command-not-found.enable = true;
@@ -87,11 +87,11 @@ with lib;
     };
 
     # Get ctrl+arrows works in nix-shell bash
-    environment.etc."inputrc".text = builtins.readFile <nixpkgs/nixos/modules/programs/bash/inputrc> + ''
-      "\e[A": history-search-backward
-      "\e[B": history-search-forward
-      set completion-ignore-case on
-    '';
+    # environment.etc."inputrc".text = builtins.readFile <nixpkgs/nixos/modules/programs/bash/inputrc> + ''
+    #   "\e[A": history-search-backward
+    #   "\e[B": history-search-forward
+    #   set completion-ignore-case on
+    # '';
 
     users.extraUsers.adfaure = {
       isNormalUser = true;
@@ -120,8 +120,8 @@ with lib;
           sansSerif = ["Fira Sans"];
           serif = ["DejaVu Serif"];
         };
-        ultimate.enable = true;
       };
+
       fonts = with pkgs; [
         # nerdfonts
         emojione
@@ -145,6 +145,6 @@ with lib;
     };
     # services.cron.enable = true;
     services.keybase.enable = true;
-
+    documentation.dev.enable = true;
   };
 }

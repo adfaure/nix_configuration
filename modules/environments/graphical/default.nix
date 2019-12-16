@@ -35,7 +35,6 @@ with lib;
       gitg
       sakura
       evince
-      llpp
 
       # storage
       ntfs3g
@@ -58,7 +57,7 @@ with lib;
       inkscape
       sublime3
       pavucontrol
-
+      (pkgs.steam.overrideAttrs (orig: { extraPkgs = with pkgs; [ libva ]; }))
       godot
       libreoffice
       zotero

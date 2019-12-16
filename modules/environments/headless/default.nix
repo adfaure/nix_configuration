@@ -15,6 +15,7 @@ in
   config = mkIf config.environment.adfaure.environments.headless.enable {
 
     environment.systemPackages = with pkgs;[
+      manpages
       taskwarrior
       taskserver
       gitAndTools.gitFull
@@ -71,6 +72,9 @@ in
       # pdftool
       pdftk
       kapack.cgvg
+      # cat with Wings
+      bat
+      tree
     ];
   };
 }

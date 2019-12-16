@@ -8,7 +8,13 @@ in
       enable = mkEnableOption "ranger";
     };
     config = mkIf cfg.enable {
-      environment.systemPackages = [ pkgs.ranger pkgs.atool pkgs.poppler_utils ];
+      environment.systemPackages = [
+        pkgs.ranger
+        pkgs.atool
+        pkgs.poppler_utils
+        # pdf reader
+        pkgs.zathura
+      ];
 
       environment.shellAliases = {
         ranger = "ranger --confdir=${builtins.toPath ./ranger}";

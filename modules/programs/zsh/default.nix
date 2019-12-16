@@ -24,6 +24,7 @@ in
       shellAliases = {
         r = "ranger";
         vim = "v";
+        b = "bat";
       };
 
       ohMyZsh = {

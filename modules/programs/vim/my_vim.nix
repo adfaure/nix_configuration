@@ -10,14 +10,14 @@ pkgs.vim_configurable.customize {
   vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
     start = [
         meson
-        youcompleteme
+        # Disable YMC because it shows poor linter insights
+        # youcompleteme
         fugitive
         ctrlp
         airline
         gitgutter
         vim-easytags
         vim-misc
-        #LanguageClient-neovim
         Tagbar
         vim-orgmode
         multiple-cursors
@@ -33,7 +33,6 @@ pkgs.vim_configurable.customize {
         pkgs.aspellDicts.fr
         vim-grammarous
         Spacegray-vim
-        # peskcolor
         clang_complete
         csv
         LanguageClient-neovim

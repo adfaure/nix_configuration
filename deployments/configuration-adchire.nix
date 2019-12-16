@@ -54,14 +54,13 @@ in rec {
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.03;
+  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.09;
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
 
-  system.stateVersion = "19.03"; # Did you read the comment?
-  # Try fix chrome extension error
+  system.stateVersion = "19.09"; # Did you read the comment?
 
   services.dbus.socketActivated = true;
   programs.dconf.enable = true;

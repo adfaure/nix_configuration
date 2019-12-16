@@ -27,7 +27,7 @@ export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 bindkey -v
 
 # Start ranger file navigator
-bindkey '^a' history-incremental-search-backward
+bindkey '^r' history-incremental-search-backward
 
  # On remappe pour le bépo
 bindkey -a c vi-backward-char
