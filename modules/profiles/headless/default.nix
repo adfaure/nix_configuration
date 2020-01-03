@@ -45,9 +45,10 @@ with lib;
       # ];
     };
     # Select internationalisation properties.
+    console.font = "PowerLine";
+    console.keyMap = "fr";
+
     i18n = {
-      consoleFont = "PowerLine";
-      consoleKeyMap = "fr";
       defaultLocale = "en_US.UTF-8";
     };
 
