@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 pkgs.emacsWithPackages (epkgs: with epkgs; [
+    pkgs.ispell
     use-package diminish bind-key
     rainbow-delimiters smartparens
     /* Evil */ evil-surround evil-indent-textobject evil-cleverparens avy undo-tree
