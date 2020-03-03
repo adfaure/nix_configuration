@@ -1,5 +1,8 @@
 let
 
+  # This deployement file works only with nixops 1.6.1
+  # available from the nix channel: nixos18 https://nixos.org/channels/nixos-18.09
+
   my = import ../pkgs/default.nix {};
 
   pkgs = import <nixpkgs> {};

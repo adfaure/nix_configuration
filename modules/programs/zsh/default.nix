@@ -4,6 +4,13 @@ with lib;
 
 let
   cfg = config.environment.adfaure.programs.zsh;
+  zshrc = builtins.readFile(./zshrc);
+
+  zshrc_local = pkgs.writeTextFile {
+    name = "zshrc.local";
+    text = builtins.readFile(./zshrc.local);
+  };
+
 in
 {
 
@@ -34,7 +41,7 @@ in
       };
 
       interactiveShellInit = ''
-        source "${builtins.toPath ./zshrc.local}"
+        source ${zshrc_local}
       '';
     };
 

@@ -38,15 +38,17 @@ with lib;
        "tls" = "task ls";
     };
 
+    services.sshd.enable = true;
     services.cron = {
+      # Enable the OpenSSH server.
       enable = true;
       # systemCronJobs = with backup_tasks_cron; [
       #   "*/5 * * * *      adfaure ${backup_tasks_cron} >> /tmp/cron.log  2>&1"
       # ];
     };
     # Select internationalisation properties.
-    console.font = "PowerLine";
-    console.keyMap = "fr";
+    # console.font = "PowerLine";
+    # console.keyMap = "fr";
 
     i18n = {
       defaultLocale = "en_US.UTF-8";
@@ -69,7 +71,11 @@ with lib;
       # Start ssh agent
       # ssh.startAgent = true;
       mtr.enable = true;
-      gnupg.agent = { enable = true; enableSSHSupport= true; pinentryFlavor = "gtk2"; };
+      gnupg.agent = {
+        enable = true;
+        enableSSHSupport= true;
+        # pinentryFlavor = "gtk2";
+      };
       # Whether interactive shells should show which Nix package (if any)
       # provides a missing command.
       command-not-found.enable = true;
@@ -98,12 +104,24 @@ with lib;
       isNormalUser = true;
       home = "/home/adfaure";
       shell = pkgs.zsh;
-      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users"];
       openssh.authorizedKeys.keys = [
           (lib.readFile ../../../deployments/keys/id_rsa.pub)
       ];
       hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
       uid = 1000;
+    };
+
+    users.extraUsers.g5k = {
+      isNormalUser = true;
+      home = "/home/g5k";
+      shell = pkgs.zsh;
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
+      openssh.authorizedKeys.keys = [
+          (lib.readFile ../../../deployments/keys/g5k.pub)
+      ];
+      hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
+      uid = 1001;
     };
 
     fonts = {

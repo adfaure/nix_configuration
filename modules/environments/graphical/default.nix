@@ -34,7 +34,8 @@ with lib;
       git-cola
       gitg
       sakura
-      evince
+      # evince
+      llpp
 
       # storage
       ntfs3g

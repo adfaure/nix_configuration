@@ -28,12 +28,6 @@ in
       programs.light.enable = true;
 
       services = {
-        # Install but disable open SSH
-        openssh = {
-          enable = false;
-          permitRootLogin = "false";
-        };
-
         # Enable CUPS to print documents.
         printing = {
           enable = true;
