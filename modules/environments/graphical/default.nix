@@ -58,13 +58,13 @@ with lib;
       inkscape
       sublime3
       pavucontrol
-      (pkgs.steam.overrideAttrs (orig: { extraPkgs = with pkgs; [ libva ]; }))
-      godot
+      # (pkgs.steam.overrideAttrs (orig: { extraPkgs = with pkgs; [ libva ]; }))
       libreoffice
       zotero
       rambox
       # franz
       flameshot
+      # pinentry_qt4
     ];
   };
 }

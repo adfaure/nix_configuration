@@ -32,6 +32,7 @@ in
         r = "ranger";
         vim = "v";
         b = "bat";
+        ns = "nix-shell";
       };
 
       ohMyZsh = {

@@ -101,7 +101,7 @@ in
     pavucontrol
 
     rambox
-    godot
+    # godot
     libreoffice
   ];
 

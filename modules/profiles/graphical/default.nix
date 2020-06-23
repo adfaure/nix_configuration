@@ -47,7 +47,12 @@ in
           libinput.enable = true;
           # Enable the Gnome Desktop Environment.
           # desktopManager.gnome3.enable = true;
-          displayManager.sddm.enable = true;
+          # displayManager.sddm.enable = true;
+          # displayManager.defaultSession = "none+i3";
+          # desktopManager = {
+          #  default = "none";
+          #  xterm.enable = false;
+          #};
         };
 
        #clamav.updater.enable = true;

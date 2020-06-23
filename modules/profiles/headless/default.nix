@@ -38,6 +38,8 @@ with lib;
        "tls" = "task ls";
     };
 
+    services.pcscd.enable = true;
+
     services.sshd.enable = true;
     services.cron = {
       # Enable the OpenSSH server.

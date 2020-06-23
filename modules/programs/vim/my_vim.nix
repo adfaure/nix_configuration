@@ -16,7 +16,7 @@ pkgs.vim_configurable.customize {
         ctrlp
         airline
         gitgutter
-        vim-easytags
+        # vim-easytags
         vim-misc
         Tagbar
         vim-orgmode

@@ -25,9 +25,16 @@ in rec {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.networkmanager.enable = true;
-  networking.hostName = "adchire"; # Define your hostname.
-
+  networking = {
+    hostName = "adchire"; # Define your hostname.
+    resolvconf.enable = true;
+    # If using dhcpcd:
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    # If using NetworkManager:
+    networkmanager.enable = true;
+    networkmanager.dns = "default";
+    networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
+  };
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
@@ -54,13 +61,18 @@ in rec {
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.09;
+  system.autoUpgrade.channel = https://nixos.org/channels/unstable;
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
 
-  system.stateVersion = "19.09"; # Did you read the comment?
+  # environment.etc = {
+  #   "resolv.conf".text = "nameserver 80.82.77.83\n";
+  # };
+
+
+  system.stateVersion = "20.09"; # Did you read the comment?
 
   services.dbus.socketActivated = true;
   programs.dconf.enable = true;
