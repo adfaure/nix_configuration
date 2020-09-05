@@ -64,9 +64,9 @@ let
   label=⚡
   #BAT_NUMBER=0
 
-  [monitors]
-  command=${./i3blocks/monitor_manager/monitor_manager}
-  interval=once
+  # [monitors]
+  # command=${./i3blocks/monitor_manager/monitor_manager}
+  # interval=once
   '';
 
 in
@@ -114,6 +114,8 @@ in
       rofi
       wirelesstools
       networkmanager_dmenu
+      # Mediaplayer
+      perl
     ];
 
     services.xserver = {
