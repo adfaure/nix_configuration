@@ -106,7 +106,7 @@ with lib;
       isNormalUser = true;
       home = "/home/adfaure";
       shell = pkgs.zsh;
-      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users"];
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker"];
       openssh.authorizedKeys.keys = [
           (lib.readFile ../../../deployments/keys/id_rsa.pub)
       ];
@@ -135,7 +135,6 @@ with lib;
         antialias = true;
         hinting.enable = true;
         includeUserConf = true;
-        penultimate.enable = true;
         defaultFonts = {
           monospace = ["Fira Mono"];
           sansSerif = ["Fira Sans"];

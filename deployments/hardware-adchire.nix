@@ -34,6 +34,10 @@
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
+  nixpkgs.config.allowUnfree = true;
+  # hardware.opengl.driSupport32Bit = true;
+
+  # nvidia.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
 
   hardware.nitrokey = {
@@ -50,8 +54,8 @@
    };
 
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.extraConfig = "
-    [General]
-    Enable=Source,Sink,Media,Socket
-  ";
+  hardware.bluetooth.config = {
+    General = { Enable = "Source,Sink,Media,Socket"; };
+  };
+
 }

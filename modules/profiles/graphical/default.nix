@@ -46,8 +46,6 @@ in
           resolutions =  [ {x = 1920; y = 1080;} ];
           libinput.enable = true;
           # Enable the Gnome Desktop Environment.
-          # desktopManager.gnome3.enable = true;
-          # displayManager.sddm.enable = true;
           # displayManager.defaultSession = "none+i3";
           # desktopManager = {
           #  default = "none";
