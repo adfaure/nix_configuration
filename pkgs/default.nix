@@ -1,7 +1,7 @@
 {
   hostPkgs ? import <nixpkgs> {},
   pkgs ? (let
-      pinnedVersion = hostPkgs.lib.importJSON ./nixpkgs-19.03.json;
+      pinnedVersion = hostPkgs.lib.importJSON ./nixpkgs-20.09.json;
       pinnedPkgs = hostPkgs.fetchFromGitHub {
         owner = "NixOS";
         repo = "nixpkgs-channels";
@@ -20,7 +20,7 @@
   useClang ? false
 }:
 let
-  callPackage = pkgs.lib.callPackageWith pkgs;
+  callPackage = pkgs.lib.callPackageWith pkgs-unstable;
 in rec {
   kodama = callPackage ./kodama {};
 }
