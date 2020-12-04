@@ -114,11 +114,26 @@ with lib;
       uid = 1000;
     };
 
+    # Temprary user for sawtooth project
+    users.extraUsers.sawtooth = {
+      isNormalUser = true;
+      home = "/home/sawtooth";
+      shell = pkgs.zsh;
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker"];
+      openssh.authorizedKeys.keys = [
+          (lib.readFile ../../../deployments/keys/id_rsa.pub)
+      ];
+      hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
+      uid = 1002;
+    };
+
+    nix.trustedUsers = [ "root" "adfaure" ];
+
     users.extraUsers.g5k = {
       isNormalUser = true;
       home = "/home/g5k";
       shell = pkgs.zsh;
-      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" ];
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "adbusers"];
       openssh.authorizedKeys.keys = [
           (lib.readFile ../../../deployments/keys/g5k.pub)
       ];

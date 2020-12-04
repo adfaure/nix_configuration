@@ -4,9 +4,9 @@ let
 
   my = import ../pkgs/default.nix {};
 
-  pkgs = import <nixos2003> {};
+  # pkgs = import <nixos2003> {};
 
-  pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
+  # pkgs_lists = import ../config/my_pkgs_list.nix { inherit pkgs; };
 
   radicaleCollection = "/data/radicale";
 
@@ -16,12 +16,7 @@ let
 
   modules = import ../modules/module-list.nix;
 
-  inherit (pkgs.lib) concatStrings flip mapAttrsToList;
-
-  # Find a way to get it from defined users
-  htpasswd = pkgs.writeText "radicale.users"  ''
-    adfaure:$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/
-  '';
+  # inherit (pkgs.lib) concatStrings flip mapAttrsToList;
 
 in rec
 {
@@ -29,6 +24,12 @@ in rec
 
   vps =
   { config, pkgs, nodes, lib, ... }:
+  let
+    # Find a way to get it from defined users
+    htpasswd = pkgs.writeText "radicale.users"  ''
+      adfaure:$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/
+    '';
+  in
   rec {
 
     nixpkgs.config.allowUnfree = true;
@@ -56,7 +57,6 @@ in rec
     services.nginx = {
 
       enable = true;
-
 
       appendHttpConfig = ''
         server_names_hash_bucket_size 64;
@@ -145,4 +145,3 @@ in rec
 
   };
 }
-
