@@ -42,8 +42,8 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = "https://gitlab.com/adfaure/kodama/";
     fetchSubmodules = true;
-    sha256 = "sha256:0hncfvg9rgr7vf9j6anla0iwj6iwpp63dcfrghzajhspfjbi58a0";
-    rev = "b69f15155dbf5b2524b265f02e32170e2fbd58ac";
+    sha256 = "sha256:0gckxh068dsj4izpa0cv69mfikh3s1ccz68jhgcsb4ia8wanygkm";
+    rev = "0b6eeecae7d6dbb109f343a1b0d7b9d5fbc7bc5f";
   };
 
   # This is the configure phase, were I manually install the wowchemy module

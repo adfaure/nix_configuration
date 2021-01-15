@@ -106,7 +106,7 @@ with lib;
       isNormalUser = true;
       home = "/home/adfaure";
       shell = pkgs.zsh;
-      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker"];
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker" "users" ];
       openssh.authorizedKeys.keys = [
           (lib.readFile ../../../deployments/keys/id_rsa.pub)
       ];
@@ -119,7 +119,7 @@ with lib;
       isNormalUser = true;
       home = "/home/sawtooth";
       shell = pkgs.zsh;
-      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker"];
+      extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker" "users" ];
       openssh.authorizedKeys.keys = [
           (lib.readFile ../../../deployments/keys/id_rsa.pub)
       ];
