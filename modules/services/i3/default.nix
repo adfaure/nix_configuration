@@ -74,7 +74,7 @@ in
   options.environment.adfaure.services.i3 = {
     enable = mkEnableOption "i3";
     extraI3Conf = mkOption {
-      type = types.string;
+      type = types.lines;
       default = "";
       example = "";
       description = ''
