@@ -100,11 +100,11 @@ in
 
     environment.systemPackages = with pkgs; [
       i3blocks
-      (python3.withPackages (ps: with ps; with python3Packages; [
+      # (python3.withPackages (ps: with ps; with python3Packages; [
         # Add python packages here
-        python3
-        tkinter
-      ]))
+        # python3
+      #  tkinter
+      # ]))
       rxvt_unicode
       feh
       # Batery info

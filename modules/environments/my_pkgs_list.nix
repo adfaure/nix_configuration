@@ -40,9 +40,7 @@ in
     # my vim config
     (pkgs.callPackage ./my_vim.nix { })
     (pkgs.callPackage ./my_emacs.nix { })
-    # nixops
     qemu
-    python3
     taskwarrior
     timewarrior
   ];

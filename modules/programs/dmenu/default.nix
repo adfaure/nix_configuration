@@ -16,7 +16,6 @@ in
     environment.systemPackages = [
       dmenu
       xorg.setxkbmap
-      python3
       which
     ];
 

@@ -1,4 +1,4 @@
-{  pkgs, stdenv, fetchgit, python, go, hugo, git }:
+{  pkgs, stdenv, fetchgit, go, hugo, git }:
 
 # Packaging of my hugo website
 # I did some ugly hacks to prevent hugo from trying to clone repository from github wich is not
