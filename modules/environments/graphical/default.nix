@@ -23,7 +23,7 @@ with lib;
       aspellDicts.en
       # Message and RSS
       #qtox
-      #tdesktop
+      tdesktop
       liferea
 
       # Media

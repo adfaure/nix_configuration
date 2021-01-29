@@ -8,7 +8,7 @@ let
   }) {};
   # mypkgs = import /home/adfaure/Projects/myPkgs { };
   my_dotfiles = builtins.fetchTarball "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
-  modules = import ../modules/module-list.nix;
+  # modules = import ../modules/module-list.nix;
 in rec {
 
   nix = {
@@ -23,7 +23,7 @@ in rec {
       ./hardware-roger.nix
     ];
 
-  require = modules;
+  # require = modules;
 
   environment.adfaure.graphical.enable = true;
   environment.adfaure.headless.enable = true;
@@ -40,6 +40,7 @@ in rec {
     # If using NetworkManager:
     networkmanager.enable = true;
     networkmanager.dns = "default";
+    # Alternative DNS to be able to reach sci- ... hmm nevermind :)
     networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
   };
   # Set your time zone.
