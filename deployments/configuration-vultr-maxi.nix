@@ -40,7 +40,7 @@ in rec
 
     require = modules;
 
-    environment.adfaure.headless.enable = true;
+    # environment.adfaure.headless.enable = true;
     # environment.adfaure.graphical.enable = false;
 
     deployment.targetHost = "95.179.220.131";

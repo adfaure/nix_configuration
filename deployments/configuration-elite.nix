@@ -9,8 +9,8 @@ in
 let
 
   mypkgs = import /home/adfaure/Projects/myPkgs { };
-  my_dotfiles = builtins.fetchTarball
-  "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
+  # my_dotfiles = builtins.fetchTarball
+  # "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
 
 in rec {
 

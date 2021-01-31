@@ -22,7 +22,6 @@ with lib;
       aspellDicts.fr
       aspellDicts.en
       # Message and RSS
-      #qtox
       tdesktop
       liferea
 
@@ -34,7 +33,6 @@ with lib;
       git-cola
       gitg
       sakura
-      # evince
       llpp
 
       # storage
@@ -46,6 +44,7 @@ with lib;
       gsmartcontrol
       linuxPackages.perf
       spotify
+
       # Password
       gnupg
 

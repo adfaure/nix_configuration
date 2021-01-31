@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, my-dotfiles, ... }:
 
 pkgs.emacsWithPackages (epkgs: with epkgs; [
      pkgs.ispell
      use-package diminish bind-key
      rainbow-delimiters smartparens
-     /* Evil */ evil-surround evil-indent-textobject evil-cleverparens avy 
+     /* Evil */ evil-surround evil-indent-textobject evil-cleverparens avy
      undo-tree
      helm
      /* Git */ magit

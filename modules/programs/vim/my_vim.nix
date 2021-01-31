@@ -1,6 +1,6 @@
-{ config, pkgs, vim_configurable, vimPlugins, ...}:
+{ config, pkgs, vim_configurable, vimPlugins, my-dotfiles, ...}:
 let
-  vimrc = builtins.readFile(./vimrc);
+  vimrc = builtins.readFile "${my-dotfiles}/files/vimrc";
 in
 
 pkgs.vim_configurable.customize {

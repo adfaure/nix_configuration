@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
@@ -23,11 +24,6 @@
       fsType = "vfat";
     };
 
-  # fileSystems."/adfaure/home/data" =
-  #   { device = "/dev/disk/2E1A0E3F2EA8849A";
-  #     fsType = "ntfs";
-  #     options = [ "rw" "uid=1000"];
-  #   };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/a7add27a-2a35-4483-ba66-cf7edb0f2ffa"; }

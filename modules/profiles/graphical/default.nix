@@ -24,7 +24,7 @@ in
         exec feh --bg-scale '${./wallpapers/totoro.jpg}'
       '';
 
-      environment.adfaure.programs.emacs.enable=true;
+      # environment.adfaure.programs.emacs.enable=true;
       programs.light.enable = true;
 
       services = {
@@ -45,12 +45,6 @@ in
           xkbVariant = "bepo";
           resolutions =  [ {x = 1920; y = 1080;} ];
           libinput.enable = true;
-          # Enable the Gnome Desktop Environment.
-          # displayManager.defaultSession = "none+i3";
-          # desktopManager = {
-          #  default = "none";
-          #  xterm.enable = false;
-          #};
         };
 
        #clamav.updater.enable = true;

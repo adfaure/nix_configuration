@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 with lib;
 let
-  kapack =  import (fetchTarball {
-    name = "kapack";
-    url = "https://github.com/oar-team/kapack/archive/84f1cb9a595d14a2c6f1cf44119d83ba2965ca4c.tar.gz";
-    sha256 = "1hzlnc5gv6y8m04cxpjz9c34jb9qrwizadvpi41drlswzsm6s8md";
-  }) { };
+  # kapack =  import (fetchTarball {
+  #   name = "kapack";
+  #   url = "https://github.com/oar-team/kapack/archive/84f1cb9a595d14a2c6f1cf44119d83ba2965ca4c.tar.gz";
+  #   sha256 = "1hzlnc5gv6y8m04cxpjz9c34jb9qrwizadvpi41drlswzsm6s8md";
+  # }) { };
 in
 {
   options.environment.adfaure.environments.headless = {
@@ -60,17 +60,13 @@ in
       w3m       # web
       poppler   # PDF
       mediainfo # audio and video
-      # my vim config
-#      (pkgs.callPackage ./my_vim.nix { })
-#      (pkgs.callPackage ./my_emacs.nix { })
-      # nixops
       qemu
       taskwarrior
       timewarrior
       nitrokey-app
       # pdftool
       pdftk
-      kapack.cgvg
+      # kapack.cgvg
       # cat with Wings
       bat
       tree

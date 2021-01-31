@@ -1,0 +1,40 @@
+{
+  "nodes": {
+    "my-dotfiles": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-i/CaIuV6wiAxS05pmpRMJnJ3rO730pGLFg4MD2kP2XE=",
+        "path": "/home/adfaure/dotfiles",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/adfaure/dotfiles",
+        "type": "path"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1611910458,
+        "narHash": "sha256-//j54S14v9lp3YKizS1WZW3WKwLjGTzvwhHfUAaRBPQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6e7f25001fe6874f7ae271891f709bbf50a22c45",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-20.09",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "my-dotfiles": "my-dotfiles",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
