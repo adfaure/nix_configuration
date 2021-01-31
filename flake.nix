@@ -8,6 +8,10 @@
 
   outputs = { self, nixpkgs, my-dotfiles, ...}: rec {
 
+    nixosModules.i3 = {
+      imports = [ ./modules/services/i3 ];
+    };
+
     nixosConfigurations.roger = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       extraArgs = {
@@ -15,6 +19,9 @@
       };
       modules =
         [
+          # I3 services required by the graphical module
+          nixosModules.i3
+
           # Module for my programs
           ./modules/programs/vim
           ./modules/programs/ranger
@@ -22,6 +29,8 @@
 
           # Default linux configuration: users, fonts etc
           ./modules/profiles/common
+          # Server X configuration, also activate i3
+          ./modules/profiles/graphical
 
           ./deployments/configuration-roger.nix
         ];

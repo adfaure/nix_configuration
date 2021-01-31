@@ -2,9 +2,7 @@
 # system.  Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, lib, ... }:
-let
-  modules = import ../modules/module-list.nix;
-in rec {
+{
 
   nix = {
     package = pkgs.nixFlakes;
@@ -17,10 +15,6 @@ in rec {
   [ # Include the results of the hardware scan.
     ./hardware-roger.nix
   ];
-
-  require = modules;
-
-  environment.adfaure.graphical.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -40,11 +34,6 @@ in rec {
   time.timeZone = "Europe/Paris";
   hardware.opengl.driSupport32Bit = true;
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    pulseaudio = true;
-  };
-
   # Add virtualbox and docker
   virtualisation = {
     docker.enable = true;
@@ -58,4 +47,5 @@ in rec {
   services.dbus.socketActivated = true;
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gnome3.dconf ];
+
 }

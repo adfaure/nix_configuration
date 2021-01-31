@@ -43,11 +43,13 @@ with lib; {
       Defaults   insults
   '';
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.firefox.enableBrowserpass = true;
-  nixpkgs.config.packageOverrides = pkgs:
-  {
-    sudo = pkgs.sudo.override { withInsults = true; };
+  nixpkgs.config = {
+    pulseaudio = true;
+    allowUnfree = true;
+    firefox.enableBrowserpass = true;
+    packageOverrides = pkgs: {
+      sudo = pkgs.sudo.override { withInsults = true; };
+    };
   };
 
   nix.trustedUsers = [ "root" "adfaure" ];
@@ -95,6 +97,8 @@ with lib; {
       wqy_zenhei
     ];
   };
+
+
 
   services.pcscd.enable = true;
   services.sshd.enable = true;
