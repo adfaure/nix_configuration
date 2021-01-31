@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 with lib; {
 
+  require = [ ./package_list.nix ];
+
+  environment.adfaure.environments.headless.enable=true;
+
   # use Vim by default
   environment.shellAliases = {
      "vim"="v";

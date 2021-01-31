@@ -1,19 +1,10 @@
 { config, lib, pkgs, ... }:
-with lib;
-let
-  # kapack =  import (fetchTarball {
-  #   name = "kapack";
-  #   url = "https://github.com/oar-team/kapack/archive/84f1cb9a595d14a2c6f1cf44119d83ba2965ca4c.tar.gz";
-  #   sha256 = "1hzlnc5gv6y8m04cxpjz9c34jb9qrwizadvpi41drlswzsm6s8md";
-  # }) { };
-in
-{
+with lib; {
   options.environment.adfaure.environments.headless = {
     enable = mkEnableOption "headless";
   };
-
+  # We make it as an option
   config = mkIf config.environment.adfaure.environments.headless.enable {
-
     environment.systemPackages = with pkgs;[
       manpages
       taskwarrior
