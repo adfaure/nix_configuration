@@ -3,17 +3,22 @@ with lib; {
 
   require = [ ./package_list.nix ];
 
+  # This option enables the import of the package defined in `package_list.nix`
+  # in the system environment.
   environment.adfaure.environments.headless.enable=true;
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # use Vim by default
   environment.shellAliases = {
      "vim"="v";
      "t"="task";
      "tls" = "task ls";
-  };
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
   };
 
   programs = {
@@ -53,7 +58,6 @@ with lib; {
   };
 
   nix.trustedUsers = [ "root" "adfaure" ];
-
   users.extraUsers.adfaure = {
     isNormalUser = true;
     home = "/home/adfaure";
@@ -64,6 +68,10 @@ with lib; {
     ];
     hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
     uid = 1000;
+  };
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
   };
 
   fonts = {

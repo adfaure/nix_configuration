@@ -24,6 +24,8 @@ with lib;
       # Message and RSS
       tdesktop
       liferea
+      # Display my wallpaper
+      feh
 
       # Media
       vlc

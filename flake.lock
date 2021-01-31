@@ -3,13 +3,17 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-i/CaIuV6wiAxS05pmpRMJnJ3rO730pGLFg4MD2kP2XE=",
-        "path": "/home/adfaure/dotfiles",
-        "type": "path"
+        "lastModified": 1612117837,
+        "narHash": "sha256-yy0xZxclBqtTCCmFkNlPbg1DNuo477aol8p/QNxf6fE=",
+        "owner": "adfaure",
+        "repo": "dotfiles",
+        "rev": "ba9de45ea68d6a27b1451c1f42efb043ceac60c3",
+        "type": "github"
       },
       "original": {
-        "path": "/home/adfaure/dotfiles",
-        "type": "path"
+        "owner": "adfaure",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "nixpkgs": {

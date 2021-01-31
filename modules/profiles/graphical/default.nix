@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, lib, pi3blocksi3blockskgs, ... }:
 with lib; {
 
     require = [ ./packages_list.nix ];

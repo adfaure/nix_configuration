@@ -1,17 +1,15 @@
  {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
-
   inputs.my-dotfiles = {
-    url = "/home/adfaure/dotfiles";
+    url = "github:/adfaure/dotfiles";
     flake = false;
   };
-
-  outputs = { self, nixpkgs, my-dotfiles, ...}: rec {
-
+  outputs = { self, nixpkgs, my-dotfiles, ...}: {
+    # Also depends on my-dotfiles, use `extraArgs` attribute from nixosConfigurations
+    # to push `my-dotfiles`.
     nixosModules.i3 = {
       imports = [ ./modules/services/i3 ];
     };
-
     nixosConfigurations.roger = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       extraArgs = {
@@ -20,8 +18,7 @@
       modules =
         [
           # I3 services required by the graphical module
-          nixosModules.i3
-
+          self.nixosModules.i3
           # Module for my programs
           ./modules/programs/vim
           ./modules/programs/ranger
