@@ -66,7 +66,8 @@ with lib; {
     openssh.authorizedKeys.keys = [
         (lib.readFile ../../../deployments/keys/id_rsa.pub)
     ];
-    hashedPassword = "$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/";
+    # Set the initial password. Don't forget to change it ASAP.
+    initialPassword = "nixos";
     uid = 1000;
   };
 
