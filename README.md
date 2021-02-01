@@ -1,5 +1,7 @@
 # Nixos configuration
 
+## Structures
+
 This repository contains the nixos configurations for my machines.
 The configuration uses the new flake feature (still unstable at the time).
 
@@ -28,3 +30,11 @@ This folder is organized as follows:
 	- In `programs` are defined modules configuring a program, such as vim or emacs etc. Importing one of this module in your main configuration will install the program defined in.
 	- `services` for service configurations.
 - `pkgs` is a legacy set of packages for my VPS.
+
+## How to use it
+
+To install the configuration named `roger`:
+
+```bash
+nixos-rebuild switch --flake .#roger # as root
+```

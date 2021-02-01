@@ -33,8 +33,15 @@ in rec {
 
       imports = [ ./hardware-vultr-maxi.nix ];
 
-      require = modules;
-
+      imports = [ # Include the results of the hardware scan.
+        ./hardware-roger.nix
+        # Module for my programs
+        ../modules/programs/vim
+        ../modules/programs/ranger
+        ../modules/programs/zsh
+        # Default linux configuration: users, fonts etc
+        ../modules/profiles/common
+      ];
       # environment.adfaure.headless.enable = true;
       # environment.adfaure.graphical.enable = false;
 
