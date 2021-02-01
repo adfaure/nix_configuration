@@ -4,30 +4,25 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "wl" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/483d3f17-4d42-489d-9f3b-27a90c964a4e";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/483d3f17-4d42-489d-9f3b-27a90c964a4e";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/66E6-B623";
-      fsType = "vfat";
-    };
-
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/66E6-B623";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a7add27a-2a35-4483-ba66-cf7edb0f2ffa"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/a7add27a-2a35-4483-ba66-cf7edb0f2ffa"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.nitrokey = {
@@ -41,7 +36,7 @@
     # Only the full build has Bluetooth support, so it must be selected here.
     package = pkgs.pulseaudioFull;
     extraModules = [ pkgs.pulseaudio-modules-bt ];
-   };
+  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.config = {

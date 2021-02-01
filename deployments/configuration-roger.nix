@@ -1,12 +1,25 @@
 # Edit this configuration file to define what should be installed on your
 # system.  Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
 
-  imports =
-  [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware scan.
     ./hardware-roger.nix
+
+    (modulesPath + "/installer/scan/not-detected.nix")
+
+    # Module for my programs
+    ../modules/programs/vim
+    ../modules/programs/ranger
+    ../modules/programs/zsh
+
+    # I3 and conf
+    ../modules/services/i3
+
+    # Default linux configuration: users, fonts etc
+    ../modules/profiles/common
+    # Server X configuration, also activate i3
+    ../modules/profiles/graphical
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,12 +41,10 @@
   hardware.opengl.driSupport32Bit = true;
 
   # Add virtualbox and docker
-  virtualisation = {
-    docker.enable = true;
-  };
+  virtualisation = { docker.enable = true; };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/unstable;
+  system.autoUpgrade.channel = "https://nixos.org/channels/unstable";
 
   system.stateVersion = "20.09"; # Did you read the comment?
 
