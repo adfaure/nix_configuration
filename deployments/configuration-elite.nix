@@ -5,8 +5,7 @@
 { config, pkgs, lib, ... }:
 let
 
-in
-let
+in let
 
   mypkgs = import /home/adfaure/Projects/myPkgs { };
   # my_dotfiles = builtins.fetchTarball
@@ -14,29 +13,25 @@ let
 
 in rec {
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-elite.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-elite.nix
+  ];
 
-    require = [
-      # taken from:
-      # https://github.com/ttuegel/nixos-config/emacs.nix
-      ../modules/common.nix
-      ../modules/development.nix
-      ../modules/graphical.nix
-      ../modules/gitlab_runners.nix
-      ../modules/taskserver.nix
-      ../modules/thync.nix
-    ];
+  require = [
+    # taken from:
+    # https://github.com/ttuegel/nixos-config/emacs.nix
+    ../modules/common.nix
+    ../modules/development.nix
+    ../modules/graphical.nix
+    ../modules/gitlab_runners.nix
+    ../modules/taskserver.nix
+    ../modules/thync.nix
+  ];
 
-   environment.adfaure.common = {
-     enable = true;
-     keys = [
-       (lib.readFile ./keys/mael.pub)
-       (lib.readFile ./keys/id_rsa.pub)
-     ];
-   };
+  environment.adfaure.common = {
+    enable = true;
+    keys = [ (lib.readFile ./keys/mael.pub) (lib.readFile ./keys/id_rsa.pub) ];
+  };
 
   environment.adfaure.graphical.enable = true;
   environment.adfaure.thync.enable = true;
@@ -48,7 +43,6 @@ in rec {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
   networking.networkmanager.enable = true;
   networking.hostName = "adchire"; # Define your hostname.
 
@@ -57,7 +51,7 @@ in rec {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   hardware.opengl.driSupport32Bit = true;
   # services.gnome3.evolution-data-server.enable = lib.mkForce false;
@@ -80,7 +74,7 @@ in rec {
   # };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/nixos-19.03;
+  system.autoUpgrade.channel = "https://nixos.org/channels/nixos-19.03";
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

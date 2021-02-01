@@ -5,7 +5,7 @@ with lib; {
 
   # This option enables the import of the package defined in `package_list.nix`
   # in the system environment.
-  environment.adfaure.environments.headless.enable=true;
+  environment.adfaure.environments.headless.enable = true;
 
   nix = {
     package = pkgs.nixFlakes;
@@ -16,9 +16,9 @@ with lib; {
 
   # use Vim by default
   environment.shellAliases = {
-     "vim"="v";
-     "t"="task";
-     "tls" = "task ls";
+    "vim" = "v";
+    "t" = "task";
+    "tls" = "task ls";
   };
 
   programs = {
@@ -35,7 +35,7 @@ with lib; {
     mtr.enable = true;
     gnupg.agent = {
       enable = true;
-      enableSSHSupport= true;
+      enableSSHSupport = true;
       # pinentryFlavor = "gtk2";
     };
     # Whether interactive shells should show which Nix package (if any)
@@ -45,7 +45,7 @@ with lib; {
 
   # Make sudo funnier!
   security.sudo.extraConfig = ''
-      Defaults   insults
+    Defaults   insults
   '';
 
   nixpkgs.config = {
@@ -62,18 +62,24 @@ with lib; {
     isNormalUser = true;
     home = "/home/adfaure";
     shell = pkgs.zsh;
-    extraGroups = [ "audio" "wheel" "networkmanager" "vboxusers" "lp" "perf_users" "docker" "users" ];
-    openssh.authorizedKeys.keys = [
-        (lib.readFile ../../../deployments/keys/id_rsa.pub)
+    extraGroups = [
+      "audio"
+      "wheel"
+      "networkmanager"
+      "vboxusers"
+      "lp"
+      "perf_users"
+      "docker"
+      "users"
     ];
+    openssh.authorizedKeys.keys =
+      [ (lib.readFile ../../../deployments/keys/id_rsa.pub) ];
     # Set the initial password. Don't forget to change it ASAP.
     initialPassword = "nixos";
     uid = 1000;
   };
 
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-  };
+  i18n = { defaultLocale = "en_US.UTF-8"; };
 
   fonts = {
     enableFontDir = true;
@@ -85,9 +91,9 @@ with lib; {
       hinting.enable = true;
       includeUserConf = true;
       defaultFonts = {
-        monospace = ["Fira Mono"];
-        sansSerif = ["Fira Sans"];
-        serif = ["DejaVu Serif"];
+        monospace = [ "Fira Mono" ];
+        sansSerif = [ "Fira Sans" ];
+        serif = [ "DejaVu Serif" ];
       };
     };
 
@@ -106,8 +112,6 @@ with lib; {
       wqy_zenhei
     ];
   };
-
-
 
   services.pcscd.enable = true;
   services.sshd.enable = true;

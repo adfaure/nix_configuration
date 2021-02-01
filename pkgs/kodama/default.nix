@@ -1,10 +1,8 @@
-{  pkgs, stdenv, fetchgit, go, hugo, git }:
+{ pkgs, stdenv, fetchgit, go, hugo, git }:
 
 # Packaging of my hugo website
 # I did some ugly hacks to prevent hugo from trying to clone repository from github wich is not
 # allowed by nix.
-
-
 
 let
   # Wowchemy is the module hugo wants to download so I get it from github
@@ -14,8 +12,7 @@ let
     rev = "86da39719ccd0cb1348f33c8c6c03fd0c3a93686";
     sha256 = "sha256:19cdhmf7m3qw4z8s68nkzhv3x9dwslfn9901d0qmnzgwlywx3jiz";
   };
-in
-stdenv.mkDerivation rec {
+in stdenv.mkDerivation rec {
 
   version = "1.0.0";
   name = "kodama-${version}";

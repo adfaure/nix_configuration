@@ -3,31 +3,28 @@
 with lib;
 
 let
-vimrc = builtins.readFile "${my-dotfiles}/files/vimrc";
+  vimrc = builtins.readFile "${my-dotfiles}/files/vimrc";
   cfg = config.environment.adfaure.programs.zsh;
 
-  zshrc = builtins.readFile("${my-dotfiles}/files/zshrc");
+  zshrc = builtins.readFile ("${my-dotfiles}/files/zshrc");
   zshrc_local = pkgs.writeTextFile {
     name = "zshrc.local";
-    text = builtins.readFile("${my-dotfiles}/files/zshrc.local");
+    text = builtins.readFile ("${my-dotfiles}/files/zshrc.local");
   };
 
-in
-{
+in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
 
-    autosuggestions = {
-      enable = true;
-    };
+    autosuggestions = { enable = true; };
 
     shellAliases = {
       r = "ranger";
       vim = "v";
       b = "bat";
       ns = "nix-shell";
-      cat = "bat --paging=never --style=\"plain\"";
+      cat = ''bat --paging=never --style="plain"'';
     };
 
     ohMyZsh = {

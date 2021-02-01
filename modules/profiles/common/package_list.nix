@@ -5,7 +5,7 @@ with lib; {
   };
   # We make it as an option
   config = mkIf config.environment.adfaure.environments.headless.enable {
-    environment.systemPackages = with pkgs;[
+    environment.systemPackages = with pkgs; [
       manpages
       taskwarrior
       taskserver
@@ -45,11 +45,11 @@ with lib; {
       any-nix-shell
       tmux
       # ranger previews
-      libcaca   # video
+      libcaca # video
       highlight # code
-      atool     # archives
-      w3m       # web
-      poppler   # PDF
+      atool # archives
+      w3m # web
+      poppler # PDF
       mediainfo # audio and video
       qemu
       taskwarrior
