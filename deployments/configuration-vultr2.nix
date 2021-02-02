@@ -1,4 +1,4 @@
-{ config, pkgs, nodes, lib, ... }:
+{ config, pkgs, nodes, lib, kodama, ... }:
 let
   # This deployement file works only with nixops 1.6.1
   # available from the nix channel: nixos18 https://nixos.org/channels/nixos-18.09
@@ -40,7 +40,7 @@ in {
     virtualHosts."adrien-faure.fr" = {
       forceSSL = true;
       enableACME = true;
-      # locations."/" = { root = "${my.kodama}"; };
+      locations."/" = { root = "${kodama}"; };
       # Add reverse proxy for radicale
       locations."/radicale/" = {
         proxyPass = "http://localhost:${toString radicalePort}/";

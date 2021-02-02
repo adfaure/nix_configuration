@@ -19,20 +19,7 @@ in stdenv.mkDerivation rec {
 
   buildInputs = [
     go
-    # I use a pinned an recent hugo version,
-    # it might need to be updated at some point
-    (hugo.overrideAttrs (old: rec {
-      pname = "hugo";
-      version = "0.79.0";
-      src = pkgs.fetchFromGitHub {
-        owner = "gohugoio";
-        repo = pname;
-        rev = "v${version}";
-        sha256 = "sha256:0i9c12w0jlfrqb5gygfn20rn41m7qy6ab03n779wbzwfqqz85mj6";
-      };
-
-      vendorSha256 = "0jb6aqdv9yx7fxbkgd73rx6kvxagxscrin5b5bal3ig7ys1ghpsp";
-    }))
+    hugo
     git
   ];
 
@@ -61,7 +48,7 @@ in stdenv.mkDerivation rec {
   '';
 
   meta = {
-    platforms = stdenv.lib.platforms.unix;
+    platforms = pkgs.lib.platforms.unix;
     inherit version;
   };
 }

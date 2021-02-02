@@ -110,7 +110,24 @@
       "inputs": {
         "deploy-rs": "deploy-rs",
         "my-dotfiles": "my-dotfiles",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "unstable": "unstable"
+      }
+    },
+    "unstable": {
+      "locked": {
+        "lastModified": 1612105129,
+        "narHash": "sha256-F8vlMh3lnadePP4gcdqxGNfvP2jRqDxwZamVhPfD0Zk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5ff6700bb824a6d824fa021550a5596f6c3f64e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "utils": {
