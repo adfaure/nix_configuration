@@ -1,24 +1,15 @@
 { config, pkgs, nodes, lib, kodama, ... }:
 let
-  # This deployement file works only with nixops 1.6.1
-  # available from the nix channel: nixos18 https://nixos.org/channels/nixos-18.09
-
-  # my = import ../pkgs/default.nix { };
   radicaleCollection = "/data/radicale";
   webPort = 80;
   webSslPort = 443;
   radicalePort = 5232;
-  htpasswd = pkgs.writeText "radicale.users" ''
-    adfaure:$6$1povfYo8YR1SMM$lzpE2aBCGZyNFCE7Nr2pizFyLb4O7jB6IJdvuoGHVziBg2ynRjtz/8hemZPFiYX.9AGbyDoXMGoH6.P6SvQPx/
-  '';
+  htpasswd = config.sops.secrets.radicaleUsers.path;
 in {
-  # network.description = "Adrien Faure Personal Network";
-
-  nixpkgs.config.allowUnfree = true;
 
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-vultr2.nix
+    ./hardware-kodama.nix
     # Module for my programs
     ../modules/programs/vim
     ../modules/programs/ranger
@@ -27,8 +18,10 @@ in {
     ../modules/profiles/common
   ];
 
+  # Without this extra configuration deploy-rs fails because sudo requires a password.
+  security.sudo.wheelNeedsPassword = false;
+
   services.openssh.enable = true;
-  # services.openssh.permitRootLogin = "yes";
   security.acme.acceptTerms = true;
   security.acme.email = "adrien.faure@protonmail.com";
 
@@ -57,9 +50,7 @@ in {
 
   services.radicale = {
     enable = true;
-    extraArgs = [ ];
-    config = let
-    in ''
+    config = ''
       [server]
       hosts = localhost:${builtins.toString radicalePort}
 

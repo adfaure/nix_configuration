@@ -17,11 +17,7 @@ in stdenv.mkDerivation rec {
   version = "1.0.0";
   name = "kodama-${version}";
 
-  buildInputs = [
-    go
-    hugo
-    git
-  ];
+  buildInputs = [ go hugo git ];
 
   src = fetchgit {
     url = "https://gitlab.com/adfaure/kodama/";

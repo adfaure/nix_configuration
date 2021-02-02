@@ -4,15 +4,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix> ];
-
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
 
   boot.initrd.availableKernelModules =
@@ -22,12 +16,11 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/de172fe1-d6e1-4e31-860b-04dadf839d15";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/dd154661-a0bd-4e60-ab60-9020a4ee4ade"; }];
+  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
 
   nix.maxJobs = lib.mkDefault 1;
 }
