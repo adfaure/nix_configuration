@@ -3,23 +3,23 @@
 # NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, lib, ... }:
 let
-  lorri = import (fetchTarball {
-    url = https://github.com/target/lorri/archive/rolling-release.tar.gz;
-  }) {};
+  # lorri = import (fetchTarball {
+  #   url = https://github.com/target/lorri/archive/rolling-release.tar.gz;
+  # }) {};
   mypkgs = import /home/adfaure/Projects/myPkgs { };
-  my_dotfiles = builtins.fetchTarball "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
+  my_dotfiles = builtins.fetchTarball
+    "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
   modules = import ../modules/module-list.nix;
 in rec {
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-adchire.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-adchire.nix
+  ];
 
   require = modules;
 
   environment.adfaure.graphical.enable = true;
-  environment.adfaure.headless.enable = true;
+  # environment.adfaure.headless.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -40,7 +40,7 @@ in rec {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ lorri ];
+  # environment.systemPackages = with pkgs; [ lorri ];
 
   hardware.opengl.driSupport32Bit = true;
   # services.gnome3.evolution-data-server.enable = lib.mkForce false;
@@ -61,7 +61,7 @@ in rec {
   };
 
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.channel = https://nixos.org/channels/unstable;
+  system.autoUpgrade.channel = "https://nixos.org/channels/unstable";
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
@@ -70,7 +70,6 @@ in rec {
   # environment.etc = {
   #   "resolv.conf".text = "nameserver 80.82.77.83\n";
   # };
-
 
   system.stateVersion = "20.09"; # Did you read the comment?
 

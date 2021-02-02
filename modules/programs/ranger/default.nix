@@ -1,36 +1,21 @@
 { config, lib, pkgs, ... }:
 with lib;
-let
-  cfg = config.environment.adfaure.programs.ranger;
-in
-  {
-    options.environment.adfaure.programs.ranger = {
-      enable = mkEnableOption "ranger";
-    };
-    config = mkIf cfg.enable {
-      environment.systemPackages = [
-        pkgs.ranger
-        pkgs.atool
-        pkgs.poppler_utils
-        # pdf reader
-        pkgs.zathura
-      ];
+let cfg = config.environment.adfaure.programs.ranger;
+in {
+  environment.systemPackages = [ pkgs.ranger pkgs.atool pkgs.poppler_utils ];
 
-      environment.shellAliases = {
-        ranger = "ranger --confdir=${builtins.toPath ./ranger}";
-      };
+  environment.shellAliases = { ranger = "ranger --confdir=$HOME/.ranger"; };
 
-      programs.zsh.interactiveShellInit = lib.mkAfter ''
-      # Add ctrl+N shortcut to navigate with ranger and zsh
-      _ranger () {
-      PYTHONPATH= command ${pkgs.ranger}/bin/ranger --confdir=${builtins.toPath ./ranger} "$(pwd)"<$TTY
+  programs.zsh.interactiveShellInit = lib.mkAfter ''
+    # Add ctrl+N shortcut to navigate with ranger and zsh
+    _ranger () {
+      PYTHONPATH= command ${pkgs.ranger}/bin/ranger --confdir=$HOME/.ranger "$(pwd)"<$TTY
       print -n "\033[A"
       zle && zle -I
-      cd "$(grep \^\' ${builtins.toPath ./ranger}/bookmarks | cut -b3-)"
-      }
+      cd "$(grep \^\' $HOME/.ranger/bookmarks | cut -b3-)"
+    }
 
-      zle -N _ranger
-      bindkey -v '^N' _ranger
-      '';
-    };
-  }
+    zle -N _ranger
+    bindkey -v '^N' _ranger
+  '';
+}

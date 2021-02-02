@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
-with lib;
-{
+with lib; {
   options.environment.adfaure.environments.graphical = {
     enable = mkEnableOption "graphical";
   };
@@ -22,9 +21,10 @@ with lib;
       aspellDicts.fr
       aspellDicts.en
       # Message and RSS
-      #qtox
-      #tdesktop
+      tdesktop
       liferea
+      # Display my wallpaper
+      feh
 
       # Media
       vlc
@@ -34,7 +34,6 @@ with lib;
       git-cola
       gitg
       sakura
-      # evince
       llpp
 
       # storage
@@ -46,6 +45,7 @@ with lib;
       gsmartcontrol
       linuxPackages.perf
       spotify
+
       # Password
       gnupg
 
