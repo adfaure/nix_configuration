@@ -26,20 +26,12 @@ in {
     # Default linux configuration: users, fonts etc
     ../modules/profiles/common
   ];
-  # environment.adfaure.headless.enable = true;
-  # environment.adfaure.graphical.enable = false;
 
-  # deployment.targetHost = "140.82.57.221";
-
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   # services.openssh.permitRootLogin = "yes";
   security.acme.acceptTerms = true;
   security.acme.email = "adrien.faure@protonmail.com";
 
-  #*************#
-  #    Nginx    #
-  #*************#
   services.nginx = {
     enable = true;
     appendHttpConfig = ''
@@ -63,6 +55,18 @@ in {
     };
   };
 
+  services.radicale = {
+    enable = true;
+    extraArgs = [ ];
+    config = let
+    in ''
+      [server]
+      hosts = localhost:${builtins.toString radicalePort}
+
+      [storage]
+      filesystem_folder = ${radicaleCollection}
+    '';
+  };
   #*************# grep CRON /var/log/syslog
   # Admin tools #
   #*************#

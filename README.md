@@ -38,3 +38,12 @@ To install the configuration named `roger`:
 ```bash
 nixos-rebuild switch --flake .#roger # as root
 ```
+
+# Cloud nodes
+
+**Switching from nixops to deploy-rs**
+
+Create a shell with `deploy`.
+```bash
+nix shell github:serokell/deploy-rs
+```

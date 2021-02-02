@@ -23,9 +23,7 @@
       modules = [
         # Main configuration, includes the hardware file and the module list
         ./deployments/configuration-vultr2.nix
-        ({ config, ...} : {
-          security.sudo.wheelNeedsPassword = false;
-        })
+        ({ config, ... }: { security.sudo.wheelNeedsPassword = false; })
       ];
     };
 
