@@ -17,7 +17,6 @@ The configuration uses the new flake feature (still unstable at the time).
 │   ├── programs
 │   └── services
 ├── pkgs
-│   └── default.nix
 ├── README.md
 ├── flake.lock
 └── flake.nix
@@ -29,7 +28,7 @@ This folder is organized as follows:
 	- `profiles` are higher level modules defining an ensemble of services and tools.
 	- In `programs` are defined modules configuring a program, such as vim or emacs etc. Importing one of this module in your main configuration will install the program defined in.
 	- `services` for service configurations.
-- `pkgs` is a legacy set of packages for my VPS.
+- `pkgs` contains the definition of my personal packages needed in the deployement such as my website.
 
 ## How to use it
 
@@ -47,3 +46,5 @@ Create a shell with `deploy`.
 ```bash
 nix shell github:serokell/deploy-rs
 ```
+
+To deploy use the command: `deploy` (yeah, no kidding).

@@ -67,9 +67,7 @@ in {
       filesystem_folder = ${radicaleCollection}
     '';
   };
-  #*************# grep CRON /var/log/syslog
-  # Admin tools #
-  #*************#
+
   environment.systemPackages = with pkgs; [
     dstat
     wget
@@ -77,9 +75,6 @@ in {
     rsync # for backups
   ]; # ++ pkgs_lists.common;
 
-  #*************#
-  #   Network   #
-  #*************#
   networking = {
     firewall.allowedTCPPorts = [ webPort webSslPort radicalePort ];
   };
