@@ -1,6 +1,6 @@
 # Nixos configuration
 
-## Structures
+## Structure
 
 This repository contains the nixos configurations for my machines.
 The configuration uses the new flake feature (still unstable at the time).
