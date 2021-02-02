@@ -42,7 +42,7 @@ nixos-rebuild switch --flake .#roger # as root
 
 # Cloud nodes
 
-## Configure and deploy
+## Configure and deploy
 
 This project uses `deploy-rs` to deploy my website.
 
