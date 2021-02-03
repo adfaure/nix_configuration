@@ -40,7 +40,7 @@
 
   hardware.nitrokey = {
     enable = true;
-    group = "wheel";
+    # group = "wheel";
   };
 
   hardware.pulseaudio = {

@@ -9,10 +9,10 @@
     # (modulesPath + "/installer/scan/not-detected.nix")
 
     # Module for my programs
-    ../modules/programs/vim
-    ../modules/programs/ranger
-    ../modules/programs/zsh
-    ../modules/programs/emacs
+    # ../modules/programs/vim
+    # ../modules/programs/ranger
+    # ../modules/programs/zsh
+    # ../modules/programs/emacs
 
     # I3 and conf
     ../modules/services/i3
@@ -49,8 +49,6 @@
 
   system.stateVersion = "20.09"; # Did you read the comment?
 
-  services.dbus.socketActivated = true;
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gnome3.dconf ];
-
 }

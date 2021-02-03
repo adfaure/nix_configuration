@@ -1,17 +1,21 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
   # Needed to have a recent hugo version for the kodama package
-  inputs.unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-  inputs.my-dotfiles = {
-    url = "github:/adfaure/dotfiles";
-    flake = false;
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    my-dotfiles = {
+      url = "github:/adfaure/dotfiles";
+      flake = false;
+    };
+    home-manager.url = "github:nix-community/home-manager";
+    # Deployments tool for my personnal web server
+    deploy-rs.url = "github:serokell/deploy-rs";
+    # Secret management with sops
+    sops-nix.url = "github:Mic92/sops-nix";
   };
-  # Deployments tool for my personnal web server
-  inputs.deploy-rs.url = "github:serokell/deploy-rs";
-  # Secret management with sops
-  inputs.sops-nix.url = "github:Mic92/sops-nix";
-  outputs =
-    { self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix, ... }: {
+
+  outputs = { self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix
+    , home-manager, ... }: {
 
       # Dedicated package for my personal website
       packages.x86_64-linux.kodama =
@@ -19,11 +23,26 @@
         callPackage ./pkgs/kodama { };
 
       # Configuration for my current working machine.
-      nixosConfigurations.roger = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.roger = let inherit (nixpkgs) lib;
+      in unstable.lib.nixosSystem {
         system = "x86_64-linux";
         # extra arguments will be injected into the modules.
         extraArgs = { inherit my-dotfiles; };
+        specialArgs = { inherit my-dotfiles; };
         modules = [
+          home-manager.nixosModules.home-manager
+          ({ lib, my-dotfiles, ... }: {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            # home-manager.options.extraSpecialArgs = { inherit my-dotfiles; };
+            home-manager.users.adfaure = { ... }: {
+              imports = [
+                ({ ... }: { _module.args.my-dotfiles = my-dotfiles; })
+                ./home/adfaure.nix
+              ];
+            };
+          })
+          # homeManagerConfigurations
           # Main configuration, includes the hardware file and the module list
           ./deployments/configuration-roger.nix
         ];
@@ -34,7 +53,7 @@
       # However, it is a normal nixos configuration.
       nixosConfigurations.kodama = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        # extra arguments will be injected into the modules.
+        # extra arguments will be injected into the modules.s
         extraArgs = {
           inherit my-dotfiles;
           kodama = self.packages.x86_64-linux.kodama;
