@@ -31,9 +31,6 @@ with lib; {
       # Utils
       xorg.xkill
       # wireshark-gtk
-      git-cola
-      gitg
-      sakura
       llpp
 
       # storage
