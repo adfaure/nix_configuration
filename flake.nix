@@ -28,7 +28,6 @@
         system = "x86_64-linux";
         # extra arguments will be injected into the modules.
         extraArgs = { inherit my-dotfiles; };
-        specialArgs = { inherit my-dotfiles; };
         modules = [
           home-manager.nixosModules.home-manager
           ({ lib, my-dotfiles, ... }: {
