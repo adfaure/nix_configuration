@@ -37,6 +37,24 @@
         "type": "github"
       }
     },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1612191125,
+        "narHash": "sha256-sqeVW5mIpxcbGL5od8kGxH5gAkimOEJjss2ZvsW9mLQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "0fa2b16a0714e35f472d17dc707ee130a269123f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "my-dotfiles": {
       "flake": false,
       "locked": {
@@ -92,11 +110,25 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1611910458,
-        "narHash": "sha256-//j54S14v9lp3YKizS1WZW3WKwLjGTzvwhHfUAaRBPQ=",
+        "lastModified": 1612304203,
+        "narHash": "sha256-2Y2oDdZ6PHzLEJr/MNrZXBp8BrDxK1q9+TwCnE+Zmvg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6e7f25001fe6874f7ae271891f709bbf50a22c45",
+        "rev": "bf6df7187ebbd1f6614b788de4f5f68f03e4d51a",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1612199420,
+        "narHash": "sha256-2uGAh8PEN0CdCfTedzErkEH/bUGx/IqUTID5TMIM+yo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8230a316357f8f87cc4c361510453dc5d99e5fbc",
         "type": "github"
       },
       "original": {
@@ -106,7 +138,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1612101959,
         "narHash": "sha256-7IsEL/6wpr1fI/XyIw26Rz+KjRCoJvoozIcTRpCFfMQ=",
@@ -125,15 +157,16 @@
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
+        "home-manager": "home-manager",
         "my-dotfiles": "my-dotfiles",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "sops-nix": "sops-nix",
         "unstable": "unstable"
       }
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1612185044,

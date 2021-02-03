@@ -1,11 +1,5 @@
 { config, lib, pkgs, my-dotfiles, ... }:
-
-with lib;
-
 let
-  vimrc = builtins.readFile "${my-dotfiles}/files/vimrc";
-  cfg = config.environment.adfaure.programs.zsh;
-
   zshrc = builtins.readFile ("${my-dotfiles}/files/zshrc");
   zshrc_local = pkgs.writeTextFile {
     name = "zshrc.local";
@@ -13,11 +7,11 @@ let
   };
 
 in {
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-
-    autosuggestions = { enable = true; };
+    enableAutosuggestions = true;
 
     shellAliases = {
       r = "ranger";
@@ -27,18 +21,18 @@ in {
       cat = ''bat --paging=never --style="plain"'';
     };
 
-    ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
       theme = "norm";
       plugins = [ "git" "command-not-found" "tig" "sudo" ];
     };
 
-    interactiveShellInit = ''
+    initExtraFirst = ''
       source ${zshrc_local}
     '';
   };
 
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     nix-zsh-completions
     fasd
     zsh-completions
