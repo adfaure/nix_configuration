@@ -11,11 +11,11 @@ in {
     # Include the results of the hardware scan.
     ./hardware-kodama.nix
     # Module for my programs
-    ../modules/programs/vim
-    ../modules/programs/ranger
-    ../modules/programs/zsh
+    ../nixos/programs/vim
+    ../nixos/programs/ranger
+    ../nixos/programs/zsh
     # Default linux configuration: users, fonts etc
-    ../modules/profiles/common
+    ../nixos/profiles/common
   ];
 
   # Without this extra configuration deploy-rs fails because sudo requires a password.

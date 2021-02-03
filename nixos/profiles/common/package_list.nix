@@ -44,7 +44,7 @@ with lib; {
       zsh
       any-nix-shell
       tmux
-      # ranger previews
+
       libcaca # video
       highlight # code
       atool # archives
