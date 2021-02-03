@@ -5,7 +5,6 @@ let
     name = "zshrc.local";
     text = builtins.readFile ("${my-dotfiles}/files/zshrc.local");
   };
-
 in {
 
   programs.zsh = {

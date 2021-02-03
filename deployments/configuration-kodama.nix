@@ -10,10 +10,6 @@ in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-kodama.nix
-    # Module for my programs
-    ../nixos/programs/vim
-    ../nixos/programs/ranger
-    ../nixos/programs/zsh
     # Default linux configuration: users, fonts etc
     ../nixos/profiles/common
   ];
