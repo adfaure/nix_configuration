@@ -37,12 +37,21 @@ This folder is organized as follows:
 - `homes` Contains the home manager configuration files.
 - `secrets.yaml` file containing different secrets, such as password, keys etc. It works nix `sops-nix`.
 
-## How to use it
+## Nixos configurations
 
 To install the configuration named `roger`:
 
 ```bash
 nixos-rebuild switch --flake .#roger # as root
+```
+
+## Home manager
+
+Home manager enables to manage dotfiles, and configure programs.
+To activate my home-manager profile one can simply run the command:
+
+```bash
+nix build .#adfaure.activationPackage; ./result/activate
 ```
 
 # Cloud nodes
@@ -51,12 +60,10 @@ nixos-rebuild switch --flake .#roger # as root
 
 This project uses `deploy-rs` to deploy my website.
 
-Create a shell with `deploy`.
+To deploy the configured nodes (under `deploy.nodes.<nodename>`):
 ```bash
-nix shell github:serokell/deploy-rs
+nix run .#deploy-rs
 ```
-
-To deploy use the command: `deploy` (yeah, no kidding).
 
 ## Secret management
 
