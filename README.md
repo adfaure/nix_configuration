@@ -45,7 +45,7 @@ To install the configuration named `roger`:
 nixos-rebuild switch --flake .#roger # as root
 ```
 
-## Home manager
+## Home manager
 
 Home manager enables to manage dotfiles, and configure programs.
 To activate my home-manager profile (named `adfaure`) run the command:
