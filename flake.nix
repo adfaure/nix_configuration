@@ -12,10 +12,12 @@
     deploy-rs.url = "github:serokell/deploy-rs";
     # Secret management with sops
     sops-nix.url = "github:Mic92/sops-nix";
+    # Emacs overlay
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = { self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix
-    , home-manager, ... }: {
+    , home-manager, emacs-overlay, ... }: {
 
       # Dedicated package for my personal website
       packages.x86_64-linux.kodama =
@@ -23,25 +25,27 @@
         callPackage ./pkgs/kodama { };
 
       # Configuration for my current working machine.
-      nixosConfigurations.roger = let inherit (nixpkgs) lib;
-      in unstable.lib.nixosSystem {
+      # Currently using nixos-unstable
+      nixosConfigurations.roger = unstable.lib.nixosSystem {
         system = "x86_64-linux";
         # extra arguments will be injected into the modules.
         extraArgs = { inherit my-dotfiles; };
         modules = [
           home-manager.nixosModules.home-manager
           ({ lib, my-dotfiles, ... }: {
+            nixpkgs.overlays = [ emacs-overlay.overlay ];
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             # home-manager.options.extraSpecialArgs = { inherit my-dotfiles; };
             home-manager.users.adfaure = { ... }: {
               imports = [
+                # This module enables to inject my-dotfiles into the home-manager modules.
                 ({ ... }: { _module.args.my-dotfiles = my-dotfiles; })
                 ./home/adfaure.nix
               ];
             };
           })
-          # homeManagerConfigurations
           # Main configuration, includes the hardware file and the module list
           ./deployments/configuration-roger.nix
         ];

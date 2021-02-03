@@ -16,6 +16,7 @@ in {
     shellAliases = {
       r = "ranger";
       vim = "v";
+      t = "task";
       b = "bat";
       ns = "nix-shell";
       cat = ''bat --paging=never --style="plain"'';
