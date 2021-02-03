@@ -100,6 +100,7 @@ in {
       rofi
       wirelesstools
       networkmanager_dmenu
+      sysstat
       # Mediaplayer
       # perl
     ];

@@ -12,7 +12,7 @@ The configuration uses the new flake feature (still unstable at the time).
 │   ├── ...
 │   ├── hardware-roger.nix
 │   └── keys
-├── modules
+├── nixos
 │   ├── profiles
 │   ├── programs
 │   └── services
@@ -30,7 +30,7 @@ The configuration uses the new flake feature (still unstable at the time).
 
 This folder is organized as follows:
 - The folder `deployements` regroups the nix files used for the description of my differents system (the `configuration.nix` and `hardware.nix` files).
-- The folder `modules` is divided in three categories.
+- The folder `nixos` is divided in two categories and contains the differents module to configure nixOS machines.
 	- `profiles` are higher level modules defining an ensemble of services and tools.
 	- `services` for service configurations.
 - `pkgs` contains the definition of my personal packages needed in the deployement such as my website.
@@ -48,7 +48,7 @@ nixos-rebuild switch --flake .#roger # as root
 ## Home manager
 
 Home manager enables to manage dotfiles, and configure programs.
-To activate my home-manager profile one can simply run the command:
+To activate my home-manager profile (named `adfaure`) run the command:
 
 ```bash
 nix build .#adfaure.activationPackage; ./result/activate

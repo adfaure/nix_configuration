@@ -78,7 +78,7 @@
               sops.secrets.radicaleUsers.owner = config.users.users.nginx.name;
             })
             # Deploy the home-manager configuration with the home manager nixos module.
-            # Thi enable to be set in a complete working environment when I am logging to new machines.
+            # This enable to be set in a complete working environment when I am logging to new machines.
             home-manager.nixosModules.home-manager
             ./nixos/profiles/home-manager/adfaure.nix
           ];
