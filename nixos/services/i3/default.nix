@@ -101,7 +101,7 @@ in {
       wirelesstools
       networkmanager_dmenu
       # Mediaplayer
-      perl
+      # perl
     ];
 
     # xserver configuration for i3
