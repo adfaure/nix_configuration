@@ -20,6 +20,7 @@ in {
       b = "bat";
       ns = "nix-shell";
       cat = ''bat --paging=never --style="plain"'';
+      ranger = "ranger --confdir=$HOME/.config/ranger";
     };
 
     oh-my-zsh = {
