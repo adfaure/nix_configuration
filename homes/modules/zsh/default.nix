@@ -39,5 +39,6 @@ in {
     zsh-completions
     zsh-navigation-tools
     tig
+    zsh
   ];
 }
