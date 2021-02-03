@@ -4,7 +4,7 @@
     # Needed to have a recent hugo version for the kodama package
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      url = "github:/adfaure/dotfiles";
+      url = "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";

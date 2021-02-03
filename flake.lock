@@ -75,16 +75,17 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1612383855,
-        "narHash": "sha256-2lz3TdJxR4hiABpGrNFmpzJLHymnbRh5xjORKf02Mxw=",
+        "lastModified": 1612393808,
+        "narHash": "sha256-zznN/R/CiLOAnMiQXhuQbryM4zdpQ5tS85+KCkkQPNA=",
         "owner": "adfaure",
         "repo": "dotfiles",
-        "rev": "73e91474acdb8d9417bdb3e2f8094cd79424e2c0",
+        "rev": "602790e25de91ae166c10b93735bbaea667f7a49",
         "type": "github"
       },
       "original": {
         "owner": "adfaure",
         "repo": "dotfiles",
+        "rev": "602790e25de91ae166c10b93735bbaea667f7a49",
         "type": "github"
       }
     },
