@@ -5,18 +5,8 @@
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-roger.nix
-
-    # (modulesPath + "/installer/scan/not-detected.nix")
-
-    # Module for my programs
-    # ../modules/programs/vim
-    # ../modules/programs/ranger
-    # ../modules/programs/zsh
-    # ../modules/programs/emacs
-
     # I3 and conf
     ../modules/services/i3
-
     # Default linux configuration: users, fonts etc
     ../modules/profiles/common
     # Server X configuration, also activate i3

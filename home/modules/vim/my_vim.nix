@@ -1,10 +1,7 @@
 { config, pkgs, vim_configurable, vimPlugins, my-dotfiles, ... }:
 let vimrc = builtins.readFile "${my-dotfiles}/files/vimrc";
-
 in pkgs.vim_configurable.customize {
-
   name = "v";
-
   vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
     start = [
       meson
