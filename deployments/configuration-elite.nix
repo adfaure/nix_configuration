@@ -20,12 +20,12 @@ in rec {
   require = [
     # taken from:
     # https://github.com/ttuegel/nixos-config/emacs.nix
-    ../modules/common.nix
-    ../modules/development.nix
-    ../modules/graphical.nix
-    ../modules/gitlab_runners.nix
-    ../modules/taskserver.nix
-    ../modules/thync.nix
+    ../nixos/common.nix
+    ../nixos/development.nix
+    ../nixos/graphical.nix
+    ../nixos/gitlab_runners.nix
+    ../nixos/taskserver.nix
+    ../nixos/thync.nix
   ];
 
   environment.adfaure.common = {

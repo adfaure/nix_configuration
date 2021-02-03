@@ -6,11 +6,11 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-roger.nix
     # I3 and conf
-    ../modules/services/i3
+    ../nixos/services/i3
     # Default linux configuration: users, fonts etc
-    ../modules/profiles/common
+    ../nixos/profiles/common
     # Server X configuration, also activate i3
-    ../modules/profiles/graphical
+    ../nixos/profiles/graphical
   ];
 
   # Use the systemd-boot EFI boot loader.
