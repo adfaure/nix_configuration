@@ -25,7 +25,6 @@
       evince
       sakura
       any-nix-shell
-      taskwarrior
       pass
       taskwarrior
       timewarrior
