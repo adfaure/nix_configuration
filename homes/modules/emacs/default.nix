@@ -1,4 +1,5 @@
 { config, lib, pkgs, my-dotfiles, ... }: {
+  home.file.".emacs".text = builtins.readFile "${my-dotfiles}/files/emacs_conf";
   home.packages = [
     # This emacs package comes from the emcas-overlay
     # wich enable to pull dependencies from the emacs configuration

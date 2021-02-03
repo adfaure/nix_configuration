@@ -1,4 +1,4 @@
-{
+m
   "nodes": {
     "deploy-rs": {
       "inputs": {
@@ -23,11 +23,11 @@
     },
     "emacs-overlay": {
       "locked": {
-        "lastModified": 1612384280,
-        "narHash": "sha256-CBaqaxBbdN5VEDqgH7luvHtRaIdMg25Zrbw4M8mS+u4=",
+        "lastModified": 1612311986,
+        "narHash": "sha256-hN98kHV90Xs3AVvFWa3UlL39W1mMJB3S1E0iBmS888Q=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "fd3986d575429c218631aab6fd73c588f5167c1b",
+        "rev": "a083f48ac6ee172d69aafe4af2b0d1f7714140de",
         "type": "github"
       },
       "original": {
@@ -54,18 +54,9 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
-      "locked": {
-        "lastModified": 1612191125,
-        "narHash": "sha256-sqeVW5mIpxcbGL5od8kGxH5gAkimOEJjss2ZvsW9mLQ=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "0fa2b16a0714e35f472d17dc707ee130a269123f",
-        "type": "github"
-      },
+
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
@@ -75,11 +66,11 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1612383855,
-        "narHash": "sha256-2lz3TdJxR4hiABpGrNFmpzJLHymnbRh5xjORKf02Mxw=",
+        "lastModified": 1612315981,
+        "narHash": "sha256-3103r6KLKs62mzM+acAKHgCmo5atK6xX0TKyyoYwUNY=",
         "owner": "adfaure",
         "repo": "dotfiles",
-        "rev": "73e91474acdb8d9417bdb3e2f8094cd79424e2c0",
+        "rev": "4d942047095376ebdd978823c9c37546786c2416",
         "type": "github"
       },
       "original": {
@@ -127,11 +118,25 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1612285001,
-        "narHash": "sha256-YTdd03F2+rZEqpfD12+Mwt3EuV/GdlvJ5QhnzujrZAQ=",
+        "lastModified": 1612312445,
+        "narHash": "sha256-l8qdZFqwjAGzQrsO+jFqRJA7YnN3jMGe5LGXRMJfcPg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "90cec09c3642b9be6699015a35e404ecb503aa0d",
+        "rev": "6b8fca6b5752c5c6038dc9349d0086cf2c49c567",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1612199420,
+        "narHash": "sha256-2uGAh8PEN0CdCfTedzErkEH/bUGx/IqUTID5TMIM+yo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8230a316357f8f87cc4c361510453dc5d99e5fbc",
         "type": "github"
       },
       "original": {
@@ -141,7 +146,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1612101959,
         "narHash": "sha256-7IsEL/6wpr1fI/XyIw26Rz+KjRCoJvoozIcTRpCFfMQ=",
@@ -163,14 +168,14 @@
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "my-dotfiles": "my-dotfiles",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "sops-nix": "sops-nix",
         "unstable": "unstable"
       }
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1612185044,
@@ -188,11 +193,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1612282043,
-        "narHash": "sha256-MzoN8nI1eydYHuWBAXBcw9Na0XndZHa/VjoxZRWSX68=",
+        "lastModified": 1612194028,
+        "narHash": "sha256-AFPVC9gNDHnx52FGD1IWRvM3S3D1AgEbEaOkxDerlyU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fab6fcdceb2560a4ab943830a2b1632458c7a6ff",
+        "rev": "65211f5afcc3637c55423b327157a5eae05dff67",
         "type": "github"
       },
       "original": {
