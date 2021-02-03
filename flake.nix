@@ -1,13 +1,14 @@
 {
-  # Needed to have a recent hugo version for the kodama package
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
+    # Needed to have a recent hugo version for the kodama package
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:/adfaure/dotfiles";
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "unstable";
     # Deployments tool for my personnal web server
     deploy-rs.url = "github:serokell/deploy-rs";
     # Secret management with sops
@@ -16,7 +17,7 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = { self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix
+  outputs = inputs@{ self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix
     , home-manager, emacs-overlay, ... }: {
 
       # Dedicated package for my personal website
@@ -24,64 +25,69 @@
         with import unstable { system = "x86_64-linux"; };
         callPackage ./pkgs/kodama { };
 
-      # Configuration for my current working machine.
-      # Currently using nixos-unstable
-      nixosConfigurations.roger = unstable.lib.nixosSystem {
+      # Separated home-manager config for non-nixos machines.
+      # Activate with: nix build .#adfaure.activationPackage; ./result/activate,
+      adfaure = home-manager.lib.homeManagerConfiguration rec {
         system = "x86_64-linux";
-        # extra arguments will be injected into the modules.
-        extraArgs = { inherit my-dotfiles; };
-        modules = [
-          home-manager.nixosModules.home-manager
-          ({ lib, my-dotfiles, ... }: {
-            nixpkgs.overlays = [ emacs-overlay.overlay ];
-
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            # home-manager.options.extraSpecialArgs = { inherit my-dotfiles; };
-            home-manager.users.adfaure = { ... }: {
-              imports = [
-                # This module enables to inject my-dotfiles into the home-manager modules.
-                ({ ... }: { _module.args.my-dotfiles = my-dotfiles; })
-                ./homes/adfaure.nix
-              ];
-            };
-          })
-          # Main configuration, includes the hardware file and the module list
-          ./deployments/configuration-roger.nix
-        ];
-      };
-
-      # Configuration for my website server
-      # It is supposed to be deployed with deploy-rs tool.
-      # However, it is a normal nixos configuration.
-      nixosConfigurations.kodama = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        # extra arguments will be injected into the modules.s
-        extraArgs = {
-          inherit my-dotfiles;
-          kodama = self.packages.x86_64-linux.kodama;
+        username = "adfaure";
+        homeDirectory = "/home/${username}";
+        extraSpecialArgs = { inherit nixpkgs my-dotfiles emacs-overlay; };
+        configuration = {
+          nixpkgs.overlays = [ emacs-overlay.overlay ];
+          imports = [ ./homes/adfaure.nix ];
         };
-        modules = [
-          # Main configuration, includes the hardware file and the module list.
-          ./deployments/configuration-kodama.nix
-          # Install sops-nix.
-          sops-nix.nixosModules.sops
-          # Secrets configuration with sops.
-          ({ config, ... }: {
-            # The default file containing the secrets.
-            sops.defaultSopsFile = ./secrets.yaml;
-            # We tell sops-nix which secrets we use.
-            sops.secrets.radicaleUsers = { };
-            # This part is required to enable nginx to access to the decrypted file.
-            systemd.services.nginx = {
-              serviceConfig.SupplementaryGroups =
-                [ config.users.groups.keys.name ];
-            };
-            sops.secrets.radicaleUsers.owner = config.users.users.nginx.name;
-          })
-        ];
       };
 
+      nixosConfigurations = {
+        # Configuration for my current working machine.
+        roger = unstable.lib.nixosSystem {
+          system = "x86_64-linux";
+          # extra arguments will be injected into the modules.
+          extraArgs = { inherit my-dotfiles; };
+          modules = [
+            # Main configuration, includes the hardware file and the module list
+            ./deployments/configuration-roger.nix
+          ];
+        };
+
+        # Configuration for my website server, it is supposed to be deployed with deploy-rs tool.
+        # I for the moment I rely on unstable as home-manager uses features not yet available in nixos-20.09
+        kodama = unstable.lib.nixosSystem {
+          system = "x86_64-linux";
+          # extra arguments will be injected into the modules.s
+          extraArgs = {
+            inherit my-dotfiles emacs-overlay;
+            kodama = self.packages.x86_64-linux.kodama;
+          };
+          modules = [
+            # Main configuration, includes the hardware file and the module list.
+            ./deployments/configuration-kodama.nix
+            # Install sops-nix.
+            sops-nix.nixosModules.sops
+            # Secrets configuration with sops.
+            ({ config, ... }: {
+              # The default file containing the secrets.
+              sops.defaultSopsFile = ./secrets.yaml;
+              # We tell sops-nix which secrets we use.
+              sops.secrets.radicaleUsers = { };
+              # This part is required to enable nginx to access to the decrypted file.
+              systemd.services.nginx = {
+                serviceConfig.SupplementaryGroups =
+                  [ config.users.groups.keys.name ];
+              };
+              sops.secrets.radicaleUsers.owner = config.users.users.nginx.name;
+            })
+            # Deploy the home-manager configuration with the home manager nixos module.
+            # Thi enable to be set in a complete working environment when I am logging to new machines.
+            home-manager.nixosModules.home-manager
+            ./nixos/profiles/home-manager/adfaure.nix
+          ];
+        };
+      };
+
+      # This enable to bind the deploy-rs app to my flake.
+      # This way I wont have version conflicts. Use with `nix run .#deploy-rs`
+      apps.x86_64-linux.deploy-rs = deploy-rs.apps.x86_64-linux.deploy-rs;
       # deploy-rs configuration to deploy kodama.
       deploy.nodes.kodama = {
         profiles = {
@@ -101,5 +107,6 @@
       # Sanity check for deploy-rs
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+
     };
 }
