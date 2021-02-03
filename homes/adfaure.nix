@@ -15,6 +15,10 @@
     home.homeDirectory = "/home/adfaure";
     programs.home-manager.enable = true;
 
-    home.packages = [ pkgs.evince ];
+    home.file.".tmux".text = builtins.readFile "${my-dotfiles}/files/tmux";
+    home.file.".config/sakura/sakura.conf".text =
+      builtins.readFile "${my-dotfiles}/files/sakura.conf";
+
+    home.packages = with pkgs; [ evince sakura ];
   };
 }

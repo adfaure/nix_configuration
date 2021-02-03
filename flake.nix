@@ -26,7 +26,7 @@
         callPackage ./pkgs/kodama { };
 
       # Separated home-manager config for non-nixos machines.
-      # Activate with: nix build .#adfaure.activationPackage; ./result/activate,
+      # Activate with: nix build .#adfaure.activationPackage; ./result/activate.
       adfaure = home-manager.lib.homeManagerConfiguration rec {
         system = "x86_64-linux";
         username = "adfaure";
