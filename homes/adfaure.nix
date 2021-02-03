@@ -13,5 +13,7 @@
     home.username = "adfaure";
     home.homeDirectory = "/home/adfaure";
     programs.home-manager.enable = true;
+
+    home.packages = with pkgs; [ evince ];
   };
 }
