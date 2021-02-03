@@ -42,7 +42,7 @@
               imports = [
                 # This module enables to inject my-dotfiles into the home-manager modules.
                 ({ ... }: { _module.args.my-dotfiles = my-dotfiles; })
-                ./home/adfaure.nix
+                ./homes/adfaure.nix
               ];
             };
           })
