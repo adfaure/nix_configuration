@@ -27,7 +27,7 @@ in {
       plugins = [ "git" "command-not-found" "tig" "sudo" ];
     };
 
-    initExtraFirst = ''
+    initExtra = lib.mkAfter ''
       source ${zshrc_local}
     '';
   };
@@ -40,4 +40,3 @@ in {
     tig
   ];
 }
-
