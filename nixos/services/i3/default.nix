@@ -86,7 +86,7 @@ in {
       '';
     };
 
-    fonts.enableFontDir = true;
+    fonts.fontDir.enable = true;
     fonts.enableGhostscriptFonts = true;
     fonts.fonts = with pkgs; [ font-awesome_5 font-awesome-ttf ];
 
@@ -100,8 +100,9 @@ in {
       rofi
       wirelesstools
       networkmanager_dmenu
+      sysstat
       # Mediaplayer
-      perl
+      # perl
     ];
 
     # xserver configuration for i3

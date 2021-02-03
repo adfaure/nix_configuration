@@ -9,7 +9,7 @@ let
   mypkgs = import /home/adfaure/Projects/myPkgs { };
   my_dotfiles = builtins.fetchTarball
     "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
-  modules = import ../modules/module-list.nix;
+  modules = import ../nixos/module-list.nix;
 in rec {
 
   imports = [ # Include the results of the hardware scan.
