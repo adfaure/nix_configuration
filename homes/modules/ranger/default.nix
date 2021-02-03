@@ -17,7 +17,7 @@
       bindkey -v '^N' _ranger
     '';
 
-    sessionVariables = { EDITOR = "v"; };
+    sessionVariables = { EDITOR = "vim"; };
   };
 
   # Creating the file bookmarks wich is mutable.

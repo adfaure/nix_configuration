@@ -42,6 +42,7 @@
       direnv
       entr
       pandoc
+      nixfmt
     ];
   };
 }

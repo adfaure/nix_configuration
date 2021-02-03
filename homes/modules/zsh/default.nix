@@ -14,7 +14,8 @@ in {
 
     shellAliases = {
       r = "ranger";
-      vim = "v";
+      vim = "nvim";
+      v = "nvim";
       t = "task";
       b = "bat";
       ns = "nix-shell";
