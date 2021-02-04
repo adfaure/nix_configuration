@@ -4,7 +4,8 @@
     # Needed to have a recent hugo version for the kodama package
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      url = "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
+      url =
+        "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
@@ -15,15 +16,20 @@
     sops-nix.url = "github:Mic92/sops-nix";
     # Emacs overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    # nur-kapack = { url = "/home/adfaure/Projects/nur-kapack"; };
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = inputs@{ self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix
-    , home-manager, emacs-overlay, ... }: {
+    , home-manager, emacs-overlay, nur, ... }: {
 
-      # Dedicated package for my personal website
-      packages.x86_64-linux.kodama =
-        with import unstable { system = "x86_64-linux"; };
-        callPackage ./pkgs/kodama { };
+      packages.x86_64-linux = {
+        # Dedicated package for my personal website
+        kodama = with import unstable { system = "x86_64-linux"; };
+          callPackage ./pkgs/kodama { };
+        cgvg = with import nixpkgs { system = "x86_64-linux"; };
+          callPackage ./pkgs/cgvg { };
+      };
 
       # Separated home-manager config for non-nixos machines.
       # Activate with: nix build .#adfaure.activationPackage; ./result/activate.
@@ -31,7 +37,10 @@
         system = "x86_64-linux";
         username = "adfaure";
         homeDirectory = "/home/${username}";
-        extraSpecialArgs = { inherit nixpkgs my-dotfiles emacs-overlay; };
+        extraSpecialArgs = {
+          inherit nixpkgs my-dotfiles emacs-overlay;
+          cgvg = self.packages.x86_64-linux.cgvg;
+        };
         configuration = {
           nixpkgs.overlays = [ emacs-overlay.overlay ];
           imports = [ ./homes/adfaure.nix ];
@@ -107,6 +116,13 @@
       # Sanity check for deploy-rs
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+
+      # Notice the reference to nixpkgs here.
+      devShell.x86_64-linux = with import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ nur.overlay ];
+      };
+        mkShell { buildInputs = [ pkgs.nur.repos.kapack.colmet ]; };
 
     };
 }

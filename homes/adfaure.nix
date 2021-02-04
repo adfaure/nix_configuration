@@ -1,4 +1,4 @@
-{ config, pkgs, my-dotfiles, emacs-overlay, ... }: {
+{ config, pkgs, my-dotfiles, emacs-overlay, cgvg, ... }: {
 
   imports = [ ./modules/emacs ./modules/vim ./modules/zsh ./modules/ranger ];
 
@@ -22,6 +22,7 @@
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
     home.packages = with pkgs; [
+      cgvg
       evince
       sakura
       any-nix-shell
