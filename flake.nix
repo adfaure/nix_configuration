@@ -117,12 +117,11 @@
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
-      # Notice the reference to nixpkgs here.
       devShell.x86_64-linux = with import nixpkgs {
         system = "x86_64-linux";
         overlays = [ nur.overlay ];
       };
-        mkShell { buildInputs = [ pkgs.nur.repos.kapack.colmet ]; };
+        mkShell { buildInputs = [ ]; };
 
     };
 }
