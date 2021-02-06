@@ -12,7 +12,7 @@
     rust-vim
     fugitive
     ctrlp
-    # airline
+    # airline
     Syntastic
     gitgutter
     The_NERD_tree

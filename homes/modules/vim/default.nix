@@ -6,7 +6,7 @@ in {
     viAlias = true;
     vimAlias = true;
     withPython3 = true;
-    # https://github.com/nix-community/home-manager/issues/1712
+    # https://github.com/nix-community/home-manager/issues/1712
     extraConfig = builtins.readFile "${my-dotfiles}/files/vimrc";
     plugins = my_vim_plugins.plugins;
     extraPackages = with pkgs;
