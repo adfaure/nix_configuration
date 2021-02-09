@@ -1,18 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, options, modulesPath }:
 with lib; {
 
   require = [ ./package_list.nix ];
 
   # This option enables the import of the package defined in `package_list.nix`
-  # in the system environment.
+  # in the system environment.
   environment.adfaure.environments.headless.enable = true;
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
 
   # use Vim by default
   environment.shellAliases = {

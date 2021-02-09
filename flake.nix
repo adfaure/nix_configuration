@@ -1,18 +1,22 @@
 {
   description = "My personnal configuration";
   inputs = {
+    # I need a custom nix version because of this issue: https://github.com/NixOS/nix/commit/8af4f886e212346afdd1d40789f96f1321da96c5
+    nix-flake.url =
+      "github:NixOS/nix?rev=8af4f886e212346afdd1d40789f96f1321da96c5";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     # Needed to have a recent hugo version for the kodama package
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:/adfaure/dotfiles";
-      # url = "/home/adfaure/Projects/dotfiles";
+      # To be fully reproducible, I can pin my repos
+      # url = "/home/adfaure/Projects/dotfiles";
       # It is possible to pin the revision with:
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
       flake = false;
     };
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "unstable";
+    home-manager.inputs.nixpkgs.follows = "nixos-unstable";
     # Deployments tool for my personnal web server
     deploy-rs.url = "github:serokell/deploy-rs";
     # Secret management with sops
@@ -23,12 +27,12 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, my-dotfiles, deploy-rs, sops-nix
-    , home-manager, emacs-overlay, nur, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
+    , sops-nix, home-manager, emacs-overlay, nur, nix-flake }: {
 
       packages.x86_64-linux = {
         # Dedicated package for my personal website
-        kodama = with import unstable { system = "x86_64-linux"; };
+        kodama = with import nixos-unstable { system = "x86_64-linux"; };
           callPackage ./pkgs/kodama { };
         cgvg = with import nixpkgs { system = "x86_64-linux"; };
           callPackage ./pkgs/cgvg { };
@@ -45,18 +49,22 @@
           cgvg = self.packages.x86_64-linux.cgvg;
         };
         configuration = {
-          nixpkgs.overlays = [ emacs-overlay.overlay ];
+          nixpkgs.overlays = [ emacs-overlay.overlay nur.overlay ];
           imports = [ ./homes/adfaure.nix ];
         };
       };
 
       nixosConfigurations = {
         # Configuration for my current working machine.
-        roger = unstable.lib.nixosSystem {
+        roger = nixos-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           # extra arguments will be injected into the modules.
-          extraArgs = { inherit my-dotfiles; };
+          extraArgs = { inherit my-dotfiles nur; };
           modules = [
+            # Activate overlays
+            ({ nixpkgs, lib, options, modulesPath, config, nur }: {
+              nixpkgs.overlays = [ nur.overlay ];
+            })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-roger.nix
           ];
@@ -64,7 +72,7 @@
 
         # Configuration for my website server, it is supposed to be deployed with deploy-rs tool.
         # I for the moment I rely on unstable as home-manager uses features not yet available in nixos-20.09
-        kodama = unstable.lib.nixosSystem {
+        kodama = nixos-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           # extra arguments will be injected into the modules.s
           extraArgs = {
@@ -100,6 +108,7 @@
       # This enable to bind the deploy-rs app to my flake.
       # This way I wont have version conflicts. Use with `nix run .#deploy-rs`
       apps.x86_64-linux.deploy-rs = deploy-rs.apps.x86_64-linux.deploy-rs;
+
       # deploy-rs configuration to deploy kodama.
       deploy.nodes.kodama = {
         profiles = {
@@ -120,10 +129,11 @@
       checks = builtins.mapAttrs
         (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
+      # You can enter this shell with `nix develop`
       devShell.x86_64-linux = with import nixpkgs {
         system = "x86_64-linux";
         overlays = [ nur.overlay ];
       };
-        mkShell { buildInputs = [ ]; };
+        mkShell { buildInputs = [ nix-flake.packages.x86_64-linux.nix ]; };
     };
 }
