@@ -1,4 +1,5 @@
-{ config, pkgs, my-dotfiles, emacs-overlay, cgvg, ... }: {
+{ nixpkgs, options, modulesPath, lib, config, pkgs, my-dotfiles, emacs-overlay
+, cgvg }: {
 
   imports = [ ./modules/emacs ./modules/vim ./modules/zsh ./modules/ranger ];
 
@@ -13,7 +14,8 @@
       userEmail = "adrien.faure@protonmail.com";
       aliases = {
         ds = "diff --staged";
-        l = "log --pretty=format:'%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%ad %C(auto,green)%aN %C(auto,reset)%s%C(auto)% gD%d' --graph --date=format:'%Y-%m-%d %H:%M:%S' --decorate-refs-exclude='refs/remotes/*/HEAD'";
+        l =
+          "log --pretty=format:'%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%ad %C(auto,green)%aN %C(auto,reset)%s%C(auto)% gD%d' --graph --date=format:'%Y-%m-%d %H:%M:%S' --decorate-refs-exclude='refs/remotes/*/HEAD'";
         st = "status";
       };
     };
@@ -27,6 +29,7 @@
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
     home.packages = with pkgs; [
+      # nur.repos.kapack.cgvg
       cgvg
       evince
       sakura
