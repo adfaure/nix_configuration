@@ -41,7 +41,7 @@
 
   dependencies = with pkgs; [
     # Vim config dependencies
-    rustup
+    # rustup
     go-langserver
     llvmPackages.libclang
     ccls
@@ -55,11 +55,11 @@
       with ps; [
         python-language-server
         # the following plugins are optional, they provide type checking, import sorting and code formatting
-        black
-        jedi
-        pylama
-        flake8
-        isort
+        # black
+        # jedi
+        # pylama
+        # flake8
+        # isort
       ]))
   ];
 }
