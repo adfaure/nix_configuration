@@ -1,4 +1,4 @@
-({ lib, my-dotfiles, emacs-overlay, ... }: {
+({ lib, config, modulesPath, options, my-dotfiles, emacs-overlay, cgvg }: {
   nixpkgs.overlays = [ emacs-overlay.overlay ];
 
   home-manager.useGlobalPkgs = true;
@@ -7,7 +7,13 @@
     imports = [
       # This module enables to inject my-dotfiles into the home-manager modules.
       # Indeed, `extraSpecialArgs` is not provided for the nixos module yet.
-      ({ ... }: { _module.args.my-dotfiles = my-dotfiles; })
+      ({ ... }: {
+        _module.args = {
+          my-dotfiles = my-dotfiles;
+          cgvg = cgvg;
+          emacs-overlay = emacs-overlay;
+        };
+      })
       ../../../homes/adfaure.nix
     ];
   };

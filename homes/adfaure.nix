@@ -1,5 +1,5 @@
 { nixpkgs, options, modulesPath, lib, config, pkgs, my-dotfiles, emacs-overlay
-, cgvg }: {
+, cgvg, ... }: {
 
   imports = [ ./modules/emacs ./modules/vim ./modules/zsh ./modules/ranger ];
 
