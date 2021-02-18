@@ -77,6 +77,7 @@
           # extra arguments will be injected into the modules.s
           extraArgs = {
             inherit my-dotfiles emacs-overlay;
+            cgvg = self.packages.x86_64-linux.cgvg;
             kodama = self.packages.x86_64-linux.kodama;
           };
           modules = [
