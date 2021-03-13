@@ -28,10 +28,16 @@ with lib; {
       enable = true;
       layout = "fr";
       xkbVariant = "bepo";
-      resolutions = [{
-        x = 1920;
-        y = 1080;
-      }];
+      resolutions = [
+        {
+          x = 2560;
+          y = 1440;
+        }
+        {
+          x = 1920;
+          y = 1080;
+        }
+      ];
       libinput.enable = true;
     };
   };
