@@ -2,6 +2,7 @@
   plugins = with vimPlugins; [
     # airline
     # vim-easytags
+    vim-markdown
     vim-misc
     multiple-cursors
     gundo
@@ -9,7 +10,6 @@
     pkgs.aspellDicts.en
     pkgs.aspellDicts.fr
     clang_complete
-    rust-vim
     fugitive
     ctrlp
     # airline
@@ -37,6 +37,10 @@
     coc-html
     coc-css
     vim-toml
+
+    # Rust
+    rust-vim
+    vim-racer
   ];
 
   dependencies = with pkgs; [
