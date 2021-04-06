@@ -1,29 +1,25 @@
 # Edit this configuration file to define what should be installed on your
 # system.  Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, ... }:
-let
-  # lorri = import (fetchTarball {
-  #   url = https://github.com/target/lorri/archive/rolling-release.tar.gz;
-  # }) {};
-  mypkgs = import /home/adfaure/Projects/myPkgs { };
-  my_dotfiles = builtins.fetchTarball
-    "https://github.com/adfaure/dotfiles/archive/master.tar.gz";
-  modules = import ../nixos/module-list.nix;
-in rec {
+{ config, pkgs, lib, options, modulesPath }: {
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-adchire.nix
+    # I3 and conf
+    ../nixos/services/i3
+    # We want flake activated
+    ../nixos/modules/flakes
+    # Default linux configuration: users, fonts etc
+    ../nixos/profiles/common
+    # Server X configuration, also activate i3
+    ../nixos/profiles/graphical
   ];
-
-  require = modules;
-
-  environment.adfaure.graphical.enable = true;
-  # environment.adfaure.headless.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  hardware.opengl.driSupport32Bit = true;
 
   networking = {
     hostName = "adchire"; # Define your hostname.
@@ -35,45 +31,18 @@ in rec {
     networkmanager.dns = "default";
     networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
   };
-  # Set your time zone.
+
   time.timeZone = "Europe/Paris";
-
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  # environment.systemPackages = with pkgs; [ lorri ];
-
   hardware.opengl.driSupport32Bit = true;
-  # services.gnome3.evolution-data-server.enable = lib.mkForce false;
-
-  # enable cron table
-  services.cron.enable = true;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    pulseaudio = true;
-  };
 
   # Add virtualbox and docker
-  virtualisation = {
-    # virtualbox.guest.enable = true;
-    # virtualbox.host.enable = true;
-    docker.enable = true;
-  };
+  virtualisation = { docker.enable = true; };
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.channel = "https://nixos.org/channels/unstable";
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
 
-  # environment.etc = {
-  #   "resolv.conf".text = "nameserver 80.82.77.83\n";
-  # };
+  system.stateVersion = "20.09";
 
-  system.stateVersion = "20.09"; # Did you read the comment?
-
-  services.dbus.socketActivated = true;
   programs.dconf.enable = true;
   services.dbus.packages = [ pkgs.gnome3.dconf ];
 }

@@ -33,6 +33,9 @@
     # Only the full build has Bluetooth support, so it must be selected here.
     package = pkgs.pulseaudioFull;
     extraModules = [ pkgs.pulseaudio-modules-bt ];
+    extraConfig = ''
+    load-module module-udev-detect ignore_dB=1
+    '';
   };
 
   hardware.bluetooth.enable = true;
