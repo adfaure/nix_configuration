@@ -70,6 +70,18 @@
           ];
         };
 
+        adchire = nixos-unstable.lib.nixosSystem {
+          system = "x86_64-linux";
+          extraArgs = { inherit my-dotfiles nur; };
+          modules = [
+            ({ nixpkgs, lib, options, modulesPath, config, nur }: {
+              nixpkgs.overlays = [ nur.overlay ];
+            })
+            # Main configuration, includes the hardware file and the module list
+            ./deployments/configuration-adchire.nix
+          ];
+        };
+
         # Configuration for my website server, it is supposed to be deployed with deploy-rs tool.
         # I for the moment I rely on unstable as home-manager uses features not yet available in nixos-20.09
         kodama = nixos-unstable.lib.nixosSystem {
