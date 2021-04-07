@@ -21,6 +21,11 @@
       };
     };
 
+    programs.ssh = {
+      enable = true;
+      extraConfig = builtins.readFile "${my-dotfiles}/files/ssh_config";
+    };
+
     home.stateVersion = "20.09";
     home.username = "adfaure";
     home.homeDirectory = "/home/adfaure";
