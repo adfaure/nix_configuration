@@ -33,7 +33,6 @@
   };
 
   time.timeZone = "Europe/Paris";
-  hardware.opengl.driSupport32Bit = true;
 
   # Add virtualbox and docker
   virtualisation = { docker.enable = true; };
