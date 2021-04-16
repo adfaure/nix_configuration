@@ -12,7 +12,6 @@ with lib; {
       libgtop
       json_glib
       glib_networking
-      chrome-gnome-shell
       arandr
       # Web
       firefox
@@ -25,12 +24,11 @@ with lib; {
       liferea
       # Display my wallpaper
       feh
-
       # Media
       vlc
+      spotify
       # Utils
       xorg.xkill
-      # wireshark-gtk
       llpp
 
       # storage
@@ -41,24 +39,20 @@ with lib; {
       sysstat
       gsmartcontrol
       linuxPackages.perf
-      spotify
 
       # Password
       gnupg
-
-      # virtualbox
 
       # Graphic tools
       gcolor3
       graphviz
       imagemagick
       inkscape
-      sublime3
       pavucontrol
-      # (pkgs.steam.overrideAttrs (orig: { extraPkgs = with pkgs; [ libva ]; }))
+
       libreoffice
       zotero
-      rambox
+
       # franz
       flameshot
       # pinentry_qt4
