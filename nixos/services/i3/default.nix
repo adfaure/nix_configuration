@@ -86,7 +86,7 @@ in {
       '';
     };
 
-    fonts.fontDir.enable = true;
+    # fonts.fontDir.enable = true;
     fonts.enableGhostscriptFonts = true;
     fonts.fonts = with pkgs; [ font-awesome_5 font-awesome-ttf ];
 
@@ -102,7 +102,7 @@ in {
       networkmanager_dmenu
       sysstat
       # Mediaplayer
-      # perl
+      # perl
     ];
 
     # xserver configuration for i3
