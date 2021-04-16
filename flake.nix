@@ -50,6 +50,7 @@
         };
         configuration = {
           nixpkgs.overlays = [ emacs-overlay.overlay nur.overlay ];
+          nixpkgs.config.allowUnfree = true;
           imports = [ ./homes/adfaure.nix ];
         };
       };

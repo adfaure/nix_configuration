@@ -58,6 +58,7 @@
       entr
       pandoc
       nixfmt
+      sublime3
     ];
   };
 }
