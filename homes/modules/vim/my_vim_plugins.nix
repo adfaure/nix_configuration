@@ -55,16 +55,16 @@
     #(nur.repos.mic92.nix-lsp.overrideAttrs (attr: {
     #  cargoSha256 = "13fhaspvrgymbbr230j41ppbz3a5qm12xl667cs7x888h0jvsp5g";
     #}))
-    (python3.withPackages (ps:
-      with ps;
-      [
-        python-language-server
-        # the following plugins are optional, they provide type checking, import sorting and code formatting
-        # black
-        # jedi
-        # pylama
-        # flake8
-        # isort
-      ]))
+    # (python3.withPackages (ps:
+    #   with ps;
+    #   [
+    #     python-language-server
+    #     # the following plugins are optional, they provide type checking, import sorting and code formatting
+    #     # black
+    #     # jedi
+    #     # pylama
+    #     # flake8
+    #     # isort
+    #   ]))
   ];
 }
