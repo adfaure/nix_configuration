@@ -56,7 +56,7 @@
 
       nixosConfigurations = {
         # Configuration for my current working machine.
-        roger = nixos-unstable.lib.nixosSystem {
+        roger = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           # extra arguments will be injected into the modules.
           extraArgs = { inherit my-dotfiles nur; };
@@ -70,7 +70,7 @@
           ];
         };
 
-        adchire = nixos-unstable.lib.nixosSystem {
+        adchire = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
