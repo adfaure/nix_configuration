@@ -26,7 +26,7 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "norm";
-      plugins = [ "git" "command-not-found" "tig" "sudo" ];
+      plugins = [ "git" "tig" "sudo" ];
     };
 
     initExtra = lib.mkAfter ''
