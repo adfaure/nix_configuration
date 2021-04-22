@@ -1,7 +1,13 @@
 { nixpkgs, options, modulesPath, lib, config, pkgs, my-dotfiles, emacs-overlay
 , cgvg, ... }: {
 
-  imports = [ ./modules/emacs ./modules/vim ./modules/zsh ./modules/ranger ];
+  imports = [
+    ./modules/emacs
+    ./modules/vim
+    ./modules/zsh
+    ./modules/ranger
+    ./modules/vscode
+  ];
 
   # Top level configuration for the user adfaure (me!)
   config = {
