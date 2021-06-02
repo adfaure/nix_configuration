@@ -17,8 +17,21 @@ let
 
     # Vim mode
     vscodevim.vim
+
   ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "remote-ssh";
+      publisher = "ms-vscode-remote";
+      version = "0.65.4";
+      sha256 = "sha256-vSuchamBxc5klo1vWWHJPmBFLh1He/Fxl/1GpEIognA=";
+    }
     # Languages support
+    {
+      name = "r";
+      publisher = "ikuyadeu";
+      version = "1.6.6";
+      sha256 = "sha256-bAsAoytccfmwIK5/n9I/iPWqJNJTewiOXzEYW+LiCKI=";
+    }
     {
       name = "org-mode";
       publisher = "tootone";
