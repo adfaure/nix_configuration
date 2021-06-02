@@ -32,6 +32,12 @@
       extraConfig = builtins.readFile "${my-dotfiles}/files/ssh_config";
     };
 
+    programs.bash = {
+      enable = true;
+      initExtra = ''
+      '';
+    };
+
     home.stateVersion = "20.09";
     home.username = "adfaure";
     home.homeDirectory = "/home/adfaure";
@@ -41,30 +47,37 @@
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
     home.packages = with pkgs; [
-      # nur.repos.kapack.cgvg
-      cgvg
-      evince
+      # Terminal
       sakura
+
+      # PDF reader
+      pdftk
+      evince
+
+      # Linux and dev tools
       any-nix-shell
+      bat # cat with colors for code
+      cloc
       pass
       taskwarrior
       timewarrior
       nitrokey-app
-      cloc
       jq
-      pdftk
-      bat
+      cgvg
       tree
       manpages
       gcc
       wget
-      cmake
       gdb
       direnv
       entr
       pandoc
+
+      # Nix file formating
       nixfmt
-      sublime3
+
+      # GUI applications
+      calibre
     ];
   };
 }
