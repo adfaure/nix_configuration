@@ -1,4 +1,4 @@
-({ lib, config, modulesPath, options, my-dotfiles, emacs-overlay, cgvg }: {
+({ lib, config, modulesPath, options, my-dotfiles, emacs-overlay, cgvg, specialArgs }: {
   nixpkgs.overlays = [ emacs-overlay.overlay ];
 
   home-manager.useGlobalPkgs = true;

@@ -4,7 +4,7 @@
     # I need a custom nix version because of this issue: https://github.com/NixOS/nix/commit/8af4f886e212346afdd1d40789f96f1321da96c5
     nix-flake.url =
       "github:NixOS/nix?rev=8af4f886e212346afdd1d40789f96f1321da96c5";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     # Needed to have a recent hugo version for the kodama package
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
@@ -75,7 +75,7 @@
           system = "x86_64-linux";
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
-            ({ nixpkgs, lib, options, modulesPath, config, nur }: {
+            ({ nixpkgs, lib, options, modulesPath, config, nur, specialArgs  }: {
               nixpkgs.overlays = [ nur.overlay ];
             })
             # Main configuration, includes the hardware file and the module list

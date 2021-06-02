@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath }:
+{ config, lib, pkgs, options, modulesPath, specialArgs }:
 with lib; {
 
   require = [ ./package_list.nix ];
