@@ -34,6 +34,11 @@ in {
     '';
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   home.packages = with pkgs; [
     nix-zsh-completions
     fasd
