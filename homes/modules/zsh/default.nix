@@ -25,7 +25,7 @@ in {
 
     oh-my-zsh = {
       enable = true;
-      theme = "norm";
+      theme = "juanghurtado";
       plugins = [ "git" "tig" "sudo" ];
     };
 
