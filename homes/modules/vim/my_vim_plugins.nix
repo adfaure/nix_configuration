@@ -6,7 +6,13 @@
     vim-misc
     multiple-cursors
     gundo
-    vim-colorschemes
+    (vim-colorschemes.overrideAttrs(old: {
+      src = pkgs.fetchFromGitHub {
+      owner = "flazz";
+      repo = "vim-colorschemes";
+      rev = "fd8f122cef604330c96a6a6e434682dbdfb878c9";
+      sha256 = "1cg8q7w0vgl73aw1b9zz0zh5vw5d2pm8pm54fhfzva4azg56f416";
+    }; }))
     pkgs.aspellDicts.en
     pkgs.aspellDicts.fr
     clang_complete
