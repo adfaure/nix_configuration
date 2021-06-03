@@ -48,6 +48,7 @@
 
     home.packages = with pkgs; [
       # Terminal
+      kitty
       sakura
 
       # PDF reader
