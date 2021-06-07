@@ -91,7 +91,7 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-zgvl+Ey5hGtVmuKAE2K7YwHzV5WMvbI2okhX36Zbnz4=",
+        "narHash": "sha256-WXuNJAlZKJD6z2xMjERGrhvgHJ2ydu5f+d4uq8W+ScM=",
         "path": "/home/adfaure/Projects/dotfiles",
         "type": "path"
       },
@@ -222,11 +222,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1623056465,
-        "narHash": "sha256-69bXjvgj4xaBlclcec4Oa08CAqpFy2XVb8K9DjekfrM=",
+        "lastModified": 1623071969,
+        "narHash": "sha256-+BZrHW33iNzXBdqTL2/QEOoKHiMBLsc6NuJddOJNvW8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "7ae16c1f6f56c925279c066b629a6673e4620df5",
+        "rev": "e677217ffb1ae2d304d61fec1f975d268c6cf7cb",
         "type": "github"
       },
       "original": {
