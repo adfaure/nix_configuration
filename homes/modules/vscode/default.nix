@@ -3,15 +3,16 @@ let
   extensions = (with pkgs.vscode-extensions; [
     # Languages support
     bbenoist.Nix
-    ms-python.python
     dhall.dhall-lang
+    haskell.haskell
+    justusadam.language-haskell
 
     # Themes
     pkief.material-icon-theme
 
     # Tools
     streetsidesoftware.code-spell-checker
-    # ms-vscode-remote.remote-ssh
+    ms-toolsai.jupyter # Python ext depends on it...
     ms-azuretools.vscode-docker
     eamodio.gitlens
 
@@ -56,6 +57,12 @@ let
       version = "0.1.5";
       sha256 = "sha256-/cI/fj4gtm/eTiNN48WPnpq5c3Led0Azi24YWO4BowE=";
     }
+    {
+      name = "python";
+      publisher = "ms-python";
+      version = "2021.5.842923320";
+      sha256 = "sha256-WYio9Mc0SeJIQNlO8ua059WgwLBrvNTOwy3ZklJVeaA=";
+    }
     # Theme and appearance
     {
       name = "non-breaking-space-highlighter";
@@ -87,5 +94,5 @@ let
     pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
 in {
 
-  home.packages = [ vscode-with-extensions pkgs.ctags ];
+  home.packages = [ vscode-with-extensions pkgs.cabal-install ];
 }
