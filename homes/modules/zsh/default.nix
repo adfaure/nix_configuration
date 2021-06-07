@@ -5,6 +5,7 @@ let
     name = "zshrc.local";
     text = builtins.readFile ("${my-dotfiles}/files/zshrc.local");
   };
+  zshrc_theme = builtins.readFile ("${my-dotfiles}/files/dadou.zsh-theme");
 in {
 
   programs.zsh = {
@@ -25,13 +26,16 @@ in {
 
     oh-my-zsh = {
       enable = true;
-      theme = "juanghurtado";
-      plugins = [ "git" "tig" "sudo" ];
+      # theme = "juanghurtado";
+      # theme = "dadou";
+      plugins = [ "git" "tig" "sudo" "themes" "z" ];
     };
 
     initExtra = lib.mkAfter ''
       source ${zshrc_local}
-    '';
+      # Source custom theme
+      ${zshrc_theme}
+      '';
   };
 
   programs.fzf = {
