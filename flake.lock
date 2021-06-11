@@ -23,11 +23,11 @@
     },
     "emacs-overlay": {
       "locked": {
-        "lastModified": 1623061760,
-        "narHash": "sha256-hBOFVz4/3uc4dCCZHA7NlF/mmWGAshIx2iUFwkVim3Q=",
+        "lastModified": 1623432014,
+        "narHash": "sha256-4KKLgus7pP0sWchUw492AacsYS6kdmG9wce61ICzihw=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "9b3f262942601af0a5d5630bdaac2f84551bb5f2",
+        "rev": "a002c6d3cd4f1ddb876cb8fb0e2adc9d95215c6d",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1623015085,
-        "narHash": "sha256-UB+xeEL03L63IkRONFx9fIqdjALe1qbeKgFM/d+HSak=",
+        "lastModified": 1623343236,
+        "narHash": "sha256-Cl/0/WW3AWjkO7gphw9FqUr4P7T98KKyFCX3Vxv22Sk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "afb5fd962cdd122b70a7c0f3ad78c8ec6a75766b",
+        "rev": "666eee4f72979b0ebbd2e065a3846d7a8a16895c",
         "type": "github"
       },
       "original": {
@@ -91,7 +91,7 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-WXuNJAlZKJD6z2xMjERGrhvgHJ2ydu5f+d4uq8W+ScM=",
+        "narHash": "sha256-jAGTiLtxjlgTrQVOKYDfsb9QcTGeras6McQgAOmgj+s=",
         "path": "/home/adfaure/Projects/dotfiles",
         "type": "path"
       },
@@ -190,11 +190,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1622922048,
-        "narHash": "sha256-nTyKxe0n7l/4HSmYaIN+63WQrvHrTJY6drSwP7bMqhU=",
+        "lastModified": 1623309731,
+        "narHash": "sha256-UZVcWcMEuWr6QmoFNryxUwjnokXXREJO7CSRe8ob6E4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5de44c15758465f8ddf84d541ba300b48e56eda4",
+        "rev": "cedcf2565c6b982d703d67455199b09a3d905d86",
         "type": "github"
       },
       "original": {
@@ -222,11 +222,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1623071969,
-        "narHash": "sha256-+BZrHW33iNzXBdqTL2/QEOoKHiMBLsc6NuJddOJNvW8=",
+        "lastModified": 1623425929,
+        "narHash": "sha256-y/BPQAtpSO6MYNkCNr5rcYLrE7G3XuN73xBpM48YrSU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e677217ffb1ae2d304d61fec1f975d268c6cf7cb",
+        "rev": "9ecda42f21eb9ae15098cbf0a81773c2cd6ef18b",
         "type": "github"
       },
       "original": {
