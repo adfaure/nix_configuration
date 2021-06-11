@@ -13,6 +13,8 @@
     ../nixos/profiles/common
     # Server X configuration, also activate i3
     ../nixos/profiles/graphical
+    # Configure cachix
+    ../nixos/modules/cachix
   ];
 
   # Use the systemd-boot EFI boot loader.
