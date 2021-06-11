@@ -21,10 +21,10 @@
     deploy-rs.url = "github:serokell/deploy-rs";
     # Secret management with sops
     sops-nix.url = "github:Mic92/sops-nix";
-    # Emacs overlay
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
     # nur-kapack = { url = "/home/adfaure/Projects/nur-kapack"; };
     nur.url = "github:nix-community/NUR";
+    # Emacs overlay
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
@@ -49,7 +49,7 @@
           cgvg = self.packages.x86_64-linux.cgvg;
         };
         configuration = {
-          nixpkgs.overlays = [ emacs-overlay.overlay nur.overlay ];
+          nixpkgs.overlays = [ emacs-overlay.overlay ];
           nixpkgs.config.allowUnfree = true;
           imports = [ ./homes/adfaure.nix ];
         };
@@ -64,7 +64,7 @@
           modules = [
             # Activate overlays
             ({ nixpkgs, lib, options, modulesPath, config, nur }: {
-              nixpkgs.overlays = [ nur.overlay ];
+              # nixpkgs.overlays = [ nur.overlay ];
             })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-roger.nix
@@ -76,7 +76,7 @@
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
             ({ nixpkgs, lib, options, modulesPath, config, nur, specialArgs  }: {
-              nixpkgs.overlays = [ nur.overlay ];
+              # nixpkgs.overlays = [ nur.overlay ];
             })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-adchire.nix
@@ -146,7 +146,7 @@
       # You can enter this shell with `nix develop`
       devShell.x86_64-linux = with import nixpkgs {
         system = "x86_64-linux";
-        overlays = [ nur.overlay ];
+        # overlays = [ nur.overlay ];
       };
         mkShell { buildInputs = [ nix-flake.packages.x86_64-linux.nix ]; };
     };
