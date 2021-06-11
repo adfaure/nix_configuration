@@ -25,17 +25,15 @@ in {
     };
 
     oh-my-zsh = {
+      custom = "${my-dotfiles}/files/custom_zsh";
       enable = true;
-      # theme = "juanghurtado";
-      # theme = "dadou";
-      plugins = [ "git" "tig" "sudo" "themes" "z" ];
+      theme = "adfaure";
+      plugins = [ "git" "tig" "sudo" "themes" "z" "jump" "colored-man-pages" "copybuffer" ];
     };
 
     initExtra = lib.mkAfter ''
       source ${zshrc_local}
-      # Source custom theme
-      ${zshrc_theme}
-      '';
+    '';
   };
 
   programs.fzf = {
