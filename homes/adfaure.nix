@@ -78,7 +78,7 @@
       nixfmt
 
       # GUI applications
-      calibreq
+      calibre
     ];
   };
 }
