@@ -6,6 +6,8 @@ with lib; {
   # We make it as an option
   config = mkIf config.environment.adfaure.environments.headless.enable {
     environment.systemPackages = with pkgs; [
+      # Administration
+
       # monitoring
       psmisc
       pmutils

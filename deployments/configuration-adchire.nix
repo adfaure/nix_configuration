@@ -9,6 +9,8 @@
     ../nixos/services/i3
     # We want flake activated
     ../nixos/modules/flakes
+    # Cadvisor
+    ../nixos/modules/monitoring
     # Default linux configuration: users, fonts etc
     ../nixos/profiles/common
     # Server X configuration, also activate i3
