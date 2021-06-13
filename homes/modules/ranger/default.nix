@@ -17,7 +17,7 @@
       bindkey -v '^N' _ranger
     '';
 
-    sessionVariables = { EDITOR = "vim"; };
+    sessionVariables = { EDITOR = "systemd-run --user --slice=exp-vim.slice --scope nvim"; };
   };
 
   # Creating the file bookmarks wich is mutable.
