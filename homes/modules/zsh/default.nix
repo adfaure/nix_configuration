@@ -15,13 +15,16 @@ in {
 
     shellAliases = {
       r = "ranger";
-      vim = "nvim";
       v = "nvim";
       t = "task";
       b = "bat";
       ns = "nix-shell";
       cat = ''bat --paging=never --style="plain"'';
       ranger = "ranger --confdir=$HOME/.config/ranger";
+      # Run vscode into a dedicated cgroup
+      code = "systemd-run --user --slice=exp-vscode.slice --scope code";
+      # Run vim into a cgroup
+      vim = "systemd-run --user --slice=exp-vim.slice --scope nvim";
     };
 
     oh-my-zsh = {
