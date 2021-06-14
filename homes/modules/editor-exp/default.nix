@@ -28,7 +28,6 @@ in {
       # Aliases for experiment
       # Run editors into a dedicated cgroup
       vim = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim'';
-      emacs = ''systemd-run --slice=exp-emacs.slice --scope -p "Delegate=yes" emacs'';
     };
 
     sessionVariables = { EDITOR = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim''; };
