@@ -21,7 +21,7 @@ in {
       ns = "nix-shell";
       cat = ''bat --paging=never --style="plain"'';
       ranger = "ranger --confdir=$HOME/.config/ranger";
-      vim = ''nvim'';
+      # vim = ''nvim'';
       j = "jump";
     };
 
@@ -32,14 +32,8 @@ in {
       plugins = [ "git" "tig" "sudo" "themes" "z" "jump" "colored-man-pages" "copybuffer" ];
     };
 
-    initExtra = lib.mkAfter ''
+    initExtraFirst = lib.mkAfter ''
       source ${zshrc_local}
-      if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-        echo "running term in vscode, moving shell to another cgroup"
-        export TERM_PROGRAM=vscode-cgroup-out
-        systemd-run --scope --slice=exp-shell.slice -p 'Delegate=yes' zsh
-        exit 0
-      fi
     '';
   };
 
