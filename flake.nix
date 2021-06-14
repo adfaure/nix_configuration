@@ -76,10 +76,6 @@
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
             ({ nixpkgs, lib, options, modulesPath, config, specialArgs  }: {
-              systemd.slices.vscode.sliceConfig = {
-              };
-              systemd.user.slices.vscodeuser.sliceConfig = {
-              };
             })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-adchire.nix

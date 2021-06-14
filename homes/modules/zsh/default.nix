@@ -22,10 +22,12 @@ in {
       cat = ''bat --paging=never --style="plain"'';
       ranger = "ranger --confdir=$HOME/.config/ranger";
       # Run vscode into a dedicated cgroup
-      code = "systemd-run --user --slice=exp-vscode.slice --scope code";
+      code = ''systemd-run --slice=exp-vscode.slice --scope -p "Delegate=yes" code'';
       # Run vim into a cgroup
-      vim = "systemd-run --user --slice=exp-vim.slice --scope nvim";
+      vim = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim'';
     };
+
+    sessionVariables = { EDITOR = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim''; };
 
     oh-my-zsh = {
       custom = "${my-dotfiles}/files/custom_zsh";
@@ -36,6 +38,12 @@ in {
 
     initExtra = lib.mkAfter ''
       source ${zshrc_local}
+      if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+        echo "running term in vscode, moving shell to another cgroup"
+        export TERM_PROGRAM=vscode-cgroup-out
+        systemd-run --scope --slice=exp-shell.slice -p 'Delegate=yes' zsh
+        exit 0
+      fi
     '';
   };
 
