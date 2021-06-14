@@ -28,6 +28,12 @@ let
     }
     # Languages support
     {
+      name = "go";
+      publisher = "golang";
+      version = "0.25.1";
+      sha256 = "sha256-ZDUWN9lzDnR77W7xcMFQaaFl/6Lf/x1jgaBkwZPqGGw=";
+    }
+    {
       name = "r";
       publisher = "ikuyadeu";
       version = "1.6.6";
