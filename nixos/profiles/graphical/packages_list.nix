@@ -14,7 +14,7 @@ with lib; {
       glib_networking
       arandr
       # Web
-      firefox
+      # firefox
       chromium
       # Dictionnaries
       aspellDicts.fr

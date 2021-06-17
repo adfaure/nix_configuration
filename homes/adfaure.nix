@@ -27,6 +27,9 @@
       pdftk
       evince
 
+      # Web
+      # firefox
+
       # Lang
       go
       # Linux and dev tools
