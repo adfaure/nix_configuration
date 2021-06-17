@@ -42,7 +42,6 @@ in {
     '';
   };
 
-  sessionVariables = { EDITOR = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim''; };
 
   programs.browserpass = {
     enable = true;
