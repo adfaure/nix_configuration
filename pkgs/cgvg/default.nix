@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, perl }:
+{ pkgs, stdenv, fetchurl, perl }:
 
 stdenv.mkDerivation rec {
   pname = "cgvg";
@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ perl ];
 
-  meta = with stdenv.lib; {
+  meta = with pkgs.lib; {
     description = "Commandline tools for searching and browsing sourcecode";
     longDescription = ''
       cgvg is a pair of Perl scripts ("cg" and "vg") which are meant to assist a programmer in doing command-line source browsing.

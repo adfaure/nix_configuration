@@ -34,7 +34,7 @@
         # Dedicated package for my personal website
         kodama = with import nixos-unstable { system = "x86_64-linux"; };
           callPackage ./pkgs/kodama { };
-        cgvg = with import nixpkgs { system = "x86_64-linux"; };
+        cgvg = with import nixos-unstable { system = "x86_64-linux"; };
           callPackage ./pkgs/cgvg { };
       };
 
