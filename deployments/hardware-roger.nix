@@ -24,7 +24,6 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.nitrokey = {
     enable = true;
-    # group = "wheel";
   };
 
   hardware.pulseaudio = {

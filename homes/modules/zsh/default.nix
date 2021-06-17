@@ -21,13 +21,9 @@ in {
       ns = "nix-shell";
       cat = ''bat --paging=never --style="plain"'';
       ranger = "ranger --confdir=$HOME/.config/ranger";
-      # Run vscode into a dedicated cgroup
-      code = ''systemd-run --slice=exp-vscode.slice --scope -p "Delegate=yes" code'';
-      # Run vim into a cgroup
-      vim = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim'';
+      vim = ''nvim'';
+      j = "jump";
     };
-
-    sessionVariables = { EDITOR = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim''; };
 
     oh-my-zsh = {
       custom = "${my-dotfiles}/files/custom_zsh";
