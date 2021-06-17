@@ -101,7 +101,7 @@ let
 in {
 
   home.packages = [
-    (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope -p "Delegate=yes" ${vscode-with-extensions}/bin/code'')
+    (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope -p "Delegate=yes" ${vscode-with-extensions}/bin/code $@'')
    ];
 
 }

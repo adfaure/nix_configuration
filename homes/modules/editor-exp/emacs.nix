@@ -78,6 +78,6 @@ let
 in {
   home.file.".emacs".text = builtins.readFile "${my-dotfiles}/files/emacs_conf";
   home.packages = [
-    (pkgs.writeShellScriptBin "emacs" ''systemd-run --slice=exp-emacs.slice --scope -p "Delegate=yes" ${emacs}/bin/emacs'')
+    (pkgs.writeShellScriptBin "emacs" ''systemd-run --slice=exp-emacs.slice --scope -p "Delegate=yes" ${emacs}/bin/emacs $@'')
   ];
 }
