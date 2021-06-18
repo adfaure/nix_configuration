@@ -49,13 +49,14 @@ in {
 
   services.radicale = {
     enable = true;
-    config = ''
-      [server]
-      hosts = localhost:${builtins.toString radicalePort}
-
-      [storage]
-      filesystem_folder = ${radicaleCollection}
-    '';
+    settings = {
+      server = {
+        hosts = [ "localhost:${builtins.toString radicalePort}" ];
+      };
+      storage = {
+        system_folder = "${radicaleCollection}";
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [

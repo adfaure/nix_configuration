@@ -113,7 +113,7 @@
             # Deploy the home-manager configuration with the home manager nixos module.
             # This enable to be set in a complete working environment when I am logging to new machines.
             home-manager.nixosModules.home-manager
-            ./nixos/profiles/home-manager/adfaure.nix
+            ./nixos/profiles/home-manager/base.nix
           ];
         };
       };
@@ -139,8 +139,9 @@
       };
 
       # Sanity check for deploy-rs
-      checks = builtins.mapAttrs
-        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      checks = {
+        # cgvg = self.packages.x86_64-linux.cgvg;
+      };
 
       # You can enter this shell with `nix develop`
       devShell.x86_64-linux = with import nixpkgs {
