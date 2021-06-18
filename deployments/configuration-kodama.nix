@@ -12,6 +12,9 @@ in {
     ./hardware-kodama.nix
     # Default linux configuration: users, fonts etc
     ../nixos/profiles/common
+    # activate the flake
+    ../nixos/modules/flakes
+
   ];
 
   # Without this extra configuration deploy-rs fails because sudo requires a password.
