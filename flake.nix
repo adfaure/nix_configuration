@@ -32,9 +32,9 @@
 
       packages.x86_64-linux = {
         # Dedicated package for my personal website
-        kodama = with import nixos-unstable { system = "x86_64-linux"; };
+        kodama = with import nixpkgs { system = "x86_64-linux"; };
           callPackage ./pkgs/kodama { };
-        cgvg = with import nixos-unstable { system = "x86_64-linux"; };
+        cgvg = with import nixpkgs { system = "x86_64-linux"; };
           callPackage ./pkgs/cgvg { };
       };
 
@@ -63,9 +63,10 @@
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
             # Activate overlays
-            ({ nixpkgs, lib, options, modulesPath, config, nur, ... }: {
-              # nixpkgs.overlays = [ nur.overlay ];
-            })
+            ({ nixpkgs, lib, options, modulesPath, config, nur, ... }:
+              {
+                # nixpkgs.overlays = [ nur.overlay ];
+              })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-roger.nix
           ];
@@ -75,8 +76,8 @@
           system = "x86_64-linux";
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
-            ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }: {
-            })
+            ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }:
+              { })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-adchire.nix
           ];
@@ -138,16 +139,13 @@
         fastConnection = true;
       };
 
-      # Sanity check for deploy-rs
-      checks = {
-        # cgvg = self.packages.x86_64-linux.cgvg;
+      checks.x86_64-linux = with import nixpkgs { system = "x86_64-linux"; }; {
+        kodama = self.packages.x86_64-linux.kodama;
+        cgvg = self.packages.x86_64-linux.cgvg;
+
+        # Deploy-rs sanity check
+        inherit (builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
       };
 
-      # You can enter this shell with `nix develop`
-      devShell.x86_64-linux = with import nixpkgs {
-        system = "x86_64-linux";
-        # overlays = [ nur.overlay ];
-      };
-        mkShell { buildInputs = [ nix-flake.packages.x86_64-linux.nix ]; };
     };
 }
