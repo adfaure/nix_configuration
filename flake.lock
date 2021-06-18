@@ -91,13 +91,17 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-jAGTiLtxjlgTrQVOKYDfsb9QcTGeras6McQgAOmgj+s=",
-        "path": "/home/adfaure/Projects/dotfiles",
-        "type": "path"
+        "lastModified": 1623072724,
+        "narHash": "sha256-F4G7v67/vDhuuAUniVziZUcOMVmvxb1u8nCfpvK6rTo=",
+        "owner": "adfaure",
+        "repo": "dotfiles",
+        "rev": "64e1cbd473defda6d6ec151c856fb660fab344a9",
+        "type": "github"
       },
       "original": {
-        "path": "/home/adfaure/Projects/dotfiles",
-        "type": "path"
+        "owner": "adfaure",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "naersk": {
@@ -222,11 +226,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1624035635,
-        "narHash": "sha256-BXhxDF+jghEUZwHIjPO9//gINvCAmXDcCbF+EqOXgU8=",
+        "lastModified": 1624044329,
+        "narHash": "sha256-2PFhKuT1zONdMnitTQDj8UqXB5xmuJPGYLJSpkk/lRE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9954cbfaa41b53128676c31f9c7711d907e97f47",
+        "rev": "a33072b1da35919e4f4a7029c3e38f74b1481a05",
         "type": "github"
       },
       "original": {
