@@ -30,15 +30,12 @@
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
     , sops-nix, home-manager, emacs-overlay, nur, nix-flake }: {
 
-      packages.x86_64-linux = let
-        unstable = import nixos-unstable { system = "x86_64-linux"; };
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-      in {
+      packages.x86_64-linux = {
         # Dedicated package for my personal website
-        kodama =
-          unstable.callPackage ./pkgs/kodama { };
-        cgvg =
-          unstable.callPackage ./pkgs/cgvg { };
+        kodama = with import nixos-unstable { system = "x86_64-linux"; };
+          callPackage ./pkgs/kodama { };
+        cgvg = with import nixos-unstable { system = "x86_64-linux"; };
+          callPackage ./pkgs/cgvg { };
       };
 
       # Separated home-manager config for non-nixos machines.
@@ -78,7 +75,7 @@
           system = "x86_64-linux";
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
-            ({ nixpkgs, lib, options, modulesPath, config, ... }: {
+            ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }: {
             })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-adchire.nix
