@@ -8,8 +8,8 @@
     # Needed to have a recent hugo version for the kodama package
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      # url = "github:/adfaure/dotfiles";
-      url = "/home/adfaure/Projects/dotfiles";
+      url = "github:/adfaure/dotfiles";
+      # url = "/home/adfaure/Projects/dotfiles";
       # It is possible to pin the revision with:
       # To be fully reproducible, I can pin my repos
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
@@ -139,9 +139,10 @@
         fastConnection = true;
       };
 
-      checks.x86_64-linux = with import nixpkgs { system = "x86_64-linux"; }; {
-        kodama = self.packages.x86_64-linux.kodama;
+      # Sanity check for deploy-rs
+      checks = {
         cgvg = self.packages.x86_64-linux.cgvg;
+        kodama = self.packages.x86_64-linux.cgvg;
 
         # Deploy-rs sanity check
         inherit (builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
