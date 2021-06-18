@@ -140,9 +140,9 @@
       };
 
       # Sanity check for deploy-rs
-      checks = {
+      checks.x86_64-linux = with import nixpkgs { system = "x86_64-linux"; }; {
         cgvg = self.packages.x86_64-linux.cgvg;
-        kodama = self.packages.x86_64-linux.cgvg;
+        build-kodama = self.packages.x86_64-linux.kodama;
 
         # Deploy-rs sanity check
         inherit (builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
