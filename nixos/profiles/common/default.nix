@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, modulesPath, specialArgs }:
+{ config, lib, pkgs, options, modulesPath, ... }:
 with lib; {
 
   require = [ ./package_list.nix ];
@@ -75,7 +75,7 @@ with lib; {
   i18n = { defaultLocale = "en_US.UTF-8"; };
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     enableGhostscriptFonts = true;
     fontconfig = {
       enable = true;
