@@ -101,8 +101,7 @@ let
 in {
 
   home.packages = [
-    vscode-with-extensions
-    kgs.cabal-install
+    (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope -p "Delegate=yes" ${vscode-with-extensions}/bin/code $@'')
    ];
 
 }

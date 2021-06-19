@@ -1,6 +1,7 @@
 { config, lib, pkgs, my-dotfiles, ... }:
 let my_vim_plugins = pkgs.callPackage ./my_vim_plugins.nix { };
 in {
+
   programs.neovim = {
     enable = true;
     viAlias = true;
