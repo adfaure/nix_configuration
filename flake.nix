@@ -146,6 +146,31 @@
 
         # Deploy-rs sanity check
         inherit (builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
+
+        # Nixos tests
+        test =
+          with import (nixpkgs + "/nixos/lib/testing-python.nix") {
+            inherit system;
+          };
+
+          makeTest {
+            nodes = {
+              foo = { pkgs, lib, ... }: {
+
+                services.sshd.enable = true;
+                networking.firewall.allowedTCPPorts = [ 80 ];
+
+                users.users.root.password = "nixos";
+                services.openssh.permitRootLogin = lib.mkDefault "yes";
+                services.getty.autologinUser = lib.mkDefault "root";
+              };
+            };
+
+            testScript = ''
+              start_all()
+              foo.succeed("true")
+            '';
+          };
       };
 
     };
