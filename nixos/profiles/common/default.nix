@@ -6,6 +6,7 @@ with lib; {
   # This option enables the import of the package defined in `package_list.nix`
   # in the system environment.
   environment.adfaure.environments.headless.enable = true;
+  environment.adfaure.services.syncthing.enable = true;
 
   # use Vim by default
   environment.shellAliases = {
