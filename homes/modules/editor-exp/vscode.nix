@@ -1,4 +1,4 @@
-{ config, lib, pkgs, my-dotfiles, ... }:
+{ config, lib, pkgs, my-dotfiles, wrapCmd, ... }:
 let
   extensions = (with pkgs.vscode-extensions; [
     # Languages support
@@ -101,7 +101,7 @@ let
 in {
 
   home.packages = [
-    (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope -p "Delegate=yes" ${vscode-with-extensions}/bin/code $@'')
+    (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope --user -p "Delegate=yes" ${vscode-with-extensions}/bin/code $@'')
    ];
 
 }

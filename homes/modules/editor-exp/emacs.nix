@@ -1,4 +1,4 @@
-{ config, lib, pkgs, my-dotfiles, ... }:
+{ config, lib, pkgs, my-dotfiles, wrapCmd, ... }:
 let
   # This emacs package comes from the emcas-overlay
   # wich enable to pull dependencies from the emacs configuration
@@ -78,6 +78,6 @@ let
 in {
   home.file.".emacs".text = builtins.readFile "${my-dotfiles}/files/emacs_conf";
   home.packages = [
-    (pkgs.writeShellScriptBin "emacs" ''systemd-run --slice=exp-emacs.slice --scope -p "Delegate=yes" ${emacs}/bin/emacs $@'')
+    (pkgs.writeShellScriptBin "emacs" ''systemd-run --slice=exp-emacs.slice --user -p "Delegate=yes" ${emacs}/bin/emacs $@'')
   ];
 }

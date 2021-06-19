@@ -3,21 +3,14 @@ let
     myWrapper = pkgs.makeSetupHook { deps = [ pkgs.dieHook ]; substitutions = { shell = pkgs.targetPackages.runtimeShell; }; }
                               ./cgroup-wrapper.sh;
 
-    hello-cgroup = pkgs.writeShellScriptBin "hello" ''systemd-run --slice=exp-hello.slice --scope -p "Delegate=yes" ${pkgs.hello}/bin/hello'';
-    atom-cgroup = pkgs.writeShellScriptBin "atom" ''systemd-run --slice=exp-atom.slice --scope -p "Delegate=yes" ${pkgs.atom}/bin/atom $@'';
-    pycharm-cgroup = pkgs.writeShellScriptBin "pycharm" ''systemd-run --slice=exp-pycharm.slice --scope -p "Delegate=yes" ${pkgs.jetbrains.pycharm-community}/bin/pycharm-community $@'';
-    sublime-cgroup = pkgs.writeShellScriptBin "subl" ''systemd-run --slice=exp-sublime.slice --scope -p "Delegate=yes" ${pkgs.sublime3}/bin/sublime3 $@'';
-    firefox-cgroup = pkgs.writeShellScriptBin "firefox" ''systemd-run --slice=exp-firefox.slice --scope -p "Delegate=yes" ${pkgs.firefox}/bin/firefox $@'';
-in {
+    wrapCmd = cmd: path: pkgs.writeShellScriptBin "${cmd}" ''systemd-run --slice=exp-${cmd}.slice --scope --user -p "Delegate=yes" ${path} $@'';
 
-  # programs.neovim = {
-  #     package = (pkgs.neovim.overrideAttrs (old: {
-  #       buildInputs = [ myWrapper ];
-  #       postInstall = ''
-  #           wrapProgram $out/bin/nvim
-  #       '';
-  #   }));
-  # };
+    atom-cgroup = wrapCmd "atom" "${pkgs.atom}/bin/atom"; # pkgs.writeShellScriptBin "atom" ''systemd-run --slice=exp-atom.slice --user -p "Delegate=yes" ${pkgs.atom}/bin/atom $@'';
+    pycharm-cgroup = wrapCmd "pycharm" "${pkgs.jetbrains.pycharm-community}/bin/pycharm-community"; # pkgs.writeShellScriptBin "pycharm" ''systemd-run --slice=exp-pycharm.slice --user -p "Delegate=yes" ${pkgs.jetbrains.pycharm-community}/bin/pycharm-community $@'';
+    sublime-cgroup = wrapCmd "subl" "${pkgs.sublime3}/bin/sublime3"; # pkgs.writeShellScriptBin "subl" ''systemd-run --slice=exp-sublime.slice --user -p "Delegate=yes" ${pkgs.sublime3}/bin/sublime3 $@'';
+    firefox-cgroup =  wrapCmd "firefox" "${pkgs.firefox}/bin/firefox"; # pkgs.writeShellScriptBin "firefox" ''systemd-run --slice=exp-firefox.slice --user -p "Delegate=yes" ${pkgs.firefox}/bin/firefox $@'';
+    vimAlias = ''systemd-run --slice=exp-vim.slice --scope --user -p "Delegate=yes" nvim'';
+in {
 
   imports = [
       ./vscode.nix
@@ -27,16 +20,16 @@ in {
   programs.zsh = {
     shellAliases = {
       # For the moment vim is the only one I cannot figure how to wrap it
-      vim = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim'';
+      vim = vimAlias;
     };
 
-    sessionVariables = { EDITOR = ''systemd-run --slice=exp-vim.slice --scope -p "Delegate=yes" nvim''; };
+    sessionVariables = { EDITOR = vimAlias; };
 
     initExtra = lib.mkAfter ''
       if [[ "$TERM_PROGRAM" == "vscode" ]]; then
         echo "running term in vscode, moving shell to another cgroup"
         export TERM_PROGRAM=vscode-cgroup-out
-        systemd-run --scope --slice=exp-shell.slice -p 'Delegate=yes' zsh
+        systemd-run --slice=exp-shell.slice --scope --user -p 'Delegate=yes' zsh
         exit 0
       fi
     '';
@@ -50,7 +43,6 @@ in {
 
   home.packages = with pkgs; [
     atom-cgroup
-    hello-cgroup
     pycharm-cgroup
     sublime-cgroup
     firefox-cgroup
