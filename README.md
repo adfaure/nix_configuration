@@ -1,5 +1,4 @@
-# Nixos configuration
-
+# Nixos configuration ![example workflow](https://github.com/adfaure/nix_configuration/actions/workflows/flake-check.yml/badge.svg)
 ## Structure
 
 This repository contains the nixos configurations for my machines.
