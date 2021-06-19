@@ -9,6 +9,13 @@
     storageDriver = "influxdb";
     storageDriverHost = "${config.networking.hostName}:8086";
     storageDriverDb = "cadvisor";
+    extraOptions = [
+      # https://github.com/google/cadvisor/blob/master/docs/runtime_options.md
+      "--allow_dynamic_housekeeping=false"
+      # "--global_housekeeping_interval=10s"
+      # "--housekeeping_interval=5s"
+      # "--max_housekeeping_interval=5s"
+    ];
   };
 
   services.influxdb = {

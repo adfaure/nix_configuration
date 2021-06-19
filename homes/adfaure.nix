@@ -4,9 +4,11 @@
   imports = [
     ./base.nix
 
-    # GUI
-    ./modules/emacs
-    ./modules/vscode
+    # GUI (disabled for experiment)
+    # ./modules/emacs
+    # ./modules/vscode
+
+    ./modules/editor-exp
   ];
 
   # Top level configuration for the user adfaure (me!)
@@ -24,6 +26,9 @@
       # PDF reader
       pdftk
       evince
+
+      # Web
+      # firefox
 
       # Lang
       go
