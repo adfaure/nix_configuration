@@ -36,6 +36,8 @@
           callPackage ./pkgs/kodama { };
         cgvg = with import nixpkgs { system = "x86_64-linux"; };
           callPackage ./pkgs/cgvg { };
+        cadvisor = with import nixos-unstable { system = "x86_64-linux"; };
+            callPackage ./pkgs/cadvisor { };
       };
 
       # Separated home-manager config for non-nixos machines.
@@ -55,6 +57,10 @@
         };
       };
 
+      overlay = final: prev: {
+        cadvisor = self.packages.x86_64-linux.cadvisor;
+      };
+
       nixosConfigurations = {
         # Configuration for my current working machine.
         roger = nixpkgs.lib.nixosSystem {
@@ -62,11 +68,6 @@
           # extra arguments will be injected into the modules.
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
-            # Activate overlays
-            ({ nixpkgs, lib, options, modulesPath, config, nur, ... }:
-              {
-                # nixpkgs.overlays = [ nur.overlay ];
-              })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-roger.nix
           ];
@@ -77,7 +78,11 @@
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
             ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }:
-              { })
+              {
+                nixpkgs.overlays = [
+                  self.overlay
+                ];
+              })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-adchire.nix
           ];
@@ -147,6 +152,5 @@
         # Deploy-rs sanity check
         inherit (builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
       };
-
     };
 }

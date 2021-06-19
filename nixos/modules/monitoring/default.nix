@@ -26,16 +26,4 @@
     enable = true;
   };
 
-  security.polkit = {
-    enable = true;
-    adminIdentities = [
-      "unix-group:wheel"
-    ];
-    extraConfig = ''
-      /* Allow users in group whell without password. */
-      polkit.addRule(function(action, subject) {
-        if (subject.isInGroup("wheel")) return "yes";
-      });
-      '';
-  };
 }
