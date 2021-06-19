@@ -9,7 +9,7 @@ with lib; {
     exec feh --bg-scale '${./wallpapers/totoro.jpg}'
   '';
 
-  # environment.adfaure.programs.emacs.enable=true;
+  # environment.adfaure.programs.emacs.enable=true;
   programs.light.enable = true;
 
   services = {
