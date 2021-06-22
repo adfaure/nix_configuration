@@ -1,4 +1,4 @@
-{ config, pkgs, nodes, lib, kodama, ... }:
+{ config, pkgs, nodes, lib, kodama, batsite, ... }:
 let
   radicaleCollection = "/data/radicale";
   webPort = 80;
@@ -29,6 +29,7 @@ in {
     appendHttpConfig = ''
       server_names_hash_bucket_size 64;
     '';
+
     virtualHosts."adrien-faure.fr" = {
       forceSSL = true;
       enableACME = true;
@@ -45,6 +46,13 @@ in {
         '';
       };
     };
+
+    virtualHosts."batsim.adrien-faure.fr" = {
+      forceSSL = true;
+      enableACME = true;
+      locations."/" = { root = "${batsite}"; };
+    };
+
   };
 
   services.radicale = {
