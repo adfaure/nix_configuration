@@ -34,6 +34,8 @@
         # Dedicated package for my personal website
         kodama = with import nixpkgs { system = "x86_64-linux"; };
           callPackage ./pkgs/kodama { };
+        batsite = with import nixpkgs { system = "x86_64-linux"; };
+          callPackage ./pkgs/batsite { };
         cgvg = with import nixpkgs { system = "x86_64-linux"; };
           callPackage ./pkgs/cgvg { };
         cadvisor = with import nixos-unstable { system = "x86_64-linux"; };
@@ -97,6 +99,7 @@
             inherit my-dotfiles emacs-overlay;
             cgvg = self.packages.x86_64-linux.cgvg;
             kodama = self.packages.x86_64-linux.kodama;
+            batsite = self.packages.x86_64-linux.batsite;
           };
           modules = [
             # Main configuration, includes the hardware file and the module list.
