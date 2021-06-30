@@ -9,8 +9,8 @@ stdenv.mkDerivation rec {
 
   src = fetchgit {
     url = "https://framagit.org/adfaure/batsite";
-    sha256 = "sha256-GYwx9qNAN2/LkuEwyjqTceh047rz7Yio/IRR95aTk4I=";
-    rev = "70ee8cd6c62ee22f9aa8a9865e145552ce1f7c71";
+    sha256 = "sha256-zHwX0CXNwEnFgU37x2LwGBO9H9ci/AqljxylZRtwk8I=";
+    rev = "cc0f046a71afa7d19a8c796d674e89d7d49ed3e0";
   };
 
   checkPhase = ''

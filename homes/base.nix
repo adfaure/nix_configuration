@@ -9,6 +9,7 @@
 
   # Top level configuration for the user adfaure (me!)
   config = {
+
     # First we activate home-manager
     programs.home-manager.enable = true;
     # Small git config (should I make a dedicated module?)

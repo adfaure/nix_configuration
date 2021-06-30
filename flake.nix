@@ -30,16 +30,19 @@
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
     , sops-nix, home-manager, emacs-overlay, nur, nix-flake }: {
 
-      packages.x86_64-linux = {
+      packages.x86_64-linux = with import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+        overlays = [ emacs-overlay.overlay ];
+      }; {
         # Dedicated package for my personal website
-        kodama = with import nixpkgs { system = "x86_64-linux"; };
-          callPackage ./pkgs/kodama { };
-        batsite = with import nixpkgs { system = "x86_64-linux"; };
-          callPackage ./pkgs/batsite { };
-        cgvg = with import nixpkgs { system = "x86_64-linux"; };
-          callPackage ./pkgs/cgvg { };
-        cadvisor = with import nixos-unstable { system = "x86_64-linux"; };
-            callPackage ./pkgs/cadvisor { };
+        kodama = callPackage ./pkgs/kodama { };
+        batsite = callPackage ./pkgs/batsite { };
+        # Programs
+        cgvg = callPackage ./pkgs/cgvg { };
+        myVscode = callPackage ./pkgs/vscode { };
+        myEmacs = callPackage ./pkgs/emacs { inherit my-dotfiles; };
+        cadvisor = callPackage ./pkgs/cadvisor { };
       };
 
       # Separated home-manager config for non-nixos machines.
@@ -53,14 +56,18 @@
           cgvg = self.packages.x86_64-linux.cgvg;
         };
         configuration = {
-          nixpkgs.overlays = [ emacs-overlay.overlay ];
+          nixpkgs.overlays = [ self.overlay ];
           nixpkgs.config.allowUnfree = true;
           imports = [ ./homes/adfaure.nix ];
         };
       };
 
+      # Overlay to inject my packages in the different modules
       overlay = final: prev: {
         cadvisor = self.packages.x86_64-linux.cadvisor;
+        cgvg = self.packages.x86_64-linux.cgvg;
+        myVscode = self.packages.x86_64-linux.myVscode;
+        myEmacs = self.packages.x86_64-linux.myEmacs;
       };
 
       nixosConfigurations = {
@@ -79,12 +86,9 @@
           system = "x86_64-linux";
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
-            ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }:
-              {
-                nixpkgs.overlays = [
-                  self.overlay
-                ];
-              })
+            ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }: {
+              nixpkgs.overlays = [ self.overlay ];
+            })
             # Main configuration, includes the hardware file and the module list
             ./deployments/configuration-adchire.nix
           ];
@@ -153,7 +157,9 @@
         build-kodama = self.packages.x86_64-linux.kodama;
 
         # Deploy-rs sanity check
-        inherit (builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib);
+        inherit (builtins.mapAttrs
+          (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib)
+        ;
       };
     };
 }
