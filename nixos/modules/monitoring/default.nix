@@ -4,7 +4,7 @@
   # Grafana is also enabled, and need to be configured within the web interface at localhost:3000:
   time.timeZone = "Europe/Paris";
   services.cadvisor = {
-    enable = true;
+    enable = false;
     listenAddress = "${config.networking.hostName}";
     storageDriver = "influxdb";
     storageDriverHost = "${config.networking.hostName}:8086";
@@ -12,18 +12,15 @@
     extraOptions = [
       # https://github.com/google/cadvisor/blob/master/docs/runtime_options.md
       "--allow_dynamic_housekeeping=false"
-      # "--global_housekeeping_interval=10s"
-      # "--housekeeping_interval=5s"
-      # "--max_housekeeping_interval=5s"
     ];
   };
 
   services.influxdb = {
-    enable = true;
+    enable = false;
   };
 
   services.grafana = {
-    enable = true;
+    enable = false;
   };
 
 }
