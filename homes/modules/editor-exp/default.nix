@@ -3,18 +3,21 @@ let
     myWrapper = pkgs.makeSetupHook { deps = [ pkgs.dieHook ]; substitutions = { shell = pkgs.targetPackages.runtimeShell; }; }
                               ./cgroup-wrapper.sh;
 
-    wrapCmd = cmd: path: pkgs.writeShellScriptBin "${cmd}" ''systemd-run --slice=exp-${cmd}.slice --scope --user -p "Delegate=yes" ${path} $@'';
+    wrapCmd = cmd: path: pkgs.writeShellScriptBin "${cmd}" ''systemd-run --slice=exp-${cmd}.slice --scope --user -p "Delegate=yes" ${path} $@ '';
 
-    atom-cgroup = wrapCmd "atom" "${pkgs.atom}/bin/atom"; # pkgs.writeShellScriptBin "atom" ''systemd-run --slice=exp-atom.slice --user -p "Delegate=yes" ${pkgs.atom}/bin/atom $@'';
-    pycharm-cgroup = wrapCmd "pycharm" "${pkgs.jetbrains.pycharm-community}/bin/pycharm-community"; # pkgs.writeShellScriptBin "pycharm" ''systemd-run --slice=exp-pycharm.slice --user -p "Delegate=yes" ${pkgs.jetbrains.pycharm-community}/bin/pycharm-community $@'';
-    sublime-cgroup = wrapCmd "subl" "${pkgs.sublime3}/bin/sublime3"; # pkgs.writeShellScriptBin "subl" ''systemd-run --slice=exp-sublime.slice --user -p "Delegate=yes" ${pkgs.sublime3}/bin/sublime3 $@'';
-    firefox-cgroup =  wrapCmd "firefox" "${pkgs.firefox}/bin/firefox"; # pkgs.writeShellScriptBin "firefox" ''systemd-run --slice=exp-firefox.slice --user -p "Delegate=yes" ${pkgs.firefox}/bin/firefox $@'';
-    vimAlias = ''systemd-run --slice=exp-vim.slice --scope --user -p "Delegate=yes" nvim'';
+    atom-cgroup = wrapCmd "atom" "${pkgs.atom}/bin/atom";
+    pycharm-cgroup = wrapCmd "pycharm" "${pkgs.jetbrains.pycharm-community}/bin/pycharm-community";
+    sublime-cgroup = wrapCmd "subl" "${pkgs.sublime3}/bin/sublime3";
+    firefox-cgroup =  wrapCmd "firefox" "${pkgs.firefox}/bin/firefox";
+    vimAlias = ''systemd-run --slice=exp-vim.slice --scope --user -p 'Delegate=yes' nvim $@'';
+    vscode-cgroup =  wrapCmd "code" "${pkgs.myVscode}/bin/code";
+    emacs-cgroup =  wrapCmd "emacs" "${pkgs.myEmacs}/bin/emacs";
+
 in {
 
   imports = [
-      ./vscode.nix
-      ./emacs.nix
+      # ./vscode.nix
+      ./../emacs
   ];
 
   programs.zsh = {
@@ -35,7 +38,6 @@ in {
     '';
   };
 
-
   programs.browserpass = {
     enable = true;
     browsers = [ "firefox" ];
@@ -46,5 +48,7 @@ in {
     pycharm-cgroup
     sublime-cgroup
     firefox-cgroup
+    vscode-cgroup
+    emacs-cgroup
   ];
 }

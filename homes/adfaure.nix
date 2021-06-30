@@ -15,7 +15,6 @@
   config = {
     # First we activate home-manager
     programs.home-manager.enable = true;
-
     home.file.".config/sakura/sakura.conf".text =
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 

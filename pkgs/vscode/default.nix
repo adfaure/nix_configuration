@@ -1,4 +1,4 @@
-{ config, lib, pkgs, my-dotfiles, wrapCmd, ... }:
+{ config, lib, pkgs, ... }:
 let
   extensions = (with pkgs.vscode-extensions; [
     # Languages support
@@ -27,6 +27,12 @@ let
       sha256 = "sha256-vSuchamBxc5klo1vWWHJPmBFLh1He/Fxl/1GpEIognA=";
     }
     # Languages support
+    {
+      name = "vscode-java-pack";
+      publisher = "vscjava";
+      version = "0.17.0";
+      sha256 = "sha256-JTrDXkGFf+j3YdH7iA1TkXuoQMnYEnpmsYNnRDRXQjA=";
+    }
     {
       name = "go";
       publisher = "golang";
@@ -66,8 +72,8 @@ let
     {
       name = "python";
       publisher = "ms-python";
-      version = "2021.5.842923320";
-      sha256 = "sha256-WYio9Mc0SeJIQNlO8ua059WgwLBrvNTOwy3ZklJVeaA=";
+      version = "2021.6.944021595";
+      sha256 = "sha256-N5YaY/bZ/DQvjFguZgiRSaJI9r4KJ7042Tgz0DqQ4Z4=";
     }
     # Theme and appearance
     {
@@ -96,12 +102,12 @@ let
     }
   ];
 
-  vscode-with-extensions =
-    pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; };
-in {
-
-  home.packages = [
-    (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope --user -p "Delegate=yes" ${vscode-with-extensions}/bin/code $@'')
-   ];
-
-}
+in
+  pkgs.vscode-with-extensions.override { vscodeExtensions = extensions; }
+# in {
+#
+#   home.packages = [
+#     (pkgs.writeShellScriptBin "code" ''systemd-run --slice=exp-code.slice --scope --user -p "Delegate=yes" ${vscode-with-extensions}/bin/code $@'')
+#    ];
+#
+# }
