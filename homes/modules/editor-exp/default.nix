@@ -9,7 +9,7 @@ let
     pycharm-cgroup = wrapCmd "pycharm" "${pkgs.jetbrains.pycharm-community}/bin/pycharm-community";
     sublime-cgroup = wrapCmd "subl" "${pkgs.sublime3}/bin/sublime3";
     firefox-cgroup =  wrapCmd "firefox" "${pkgs.firefox}/bin/firefox";
-    vimAlias = ''systemd-run --slice=exp-vim.slice --scope --user -p 'Delegate=yes' nvim $@'';
+    vimAlias = ''systemd-run --slice=exp-vim.slice --scope --user -p "Delegate=yes" nvim'';
     vscode-cgroup =  wrapCmd "code" "${pkgs.myVscode}/bin/code";
     emacs-cgroup =  wrapCmd "emacs" "${pkgs.myEmacs}/bin/emacs";
 
