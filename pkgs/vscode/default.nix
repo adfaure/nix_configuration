@@ -6,6 +6,7 @@ let
     dhall.dhall-lang
     haskell.haskell
     justusadam.language-haskell
+    ms-vscode.cpptools
 
     # Themes
     pkief.material-icon-theme
