@@ -37,7 +37,7 @@
       '';
     };
 
-    home.stateVersion = "20.09";
+    home.stateVersion = "21.05";
     home.username = "adfaure";
     home.homeDirectory = "/home/adfaure";
 

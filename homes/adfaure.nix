@@ -31,8 +31,7 @@
 
       # Lang
       go
-      # Linux and dev tools
-      any-nix-shell
+
       bat # cat with colors for code
       cloc
       pass

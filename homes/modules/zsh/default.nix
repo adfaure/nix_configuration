@@ -49,5 +49,6 @@ in {
     zsh-navigation-tools
     tig
     zsh
+    any-nix-shell
   ];
 }
