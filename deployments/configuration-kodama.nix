@@ -62,7 +62,7 @@ in {
         hosts = [ "localhost:${builtins.toString radicalePort}" ];
       };
       storage = {
-        system_folder = "${radicaleCollection}";
+        filesystem_folder = "${radicaleCollection}";
       };
     };
   };
