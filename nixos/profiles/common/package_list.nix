@@ -21,7 +21,6 @@ with lib; {
       w3m # web
       poppler # PDF
       mediainfo # audio and video
-      qemu
     ];
   };
 }
