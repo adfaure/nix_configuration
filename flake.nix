@@ -30,19 +30,27 @@
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
     , sops-nix, home-manager, emacs-overlay, nur, nix-flake }: {
 
-      packages.x86_64-linux = with import nixpkgs {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-        overlays = [ emacs-overlay.overlay ];
-      }; {
+      packages.x86_64-linux = let
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = [ emacs-overlay.overlay ];
+        };
+        unstable = import nixos-unstable {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = [ emacs-overlay.overlay ];
+        };
+      in {
         # Dedicated package for my personal website
-        kodama = callPackage ./pkgs/kodama { };
-        batsite = callPackage ./pkgs/batsite { };
+        kodama = pkgs.callPackage ./pkgs/kodama { };
+        batsite = pkgs.callPackage ./pkgs/batsite { };
         # Programs
-        cgvg = callPackage ./pkgs/cgvg { };
-        myVscode = callPackage ./pkgs/vscode { };
-        myEmacs = callPackage ./pkgs/emacs { inherit my-dotfiles; };
-        cadvisor = callPackage ./pkgs/cadvisor { };
+        cgvg = pkgs.callPackage ./pkgs/cgvg { };
+        myVscode = unstable.callPackage ./pkgs/vscode { };
+        myEmacs = pkgs.callPackage ./pkgs/emacs { inherit my-dotfiles; };
+        cadvisor = pkgs.callPackage ./pkgs/cadvisor { };
+        mopify = pkgs.callPackage ./pkgs/mopify { mopidy = pkgs.mopidy; };
       };
 
       # Separated home-manager config for non-nixos machines.
