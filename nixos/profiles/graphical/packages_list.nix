@@ -26,7 +26,6 @@ with lib; {
       feh
       # Media
       vlc
-      spotify
       # Utils
       xorg.xkill
       llpp
