@@ -7,7 +7,6 @@
     # GUI (disabled for experiment)
     # ./modules/emacs
     # ./modules/vscode
-
     ./modules/editor-exp
   ];
 
