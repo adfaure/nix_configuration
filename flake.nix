@@ -50,7 +50,6 @@
         myVscode = unstable.callPackage ./pkgs/vscode { };
         myEmacs = pkgs.callPackage ./pkgs/emacs { inherit my-dotfiles; };
         cadvisor = pkgs.callPackage ./pkgs/cadvisor { };
-        mopify = pkgs.callPackage ./pkgs/mopify { mopidy = pkgs.mopidy; };
       };
 
       # Separated home-manager config for non-nixos machines.
