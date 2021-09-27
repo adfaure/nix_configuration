@@ -2,7 +2,7 @@
 let
   extensions = (with pkgs.vscode-extensions; [
     # Languages support
-    bbenoist.Nix
+    bbenoist.nix
     dhall.dhall-lang
     haskell.haskell
     justusadam.language-haskell
