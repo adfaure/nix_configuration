@@ -34,6 +34,7 @@ with lib; {
     # Whether interactive shells should show which Nix package (if any)
     # provides a missing command.
     command-not-found.enable = true;
+    nm-applet.enable = true;
   };
 
   # Make sudo funnier!
