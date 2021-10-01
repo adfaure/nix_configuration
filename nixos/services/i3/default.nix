@@ -23,8 +23,8 @@ in {
       text = ''
         [mediaplayer]
         command=${./i3blocks/mediaplayer/mediaplayer}
-        instance=spotify
         interval=5
+        instance=spotifyd
         signal=10
 
         [volume]
@@ -105,7 +105,7 @@ in {
       # perl
     ];
 
-    # xserver configuration for i3
+    # xserver configuration for i3
     services.xserver = {
       windowManager.i3.enable = true;
       windowManager.i3.package = pkgs.i3-gaps;
