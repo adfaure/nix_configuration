@@ -8,6 +8,7 @@
     # ./modules/emacs
     # ./modules/vscode
     ./modules/editor-exp
+    ./modules/spotifyd
   ];
 
   # Top level configuration for the user adfaure (me!)
