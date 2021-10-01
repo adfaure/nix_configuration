@@ -54,6 +54,8 @@
 
       # GUI applications
       calibre
+
+      spotify-tui
     ];
   };
 }
