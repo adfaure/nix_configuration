@@ -21,6 +21,7 @@
     home.packages = with pkgs; [
       # Terminal
       sakura
+      kitty
 
       # PDF reader
       pdftk
