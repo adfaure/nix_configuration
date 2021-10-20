@@ -44,6 +44,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    # firefox
     atom-cgroup
     pycharm-cgroup
     sublime-cgroup

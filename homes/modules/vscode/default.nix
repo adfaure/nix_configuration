@@ -9,6 +9,7 @@ let
 
     # Themes
     pkief.material-icon-theme
+    monokai.theme-monokai-pro-vscode
 
     # Tools
     streetsidesoftware.code-spell-checker
