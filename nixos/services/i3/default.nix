@@ -97,10 +97,11 @@ in {
       acpi
       # controle media player
       playerctl
-      rofi
       wirelesstools
       networkmanager_dmenu
       sysstat
+
+      rofi
       # Mediaplayer
       # perl
     ];

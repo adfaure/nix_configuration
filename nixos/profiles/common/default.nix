@@ -75,6 +75,11 @@ with lib; {
 
   i18n = { defaultLocale = "en_US.UTF-8"; };
 
+  environment.variables = {
+    LC_ALL = "C";
+  };
+
+
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
