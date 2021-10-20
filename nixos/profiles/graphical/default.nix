@@ -1,7 +1,9 @@
 { config, pkgs, lib, pi3blocksi3blockskgs, ... }:
 with lib; {
 
-  require = [ ./packages_list.nix ];
+  imports = [
+    ./packages_list.nix
+  ];
 
   environment.adfaure.environments.graphical.enable = true;
   environment.adfaure.services.i3.enable = true;
