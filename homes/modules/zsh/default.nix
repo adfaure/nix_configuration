@@ -23,6 +23,7 @@ in {
       ranger = "ranger --confdir=$HOME/.config/ranger";
       # vim = ''nvim'';
       j = "jump";
+      ssh = "TERM=xterm-color ssh";
     };
 
     oh-my-zsh = {
