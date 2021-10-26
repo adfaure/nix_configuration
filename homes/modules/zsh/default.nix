@@ -23,6 +23,7 @@ in {
       ranger = "ranger --confdir=$HOME/.config/ranger";
       # vim = ''nvim'';
       j = "jump";
+      # So remote shells are not completly lost because they don't know kitty
       ssh = "TERM=xterm-color ssh";
     };
 
