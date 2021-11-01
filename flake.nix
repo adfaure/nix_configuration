@@ -69,6 +69,21 @@
         };
       };
 
+      wsl = home-manager.lib.homeManagerConfiguration rec {
+        system = "x86_64-linux";
+        username = "adfaure";
+        homeDirectory = "/home/${username}";
+        extraSpecialArgs = {
+          inherit nixpkgs my-dotfiles;
+          cgvg = self.packages.x86_64-linux.cgvg;
+        };
+        configuration = {
+          nixpkgs.overlays = [ self.overlay ];
+          nixpkgs.config.allowUnfree = true;
+          imports = [ ./homes/wsl.nix ];
+        };
+      };
+
       # Overlay to inject my packages in the different modules
       overlay = final: prev: {
         cadvisor = self.packages.x86_64-linux.cadvisor;
