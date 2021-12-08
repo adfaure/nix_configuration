@@ -32,13 +32,13 @@
 
   networking = {
     hostName = "adchire"; # Define your hostname.
-    resolvconf.enable = true;
+    # resolvconf.enable = true;
     # If using dhcpcd:
-    dhcpcd.extraConfig = "nohook resolv.conf";
+    # dhcpcd.extraConfig = "nohook resolv.conf";
     # If using NetworkManager:
     networkmanager.enable = true;
-    networkmanager.dns = "default";
-    networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
+    # networkmanager.dns = "default";
+    # networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
   };
 
   time.timeZone = "Europe/Paris";
