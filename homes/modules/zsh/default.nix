@@ -15,7 +15,7 @@ in {
 
     shellAliases = {
       r = "ranger";
-      v = "nvim";
+      v = "vim";
       t = "task";
       b = "bat";
       ns = "nix-shell";
@@ -26,6 +26,8 @@ in {
       # So remote shells are not completly lost because they don't know kitty
       ssh = "TERM=xterm-color ssh";
     };
+
+    sessionVariables = { EDITOR = "vim"; };
 
     oh-my-zsh = {
       custom = "${my-dotfiles}/files/custom_zsh";

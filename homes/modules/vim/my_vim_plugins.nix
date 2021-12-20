@@ -3,6 +3,7 @@
     # airline
     # vim-easytags
     vim-markdown
+    vim-monokai
     vim-misc
     multiple-cursors
     gundo
@@ -26,6 +27,7 @@
     LanguageClient-neovim
     Tagbar
     vim-orgmode
+    vim-speeddating
     vim-visual-multi
     vim-nix
     vim-autoformat
