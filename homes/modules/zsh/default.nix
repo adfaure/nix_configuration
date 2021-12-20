@@ -8,6 +8,7 @@ let
   zshrc_theme = builtins.readFile ("${my-dotfiles}/files/dadou.zsh-theme");
 in {
 
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
