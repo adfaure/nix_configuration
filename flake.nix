@@ -8,8 +8,8 @@
     # Needed to have a recent hugo version for the kodama package
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      url = "github:/adfaure/dotfiles";
-      # url = "/home/adfaure/Projects/dotfiles";
+      # url = "github:/adfaure/dotfiles";
+      url = "/home/adfaure/Projects/dotfiles";
       # It is possible to pin the revision with:
       # To be fully reproducible, I can pin my repos
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
@@ -53,19 +53,21 @@
       };
 
       # Separated home-manager config for non-nixos machines.
-      # Activate with: nix build .#adfaure.activationPackage; ./result/activate.
-      adfaure = home-manager.lib.homeManagerConfiguration rec {
-        system = "x86_64-linux";
-        username = "adfaure";
-        homeDirectory = "/home/${username}";
-        extraSpecialArgs = {
-          inherit nixpkgs my-dotfiles emacs-overlay;
-          cgvg = self.packages.x86_64-linux.cgvg;
-        };
-        configuration = {
-          nixpkgs.overlays = [ self.overlay ];
-          nixpkgs.config.allowUnfree = true;
-          imports = [ ./homes/adfaure.nix ];
+      # Activate with: home-manager --flake .#adfaure switch
+      homeConfigurations = {
+        adfaure = home-manager.lib.homeManagerConfiguration rec {
+          system = "x86_64-linux";
+          username = "adfaure";
+          homeDirectory = "/home/${username}";
+          extraSpecialArgs = {
+            inherit nixpkgs my-dotfiles emacs-overlay;
+            cgvg = self.packages.x86_64-linux.cgvg;
+          };
+          configuration = {
+            nixpkgs.overlays = [ self.overlay ];
+            nixpkgs.config.allowUnfree = true;
+            imports = [ ./homes/adfaure.nix ];
+          };
         };
       };
 

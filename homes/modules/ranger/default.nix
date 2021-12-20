@@ -33,5 +33,6 @@
       builtins.readFile "${my-dotfiles}/files/ranger/rifle.conf";
     ".config/ranger/scope.sh".text =
       builtins.readFile "${my-dotfiles}/files/ranger/scope.sh";
+    ".config/ranger/scope.sh".executable = true;
   };
 }
