@@ -3,11 +3,6 @@
 
   imports = [
     ./base.nix
-
-    # GUI (disabled for experiment)
-    # ./modules/emacs
-    # ./modules/vscode
-    ./modules/editor-exp
     ./modules/spotifyd
   ];
 
@@ -19,6 +14,10 @@
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
     home.packages = with pkgs; [
+      # Texteditors / IDE
+      myVscode
+      myEmacs
+
       # Terminal
       sakura
       kitty
@@ -55,6 +54,7 @@
 
       # GUI applications
       calibre
+      spotify
 
       spotify-tui
     ];

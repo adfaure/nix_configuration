@@ -9,7 +9,7 @@ with lib; {
 
   # use Vim by default
   environment.shellAliases = {
-    "vim" = "nvim";
+    "vim" = "vim";
     "t" = "task";
     "tls" = "task ls";
   };
