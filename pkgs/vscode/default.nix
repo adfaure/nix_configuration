@@ -29,6 +29,12 @@ let
     }
     # Languages support
     {
+      name = "restructuredtext";
+      publisher = "lextudio";
+      version = "167.0.0";
+      sha256 = "sha256-4Z1Ex7bWLsKfFQTsmBLnZ3AXal/wDr/qDLqKOkrIgM4=";
+    }
+    {
       name = "vscode-java-pack";
       publisher = "vscjava";
       version = "0.17.0";

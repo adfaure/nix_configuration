@@ -1,7 +1,7 @@
 { config, lib, pkgs, my-dotfiles, ... }: {
   # Home module for ranger configuration.
   # It also depends on zsh.
-  home.packages = [ pkgs.ranger pkgs.atool pkgs.poppler_utils ];
+  home.packages = [ pkgs.ranger pkgs.atool pkgs.poppler_utils pkgs.file ];
 
   programs.zsh = {
     initExtra = lib.mkAfter ''
