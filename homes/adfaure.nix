@@ -13,10 +13,14 @@
     home.file.".config/sakura/sakura.conf".text =
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
+    programs.browserpass = {
+      enable = true;
+      browsers = [ "firefox" ];
+    };
+
     home.packages = with pkgs; [
       # Texteditors / IDE
       myVscode
-      myEmacs
 
       # Terminal
       sakura
@@ -27,7 +31,7 @@
       evince
 
       # Web
-      # firefox
+      firefox
 
       # Lang
       go
