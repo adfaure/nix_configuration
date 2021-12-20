@@ -5,6 +5,7 @@
     ./modules/vim
     ./modules/zsh
     ./modules/ranger
+    ./modules/emacs
   ];
 
   # Top level configuration for the user adfaure (me!)
