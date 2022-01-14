@@ -22,7 +22,7 @@ in {
 
   services.openssh.enable = true;
   security.acme.acceptTerms = true;
-  security.acme.email = "adrien.faure@protonmail.com";
+  security.acme.defaults.email = "adrien.faure@protonmail.com";
 
   services.nginx = {
     enable = true;
