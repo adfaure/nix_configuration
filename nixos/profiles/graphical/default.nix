@@ -44,6 +44,9 @@ with lib; {
     };
   };
 
+  programs.adb.enable = true;
+  users.users.adfaure.extraGroups = ["adbusers"];
+
   # Add Workaround for USB 3 Scanner for SANE
   # See http://sane-project.org/ Note 3
   environment.variables.SANE_USB_WORKAROUND = "1";
