@@ -91,13 +91,16 @@
       "flake": false,
       "locked": {
         "lastModified": 1640008543,
-        "narHash": "sha256-8nUYeWrmHpZCUuth9tkW2JYcBz/edloymD8BQbjXlMg=",
-        "type": "git",
-        "url": "file:///home/adfaure/Projects/dotfiles"
+        "narHash": "sha256-QLjkiiAhfYbEQWb5yOQD5QaDXogEIA6fMkQY7CPeeq0=",
+        "owner": "adfaure",
+        "repo": "dotfiles",
+        "rev": "a26bda52fee5f7bd0d39726b0de831ee23b3da88",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/adfaure/Projects/dotfiles"
+        "owner": "adfaure",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "nix-flake": {
