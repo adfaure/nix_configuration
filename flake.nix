@@ -110,6 +110,7 @@
           system = "x86_64-linux";
           extraArgs = { inherit my-dotfiles nur; };
           modules = [
+            # TODO: Create a module at the flake's top level (nixosModule)
             ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }: {
               nixpkgs.overlays = [ self.overlay ];
             })
@@ -130,6 +131,10 @@
             batsite = self.packages.x86_64-linux.batsite;
           };
           modules = [
+            ({ nixpkgs, lib, options, modulesPath, config, specialArgs, ... }: {
+              nixpkgs.overlays = [ self.overlay ];
+            })
+
             # Main configuration, includes the hardware file and the module list.
             ./deployments/configuration-kodama.nix
             # Install sops-nix.
