@@ -34,7 +34,7 @@ in {
       custom = "${my-dotfiles}/files/custom_zsh";
       enable = true;
       theme = "adfaure";
-      plugins = [ "git" "tig" "sudo" "themes" "z" "jump" "colored-man-pages" "copybuffer" ];
+      plugins = [ "git" "tig" "themes" "z" "jump" "colored-man-pages" "copybuffer" ];
     };
 
     initExtraFirst = lib.mkAfter ''
@@ -48,7 +48,7 @@ in {
   };
 
   home.packages = with pkgs; [
-    nix-zsh-completions
+    # nix-zsh-completions
     fasd
     zsh-completions
     zsh-navigation-tools
