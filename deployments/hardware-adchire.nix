@@ -41,6 +41,8 @@
   # nvidia.enable = true;
   # hardware.cpu.intel.updateMicrocode = true;
 
+  hardware.bluetooth.enable = true;
+
   hardware.nitrokey = {
     enable = true;
     # group = "wheel";
