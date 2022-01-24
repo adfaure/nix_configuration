@@ -8,7 +8,7 @@ with lib; {
   environment.adfaure.environments.graphical.enable = true;
   environment.adfaure.services.i3.enable = true;
   environment.adfaure.services.i3.extraI3Conf = ''
-    exec feh --bg-scale '${./wallpapers/totoro.jpg}'
+    exec_always --no-startup-id autorandr --change && feh --no-fehbg --bg-scale --randomize "${config.users.extraUsers.adfaure.home}/.wallpapers";
   '';
 
   # environment.adfaure.programs.emacs.enable=true;

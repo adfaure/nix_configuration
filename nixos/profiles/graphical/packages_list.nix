@@ -24,6 +24,7 @@ with lib; {
       liferea
       # Display my wallpaper
       feh
+      autorandr
       # Media
       vlc
       # Utils
