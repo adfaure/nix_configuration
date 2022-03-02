@@ -24,7 +24,7 @@ in {
         [mediaplayer]
         command=${./i3blocks/mediaplayer/mediaplayer}
         interval=5
-        instance=spotifyd
+        instance=spotify
         signal=10
 
         [volume]
@@ -91,6 +91,7 @@ in {
     fonts.fonts = with pkgs; [ font-awesome_5 font-awesome-ttf ];
 
     environment.systemPackages = with pkgs; [
+      blueman
       i3blocks
       rxvt_unicode
       # Batery info

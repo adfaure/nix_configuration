@@ -9,6 +9,7 @@ with lib; {
   environment.adfaure.services.i3.enable = true;
   environment.adfaure.services.i3.extraI3Conf = ''
     exec_always --no-startup-id autorandr --change && feh --no-fehbg --bg-scale --randomize "${config.users.extraUsers.adfaure.home}/.wallpapers";
+    exec --no-startup-id ${pkgs.blueman}/bin/blueman-applet
   '';
 
   # environment.adfaure.programs.emacs.enable=true;
