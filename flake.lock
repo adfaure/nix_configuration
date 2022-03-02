@@ -90,11 +90,11 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1642590305,
-        "narHash": "sha256-xfghON7OeTWS8OlnBuBIzP7RPGgV7sgLkohFP1C8j9k=",
+        "lastModified": 1643390245,
+        "narHash": "sha256-p4TIPjaUyYTgbjN1nOspCUL/QjIgrvzExJb7qTm8Gtw=",
         "owner": "adfaure",
         "repo": "dotfiles",
-        "rev": "b48ef625dbd89045ce6ed2a24836dadf8be09841",
+        "rev": "4a23484ea078829af128b05c8bcf350a9e16d9d5",
         "type": "github"
       },
       "original": {

@@ -17,6 +17,7 @@ in {
     shellAliases = {
       r = "ranger";
       v = "vim";
+      vim = "nvim";
       t = "task";
       b = "bat";
       ns = "nix-shell";
@@ -28,7 +29,7 @@ in {
       ssh = "TERM=xterm-color ssh";
     };
 
-    sessionVariables = { EDITOR = "vim"; };
+    sessionVariables = { EDITOR = "nvim"; };
 
     oh-my-zsh = {
       custom = "${my-dotfiles}/files/custom_zsh";
