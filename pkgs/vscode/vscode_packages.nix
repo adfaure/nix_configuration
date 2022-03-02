@@ -38,14 +38,14 @@
   {
     name = "copilot";
     publisher = "GitHub";
-    version = "1.7.4688";
-    sha256 = "0p3w6b1qkg7qc0y0q8ijfrvz3na8cyn0l63ij9cjphpnf9c0knii";
+    version = "1.7.4760";
+    sha256 = "0c8qnjwin4ajn1n88sz54wf9kd6i10m531nx9x1mwcilgbbdscvh";
   }
   {
     name = "go";
     publisher = "golang";
-    version = "0.30.0";
-    sha256 = "15rmc79ad743hb6pmnzv91rkvl2fb1qwh5gk5q6n9f9vygiyjrix";
+    version = "0.31.0";
+    sha256 = "09yjcdwn711pcdaflagwycsjyd5v64aijsl897hjchnnlcn2zzwa";
   }
   {
     name = "haskell";
@@ -92,20 +92,20 @@
   {
     name = "jupyter";
     publisher = "ms-toolsai";
-    version = "2022.1.1001722501";
-    sha256 = "02jjqkkribyq9z54kjsy8wm7qgfhkg5v1idqmgvmz00wj9il41lg";
+    version = "2022.1.1001760686";
+    sha256 = "1nzd47zbhh6fn2h9id0vjp52f6fnp04yqdhqiinsviwsn4zaxk1x";
   }
   {
     name = "remote-ssh";
     publisher = "ms-vscode-remote";
-    version = "0.71.2021121615";
-    sha256 = "1lh08157z7lialb0dxls9fhahmf5l9wz6x2anwrnycvs512lpr1p";
+    version = "0.71.2022012715";
+    sha256 = "0cfapjh9p9i68gxdiz6zw5dsgqfms87hvvirz0wa6w8kd5imgx6p";
   }
   {
     name = "material-icon-theme";
     publisher = "PKief";
-    version = "4.11.0";
-    sha256 = "1l2s8j645riqjmj09i3v71s8ycin5vd6brdp35z472fnk6wyi1y6";
+    version = "4.12.1";
+    sha256 = "1c434f2za01rrfbcfyk0k3pkr29bl12f8il1y7dsr4yxkafsfrd6";
   }
   {
     name = "rust";
@@ -132,6 +132,12 @@
     sha256 = "0sjplq9h3mc42f41gcyr30ixix8sclgsdi5mcgqazh2bh7g2hz5x";
   }
   {
+    name = "simple-rst";
+    publisher = "trond-snekvik";
+    version = "1.5.1";
+    sha256 = "17bvigqrjh50hhfpl128imx3rf95lqkrxyzd6faay1dd1fri28ps";
+  }
+  {
     name = "non-breaking-space-highlighter";
     publisher = "viktorzetterstrom";
     version = "0.0.3";
@@ -140,8 +146,8 @@
   {
     name = "vscode-java-pack";
     publisher = "vscjava";
-    version = "0.20.0";
-    sha256 = "06h0xlmjm1lclql62qvb0ic12zs96nhb7b8zf4g1b7isssa9kasx";
+    version = "0.21.0";
+    sha256 = "17ippn7pvmbijkqg8frnrpdb7hk1iqcd0nnv472hi8mndc7i4vq8";
   }
   {
     name = "vscode-icons";
@@ -154,12 +160,6 @@
     publisher = "vscodevim";
     version = "1.21.10";
     sha256 = "0c9m7mc2kmfzj3hkwq3d4hj43qha8a75q5r1rdf1xfx8wi5hhb1n";
-  }
-  {
-    name = "simple-rst";
-    publisher = "trond-snekvik";
-    version = "1.5.1";
-    sha256 = "sha256-+iIRswutBa+UM+37niemJbk8eo1IBHodhKBAmfGLe50=";
   }
 ];
 }
