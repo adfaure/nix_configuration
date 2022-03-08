@@ -22,5 +22,4 @@
   services.grafana = {
     enable = false;
   };
-
 }
