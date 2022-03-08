@@ -30,7 +30,7 @@ with lib; {
     xserver = {
       enable = true;
       layout = "fr";
-      xkbVariant = "bepo";
+      # xkbVariant = "bepo";
       resolutions = [
         {
           x = 2560;
