@@ -37,7 +37,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   # hardware.opengl.driSupport32Bit = true;
-
+  
   # nvidia.enable = true;
   # hardware.cpu.intel.updateMicrocode = true;
 
