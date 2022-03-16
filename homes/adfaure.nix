@@ -45,7 +45,7 @@
       jq
       cgvg
       tree
-      manpages
+      man-pages
       gcc
       wget
       gdb
