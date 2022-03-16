@@ -14,7 +14,6 @@ in {
     ../nixos/profiles/common
     # activate the flake
     ../nixos/modules/flakes
-
   ];
 
   # Without this extra configuration deploy-rs fails because sudo requires a password.
@@ -45,12 +44,6 @@ in {
           auth_basic_user_file ${htpasswd};
         '';
       };
-    };
-
-    virtualHosts."batsim.adrien-faure.fr" = {
-      forceSSL = true;
-      enableACME = true;
-      locations."/" = { root = "${batsite}"; };
     };
 
   };

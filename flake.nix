@@ -2,8 +2,6 @@
   description = "My personnal configuration";
   inputs = {
     # I need a custom nix version because of this issue: https://github.com/NixOS/nix/commit/8af4f886e212346afdd1d40789f96f1321da96c5
-    nix-flake.url =
-      "github:NixOS/nix?rev=8af4f886e212346afdd1d40789f96f1321da96c5";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     # Needed to have a recent hugo version for the kodama package
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -25,10 +23,11 @@
     nur.url = "github:nix-community/NUR";
     # Emacs overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    kodama.url = "git+https://framagit.org/adfaure/kodama.git";
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
-    , sops-nix, home-manager, emacs-overlay, nur, nix-flake }: {
+    , sops-nix, home-manager, emacs-overlay, nur, kodama }: {
 
       packages.x86_64-linux = let
         pkgs = import nixpkgs {
@@ -43,13 +42,14 @@
         };
       in {
         # Dedicated package for my personal website
-        kodama = pkgs.callPackage ./pkgs/kodama { };
+        kodama = kodama.packages.x86_64-linux.website;
         batsite = pkgs.callPackage ./pkgs/batsite { };
         # Programs
         cgvg = pkgs.callPackage ./pkgs/cgvg { };
         myVscode = unstable.callPackage ./pkgs/vscode { };
         myEmacs = pkgs.callPackage ./pkgs/emacs { inherit my-dotfiles; };
         cadvisor = pkgs.callPackage ./pkgs/cadvisor { };
+        nix = unstable.nix;
       };
 
       # Separated home-manager config for non-nixos machines.
@@ -92,6 +92,7 @@
         cgvg = self.packages.x86_64-linux.cgvg;
         myVscode = self.packages.x86_64-linux.myVscode;
         myEmacs = self.packages.x86_64-linux.myEmacs;
+        nixFlakes =  self.packages.x86_64-linux.nix;
       };
 
       nixosModules.overlay =
