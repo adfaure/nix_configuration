@@ -66,6 +66,21 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1637014545,
+        "narHash": "sha256-26IZAc5yzlD9FlDT54io1oqG/bBoyka+FJk5guaX4x4=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "bba5dcc8e0b20ab664967ad83d24d64cb64ec4f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -88,21 +103,41 @@
     },
     "kodama": {
       "inputs": {
+        "kodama-theme": "kodama-theme",
+        "nixpkgs": "nixpkgs_4",
+        "oxalica": "oxalica_2"
+      },
+      "locked": {
+        "lastModified": 1647464756,
+        "narHash": "sha256-FofozDC0BPayehJsno8B1hbOlY5xrvGpTSaZZzgERsc=",
+        "ref": "master",
+        "rev": "87a67308f5ec5cb40667ad386f5905e91322cc62",
+        "revCount": 36,
+        "type": "git",
+        "url": "https://framagit.org/adfaure/kodama.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://framagit.org/adfaure/kodama.git"
+      }
+    },
+    "kodama-theme": {
+      "inputs": {
         "nixpkgs": "nixpkgs_2",
         "oxalica": "oxalica"
       },
       "locked": {
-        "lastModified": 1647379529,
-        "narHash": "sha256-MFVTy73q4n8jDNZ6CFKO0GriJkY5bonZ4eOB1ZSWHzg=",
-        "ref": "master",
-        "rev": "533da173d12803022078a42e1918bb6ed88862d0",
-        "revCount": 28,
-        "type": "git",
-        "url": "file:///home/adfaure/Projects/zola-website/myblog"
+        "lastModified": 1647449778,
+        "narHash": "sha256-iTuXyx+mkuhkvKxbVJPfEUCFyDhIMbZS/ZhKXbW0zpY=",
+        "owner": "adfaure",
+        "repo": "kodama-theme",
+        "rev": "e6fc9f88141ea3c4e2842b809feeca51cc2764be",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/adfaure/Projects/zola-website/myblog"
+        "owner": "adfaure",
+        "repo": "kodama-theme",
+        "type": "github"
       }
     },
     "my-dotfiles": {
@@ -187,6 +222,38 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1647297614,
+        "narHash": "sha256-ulGq3W5XsrBMU/u5k9d4oPy65pQTkunR4HKKtTq0RwY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "73ad5f9e147c0d2a2061f1d4bd91e05078dc0b58",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1637453606,
+        "narHash": "sha256-Gy6cwUswft9xqsjWxFYEnx/63/qzaFUwatcbV5GF/GQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8afc4e543663ca0a6a4f496262cd05233737e732",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1647282937,
         "narHash": "sha256-K8Oo6QyFCfiEWTRpQVfzcwI3YNMKlz6Tu8rr+o3rzRQ=",
         "owner": "NixOS",
@@ -201,7 +268,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1638097282,
         "narHash": "sha256-EXCzj9b8X/lqDPJapxZThIOKL5ASbpsJZ+8L1LnY1ig=",
@@ -251,6 +318,25 @@
         "type": "github"
       }
     },
+    "oxalica_2": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1647397753,
+        "narHash": "sha256-Q8HjnWFj+Gdx4ElvBiF99xhhZpeGdn1OZsGzyOrg7+Y=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "dcc7af39185159fb2b8356bacca0473804a5b90e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "deploy-rs": "deploy-rs",
@@ -259,14 +345,14 @@
         "kodama": "kodama",
         "my-dotfiles": "my-dotfiles",
         "nixos-unstable": "nixos-unstable",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_6",
         "nur": "nur",
         "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "lastModified": 1647279403,
