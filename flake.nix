@@ -23,7 +23,7 @@
     nur.url = "github:nix-community/NUR";
     # Emacs overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    kodama.url = "git+https://framagit.org/adfaure/kodama.git";
+    kodama.url = "github:adfaure/kodama";
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs

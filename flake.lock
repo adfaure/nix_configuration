@@ -108,17 +108,17 @@
         "oxalica": "oxalica_2"
       },
       "locked": {
-        "lastModified": 1647464756,
-        "narHash": "sha256-FofozDC0BPayehJsno8B1hbOlY5xrvGpTSaZZzgERsc=",
-        "ref": "master",
-        "rev": "87a67308f5ec5cb40667ad386f5905e91322cc62",
-        "revCount": 36,
-        "type": "git",
-        "url": "https://framagit.org/adfaure/kodama.git"
+        "lastModified": 1648024810,
+        "narHash": "sha256-BtUPEHLDHNb3yMjR7Iwm9F5rfN5BjqRBTEmslck2jeE=",
+        "owner": "adfaure",
+        "repo": "kodama",
+        "rev": "f3896a1c8695ffb6ae24b3ec0df26dff7e29c082",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://framagit.org/adfaure/kodama.git"
+        "owner": "adfaure",
+        "repo": "kodama",
+        "type": "github"
       }
     },
     "kodama-theme": {
@@ -127,11 +127,11 @@
         "oxalica": "oxalica"
       },
       "locked": {
-        "lastModified": 1647449778,
-        "narHash": "sha256-iTuXyx+mkuhkvKxbVJPfEUCFyDhIMbZS/ZhKXbW0zpY=",
+        "lastModified": 1648024635,
+        "narHash": "sha256-HN4L0IIY2As0/Oo2ratdd7//c1Nm/mAZMiUBV5Kg4pg=",
         "owner": "adfaure",
         "repo": "kodama-theme",
-        "rev": "e6fc9f88141ea3c4e2842b809feeca51cc2764be",
+        "rev": "c0af2de3ea600b17f649e47599b3062f39e57a37",
         "type": "github"
       },
       "original": {
