@@ -57,7 +57,7 @@
       nixfmt
 
       # GUI applications
-      calibre
+      # calibre
       spotify
 
       spotify-tui
