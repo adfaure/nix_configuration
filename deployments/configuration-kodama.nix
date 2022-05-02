@@ -32,6 +32,14 @@ in {
     virtualHosts."adrien-faure.fr" = {
       forceSSL = true;
       enableACME = true;
+      locations."/private/" = {
+          root = "/var/www/html";
+          extraConfig = ''
+            autoindex on;
+            auth_basic       "This place is private !";
+            auth_basic_user_file ${htpasswd};
+          '';
+      };
       locations."/" = { root = "${kodama}"; };
       # Add reverse proxy for radicale
       locations."/radicale/" = {
