@@ -99,7 +99,6 @@ with lib; {
       emojione
       liberation_ttf
       fira-code-symbols
-      mplus-outline-fonts
       dina-font
       proggyfonts
       fira-code
