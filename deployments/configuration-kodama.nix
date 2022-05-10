@@ -40,7 +40,17 @@ in {
             auth_basic_user_file ${htpasswd};
           '';
       };
-      locations."/" = { root = "${kodama}"; };
+      locations."/" = {
+        root = "${kodama}";
+        extraConfig = ''
+          error_page 404 /404.html;
+          location = /404.html {
+                  root ${kodama};
+                  internal;
+          }
+        '';
+      };
+
       # Add reverse proxy for radicale
       locations."/radicale/" = {
         proxyPass = "http://localhost:${toString radicalePort}/";
