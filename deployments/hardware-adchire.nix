@@ -13,6 +13,8 @@
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "rtsx_pci_sdmmc" ];
   boot.kernelModules = [ "kvm-intel" ];
+  # https://github.com/NixOS/nixpkgs/issues/170856
+  boot.kernelParams = [ "nouveau.modeset=0" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
