@@ -2,12 +2,12 @@
   description = "My personnal configuration";
   inputs = {
     # I need a custom nix version because of this issue: https://github.com/NixOS/nix/commit/8af4f886e212346afdd1d40789f96f1321da96c5
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     # Needed to have a recent hugo version for the kodama package
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      url = "github:adfaure/dotfiles";
-      # url = "/home/adfaure/Projects/dotfiles";
+      # url = "github:adfaure/dotfiles";
+      url = "/home/adfaure/Projects/dotfiles";
       # It is possible to pin the revision with:
       # To be fully reproducible, I can pin my repos
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
@@ -67,6 +67,21 @@
             nixpkgs.overlays = [ self.overlay ];
             nixpkgs.config.allowUnfree = true;
             imports = [ ./homes/adfaure.nix ];
+          };
+        };
+
+        base = home-manager.lib.homeManagerConfiguration rec {
+          system = "x86_64-linux";
+          username = "adfaure";
+          homeDirectory = "/home/${username}";
+          extraSpecialArgs = {
+            inherit nixpkgs my-dotfiles emacs-overlay;
+            cgvg = self.packages.x86_64-linux.cgvg;
+          };
+          configuration = {
+            nixpkgs.overlays = [ self.overlay ];
+            nixpkgs.config.allowUnfree = true;
+            imports = [ ./homes/base.nix ];
           };
         };
       };
