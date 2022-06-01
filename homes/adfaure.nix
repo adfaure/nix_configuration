@@ -3,11 +3,14 @@
 
   imports = [
     ./base.nix
-    ./modules/spotifyd
+    # ./modules/spotifyd
   ];
 
   # Top level configuration for the user adfaure (me!)
   config = {
+    nixpkgs.config.allowUnfree = true;
+    # https://github.com/nix-community/home-manager/issues/2942#issuecomment-1119760100
+    nixpkgs.config.allowUnfreePredicate = (pkg: true);
     # First we activate home-manager
     programs.home-manager.enable = true;
     home.file.".config/sakura/sakura.conf".text =
@@ -60,7 +63,7 @@
       # calibre
       spotify
 
-      spotify-tui
+      # spotify-tui
     ];
   };
 }

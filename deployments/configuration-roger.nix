@@ -42,5 +42,5 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   programs.dconf.enable = true;
-  services.dbus.packages = [ pkgs.gnome3.dconf ];
+  services.dbus.packages = [ pkgs.dconf ];
 }

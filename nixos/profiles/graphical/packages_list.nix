@@ -8,10 +8,10 @@ with lib; {
   config = mkIf config.environment.adfaure.environments.graphical.enable {
     environment.systemPackages = with pkgs; [
       # For system Monitor plugin
-      gobjectIntrospection
+      gobject-introspection
       libgtop
-      json_glib
-      glib_networking
+      json-glib
+      glib-networking
       arandr
       # Web
       # firefox

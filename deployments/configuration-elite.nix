@@ -84,6 +84,6 @@ in rec {
   # Try fix chrome extension error
   services.dbus.socketActivated = true;
   programs.dconf.enable = true;
-  services.dbus.packages = [ pkgs.gnome3.dconf ];
+  services.dbus.packages = [ pkgs.dconf ];
 
 }
