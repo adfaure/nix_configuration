@@ -8,9 +8,8 @@ pkgs.emacsWithPackagesFromUsePackage {
     alwaysTangle = true;
     extraEmacsPackages = epkgs:
       with epkgs; [
-        monokai-theme
-        pkgs.ispell
         use-package
+        monokai-theme
         diminish
         bind-key
         rainbow-delimiters
