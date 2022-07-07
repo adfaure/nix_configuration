@@ -27,9 +27,8 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nixos-unstable, my-dotfiles, deploy-rs
-    , sops-nix, home-manager, emacs-overlay, nur, kodama }: {
-
-      packages.x86_64-linux = let
+  , sops-nix, home-manager, emacs-overlay, nur, kodama }:
+  let
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
@@ -40,7 +39,10 @@
           config.allowUnfree = true;
           overlays = [ emacs-overlay.overlay ];
         };
-      in {
+      in
+  {
+
+      packages.x86_64-linux = {
         # Dedicated package for my personal website
         kodama = kodama.packages.x86_64-linux.website;
         batsite = pkgs.callPackage ./pkgs/batsite { };
@@ -54,51 +56,45 @@
 
       # Separated home-manager config for non-nixos machines.
       # Activate with: home-manager --flake .#adfaure switch
-      homeConfigurations = {
-        adfaure = home-manager.lib.homeManagerConfiguration rec {
-          system = "x86_64-linux";
-          username = "adfaure";
-          homeDirectory = "/home/${username}";
-          extraSpecialArgs = {
-            inherit nixpkgs my-dotfiles emacs-overlay;
-            cgvg = self.packages.x86_64-linux.cgvg;
-          };
-          configuration = {
-            nixpkgs.overlays = [ self.overlay ];
-            nixpkgs.config.allowUnfree = true;
-            imports = [ ./homes/adfaure.nix ];
-          };
-        };
-
-        base = home-manager.lib.homeManagerConfiguration rec {
-          system = "x86_64-linux";
-          username = "adfaure";
-          homeDirectory = "/home/${username}";
-          extraSpecialArgs = {
-            inherit nixpkgs my-dotfiles emacs-overlay;
-            cgvg = self.packages.x86_64-linux.cgvg;
-          };
-          configuration = {
-            nixpkgs.overlays = [ self.overlay ];
-            nixpkgs.config.allowUnfree = true;
-            imports = [ ./homes/base.nix ];
-          };
-        };
-      };
-
-      wsl = home-manager.lib.homeManagerConfiguration rec {
-        system = "x86_64-linux";
-        username = "adfaure";
-        homeDirectory = "/home/${username}";
-        extraSpecialArgs = {
-          inherit nixpkgs my-dotfiles;
-          cgvg = self.packages.x86_64-linux.cgvg;
-        };
-        configuration = {
+      homeConfigurations = let
+        home-module = {
           nixpkgs.overlays = [ self.overlay ];
           nixpkgs.config.allowUnfree = true;
-          imports = [ ./homes/wsl.nix ];
+          home = rec {
+            username = "adfaure";
+            homeDirectory = "/home/${username}";
+            stateVersion = "20.09";
+          };
         };
+        extraSpecialArgs = {
+          inherit nixpkgs my-dotfiles emacs-overlay;
+          cgvg = self.packages.x86_64-linux.cgvg;
+        };
+        in {
+          adfaure = home-manager.lib.homeManagerConfiguration rec {
+            inherit pkgs extraSpecialArgs;
+            modules = [
+              home-module
+              ./homes/adfaure.nix
+              ./homes/base.nix
+            ];
+          };
+
+          base = home-manager.lib.homeManagerConfiguration rec {
+            inherit pkgs extraSpecialArgs;
+            modules = [
+              home-module
+              ./homes/base.nix
+            ];
+          };
+
+          wsl = home-manager.lib.homeManagerConfiguration rec {
+            inherit pkgs extraSpecialArgs;
+            modules = [
+              home-module
+              ./homes/wsl.nix
+            ];
+          };
       };
 
       # Overlay to inject my packages in the different modules

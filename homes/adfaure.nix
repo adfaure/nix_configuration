@@ -2,7 +2,7 @@
 , cgvg, ... }: {
 
   imports = [
-    ./base.nix
+    # ./base.nix
     # ./modules/spotifyd
   ];
 
