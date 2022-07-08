@@ -56,6 +56,8 @@
       entr
       pandoc
 
+      gnome.pomodor
+
       # Nix file formating
       nixfmt
 
