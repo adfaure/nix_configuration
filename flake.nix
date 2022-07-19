@@ -58,7 +58,7 @@
       # Activate with: home-manager --flake .#adfaure switch
       homeConfigurations = let
         home-module = {
-          nixpkgs.overlays = [ self.overlay ];
+          nixpkgs.overlays = [ self.overlays.default ];
           nixpkgs.config.allowUnfree = true;
           home = rec {
             username = "adfaure";
@@ -98,7 +98,7 @@
       };
 
       # Overlay to inject my packages in the different modules
-      overlay = final: prev: {
+      overlays.default = final: prev: {
         cadvisor = self.packages.x86_64-linux.cadvisor;
         cgvg = self.packages.x86_64-linux.cgvg;
         myVscode = self.packages.x86_64-linux.myVscode;
@@ -109,7 +109,7 @@
       nixosModules.overlay =
         { pkgs, ... }:
         {
-          nixpkgs.overlays = [ self.overlay ];
+          nixpkgs.overlays = [ self.overlays.default ];
         };
 
       nixosConfigurations = {

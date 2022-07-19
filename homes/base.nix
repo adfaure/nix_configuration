@@ -10,6 +10,7 @@
 
   # Top level configuration for the user adfaure (me!)
   config = {
+    home.stateVersion = "20.09";
 
     # First we activate home-manager
     programs.home-manager.enable = true;
