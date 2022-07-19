@@ -38,8 +38,8 @@
       '';
     };
 
-    home.username = "adfaure";
-    home.homeDirectory = "/home/adfaure";
+    # home.username = "adfaure";
+    # home.homeDirectory = "/home/adfaure";
 
     home.file.".tmux".text = builtins.readFile "${my-dotfiles}/files/tmux";
 
