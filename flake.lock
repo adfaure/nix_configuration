@@ -163,17 +163,14 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1656939880,
-        "narHash": "sha256-v9+MkZZOl7KpxHLqxYxTt6nQGyqKXrThRWq3AFeYR6o=",
-        "owner": "adfaure",
-        "repo": "dotfiles",
-        "rev": "2d09d3c258133c7e0d44fcb772a8cb710b49bee3",
-        "type": "github"
+        "lastModified": 1658322815,
+        "narHash": "sha256-YaOPrFNW1SqycziPymnghXeIgm2ASbIC6sN3PLBh+gk=",
+        "path": "/home/adfaure/Projects/dotfiles",
+        "type": "path"
       },
       "original": {
-        "owner": "adfaure",
-        "repo": "dotfiles",
-        "type": "github"
+        "path": "/home/adfaure/Projects/dotfiles",
+        "type": "path"
       }
     },
     "nixos-unstable": {
