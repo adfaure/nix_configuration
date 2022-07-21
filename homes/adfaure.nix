@@ -1,6 +1,15 @@
-{ nixpkgs, options, modulesPath, lib, config, pkgs, my-dotfiles, emacs-overlay
-, cgvg, ... }: {
-
+{
+  nixpkgs,
+  options,
+  modulesPath,
+  lib,
+  config,
+  pkgs,
+  my-dotfiles,
+  emacs-overlay,
+  cgvg,
+  ...
+}: {
   imports = [
     # ./base.nix
     # ./modules/spotifyd
@@ -10,7 +19,7 @@
   config = {
     nixpkgs.config.allowUnfree = true;
     # https://github.com/nix-community/home-manager/issues/2942#issuecomment-1119760100
-    nixpkgs.config.allowUnfreePredicate = (pkg: true);
+    nixpkgs.config.allowUnfreePredicate = pkg: true;
     # First we activate home-manager
     programs.home-manager.enable = true;
     home.file.".config/sakura/sakura.conf".text =
@@ -18,7 +27,7 @@
 
     programs.browserpass = {
       enable = true;
-      browsers = [ "firefox" ];
+      browsers = ["firefox"];
     };
 
     home.packages = with pkgs; [

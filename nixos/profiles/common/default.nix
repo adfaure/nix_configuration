@@ -1,7 +1,13 @@
-{ config, lib, pkgs, options, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  options,
+  modulesPath,
+  ...
+}:
 with lib; {
-
-  require = [ ./package_list.nix ];
+  require = [./package_list.nix];
 
   # This option enables the import of the package defined in `package_list.nix`
   # in the system environment.
@@ -47,11 +53,11 @@ with lib; {
     allowUnfree = true;
     firefox.enableBrowserpass = true;
     packageOverrides = pkgs: {
-      sudo = pkgs.sudo.override { withInsults = true; };
+      sudo = pkgs.sudo.override {withInsults = true;};
     };
   };
 
-  nix.trustedUsers = [ "root" "adfaure" ];
+  nix.trustedUsers = ["root" "adfaure"];
   users.extraUsers.adfaure = {
     isNormalUser = true;
     home = "/home/adfaure";
@@ -66,8 +72,7 @@ with lib; {
       "docker"
       "users"
     ];
-    openssh.authorizedKeys.keys =
-      [ (lib.readFile ../../../deployments/keys/id_rsa.pub) ];
+    openssh.authorizedKeys.keys = [(lib.readFile ../../../deployments/keys/id_rsa.pub)];
     # Set the initial password. Don't forget to change it ASAP.
     initialPassword = "nixos";
     uid = 1000;
@@ -89,9 +94,9 @@ with lib; {
       hinting.enable = true;
       includeUserConf = true;
       defaultFonts = {
-        monospace = [ "Fira Mono" ];
-        sansSerif = [ "Fira Sans" ];
-        serif = [ "DejaVu Serif" ];
+        monospace = ["Fira Mono"];
+        sansSerif = ["Fira Sans"];
+        serif = ["DejaVu Serif"];
       };
     };
 

@@ -1,5 +1,14 @@
-{ nixpkgs, options, modulesPath, lib, config, pkgs, my-dotfiles, cgvg, ... }: {
-
+{
+  nixpkgs,
+  options,
+  modulesPath,
+  lib,
+  config,
+  pkgs,
+  my-dotfiles,
+  cgvg,
+  ...
+}: {
   imports = [
     ./base.nix
 
@@ -8,17 +17,14 @@
     ./modules/vim
   ];
 
-
-
   # Top level configuration for the user adfaure (me!)
   config = {
-
     programs.bash = {
       bashrcExtra = ''
         .  /home/adfaure/.nix-profile/etc/profile.d/nix.sh
         # Replace current shell with zsh
         exec zsh
-        '';
+      '';
     };
 
     # First we activate home-manager

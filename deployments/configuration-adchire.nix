@@ -1,10 +1,16 @@
 # Edit this configuration file to define what should be installed on your
 # system.  Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, options, modulesPath, ... }:
 {
-
-  imports = [ # Include the results of the hardware scan.
+  config,
+  pkgs,
+  lib,
+  options,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-adchire.nix
     # I3 and conf
     ../nixos/services/i3
@@ -59,7 +65,7 @@
   time.timeZone = "Europe/Paris";
 
   # Add virtualbox and docker
-  virtualisation = { docker.enable = true; };
+  virtualisation = {docker.enable = true;};
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.channel = "https://nixos.org/channels/unstable";
@@ -67,5 +73,5 @@
   system.stateVersion = "20.09";
 
   programs.dconf.enable = true;
-  services.dbus.packages = [ pkgs.dconf ];
+  services.dbus.packages = [pkgs.dconf];
 }

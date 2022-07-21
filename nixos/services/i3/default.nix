@@ -1,6 +1,11 @@
-{ config, lib, pkgs, my-dotfiles, ... }:
-with lib;
-let
+{
+  config,
+  lib,
+  pkgs,
+  my-dotfiles,
+  ...
+}:
+with lib; let
   cfg = config.environment.adfaure.services.i3;
   i3conf = builtins.readFile "${my-dotfiles}/files/i3";
 in {
@@ -88,7 +93,7 @@ in {
 
     # fonts.fontDir.enable = true;
     fonts.enableGhostscriptFonts = true;
-    fonts.fonts = with pkgs; [ font-awesome_5 font-awesome ];
+    fonts.fonts = with pkgs; [font-awesome_5 font-awesome];
 
     environment.systemPackages = with pkgs; [
       blueman
