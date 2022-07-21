@@ -67,12 +67,14 @@
           };
         };
         extraSpecialArgs = {
-          inherit nixpkgs my-dotfiles emacs-overlay;
+          inherit my-dotfiles emacs-overlay;
+          nixpkgs = nixos-unstable;
           cgvg = self.packages.x86_64-linux.cgvg;
         };
         in {
           adfaure = home-manager.lib.homeManagerConfiguration rec {
-            inherit pkgs extraSpecialArgs;
+            inherit extraSpecialArgs;
+            pkgs = unstable;
             modules = [
               home-module
               ./homes/adfaure.nix
@@ -81,7 +83,8 @@
           };
 
           base = home-manager.lib.homeManagerConfiguration rec {
-            inherit pkgs extraSpecialArgs;
+            inherit extraSpecialArgs;
+            pkgs = unstable;
             modules = [
               home-module
               ./homes/base.nix
@@ -89,7 +92,8 @@
           };
 
           wsl = home-manager.lib.homeManagerConfiguration rec {
-            inherit pkgs extraSpecialArgs;
+            inherit extraSpecialArgs;
+            pkgs = unstable;
             modules = [
               home-module
               ./homes/wsl.nix
