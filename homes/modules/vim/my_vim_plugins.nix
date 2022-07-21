@@ -54,7 +54,7 @@
   dependencies = with pkgs; [
     # Vim config dependencies
     # rustup
-    go-langserver
+    # go-langserver
     llvmPackages.libclang
     ccls
     # For coc
