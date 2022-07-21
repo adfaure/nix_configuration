@@ -1,5 +1,11 @@
-{ config, lib, pkgs, my-dotfiles, wrapCmd, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  my-dotfiles,
+  wrapCmd,
+  ...
+}: {
   home.packages = [
     pkgs.myEmacs
     (pkgs.aspellWithDicts (d: [d.fr d.en]))

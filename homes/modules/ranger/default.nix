@@ -1,7 +1,13 @@
-{ config, lib, pkgs, my-dotfiles, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  my-dotfiles,
+  ...
+}: {
   # Home module for ranger configuration.
   # It also depends on zsh.
-  home.packages = [ pkgs.ranger pkgs.atool pkgs.poppler_utils pkgs.file ];
+  home.packages = [pkgs.ranger pkgs.atool pkgs.poppler_utils pkgs.file];
 
   programs.zsh = {
     initExtra = lib.mkAfter ''
@@ -19,7 +25,7 @@
   };
 
   # Creating the file bookmarks wich is mutable.
-  home.activation.linkMyStuff = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.linkMyStuff = lib.hm.dag.entryAfter ["writeBoundary"] ''
     touch ${config.home.homeDirectory}/.config/ranger/bookmarks
   '';
 

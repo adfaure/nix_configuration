@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib; {
   options.environment.adfaure.environments.graphical = {
     enable = mkEnableOption "graphical";
@@ -59,4 +63,3 @@ with lib; {
     ];
   };
 }
-

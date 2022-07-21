@@ -1,9 +1,16 @@
 # Edit this configuration file to define what should be installed on your
 # system.  Help is available in the configuration.nix(5) man page and in the
 # NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, options, modulesPath, ... }: {
-
-  imports = [ # Include the results of the hardware scan.
+{
+  config,
+  pkgs,
+  lib,
+  options,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-roger.nix
     # I3 and conf
     ../nixos/services/i3
@@ -27,14 +34,14 @@
     # If using NetworkManager:
     networkmanager.enable = true;
     networkmanager.dns = "default";
-    networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
+    networkmanager.insertNameservers = ["8.8.8.8" "8.8.4.4"];
   };
 
   time.timeZone = "Europe/Paris";
   hardware.opengl.driSupport32Bit = true;
 
   # Add virtualbox and docker
-  virtualisation = { docker.enable = true; };
+  virtualisation = {docker.enable = true;};
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.channel = "https://nixos.org/channels/unstable";
@@ -42,5 +49,5 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   programs.dconf.enable = true;
-  services.dbus.packages = [ pkgs.dconf ];
+  services.dbus.packages = [pkgs.dconf];
 }

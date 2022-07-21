@@ -1,6 +1,11 @@
-{ config, pkgs, lib, pi3blocksi3blockskgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  pi3blocksi3blockskgs,
+  ...
+}:
 with lib; {
-
   imports = [
     ./packages_list.nix
   ];
@@ -20,7 +25,7 @@ with lib; {
     printing = {
       enable = true;
       browsing = true;
-      drivers = [ pkgs.samsung-unified-linux-driver ];
+      drivers = [pkgs.samsung-unified-linux-driver];
     };
 
     # Needed for printer discovery

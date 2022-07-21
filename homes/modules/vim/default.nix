@@ -1,7 +1,12 @@
-{ config, lib, pkgs, my-dotfiles, ... }:
-let my_vim_plugins = pkgs.callPackage ./my_vim_plugins.nix { };
+{
+  config,
+  lib,
+  pkgs,
+  my-dotfiles,
+  ...
+}: let
+  my_vim_plugins = pkgs.callPackage ./my_vim_plugins.nix {};
 in {
-
   programs.neovim = {
     enable = true;
     # viAlias = true;
@@ -16,9 +21,11 @@ in {
     # extraPython3Packages = (ps: with ps; [ jedi ]);
   };
 
-  home.packages = [
-    # (pkgs.callPackage ./my_vim.nix { inherit my-dotfiles; })
-    pkgs.ctags
-    pkgs.ack
-  ] ++ my_vim_plugins.dependencies;
+  home.packages =
+    [
+      # (pkgs.callPackage ./my_vim.nix { inherit my-dotfiles; })
+      pkgs.ctags
+      pkgs.ack
+    ]
+    ++ my_vim_plugins.dependencies;
 }
