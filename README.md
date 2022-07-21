@@ -52,18 +52,3 @@ To activate my home-manager profile (named `adfaure`) run the command:
 ```bash
 nix build .#adfaure.activationPackage; ./result/activate
 ```
-
-# Cloud nodes
-
-## Configure and deploy
-
-This project uses `deploy-rs` to deploy my website.
-
-To deploy the configured nodes (under `deploy.nodes.<nodename>`):
-```bash
-nix run .#deploy-rs
-```
-
-## Secret management
-
-The secrets are managed with `sops-nix`.
