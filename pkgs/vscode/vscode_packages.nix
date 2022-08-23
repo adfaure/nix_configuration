@@ -1,4 +1,10 @@
 { extensions = [
+    {
+    name = "viml";
+    publisher = "xadillax";
+    version = "2.1.2";
+    sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b";
+  }
   {
     name = "Nix";
     publisher = "bbenoist";
