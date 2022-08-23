@@ -59,5 +59,6 @@ in {
     tig
     zsh
     any-nix-shell
+    xclip
   ];
 }
