@@ -101,17 +101,9 @@ with lib; {
     };
 
     fonts = with pkgs; [
-      emojione
-      liberation_ttf
-      fira-code-symbols
-      dina-font
-      proggyfonts
-      fira-code
-      fira-mono
       font-awesome_5
-      font-awesome_4
-      hasklig
-      wqy_zenhei
+      iosevka-bin
+      iosevka
     ];
   };
 
