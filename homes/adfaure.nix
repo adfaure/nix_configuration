@@ -25,6 +25,9 @@
     home.file.".config/sakura/sakura.conf".text =
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
+    home.file.".config/sway/config".text =
+      builtins.readFile "${my-dotfiles}/files/sway";
+
     programs.browserpass = {
       enable = true;
       browsers = ["firefox"];
