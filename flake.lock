@@ -58,8 +58,8 @@
     "my-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1661243046,
-        "narHash": "sha256-rYUjvxprspBbAkMDwWjWBol7MMA5CYmf0Z/2/y4vsH8=",
+        "lastModified": 1662043130,
+        "narHash": "sha256-TG0pVK97ZAVHiGtXtJ9rrwqR1AENk7B0RjyAZPGLDcE=",
         "path": "/home/adfaure/Projects/dotfiles",
         "type": "path"
       },

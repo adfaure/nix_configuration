@@ -104,6 +104,16 @@ with lib; {
       font-awesome_5
       iosevka-bin
       iosevka
+
+      emojione
+      liberation_ttf
+      fira-code-symbols
+      dina-font
+      proggyfonts
+      fira-code
+      fira-mono
+      hasklig
+      wqy_zenhei
     ];
   };
 
