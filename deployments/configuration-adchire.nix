@@ -12,9 +12,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-adchire.nix
-    # I3 and conf
-    ../nixos/services/i3
-    ../nixos/services/sway
     # syncthings
     ../nixos/services/syncthing
     # We want flake activated

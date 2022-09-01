@@ -9,6 +9,7 @@ in
   with lib; {
     imports = [
       ./packages_list.nix
+      ../../services/sway
     ];
 
     environment.adfaure.environments.graphical.enable = true;
