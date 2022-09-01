@@ -43,6 +43,9 @@ in {
 
     initExtraFirst = lib.mkAfter ''
       source ${zshrc_local}
+
+      # Till they fix: https://github.com/nix-community/home-manager/issues/3100
+      export EDITOR=nvim
     '';
   };
 
