@@ -4,80 +4,54 @@
   vimUtils,
 }: {
   plugins = with vimPlugins; [
-    # airline
-    # vim-easytags
-    vim-markdown
+    # Monokai theme
     vim-monokai
+    # lib for some plugins
     vim-misc
-    multiple-cursors
-    gundo
-    (vim-colorschemes.overrideAttrs (old: {
-      src = pkgs.fetchFromGitHub {
-        owner = "flazz";
-        repo = "vim-colorschemes";
-        rev = "fd8f122cef604330c96a6a6e434682dbdfb878c9";
-        sha256 = "1cg8q7w0vgl73aw1b9zz0zh5vw5d2pm8pm54fhfzva4azg56f416";
-      };
-    }))
+    # Multi vim cursor
+    vim-visual-multi
+
+    # Dicionnary
     pkgs.aspellDicts.en
     pkgs.aspellDicts.fr
-    clang_complete
-    fugitive
+
+    # find files
     ctrlp
-    # airline
-    Syntastic
+
+    # gitgutter
     gitgutter
+
+    # File explorer
     The_NERD_tree
     The_NERD_Commenter
-    LanguageClient-neovim
-    Tagbar
+
+
+    # Languages
+    vim-markdown
     vim-orgmode
-    vim-speeddating
-    vim-visual-multi
     vim-nix
-    vim-autoformat
     vim-go
-    tmux-navigator
-    rainbow_parentheses
+    vim-toml
+
+    # better status bar
+    vim-airline
+
     vim-trailing-whitespace
-    vim-grammarous
+
     csv
-    Spacegray-vim
-    gruvbox
-    coc-nvim
+
+    # Buggy in 22.05
+    # # bug: neovim: rebuilding with coc support does not work when nodejs is in PATH
+    # https://github.com/nix-community/home-manager/issues/2966
+    # coc-nvim
     coc-yaml
     coc-json
     coc-html
     coc-css
-    vim-toml
-
-    # Rust
-    rust-vim
-    vim-racer
   ];
 
   dependencies = with pkgs; [
-    # Vim config dependencies
-    # rustup
-    # go-langserver
-    llvmPackages.libclang
-    ccls
-    # For coc
+    # for coc
     nodejs
-    # NOT WORKING DUE TO sha256 mismatch
-    #(nur.repos.mic92.nix-lsp.overrideAttrs (attr: {
-    #  cargoSha256 = "13fhaspvrgymbbr230j41ppbz3a5qm12xl667cs7x888h0jvsp5g";
-    #}))
-    # (python3.withPackages (ps:
-    #   with ps;
-    #   [
-    #     python-language-server
-    #     # the following plugins are optional, they provide type checking, import sorting and code formatting
-    #     # black
-    #     # jedi
-    #     # pylama
-    #     # flake8
-    #     # isort
-    #   ]))
   ];
 }
