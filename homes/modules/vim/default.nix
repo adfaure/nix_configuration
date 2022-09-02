@@ -29,6 +29,6 @@ in {
     #   [ (python3.withPackages (ps: with ps; [ black flake8 jedi ])) rnix-lsp ]
     #   ++ my_vim_plugins.dependencies;
     # extraPython3Packages = (ps: with ps; [ jedi ]);
-  }
+  };
 
-
+}

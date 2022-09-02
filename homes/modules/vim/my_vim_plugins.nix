@@ -32,6 +32,7 @@
     vim-go
     vim-toml
 
+    fzf-vim
     # better status bar
     vim-airline
 
