@@ -93,7 +93,7 @@ in {
       gnome3.adwaita-icon-theme # default gnome cursors
       swaylock
       swayidle
-      (waybar.override {withMediaPlayer = true;} )
+      (waybar.override {withMediaPlayer = true;})
       grim # screenshot functionality
       slurp # screenshot functionality
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout

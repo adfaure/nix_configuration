@@ -25,7 +25,6 @@
     The_NERD_tree
     The_NERD_Commenter
 
-
     # Languages
     vim-markdown
     vim-orgmode
