@@ -62,7 +62,7 @@
         };
       };
       extraSpecialArgs = {
-        inherit my-dotfiles emacs-overlay;
+        inherit my-dotfiles emacs-overlay home-module;
         nixpkgs = nixos-unstable;
         cgvg = self.packages.x86_64-linux.cgvg;
       };
