@@ -68,12 +68,12 @@ in {
 
     environment.systemPackages = with pkgs; [
       blueman
-      i3blocks
       rxvt_unicode
       # Batery info
       acpi
       # controle media player
       playerctl
+      pamixer
       wirelesstools
       networkmanager_dmenu
       sysstat
@@ -83,22 +83,20 @@ in {
 
       rofi
 
-      alacritty # gpu accelerated terminal
-      sway
-      dbus-sway-environment
       configure-gtk
       wayland
       glib # gsettings
       dracula-theme # gtk theme
       gnome3.adwaita-icon-theme # default gnome cursors
+      sway
       swaylock
       swayidle
+      swaybg
+      swaylock-fancy
+      sway-contrib.grimshot
+      dbus-sway-environment
       (waybar.override {withMediaPlayer = true;})
-      grim # screenshot functionality
-      slurp # screenshot functionality
-      wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-      # Mediaplayer
-      # perl
     ];
+
   };
 }

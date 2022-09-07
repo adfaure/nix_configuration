@@ -56,10 +56,6 @@ with lib; {
 
       libreoffice
       zotero
-
-      # franz
-      flameshot
-      # pinentry_qt4
     ];
   };
 }

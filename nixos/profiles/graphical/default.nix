@@ -38,7 +38,6 @@ in
     environment.adfaure.environments.graphical.enable = true;
     environment.adfaure.services.sway.enable = true;
 
-
     # environment.adfaure.programs.emacs.enable=true;
     programs.light.enable = true;
 
@@ -83,11 +82,12 @@ in
       ];
       libinput.enable = true;
     };
+
     environment.systemPackages = with pkgs; [
+      # SDDM Theme
       libsForQt5.plasma-framework
       libsForQt5.qt5.qtgraphicaleffects
       sddm-theme-chili
-      swaybg
     ];
 
     services.dbus.enable = true;
