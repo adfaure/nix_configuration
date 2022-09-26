@@ -92,6 +92,7 @@ in {
       swaylock
       swayidle
       swaybg
+      wl-clipboard
       swaylock-fancy
       sway-contrib.grimshot
       dbus-sway-environment
