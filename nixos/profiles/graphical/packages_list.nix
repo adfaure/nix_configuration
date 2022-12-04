@@ -33,7 +33,7 @@ with lib; {
       vlc
       # Utils
       xorg.xkill
-      llpp
+      # llpp
 
       # storage
       ntfs3g
