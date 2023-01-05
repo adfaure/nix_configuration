@@ -7,7 +7,6 @@
 }: let
   my_vim_plugins = pkgs.callPackage ./my_vim_plugins.nix {};
 in {
-
   home.packages =
     [
       # (pkgs.callPackage ./my_vim.nix { inherit my-dotfiles; })
@@ -15,7 +14,6 @@ in {
       pkgs.ack
     ]
     ++ my_vim_plugins.dependencies;
-
 
   programs.neovim = {
     enable = true;
@@ -30,5 +28,4 @@ in {
     #   ++ my_vim_plugins.dependencies;
     # extraPython3Packages = (ps: with ps; [ jedi ]);
   };
-
 }
