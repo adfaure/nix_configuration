@@ -41,9 +41,14 @@
       browsers = ["firefox"];
     };
 
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscode.fhs;
+    };
+
     home.packages = with pkgs; [
       # Texteditors / IDE
-      myVscode
+      # myVscode
 
       # Terminal
       sakura
