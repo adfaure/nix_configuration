@@ -98,6 +98,5 @@ in {
       dbus-sway-environment
       (waybar.override {withMediaPlayer = true;})
     ];
-
   };
 }

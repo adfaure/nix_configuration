@@ -10,15 +10,13 @@
   emacs-overlay,
   cgvg,
   ...
-}:
-{
-
+}: {
   imports = [
     # ./base.nix
     # ./modules/spotifyd
   ];
 
-   config = {
+  config = {
     nixpkgs.config.allowUnfree = true;
     # https://github.com/nix-community/home-manager/issues/2942#issuecomment-1119760100
     nixpkgs.config.allowUnfreePredicate = pkg: true;
@@ -28,8 +26,8 @@
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
     home.file.".config/sway/config".text =
-      (builtins.readFile "${my-dotfiles}/files/sway") +
-      ''
+      (builtins.readFile "${my-dotfiles}/files/sway")
+      + ''
 
         ### Set random wallpaper
         set $wallpapers_path ${home-module.home.homeDirectory}/.local/share/wallpapers/
@@ -43,7 +41,7 @@
 
     programs.vscode = {
       enable = true;
-      package = pkgs.vscode.fhs;
+      package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
     };
 
     home.packages = with pkgs; [

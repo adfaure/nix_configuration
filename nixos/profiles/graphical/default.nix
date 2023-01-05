@@ -5,7 +5,7 @@
   pi3blocksi3blockskgs,
   ...
 }: let
-	sddm-theme-chili = pkgs.stdenv.mkDerivation rec {
+  sddm-theme-chili = pkgs.stdenv.mkDerivation rec {
     name = "sddm-chili";
 
     src = pkgs.fetchFromGitHub {
@@ -24,7 +24,7 @@
       description = "Theme for SDDM";
       homepage = "https://github.com/MarianArlt/sddm-chili";
       license = licenses.gpl3Only;
-      maintainers = with maintainers; [ dan4ik605743 ];
+      maintainers = with maintainers; [dan4ik605743];
       platforms = platforms.linux;
     };
   };

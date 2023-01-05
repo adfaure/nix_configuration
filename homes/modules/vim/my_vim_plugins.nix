@@ -48,7 +48,6 @@
     # rust
     ale
     rust-vim
-
   ];
 
   dependencies = with pkgs; [
