@@ -45,25 +45,17 @@ pkgs.emacsWithPackagesFromUsePackage {
       # Org
       org
       org-ref
-      rust-mode
-      cargo
-      flycheck-rust
       # mail
-      messages-are-flowing
       # Nix
       pkgs.nix
       nix-buffer
       spaceline # modeline beautification
       winum
-      eyebrowse # window management
-      auto-compile
       # Maxima
       pkgs.maxima
-      visual-fill-column
-      melpaStablePackages.idris-mode # helm-idris
       langtool
       babel
-      ess
+      # ess -> causes error
       htmlize
       # penwith
       # From spacemacs

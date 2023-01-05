@@ -101,6 +101,10 @@ with lib; {
     };
 
     fonts = with pkgs; [
+      font-awesome_5
+      iosevka-bin
+      iosevka
+
       emojione
       liberation_ttf
       fira-code-symbols
@@ -108,8 +112,6 @@ with lib; {
       proggyfonts
       fira-code
       fira-mono
-      font-awesome_5
-      font-awesome_4
       hasklig
       wqy_zenhei
     ];
