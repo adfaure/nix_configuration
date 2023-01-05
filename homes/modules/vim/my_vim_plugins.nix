@@ -20,6 +20,7 @@
 
     # gitgutter
     gitgutter
+    vim-fugitive
 
     # File explorer
     The_NERD_tree
@@ -33,16 +34,30 @@
     vim-toml
 
     fzf-vim
+    nvim-fzf
+
     # better status bar
     vim-airline
 
     vim-trailing-whitespace
-
     csv
+
+    # Python dev
+    jedi-vim
+
+    # rust
+    ale
+    rust-vim
+
   ];
 
   dependencies = with pkgs; [
+    # For ag search command
+    silver-searcher
+    # For rg search command
+    ripgrep
     # for coc
     nodejs
+    rust-analyzer
   ];
 }
