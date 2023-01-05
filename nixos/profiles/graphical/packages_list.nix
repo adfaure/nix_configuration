@@ -33,7 +33,7 @@ with lib; {
       vlc
       # Utils
       xorg.xkill
-      llpp
+      # llpp
 
       # storage
       ntfs3g
@@ -56,10 +56,6 @@ with lib; {
 
       libreoffice
       zotero
-
-      # franz
-      flameshot
-      # pinentry_qt4
     ];
   };
 }

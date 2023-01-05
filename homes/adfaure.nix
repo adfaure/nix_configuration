@@ -4,19 +4,21 @@
   modulesPath,
   lib,
   config,
+  home-module,
   pkgs,
   my-dotfiles,
   emacs-overlay,
   cgvg,
   ...
-}: {
+}:
+{
+
   imports = [
     # ./base.nix
     # ./modules/spotifyd
   ];
 
-  # Top level configuration for the user adfaure (me!)
-  config = {
+   config = {
     nixpkgs.config.allowUnfree = true;
     # https://github.com/nix-community/home-manager/issues/2942#issuecomment-1119760100
     nixpkgs.config.allowUnfreePredicate = pkg: true;
@@ -25,14 +27,28 @@
     home.file.".config/sakura/sakura.conf".text =
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
+    home.file.".config/sway/config".text =
+      (builtins.readFile "${my-dotfiles}/files/sway") +
+      ''
+
+        ### Set random wallpaper
+        set $wallpapers_path ${home-module.home.homeDirectory}/.local/share/wallpapers/
+        output * bg `find $wallpapers_path -type f | shuf -n 1` fill
+      '';
+
     programs.browserpass = {
       enable = true;
       browsers = ["firefox"];
     };
 
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscode.fhs;
+    };
+
     home.packages = with pkgs; [
       # Texteditors / IDE
-      myVscode
+      # myVscode
 
       # Terminal
       sakura
@@ -73,8 +89,6 @@
       # GUI applications
       # calibre
       spotify
-
-      # spotify-tui
     ];
   };
 }
