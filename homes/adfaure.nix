@@ -39,14 +39,14 @@
       browsers = ["firefox"];
     };
 
-    programs.vscode = {
-      enable = true;
-      package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
-    };
+    # programs.vscode = {
+    #   enable = true;
+    #   package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
+    # };
 
     home.packages = with pkgs; [
       # Texteditors / IDE
-      # myVscode
+      myVscode
 
       # Terminal
       sakura
