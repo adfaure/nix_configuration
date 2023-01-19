@@ -95,7 +95,9 @@ in {
       swaylock-fancy
       sway-contrib.grimshot
       dbus-sway-environment
-      (waybar.override {withMediaPlayer = true;})
+
+      waybar-with-conf
+      waybar
     ];
   };
 }
