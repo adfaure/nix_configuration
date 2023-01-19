@@ -5,8 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      url = "github:adfaure/dotfiles";
-      # url = "/home/adfaure/Projects/dotfiles";
+      # url = "github:adfaure/dotfiles";
+      url = "/home/adfaure/Projects/dotfiles";
       # It is possible to pin the revision with:
       # To be fully reproducible, I can pin my repos
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
@@ -63,13 +63,12 @@
       };
       extraSpecialArgs = {
         inherit my-dotfiles emacs-overlay home-module;
-        nixpkgs = nixos-unstable;
+        # nixpkgs = nixos-unstable;
         cgvg = self.packages.x86_64-linux.cgvg;
       };
     in {
       adfaure = home-manager.lib.homeManagerConfiguration rec {
-        inherit extraSpecialArgs;
-        pkgs = unstable;
+        inherit extraSpecialArgs pkgs;
         modules = [
           home-module
           ./homes/adfaure.nix
@@ -79,7 +78,7 @@
 
       base = home-manager.lib.homeManagerConfiguration rec {
         inherit extraSpecialArgs;
-        pkgs = unstable;
+        # pkgs = unstable;
         modules = [
           home-module
           ./homes/base.nix
