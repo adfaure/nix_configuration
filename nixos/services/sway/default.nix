@@ -46,18 +46,17 @@ with lib; let
       gsettings set $gnome_schema gtk-theme 'Dracula'
     '';
   };
+
+  waybar-media = (pkgs.waybar.override {withMediaPlayer = true;});
+  waybar-with-conf = pkgs.writeShellScriptBin
+  "waybar-with-conf"
+  "${waybar-media}/bin/waybar --config ${my-dotfiles}/files/waybar/config --style ${my-dotfiles}/files/waybar/style.css";
+
 in {
   options.environment.adfaure.services.sway = {
     enable = mkEnableOption "sway";
-    extraI3Conf = mkOption {
-      type = types.lines;
-      default = "";
-      example = "";
-      description = ''
-        extra i3 config
-      '';
-    };
   };
+
 
   config = mkIf cfg.enable {
     # enable sway window manager
