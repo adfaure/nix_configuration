@@ -113,12 +113,11 @@
     version = "0.1.5";
     sha256 = "1p6r5vkzvwvxif3wxqi9599vplabzig27fzzz0bx9z0awfglzyi7";
   }
-  {
-    name = "cpptools";
-    publisher = "ms-vscode";
-    version = "1.13.9";
-    sha256 = "sha256-Cc8CP3XYOC/db/9F9gZkUNU4p5oMQLfxSr4QckqE0KE=";
-  }
+  # { name = "cpptools";
+  #   publisher = "ms-vscode";
+  #   version = "1.13.9";
+  #   sha256 = "sha256-Cc8CP3XYOC/db/9F9gZkUNU4p5oMQLfxSr4QckqE0KE=";
+  # }
   {
     name = "autodocstring";
     publisher = "njpwerner";

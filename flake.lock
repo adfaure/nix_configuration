@@ -66,9 +66,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "adfaure",
-        "repo": "dotfiles",
-        "type": "github"
+        "path": "/home/adfaure/dotfiles",
+        "type": "path"
       }
     },
     "nixos-unstable": {
