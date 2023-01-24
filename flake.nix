@@ -5,8 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
-      url = "github:adfaure/dotfiles";
-      # url = "/home/adfaure/Projects/dotfiles";
+      # url = "github:adfaure/dotfiles";
+      url = "/home/adfaure/dotfiles";
       # It is possible to pin the revision with:
       # To be fully reproducible, I can pin my repos
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
@@ -127,6 +127,16 @@
           self.nixosModules.overlay
           # Main configuration, includes the hardware file and the module list
           ./deployments/configuration-adchire.nix
+        ];
+      };
+
+      nojd = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        extraArgs = {inherit my-dotfiles nur;};
+        modules = [
+          self.nixosModules.overlay
+          # Main configuration, includes the hardware file and the module list
+          ./deployments/configuration-nojd.nix
         ];
       };
     };
