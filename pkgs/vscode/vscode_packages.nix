@@ -6,18 +6,6 @@
     sha256 = "sha256-DvcQ0wNmWqmMen7jYVP0tCDz/wdzBb56An+OaD3d4xA=";
   }
   {
-    name = "code-spell-checker-french";
-    publisher = "streetsidesoftware";
-    version = "0.2.4";
-    sha256 = "sha256-Audut8Ub1UdM+aOTgymc4GIAgOpy4X2Tm77Clm3ISsI=";
-  }
-  {
-    name = "r";
-    publisher = "reditorsupport";
-    version = "2.7.0";
-    sha256 = "sha256-OFpX68Ugk7IJ0+uppmucLwaee3Ij56guGvRrHDAzeCU=";
-  }
-  {
     name = "vim";
     publisher = "vscodevim";
     version = "1.24.3";
