@@ -26,7 +26,7 @@
     ../nixos/modules/cachix
   ];
 
-  # environment.adfaure.services.syncthing.enable = true;
+  environment.adfaure.services.syncthing.enable = true;
   services.blueman.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -39,7 +39,7 @@
   hardware.opengl.driSupport32Bit = true;
 
   networking = {
-    hostName = "noj"; # Define your hostname.
+    hostName = "nojd"; # Define your hostname.
     # resolvconf.enable = true;
     # If using dhcpcd:
     # dhcpcd.extraConfig = "nohook resolv.conf";
