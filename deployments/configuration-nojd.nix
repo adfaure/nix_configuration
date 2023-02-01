@@ -54,7 +54,7 @@
   # Add virtualbox and docker
   virtualisation = {docker.enable = true;};
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   system.autoUpgrade.channel = "https://nixos.org/channels/unstable";
 
   system.stateVersion = "22.05";
