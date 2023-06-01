@@ -59,6 +59,8 @@
 
   system.stateVersion = "22.05";
 
+  programs.openvpn3.enable = true;
+
   programs.dconf.enable = true;
   services.dbus.packages = [pkgs.dconf];
 }
