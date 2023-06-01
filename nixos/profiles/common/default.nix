@@ -21,6 +21,7 @@ with lib; {
   };
 
   programs = {
+    zsh.enable = true;
     bash = {
       enableCompletion = true;
       # Make shell history shared and saved at each command
