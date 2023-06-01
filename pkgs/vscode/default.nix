@@ -10,4 +10,6 @@
     pkgs.vscode-utils.extensionsFromVscodeMarketplace
     (import ./vscode_packages.nix).extensions;
 in
-  pkgs.vscode-with-extensions.override {vscodeExtensions = extensions;}
+  pkgs.vscode-with-extensions.override {vscodeExtensions = extensions ++ [ pkgs.vscode-extensions.rust-lang.rust-analyzer ];}
+
+

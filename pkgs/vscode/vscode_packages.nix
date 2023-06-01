@@ -6,6 +6,18 @@
     sha256 = "sha256-DvcQ0wNmWqmMen7jYVP0tCDz/wdzBb56An+OaD3d4xA=";
   }
   {
+    name = "remote-containers";
+    publisher = "ms-vscode-remote";
+    version = "0.293.0";
+    sha256 = "sha256-O0hM+GKZ46moihBlPvfNuqfLazR5WVqEaE6XiEnaNN0=";
+  }
+  {
+    name = "vsliveshare";
+    publisher = "ms-vsliveshare";
+    version = "1.0.5864";
+    sha256 = "sha256-UdI9iRvI/BaZj8ihFBCTFJGLZXxS3CtmoDw8JBPbzLY=";
+  }
+  {
     name = "vim";
     publisher = "vscodevim";
     version = "1.24.3";
