@@ -11,9 +11,10 @@
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
       flake = false;
     };
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixos-unstable";
-    # nur-kapack = { url = "/home/adfaure/Projects/nur-kapack"; };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur.url = "github:nix-community/NUR";
     # Emacs overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
