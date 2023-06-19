@@ -58,5 +58,7 @@
     # for coc
     nodejs
     rust-analyzer
+    # (python3.withPackages(ps: [
+    #   ps.python-lsp-server ps.pyls-flake8]))
   ];
 }

@@ -16,6 +16,7 @@
     ./modules/ranger
     ./modules/emacs
     ./modules/tmux
+    # ./modules/nushell
   ];
 
   # Top level configuration for the user adfaure (me!)

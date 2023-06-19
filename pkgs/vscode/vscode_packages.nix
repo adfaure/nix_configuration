@@ -47,12 +47,7 @@
     version = "2023.9.11141005";
     sha256 = "1hk75jpwl4v7910f5dw0zwb33bij1a76jpishv23dm81dd5g3s9p";
   }
-  {
-    name = "python";
-    publisher = "ms-python";
-    version = "2023.9.11491011";
-    sha256 = "0amx43dqzwrcvzm0045jcqxp0p5y2v5krbq1cpm32amwxcc0bb1a";
-  }
+
   {
     name = "vscode-pylance";
     publisher = "ms-python";
