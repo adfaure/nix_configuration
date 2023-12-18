@@ -14,8 +14,8 @@
     ./modules/vim
     ./modules/zsh
     ./modules/ranger
-    ./modules/emacs
     ./modules/tmux
+    ./modules/emacs
     # ./modules/nushell
   ];
 
