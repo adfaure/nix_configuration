@@ -11,9 +11,7 @@
 }: {
   imports = [
     ./base.nix
-
     # GUI (disabled for experiment)
-    # ./modules/emacs
     ./modules/vim
   ];
 
@@ -27,6 +25,14 @@
       '';
     };
 
+    my-programs.emacs.enable = false;
+
+    services.gpg-agent = {
+      enable = true;
+      defaultCacheTtl = 1800;
+      enableSshSupport = true;
+    };
+
     # First we activate home-manager
     programs.home-manager.enable = true;
     home.file.".config/sakura/sakura.conf".text =
@@ -36,21 +42,14 @@
       bat # cat with colors for code
       cloc
       pass
-      taskwarrior
-      timewarrior
       nitrokey-app
       jq
       cgvg
       tree
-      manpages
-      gcc
+      pinentry
+      # manpages
       wget
-      gdb
       direnv
-      entr
-
-      # Nix file formating
-      nixfmt
     ];
   };
 }
