@@ -47,16 +47,15 @@ with lib; let
     '';
   };
 
-  waybar-media = (pkgs.waybar.override {withMediaPlayer = true;});
-  waybar-with-conf = pkgs.writeShellScriptBin
-  "waybar-with-conf"
-  "${waybar-media}/bin/waybar --config ${my-dotfiles}/files/waybar/config --style ${my-dotfiles}/files/waybar/style.css";
-
+  waybar-media = pkgs.waybar.override {withMediaPlayer = true;};
+  waybar-with-conf =
+    pkgs.writeShellScriptBin
+    "waybar-with-conf"
+    "${waybar-media}/bin/waybar --config ${my-dotfiles}/files/waybar/config --style ${my-dotfiles}/files/waybar/style.css";
 in {
   options.environment.adfaure.services.sway = {
     enable = mkEnableOption "sway";
   };
-
 
   config = mkIf cfg.enable {
     # enable sway window manager
