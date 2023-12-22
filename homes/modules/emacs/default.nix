@@ -5,11 +5,10 @@
   my-dotfiles,
   wrapCmd,
   ...
-}:
-let
+}: let
   cfg = config.my-programs.emacs;
 in {
-    options = {
+  options = {
     my-programs.emacs = {
       enable = lib.mkOption {
         default = false;
