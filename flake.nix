@@ -1,7 +1,7 @@
 {
   description = "My personnal configuration";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:adfaure/dotfiles";
@@ -117,6 +117,16 @@
         modules = [
           # Main configuration, includes the hardware file and the module list
           ./deployments/configuration-roger.nix
+        ];
+      };
+
+      altitude = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        extraArgs = {inherit my-dotfiles nur;};
+        modules = [
+          self.nixosModules.overlay
+          # Main configuration, includes the hardware file and the module list
+          ./deployments/configuration-altitude.nix
         ];
       };
 
