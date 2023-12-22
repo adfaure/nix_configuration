@@ -12,23 +12,20 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/7bec8bca-30a5-4393-9cfa-965b386140c0";
+    device = "/dev/disk/by-uuid/246279f8-9414-4b52-b18c-8d603ee18deb";
     fsType = "ext4";
   };
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/5EF1-9733";
-    fsType = "vfat";
-  };
+  boot.initrd.luks.devices."luks-e7e0cf9a-e269-401f-a22c-1794f9901e60".device = "/dev/disk/by-uuid/e7e0cf9a-e269-401f-a22c-1794f9901e60";
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/73a0627f-c60d-4d1c-bec2-ae72cc90001e";}
+    {device = "/dev/disk/by-uuid/c6f83e59-d846-4620-99eb-f47ce0664989";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
