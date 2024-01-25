@@ -120,6 +120,16 @@
         ];
       };
 
+      gouttelette = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        extraArgs = {inherit my-dotfiles nur;};
+        modules = [
+          self.nixosModules.overlay
+          # Main configuration, includes the hardware file and the module list
+          ./deployments/configuration-gouttelette.nix
+        ];
+      };
+
       altitude = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         extraArgs = {inherit my-dotfiles nur;};
