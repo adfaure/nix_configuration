@@ -56,6 +56,8 @@ with lib; {
 
       libreoffice
       zotero
+
+      pinentry-qt
     ];
   };
 }

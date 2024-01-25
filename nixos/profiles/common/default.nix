@@ -33,11 +33,13 @@ with lib; {
       '';
     };
     mtr.enable = true;
+
     gnupg.agent = {
       enable = true;
+      pinentryFlavor = "qt";
       enableSSHSupport = true;
-      # pinentryFlavor = "gtk2";
     };
+
     # Whether interactive shells should show which Nix package (if any)
     # provides a missing command.
     command-not-found.enable = true;
@@ -119,7 +121,14 @@ with lib; {
   };
 
   services.pcscd.enable = true;
+
   services.sshd.enable = true;
   services.keybase.enable = true;
   documentation.dev.enable = true;
+
+  #TODO Auto mount usb sticks
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
 }
