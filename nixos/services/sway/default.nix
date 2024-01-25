@@ -8,6 +8,30 @@
 with lib; let
   cfg = config.environment.adfaure.services.sway;
 
+  sddm-theme-chili = pkgs.stdenv.mkDerivation rec {
+    name = "sddm-chili";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "MarianArlt";
+      repo = name;
+      rev = "6516d50176c3b34df29003726ef9708813d06271";
+      sha256 = "sha256-wxWsdRGC59YzDcSopDRzxg8TfjjmA3LHrdWjepTuzgw=";
+    };
+
+    installPhase = ''
+      mkdir $out/share/sddm/themes/${name} -p
+      cp ${src}/* $out/share/sddm/themes/${name}/. -aR
+    '';
+
+    meta = with lib; {
+      description = "Theme for SDDM";
+      homepage = "https://github.com/MarianArlt/sddm-chili";
+      license = licenses.gpl3Only;
+      maintainers = with maintainers; [dan4ik605743];
+      platforms = platforms.linux;
+    };
+  };
+
   # i3conf = builtins.readFile "${my-dotfiles}/files/i3";
   # bash script to let dbus know about important env variables and
   # propogate them to relevent services run at the end of sway config
@@ -64,6 +88,29 @@ in {
       wrapperFeatures.gtk = true;
     };
 
+    services.xserver = {
+      enable = true;
+      displayManager.sddm = {
+        enable = true;
+        theme = "sddm-chili";
+        enableHidpi = true;
+      };
+
+      layout = "fr";
+      # xkbVariant = "bepo";
+      resolutions = [
+        {
+          x = 2560;
+          y = 1440;
+        }
+        {
+          x = 1920;
+          y = 1080;
+        }
+      ];
+      libinput.enable = true;
+    };
+
     environment.systemPackages = with pkgs; [
       blueman
       rxvt_unicode
@@ -97,6 +144,11 @@ in {
 
       waybar-with-conf
       waybar
+
+      sddm-theme-chili
+
+      libsForQt5.plasma-framework
+      libsForQt5.qt5.qtgraphicaleffects
     ];
   };
 }
