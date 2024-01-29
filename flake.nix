@@ -16,8 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
-    # Emacs overlay
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = inputs @ {
@@ -26,18 +24,17 @@
     nixos-unstable,
     my-dotfiles,
     home-manager,
-    emacs-overlay,
     nur,
   }: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
-      overlays = [emacs-overlay.overlay];
+      overlays = [];
     };
     unstable = import nixos-unstable {
       system = "x86_64-linux";
       config.allowUnfree = true;
-      overlays = [emacs-overlay.overlay];
+      overlays = [];
     };
   in {
     packages.x86_64-linux = {
@@ -61,7 +58,7 @@
         };
       };
       extraSpecialArgs = {
-        inherit my-dotfiles emacs-overlay home-module;
+        inherit my-dotfiles home-module;
         # nixpkgs = nixos-unstable;
         cgvg = self.packages.x86_64-linux.cgvg;
       };
@@ -77,7 +74,6 @@
 
       base = home-manager.lib.homeManagerConfiguration rec {
         inherit extraSpecialArgs;
-        # pkgs = unstable;
         modules = [
           home-module
           ./homes/base.nix

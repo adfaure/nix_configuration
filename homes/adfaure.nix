@@ -7,7 +7,6 @@
   home-module,
   pkgs,
   my-dotfiles,
-  emacs-overlay,
   cgvg,
   ...
 }: {

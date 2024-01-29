@@ -4,11 +4,10 @@
   modulesPath,
   options,
   my-dotfiles,
-  emacs-overlay,
   cgvg,
   ...
 }: {
-  nixpkgs.overlays = [emacs-overlay.overlay];
+  nixpkgs.overlays = [];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
