@@ -4,9 +4,7 @@
 {
   config,
   pkgs,
-  lib,
-  options,
-  modulesPath,
+  my-dotfiles,
   ...
 }: {
   imports = [

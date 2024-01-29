@@ -2,56 +2,56 @@
   config,
   pkgs,
   lib,
+  my-dotfiles,
   ...
-}: let
-in
-  with lib; {
-    imports = [
-      ./packages_list.nix
-      ../../services/sway
-      ../../services/gnome
-      ../../services/plasma
-    ];
+}:
+with lib; {
+  imports = [
+    ./packages_list.nix
+    ../../services/sway
+    ../../services/gnome
+    ../../services/plasma
+  ];
 
-    environment.adfaure.environments.graphical.enable = true;
+  environment.adfaure.environments.graphical.enable = true;
 
-    environment.adfaure.services.gnome.enable = true;
-    environment.adfaure.services.plasma.enable = false;
-    environment.adfaure.services.sway.enable = false;
+  environment.adfaure.services.gnome.enable = true;
+  environment.adfaure.services.plasma.enable = false;
+  environment.adfaure.services.sway.enable = false;
 
-    # environment.adfaure.programs.emacs.enable=true;
-    programs.light.enable = true;
+  # environment.adfaure.programs.emacs.enable=true;
+  programs.light.enable = true;
 
-    services = {
-      # Enable CUPS to print documents.
-      printing = {
-        enable = true;
-        browsing = true;
-        drivers = [pkgs.samsung-unified-linux-driver];
-      };
-
-      # Needed for printer discovery
-      avahi.enable = true;
-      avahi.nssmdns = true;
-    };
-
-    services.pipewire = {
+  services = {
+    # Enable CUPS to print documents.
+    printing = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
+      browsing = true;
+      drivers = [pkgs.samsung-unified-linux-driver];
     };
 
-    services.dbus.enable = true;
+    # Needed for printer discovery
+    avahi.enable = true;
+    avahi.nssmdns = true;
+  };
 
-    # xdg.portal = {
-    #   enable = true;
-    #   wlr.enable = true;
-    #   # gtk portal needed to make gtk apps happy
-    #   extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    #   gtkUsePortal = true;
-    # };
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
-    programs.adb.enable = true;
-    users.users.adfaure.extraGroups = ["adbusers"];
-  }
+  services.dbus.enable = true;
+
+  # xdg.portal = {
+  #   enable = true;
+  #   wlr.enable = true;
+  #   # gtk portal needed to make gtk apps happy
+  #   extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  #   gtkUsePortal = true;
+  # };
+
+  programs.adb.enable = true;
+  users.users.adfaure.extraGroups = ["adbusers"];
+}

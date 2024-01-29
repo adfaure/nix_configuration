@@ -1,8 +1,6 @@
 ({
   lib,
   config,
-  modulesPath,
-  options,
   my-dotfiles,
   cgvg,
   ...
