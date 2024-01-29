@@ -16,6 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = inputs @ {
@@ -25,11 +26,12 @@
     my-dotfiles,
     home-manager,
     nur,
+    emacs-overlay
   }: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
-      overlays = [];
+      overlays = [ (import self.inputs.emacs-overlay) ];
     };
     unstable = import nixos-unstable {
       system = "x86_64-linux";
