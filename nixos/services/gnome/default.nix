@@ -7,17 +7,12 @@
 }:
 with lib; let
   cfg = config.environment.adfaure.services.gnome;
-  waybar-with-conf =
-    pkgs.writeShellScriptBin
-    "waybar-with-conf"
-    "${waybar-media}/bin/waybar --config ${my-dotfiles}/files/waybar/config --style ${my-dotfiles}/files/waybar/style.css";
 in {
   options.environment.adfaure.services.gnome = {
     enable = mkEnableOption "gnome";
   };
 
   config = mkIf cfg.enable {
-
     # Enable the GNOME Desktop Environment.
     services.xserver.displayManager.gdm.wayland = true;
     services.gnome.gnome-keyring.enable = true;

@@ -1,11 +1,7 @@
 {
   config,
   pkgs,
-  options,
-  modulesPath,
-  lib,
-  utillinuxMinimal,
-  specialArgs,
+  ...
 }: {
   # Module that automatically enable cadvisor and feed the data into influxdb database.
   # Note that the influxdb database needs to be created by hand (cadvisor doesn't do it).

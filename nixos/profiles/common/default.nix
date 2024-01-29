@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  options,
-  modulesPath,
   ...
 }:
 with lib; {
