@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  pi3blocksi3blockskgs,
   ...
 }: let
 in
@@ -11,10 +10,14 @@ in
       ./packages_list.nix
       ../../services/sway
       ../../services/gnome
+      ../../services/plasma
     ];
 
     environment.adfaure.environments.graphical.enable = true;
+
     environment.adfaure.services.gnome.enable = true;
+    environment.adfaure.services.plasma.enable = false;
+    environment.adfaure.services.sway.enable = false;
 
     # environment.adfaure.programs.emacs.enable=true;
     programs.light.enable = true;

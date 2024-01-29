@@ -149,6 +149,8 @@ in {
 
       libsForQt5.plasma-framework
       libsForQt5.qt5.qtgraphicaleffects
+
+      wdisplays
     ];
   };
 }

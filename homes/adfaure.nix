@@ -87,6 +87,8 @@
       # GUI applications
       # calibre
       spotify
+      signal-desktop
+      rofi
     ];
   };
 }

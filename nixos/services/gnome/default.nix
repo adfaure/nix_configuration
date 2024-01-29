@@ -14,6 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     # Enable the GNOME Desktop Environment.
+    services.xserver.displayManager.gdm.wayland = true;
     services.gnome.gnome-keyring.enable = true;
 
     services.xserver.enable = true;
@@ -50,7 +51,6 @@ in {
         atomix # puzzle game
       ]);
 
-      programs.dconf.enable = true;
-
+    programs.dconf.enable = true;
   };
 }
