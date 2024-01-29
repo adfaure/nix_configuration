@@ -6,7 +6,6 @@
   config,
   pkgs,
   my-dotfiles,
-  emacs-overlay,
   cgvg,
   ...
 }: {
