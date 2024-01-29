@@ -45,7 +45,6 @@
       cgvg = pkgs.callPackage ./pkgs/cgvg {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
       myEmacs = pkgs.callPackage ./pkgs/emacs {inherit my-dotfiles;};
-      cadvisor = pkgs.callPackage ./pkgs/cadvisor {};
       nix = unstable.nix;
     };
 
@@ -97,7 +96,6 @@
 
     # Overlay to inject my packages in the different modules
     overlays.default = final: prev: {
-      cadvisor = self.packages.x86_64-linux.cadvisor;
       cgvg = self.packages.x86_64-linux.cgvg;
       myVscode = self.packages.x86_64-linux.myVscode;
       myEmacs = self.packages.x86_64-linux.myEmacs;
@@ -109,20 +107,8 @@
     };
 
     nixosConfigurations = {
-      # Configuration for my current working machine.
-      roger = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        # extra arguments will be injected into the modules.
-        extraArgs = {inherit my-dotfiles nur;};
-        modules = [
-          # Main configuration, includes the hardware file and the module list
-          ./deployments/configuration-roger.nix
-        ];
-      };
-
       gouttelette = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        extraArgs = {inherit my-dotfiles nur;};
         modules = [
           self.nixosModules.overlay
           # Main configuration, includes the hardware file and the module list
@@ -130,23 +116,20 @@
         ];
       };
 
+      roger = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          # Main configuration, includes the hardware file and the module list
+          ./deployments/configuration-roger.nix
+        ];
+      };
+
       altitude = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        extraArgs = {inherit my-dotfiles nur;};
         modules = [
           self.nixosModules.overlay
           # Main configuration, includes the hardware file and the module list
           ./deployments/configuration-altitude.nix
-        ];
-      };
-
-      nojd = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        extraArgs = {inherit my-dotfiles nur;};
-        modules = [
-          self.nixosModules.overlay
-          # Main configuration, includes the hardware file and the module list
-          ./deployments/configuration-nojd.nix
         ];
       };
     };

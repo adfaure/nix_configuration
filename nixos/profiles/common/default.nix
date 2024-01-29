@@ -60,7 +60,7 @@ with lib; {
     };
   };
 
-  nix.trustedUsers = ["root" "adfaure"];
+  nix.settings.trusted-users = ["root" "adfaure"];
   users.extraUsers.adfaure = {
     isNormalUser = true;
     home = "/home/adfaure";
@@ -103,7 +103,7 @@ with lib; {
       };
     };
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       font-awesome_5
       iosevka-bin
       iosevka

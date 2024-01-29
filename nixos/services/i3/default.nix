@@ -93,7 +93,7 @@ in {
 
     # fonts.fontDir.enable = true;
     fonts.enableGhostscriptFonts = true;
-    fonts.fonts = with pkgs; [font-awesome_5 font-awesome];
+    fonts.packages = with pkgs; [font-awesome_5 font-awesome];
 
     environment.systemPackages = with pkgs; [
       blueman
