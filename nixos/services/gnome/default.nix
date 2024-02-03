@@ -28,6 +28,7 @@ in {
       polkit
       polkit_gnome
       gnome.dconf-editor
+      gnome.gnome-tweaks
     ];
 
     environment.gnome.excludePackages =
@@ -42,7 +43,7 @@ in {
         gedit # text editor
         epiphany # web browser
         geary # email reader
-        evince # document viewer
+        # evince # document viewer
         gnome-characters
         totem # video player
         tali # poker game
