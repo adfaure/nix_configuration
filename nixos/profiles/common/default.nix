@@ -115,6 +115,10 @@ with lib; {
       fira-mono
       hasklig
       wqy_zenhei
+      roboto
+      roboto-slab
+      roboto-mono
+      roboto-serif
     ];
   };
 
