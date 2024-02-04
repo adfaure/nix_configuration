@@ -55,6 +55,8 @@
       any-nix-shell
       bat # cat with colors for code
       cloc
+
+      unzip
     ];
   };
 }
