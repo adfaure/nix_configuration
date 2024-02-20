@@ -1,5 +1,6 @@
 {
   nixpkgs,
+  unstable,
   options,
   modulesPath,
   lib,
@@ -89,7 +90,9 @@
       signal-desktop
       rofi
 
-      darktable
+      unstable.darktable
+      unstable.super-productivity
+
       nvtop
       discord
       # Using this for the moment ... https://github.com/NixOS/nixpkgs/issues/273611
