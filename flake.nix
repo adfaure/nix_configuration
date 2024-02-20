@@ -60,7 +60,7 @@
         };
       };
       extraSpecialArgs = {
-        inherit my-dotfiles home-module;
+        inherit my-dotfiles home-module unstable;
         # nixpkgs = nixos-unstable;
         cgvg = self.packages.x86_64-linux.cgvg;
       };
