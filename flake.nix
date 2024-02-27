@@ -28,25 +28,26 @@
     nur,
     emacs-overlay,
   }: let
+    system = "x86_64-linux";
     pkgs = import nixpkgs {
-      system = "x86_64-linux";
+      inherit system;
       config.allowUnfree = true;
       overlays = [(import self.inputs.emacs-overlay)];
     };
     unstable = import nixos-unstable {
-      system = "x86_64-linux";
+      inherit system;
       config.allowUnfree = true;
       overlays = [];
     };
   in {
-    packages.x86_64-linux = rec {
+    packages.${system} = rec {
       # Programs
       cgvg = pkgs.callPackage ./pkgs/cgvg {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
       myEmacs = pkgs.callPackage ./pkgs/emacs {inherit my-dotfiles;};
       simplematch = unstable.callPackage ./pkgs/simplematch {};
       ExifRead = unstable.callPackage ./pkgs/exifread {};
-      organize = unstable.callPackage ./pkgs/organize { inherit simplematch ExifRead; };
+      organize = unstable.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       nix = unstable.nix;
     };
 
@@ -65,7 +66,7 @@
       extraSpecialArgs = {
         inherit my-dotfiles home-module unstable;
         # nixpkgs = nixos-unstable;
-        cgvg = self.packages.x86_64-linux.cgvg;
+        cgvg = self.packages.${system}.cgvg;
       };
     in {
       adfaure = home-manager.lib.homeManagerConfiguration rec {
@@ -97,11 +98,11 @@
 
     # Overlay to inject my packages in the different modules
     overlays.default = final: prev: {
-      cgvg = self.packages.x86_64-linux.cgvg;
-      myVscode = self.packages.x86_64-linux.myVscode;
-      myEmacs = self.packages.x86_64-linux.myEmacs;
-      organize = self.packages.x86_64-linux.organize;
-      nixFlakes = self.packages.x86_64-linux.nix;
+      cgvg = self.packages.${system}.cgvg;
+      myVscode = self.packages.${system}.myVscode;
+      myEmacs = self.packages.${system}.myEmacs;
+      organize = self.packages.${system}.organize;
+      nixFlakes = self.packages.${system}.nix;
     };
 
     nixosModules.overlay = {pkgs, ...}: {
@@ -110,7 +111,7 @@
 
     nixosConfigurations = {
       gouttelette = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = {inherit my-dotfiles;};
         modules = [
           self.nixosModules.overlay
@@ -120,7 +121,7 @@
       };
 
       roger = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = {inherit my-dotfiles;};
         modules = [
           # Main configuration, includes the hardware file and the module list
@@ -129,7 +130,7 @@
       };
 
       altitude = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = {inherit my-dotfiles;};
         modules = [
           self.nixosModules.overlay
@@ -139,9 +140,9 @@
       };
     };
 
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-    checks.x86_64-linux = with import nixpkgs {system = "x86_64-linux";}; {
-      cgvg = self.packages.x86_64-linux.cgvg;
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    checks.${system} = with import nixpkgs {inherit system;}; {
+      cgvg = self.packages.${system}.cgvg;
     };
   };
 }
