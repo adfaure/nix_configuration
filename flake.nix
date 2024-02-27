@@ -26,12 +26,12 @@
     my-dotfiles,
     home-manager,
     nur,
-    emacs-overlay
+    emacs-overlay,
   }: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
-      overlays = [ (import self.inputs.emacs-overlay) ];
+      overlays = [(import self.inputs.emacs-overlay)];
     };
     unstable = import nixos-unstable {
       system = "x86_64-linux";
@@ -39,11 +39,14 @@
       overlays = [];
     };
   in {
-    packages.x86_64-linux = {
+    packages.x86_64-linux = rec {
       # Programs
       cgvg = pkgs.callPackage ./pkgs/cgvg {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
       myEmacs = pkgs.callPackage ./pkgs/emacs {inherit my-dotfiles;};
+      simplematch = unstable.callPackage ./pkgs/simplematch {};
+      ExifRead = unstable.callPackage ./pkgs/exifread {};
+      organize = unstable.callPackage ./pkgs/organize { inherit simplematch ExifRead; };
       nix = unstable.nix;
     };
 
