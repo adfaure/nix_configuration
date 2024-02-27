@@ -100,6 +100,7 @@
       cgvg = self.packages.x86_64-linux.cgvg;
       myVscode = self.packages.x86_64-linux.myVscode;
       myEmacs = self.packages.x86_64-linux.myEmacs;
+      organize = self.packages.x86_64-linux.organize;
       nixFlakes = self.packages.x86_64-linux.nix;
     };
 
