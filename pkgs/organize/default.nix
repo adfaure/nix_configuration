@@ -6,9 +6,8 @@
   python3Packages,
   pkgs,
   simplematch,
-  ExifRead
+  ExifRead,
 }:
-
 python3Packages.buildPythonApplication rec {
   pname = "organize";
   version = "3.2.1";
