@@ -32,6 +32,7 @@
     vim-nix
     vim-go
     vim-toml
+    typst-vim
 
     fzf-vim
     nvim-fzf

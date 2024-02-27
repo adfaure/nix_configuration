@@ -57,6 +57,7 @@
       cloc
 
       unzip
+      zenith
     ];
   };
 }
