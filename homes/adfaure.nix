@@ -39,14 +39,20 @@
       browsers = ["firefox"];
     };
 
-    # programs.vscode = {
-    #   enable = true;
-    #   package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
-    # };
+    programs.direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
+    };
 
     home.packages = with pkgs; [
       # Texteditors / IDE
-      myVscode
+      # myVscode
 
       # Terminal
       sakura
@@ -92,6 +98,8 @@
 
       unstable.darktable
       unstable.super-productivity
+
+      zenith
 
       nvtop
       discord
