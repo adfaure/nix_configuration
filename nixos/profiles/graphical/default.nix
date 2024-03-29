@@ -22,6 +22,12 @@ with lib; {
   # environment.adfaure.programs.emacs.enable=true;
   programs.light.enable = true;
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = false;
+    dedicatedServer.openFirewall = false;
+  };
+
   services = {
     # Enable CUPS to print documents.
     printing = {
