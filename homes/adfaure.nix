@@ -11,10 +11,6 @@
   cgvg,
   ...
 }: {
-  imports = [
-    # ./base.nix
-    # ./modules/spotifyd
-  ];
 
   config = {
     nixpkgs.config.allowUnfree = true;
@@ -99,10 +95,9 @@
       unstable.darktable
       unstable.super-productivity
 
-      zenith
-
       nvtop
       discord
+      element-desktop
       # better discord ? at least can screen share with gnome on wayland
       unstable.vesktop
       # Using this for the moment ... https://github.com/NixOS/nixpkgs/issues/273611

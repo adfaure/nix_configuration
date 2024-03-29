@@ -58,8 +58,6 @@ with lib; {
       zotero
 
       pinentry-qt
-      protonmail-bridge
-      steam
     ];
   };
 }
