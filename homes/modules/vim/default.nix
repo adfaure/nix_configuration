@@ -17,6 +17,8 @@ in {
 
   programs.neovim = {
     enable = true;
+    catppuccin.enable = true;
+    catppuccin.flavour = "latte";
     # viAlias = true;
     # vimAlias = true;
     # withPython3 = true;

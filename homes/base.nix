@@ -6,7 +6,6 @@
   config,
   pkgs,
   my-dotfiles,
-  cgvg,
   ...
 }: {
   imports = [
@@ -50,6 +49,7 @@
 
     home.file.".tmux".text = builtins.readFile "${my-dotfiles}/files/tmux";
 
+    my-programs.emacs.enable = true;
     home.packages = with pkgs; [
       # Linux and dev tools
       any-nix-shell
