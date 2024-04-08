@@ -80,8 +80,7 @@
       direnv
       entr
       pandoc
-
-      gnome.pomodoro
+      nvtop
 
       # Nix file formating
       nixfmt
@@ -95,11 +94,10 @@
       unstable.darktable
       unstable.super-productivity
 
-      nvtop
+      # Messaging
       discord
+      telegram-desktop
       element-desktop
-      # better discord ? at least can screen share with gnome on wayland
-      unstable.vesktop
       # Using this for the moment ... https://github.com/NixOS/nixpkgs/issues/273611
       (lib.throwIf (lib.versionOlder "1.4.16" pkgs.obsidian.version) "Obsidian no longer requires EOL Electron" (
         pkgs.obsidian.override {

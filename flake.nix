@@ -15,8 +15,8 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = inputs @ {
@@ -25,8 +25,8 @@
     nixos-unstable,
     my-dotfiles,
     home-manager,
-    nur,
     emacs-overlay,
+    catppuccin,
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -73,6 +73,7 @@
         inherit extraSpecialArgs pkgs;
         modules = [
           home-module
+          catppuccin.homeManagerModules.catppuccin
           ./homes/adfaure.nix
           ./homes/base.nix
         ];

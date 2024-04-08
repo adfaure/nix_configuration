@@ -24,7 +24,7 @@ with lib; {
       aspellDicts.fr
       aspellDicts.en
       # Message and RSS
-      tdesktop
+      # tdesktop
       liferea
       # Display my wallpaper
       feh
