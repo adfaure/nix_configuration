@@ -120,25 +120,6 @@
           ./deployments/configuration-gouttelette.nix
         ];
       };
-
-      roger = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit my-dotfiles;};
-        modules = [
-          # Main configuration, includes the hardware file and the module list
-          ./deployments/configuration-roger.nix
-        ];
-      };
-
-      altitude = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit my-dotfiles;};
-        modules = [
-          self.nixosModules.overlay
-          # Main configuration, includes the hardware file and the module list
-          ./deployments/configuration-altitude.nix
-        ];
-      };
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
