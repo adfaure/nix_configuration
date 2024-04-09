@@ -57,8 +57,12 @@
       cloc
 
       unzip
+      # system monitor
       zenith
+      # Python organizater
       organize
+      # Disk space vizualization
+      du-dust
     ];
   };
 }
