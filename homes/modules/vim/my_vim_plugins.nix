@@ -2,10 +2,9 @@
   pkgs,
   vimPlugins,
   vimUtils,
+  unstable,
 }: {
   plugins = with vimPlugins; [
-    # Monokai theme
-    vim-monokai
     # lib for some plugins
     vim-misc
     # Multi vim cursor
@@ -26,13 +25,17 @@
     The_NERD_tree
     The_NERD_Commenter
 
+    ale # LSP
+    deoplete-nvim # Completion
+
     # Languages
     vim-markdown
-    vim-orgmode
     vim-nix
     vim-go
     vim-toml
     typst-vim
+    rust-vim
+    jedi-vim # Python
 
     fzf-vim
     nvim-fzf
@@ -43,12 +46,13 @@
     vim-trailing-whitespace
     csv
 
-    # Python dev
-    jedi-vim
-
-    # rust
-    ale
-    rust-vim
+    # Obsidian
+    {
+      plugin = pkgs.obsidian-nvim;
+      type = "lua";
+    }
+    # Obsidian dep
+    plenary-nvim
   ];
 
   dependencies = with pkgs; [

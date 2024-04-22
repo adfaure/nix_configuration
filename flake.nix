@@ -5,7 +5,7 @@
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:adfaure/dotfiles";
-      # url = "/home/adfaure/dotfiles";
+      # url = "/home/adfaure/code/dotfiles";
       # It is possible to pin the revision with:
       # To be fully reproducible, I can pin my repos
       # "github:/adfaure/dotfiles?rev=602790e25de91ae166c10b93735bbaea667f7a49";
@@ -48,6 +48,7 @@
       simplematch = unstable.callPackage ./pkgs/simplematch {};
       ExifRead = unstable.callPackage ./pkgs/exifread {};
       organize = unstable.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
+      obsidian-nvim = pkgs.callPackage ./pkgs/obsidian-nvim {};
       nix = unstable.nix;
     };
 
@@ -104,6 +105,7 @@
       myEmacs = self.packages.${system}.myEmacs;
       organize = self.packages.${system}.organize;
       nixFlakes = self.packages.${system}.nix;
+      obsidian-nvim = self.packages.${system}.obsidian-nvim;
     };
 
     nixosModules.overlay = {pkgs, ...}: {
