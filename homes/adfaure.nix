@@ -90,6 +90,7 @@
       spotify
       signal-desktop
       rofi
+      flameshot # Screenshot
 
       unstable.darktable
       unstable.super-productivity
@@ -98,6 +99,8 @@
       discord
       telegram-desktop
       element-desktop
+
+      mob
       # Using this for the moment ... https://github.com/NixOS/nixpkgs/issues/273611
       (lib.throwIf (lib.versionOlder "1.4.16" pkgs.obsidian.version) "Obsidian no longer requires EOL Electron" (
         pkgs.obsidian.override {
