@@ -15,7 +15,9 @@ require("obsidian").setup({
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
   },
+
   disable_frontmatter = false,
+
   daily_notes = {
     folder = "journal",
     template = "daily.md"
