@@ -1,24 +1,24 @@
-({
+{
   lib,
   config,
   my-dotfiles,
   cgvg,
-  guix,
+  pkgs,
   ...
 }:
 with lib;
 let
-  cfg = config.adfaure.modules.guix;
+  cfg = config.adfaure.modules.my-guix;
 in {
-  options.adfaure.modules.guix = {
-    enable = mkEnableOption "guix service";
+  options.adfaure.modules.my-guix = {
+    enable = mkEnableOption "guix";
   };
 
   config = mkIf cfg.enable {
     # Small module to enable guix on nixos
     services.guix.enable = true;
     environment.systemPackages = [
-      guix
+      pkgs.guix
     ];
   };
-})
+}
