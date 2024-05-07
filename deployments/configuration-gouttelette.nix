@@ -22,9 +22,12 @@
     ../nixos/profiles/graphical
     # Configure cachix
     ../nixos/modules/cachix
+    # Simple guix module with guix sevice enabled and package added to env
+    ../nixos/modules/guix
   ];
 
   environment.adfaure.services.syncthing.enable = true;
+  adfaure.modules.my-guix.enable = true;
   services.blueman.enable = true;
 
   # Use the systemd-boot EFI boot loader.
