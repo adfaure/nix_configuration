@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.environment.adfaure.services.syncthing;
+  cfg = config.adfaure.services.syncthing;
 in {
-  options.environment.adfaure.services.syncthing = {
+  options.adfaure.services.syncthing = {
     enable = mkEnableOption "syncthing";
   };
 

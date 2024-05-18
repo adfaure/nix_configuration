@@ -5,11 +5,20 @@
   ...
 }:
 with lib; {
-  require = [./package_list.nix];
 
-  # This option enables the import of the package defined in `package_list.nix`
-  # in the system environment.
-  environment.adfaure.environments.headless.enable = true;
+  imports = [
+    # syncthings
+    ../../services/syncthing
+    # We want flake activated
+    ../../modules/flakes
+    # Configure cachix
+    ../../modules/cachix
+    # Simple guix module with guix sevice enabled and package added to env
+    ../../modules/guix
+  ];
+
+  adfaure.modules.my-guix.enable = true;
+  adfaure.services.syncthing.enable = true;
 
   # use Vim by default
   environment.shellAliases = {
@@ -59,6 +68,7 @@ with lib; {
   };
 
   nix.settings.trusted-users = ["root" "adfaure"];
+
   users.extraUsers.adfaure = {
     isNormalUser = true;
     home = "/home/adfaure";
@@ -78,8 +88,6 @@ with lib; {
     initialPassword = "nixos";
     uid = 1000;
   };
-
-  # i18n = { defaultLocale = "en_US.UTF-8"; };
 
   environment.variables = {
     LC_ALL = "en_US.UTF-8";
@@ -128,9 +136,24 @@ with lib; {
   services.keybase.enable = true;
   documentation.dev.enable = true;
 
-  #TODO Auto mount usb sticks
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  environment.systemPackages = with pkgs; [
+      # monitoring
+      psmisc
+      pmutils
+      nmap
+      htop
+      # tools
+      tmux
+      libcaca # video
+      highlight # code
+      atool # archives
+      w3m # web
+      poppler # PDF
+      mediainfo # audio and video
+      pinentry-curses
+    ];
 }

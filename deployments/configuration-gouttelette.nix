@@ -10,24 +10,13 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-gouttelette.nix
-    # syncthings
-    ../nixos/services/syncthing
-    # We want flake activated
-    ../nixos/modules/flakes
-    # Cadvisor
-    ../nixos/modules/monitoring
     # Default linux configuration: users, fonts etc
     ../nixos/profiles/common
     # Server X configuration, also activate i3
     ../nixos/profiles/graphical
-    # Configure cachix
-    ../nixos/modules/cachix
-    # Simple guix module with guix sevice enabled and package added to env
-    ../nixos/modules/guix
   ];
 
-  environment.adfaure.services.syncthing.enable = true;
-  adfaure.modules.my-guix.enable = true;
+
   services.blueman.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -36,13 +25,9 @@
 
   networking = {
     hostName = "gouttelette"; # Define your hostname.
-    # resolvconf.enable = true;
-    # If using dhcpcd:
-    # dhcpcd.extraConfig = "nohook resolv.conf";
     # If using NetworkManager:
     networkmanager.enable = true;
-    # networkmanager.dns = "default";
-    # networkmanager.insertNameservers = [ "8.8.8.8" "8.8.4.4" ];
+
   };
 
   time.timeZone = "Europe/Paris";

@@ -7,19 +7,15 @@
 }:
 with lib; {
   imports = [
-    ./packages_list.nix
     ../../services/sway
     ../../services/gnome
     ../../services/plasma
   ];
 
-  environment.adfaure.environments.graphical.enable = true;
+  adfaure.services.gnome.enable = true;
+  adfaure.services.plasma.enable = false;
+  adfaure.services.sway.enable = false;
 
-  environment.adfaure.services.gnome.enable = true;
-  environment.adfaure.services.plasma.enable = false;
-  environment.adfaure.services.sway.enable = false;
-
-  # environment.adfaure.programs.emacs.enable=true;
   programs.light.enable = true;
 
   programs.steam = {
@@ -33,7 +29,7 @@ with lib; {
     printing = {
       enable = true;
       browsing = true;
-      drivers = [pkgs.samsung-unified-linux-driver];
+      drivers = [ pkgs.samsung-unified-linux-driver ];
     };
 
     # Needed for printer discovery
@@ -50,14 +46,56 @@ with lib; {
 
   services.dbus.enable = true;
 
-  # xdg.portal = {
-  #   enable = true;
-  #   wlr.enable = true;
-  #   # gtk portal needed to make gtk apps happy
-  #   extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  #   gtkUsePortal = true;
-  # };
-
   programs.adb.enable = true;
   users.users.adfaure.extraGroups = ["adbusers"];
+
+  environment.systemPackages = with pkgs; [
+      # For system Monitor plugin
+      gobject-introspection
+      libgtop
+      json-glib
+      glib-networking
+      arandr
+      # Web
+      # firefox
+      chromium
+      # Dictionnaries
+      aspellDicts.fr
+      aspellDicts.en
+      # Message and RSS
+      # tdesktop
+      liferea
+      # Display my wallpaper
+      feh
+      autorandr
+      # Media
+      vlc
+      # Utils
+      xorg.xkill
+      # llpp
+
+      # storage
+      ntfs3g
+      exfat
+      parted
+      hdparm
+      sysstat
+      gsmartcontrol
+      linuxPackages.perf
+
+      # Password
+      gnupg
+
+      # Graphic tools
+      gcolor3
+      graphviz
+      imagemagick
+      inkscape
+      pavucontrol
+
+      libreoffice
+      zotero
+
+      pinentry-qt
+    ];
 }
