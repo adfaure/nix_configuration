@@ -6,7 +6,7 @@
   ...
 }:
 with lib; let
-  cfg = config.environment.adfaure.services.i3;
+  cfg = config.adfaure.services.i3;
   i3conf = builtins.readFile "${my-dotfiles}/files/i3";
 in {
   options.environment.adfaure.services.i3 = {

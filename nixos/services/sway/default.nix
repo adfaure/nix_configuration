@@ -6,7 +6,7 @@
   ...
 }:
 with lib; let
-  cfg = config.environment.adfaure.services.sway;
+  cfg = config.adfaure.services.sway;
 
   sddm-theme-chili = pkgs.stdenv.mkDerivation rec {
     name = "sddm-chili";
@@ -77,7 +77,7 @@ with lib; let
     "waybar-with-conf"
     "${waybar-media}/bin/waybar --config ${my-dotfiles}/files/waybar/config --style ${my-dotfiles}/files/waybar/style.css";
 in {
-  options.environment.adfaure.services.sway = {
+  options.adfaure.services.sway = {
     enable = mkEnableOption "sway";
   };
 

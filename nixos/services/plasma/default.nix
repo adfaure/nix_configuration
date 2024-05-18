@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.environment.adfaure.services.plasma;
+  cfg = config.adfaure.services.plasma;
 in {
-  options.environment.adfaure.services.plasma = {
+  options.adfaure.services.plasma = {
     enable = mkEnableOption "plasma";
   };
 

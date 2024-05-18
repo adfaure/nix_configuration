@@ -6,9 +6,9 @@
   ...
 }:
 with lib; let
-  cfg = config.environment.adfaure.services.gnome;
+  cfg = config.adfaure.services.gnome;
 in {
-  options.environment.adfaure.services.gnome = {
+  options.adfaure.services.gnome = {
     enable = mkEnableOption "gnome";
   };
 
