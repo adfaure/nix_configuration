@@ -48,7 +48,10 @@
   time.timeZone = "Europe/Paris";
 
   # Add virtualbox and docker
-  virtualisation = {docker.enable = true;};
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
+  };
 
   programs.openvpn3.enable = true;
 
