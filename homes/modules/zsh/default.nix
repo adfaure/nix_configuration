@@ -37,7 +37,7 @@ in {
     oh-my-zsh = {
       custom = "${my-dotfiles}/files/custom_zsh";
       enable = true;
-      theme = "adfaure";
+      # theme = "adfaure";
       plugins = ["git" "tig" "themes" "z" "jump" "colored-man-pages" "copybuffer"];
     };
 

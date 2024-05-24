@@ -70,12 +70,12 @@
         cgvg = self.packages.${system}.cgvg;
       };
     in {
-      adfaure = home-manager.lib.homeManagerConfiguration rec {
+      graphical = home-manager.lib.homeManagerConfiguration rec {
         inherit extraSpecialArgs pkgs;
         modules = [
           home-module
           catppuccin.homeManagerModules.catppuccin
-          ./homes/adfaure.nix
+          ./homes/graphical.nix
           ./homes/base.nix
         ];
       };
