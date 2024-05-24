@@ -5,7 +5,6 @@
   ...
 }:
 with lib; {
-
   imports = [
     # syncthings
     ../../services/syncthing
@@ -141,19 +140,19 @@ with lib; {
   services.udisks2.enable = true;
 
   environment.systemPackages = with pkgs; [
-      # monitoring
-      psmisc
-      pmutils
-      nmap
-      htop
-      # tools
-      tmux
-      libcaca # video
-      highlight # code
-      atool # archives
-      w3m # web
-      poppler # PDF
-      mediainfo # audio and video
-      pinentry-curses
-    ];
+    # monitoring
+    psmisc
+    pmutils
+    nmap
+    htop
+    # tools
+    tmux
+    libcaca # video
+    highlight # code
+    atool # archives
+    w3m # web
+    poppler # PDF
+    mediainfo # audio and video
+    pinentry-curses
+  ];
 }

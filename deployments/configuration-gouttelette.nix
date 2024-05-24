@@ -16,7 +16,6 @@
     ../nixos/profiles/graphical
   ];
 
-
   services.blueman.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -27,7 +26,6 @@
     hostName = "gouttelette"; # Define your hostname.
     # If using NetworkManager:
     networkmanager.enable = true;
-
   };
 
   time.timeZone = "Europe/Paris";

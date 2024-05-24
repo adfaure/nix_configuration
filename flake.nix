@@ -70,6 +70,7 @@
         cgvg = self.packages.${system}.cgvg;
       };
     in {
+      # Include programs that need X or wayland
       graphical = home-manager.lib.homeManagerConfiguration rec {
         inherit extraSpecialArgs pkgs;
         modules = [
@@ -80,6 +81,7 @@
         ];
       };
 
+      # Can be use in VPS for instance without graphical installation
       base = home-manager.lib.homeManagerConfiguration rec {
         inherit extraSpecialArgs;
         modules = [

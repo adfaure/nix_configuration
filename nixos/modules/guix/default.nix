@@ -6,8 +6,7 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.adfaure.modules.my-guix;
 in {
   options.adfaure.modules.my-guix = {

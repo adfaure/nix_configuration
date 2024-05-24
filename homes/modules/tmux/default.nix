@@ -7,7 +7,6 @@
 }: let
   zshrc = builtins.readFile "${my-dotfiles}/files/tmux";
 in {
-
   # home.file.".tmux".text = builtins.readFile "${my-dotfiles}/files/tmux";
 
   programs.tmux = {
