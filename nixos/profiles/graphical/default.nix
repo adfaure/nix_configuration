@@ -29,7 +29,7 @@ with lib; {
     printing = {
       enable = true;
       browsing = true;
-      drivers = [ pkgs.samsung-unified-linux-driver ];
+      drivers = [pkgs.samsung-unified-linux-driver];
     };
 
     # Needed for printer discovery
@@ -50,52 +50,52 @@ with lib; {
   users.users.adfaure.extraGroups = ["adbusers"];
 
   environment.systemPackages = with pkgs; [
-      # For system Monitor plugin
-      gobject-introspection
-      libgtop
-      json-glib
-      glib-networking
-      arandr
-      # Web
-      # firefox
-      chromium
-      # Dictionnaries
-      aspellDicts.fr
-      aspellDicts.en
-      # Message and RSS
-      # tdesktop
-      liferea
-      # Display my wallpaper
-      feh
-      autorandr
-      # Media
-      vlc
-      # Utils
-      xorg.xkill
-      # llpp
+    # For system Monitor plugin
+    gobject-introspection
+    libgtop
+    json-glib
+    glib-networking
+    arandr
+    # Web
+    # firefox
+    chromium
+    # Dictionnaries
+    aspellDicts.fr
+    aspellDicts.en
+    # Message and RSS
+    # tdesktop
+    liferea
+    # Display my wallpaper
+    feh
+    autorandr
+    # Media
+    vlc
+    # Utils
+    xorg.xkill
+    # llpp
 
-      # storage
-      ntfs3g
-      exfat
-      parted
-      hdparm
-      sysstat
-      gsmartcontrol
-      linuxPackages.perf
+    # storage
+    ntfs3g
+    exfat
+    parted
+    hdparm
+    sysstat
+    gsmartcontrol
+    linuxPackages.perf
 
-      # Password
-      gnupg
+    # Password
+    gnupg
 
-      # Graphic tools
-      gcolor3
-      graphviz
-      imagemagick
-      inkscape
-      pavucontrol
+    # Graphic tools
+    gcolor3
+    graphviz
+    imagemagick
+    inkscape
+    pavucontrol
 
-      libreoffice
-      zotero
+    libreoffice
+    zotero
 
-      pinentry-qt
-    ];
+    pinentry-qt
+  ];
 }
