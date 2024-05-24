@@ -24,7 +24,9 @@ in {
     # vimAlias = true;
     # withPython3 = true;
     # https://github.com/nix-community/home-manager/issues/1712
-    extraConfig = builtins.readFile "${my-dotfiles}/files/vimrc";
+
+    extraConfig = (builtins.readFile "${my-dotfiles}/files/vimrc");
+
     extraLuaConfig = builtins.readFile ./init.lua;
     plugins = my_vim_plugins.plugins;
     # extraPackages = with pkgs;

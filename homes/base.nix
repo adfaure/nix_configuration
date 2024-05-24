@@ -14,6 +14,7 @@
     ./modules/ranger
     ./modules/tmux
     ./modules/emacs
+    ./modules/vim-tmux-panes
     # ./modules/nushell
   ];
 
@@ -23,6 +24,7 @@
 
     # First we activate home-manager
     programs.home-manager.enable = true;
+    adfaure.home-modules.vim-tmux-nav-conf.enable = true;
     # Small git config (should I make a dedicated module?)
     programs.git = {
       enable = true;
