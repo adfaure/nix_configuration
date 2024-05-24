@@ -24,10 +24,13 @@
 
     # First we activate home-manager
     programs.home-manager.enable = true;
+
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
+
     # Small git config (should I make a dedicated module?)
     programs.git = {
       enable = true;
+      difftastic.enable = true;
       userName = "Adrien Faure";
       userEmail = "adrien.faure@protonmail.com";
       aliases = {
@@ -67,6 +70,8 @@
       du-dust
       # nice and fast doc
       tldr
+      # better git diff
+      difftastic
     ];
   };
 }
