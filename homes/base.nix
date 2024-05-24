@@ -24,8 +24,8 @@
 
     # First we activate home-manager
     programs.home-manager.enable = true;
-
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
+    my-programs.emacs.enable = true;
 
     # Small git config (should I make a dedicated module?)
     programs.git = {
@@ -41,6 +41,23 @@
       };
     };
 
+    programs.starship = {
+      enable = true;
+      catppuccin.enable = true;
+      catppuccin.flavour = "frappe";
+
+      settings = {
+        username = {
+          disabled = false;
+          show_always = true;
+        };
+
+        hostname = {
+          ssh_only = false;
+        };
+      };
+    };
+
     programs.ssh = {
       enable = true;
       extraConfig = builtins.readFile "${my-dotfiles}/files/ssh_config";
@@ -52,9 +69,6 @@
       '';
     };
 
-    home.file.".tmux".text = builtins.readFile "${my-dotfiles}/files/tmux";
-
-    my-programs.emacs.enable = true;
     home.packages = with pkgs; [
       # Linux and dev tools
       any-nix-shell

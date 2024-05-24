@@ -18,17 +18,9 @@
     nixpkgs.config.allowUnfreePredicate = pkg: true;
     # First we activate home-manager
     programs.home-manager.enable = true;
+
     home.file.".config/sakura/sakura.conf".text =
       builtins.readFile "${my-dotfiles}/files/sakura.conf";
-
-    home.file.".config/sway/config".text =
-      (builtins.readFile "${my-dotfiles}/files/sway")
-      + ''
-
-        ### Set random wallpaper
-        set $wallpapers_path ${home-module.home.homeDirectory}/.local/share/wallpapers/
-        output * bg `find $wallpapers_path -type f | shuf -n 1` fill
-      '';
 
     programs.browserpass = {
       enable = true;
