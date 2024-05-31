@@ -34,7 +34,7 @@
     vim-go
     vim-toml
     typst-vim
-    rust-vim
+    # rust-vim
     jedi-vim # Python
 
     fzf-vim
