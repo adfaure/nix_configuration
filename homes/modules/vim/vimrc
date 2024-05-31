@@ -1,0 +1,184 @@
+set nocompatible               " be iMproved
+filetype off                   " required!
+set encoding=utf-8
+
+set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
+
+set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
+
+set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
+                    " Spaces are used in indents with the '>' and '<' commands
+                    " and when 'autoindent' is on. To insert a real tab when
+                    " 'expandtab' is on, use CTRL-V <Tab>.
+
+set smarttab        " When on, a <Tab> in front of a line inserts blanks
+                    " according to 'shiftwidth'. 'tabstop' is used in other
+                    " places. A <BS> will delete a 'shiftwidth' worth of space
+                    " at the start of the line.
+
+set showcmd         " Show (partial) command in status line.
+
+set number          " Show line numbers.
+
+set showmatch       " When a bracket is inserted, briefly jump to the matching
+                    " one. The jump is only done if the match can be seen on the
+                    " screen. The time to show the match can be set with
+                    " 'matchtime'.
+
+set hlsearch        " When there is a previous search pattern, highlight all
+                    " its matches.
+
+set incsearch       " While typing a search command, show immediately where the
+                    " so far typed pattern matches.
+
+set ignorecase      " Ignore case in search patterns.
+
+set smartcase       " Override the 'ignorecase' option if the search pattern
+                    " contains upper case characters.
+
+set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
+                    " and CTRL-U in Insert mode. This is a list of items,
+                    " separated by commas. Each item allows a way to backspace
+                    " over something.
+
+set autoindent      " Copy indent frm current line when starting a new line
+                    " (typing <CR> in Insert mode or when using the "o" or "O"
+                    " command).
+
+set textwidth=80    " Maximum width of text that is being inserted. A longer
+                    " line will be broken after white space to get this width.
+
+set formatoptions=c,q,r,t " This is a sequence of letters which describes how
+                    " automatic formatting is to be done.
+                    "
+                    " letter    meaning when present in formatoptions
+                    " ------    ---------------------------------------
+                    " c         Auto-wrap comments using textwidth, inserting
+                    "           the current comment leader automatically.
+                    " q         Allow formatting of comments with "gq".
+                    " r         Automatically insert the current comment leader
+                    "           after hitting <Enter> in Insert mode.
+                    " t         Auto-wrap text using textwidth (does not apply
+                    "           to comments)
+
+set ruler           " Show the line and column number of the cursor position,
+                    " separated by a comma.
+
+set background=dark " When set to "dark", Vim will try to use colors that look
+                    " good on a dark background. When set to "light", Vim will
+                    " try to use colors that look good on a light background.
+                    " Any other value is illegal.
+
+" vim hardcodes background color erase even if the terminfo file does
+" not contain bce (not to mention that libvte based terminals
+" incorrectly contain bce in their terminfo files). This causes
+" incorrect background rendering when using a color theme with a
+" background color.
+let &t_ut=''
+
+:map <C-v> "+p
+:inoremap <C-v> <ESC>"+pa
+:vnoremap <C-c> "+y
+:vnoremap <C-d> "+d
+
+set mouse=a         " Enable the use of the mouse.
+
+set wildmenu        " Cool tab completion stuff
+set wildmode=list:longest,full
+
+set laststatus=2    " Activate Status bar even without split
+
+set foldlevel=99    " Don't fold by default
+
+
+filetype plugin indent on     " required!
+syntax on
+
+set showmode
+
+cmap w!! w !sudo tee > /dev/null %
+
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+
+"set spell
+set spelllang=en
+"
+" type jj to extract from insert mode
+imap jj <Esc>
+
+"" Make sur the backup files are not spread out anywhere
+"set backup
+"set backupdir=~/.vim/
+"set directory=~/.vim/
+
+" for a better leader
+let mapleader='!'
+
+" more natural split placement
+set splitbelow
+set splitright
+
+" Dont fold
+let g:riv_fold_auto_update = 0
+let g:riv_disable_folding = 0
+
+" Let the blank line at the fold end
+let g:riv_fold_blank = 0
+
+" Check spell for RST files
+autocmd BufNewFile,BufRead *.rst setlocal spell spelllang=en
+
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap m :nohlsearch<Bar>:echo<CR>
+
+" Disable physical line wrapping
+set textwidth=0 wrapmargin=0
+
+" Show space, and non breaking space
+:set list
+":set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+:set listchars=tab:→\ ,nbsp:␣
+
+" use clipboard as default register
+" https://vim.fandom.com/wiki/Accessing_the_system_clipboard
+set clipboard=unnamed
+
+" colorscheme monokai
+
+" NERDTree
+" ————————
+let g:NERDTreeMapChdir = 'H'
+let g:NERDTreeMapChdir = 'hd'
+let g:NERDTreeMapCWD = 'HD'
+let g:NERDTreeMapOpenInTab = 't'
+let g:NERDTreeMapJumpLastChild = 'T'
+let g:NERDTreeMapOpenVSplit = 'v'
+let g:NERDTreeMapRefresh = 'r'
+let g:NERDTreeMapRefreshRoot = 'R'
+
+nmap <leader>ne :NERDTree<cr>
+
+" Nerdtree navigate with ctrl
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+
+" Deoplete for completion
+let g:deoplete#enable_at_startup = 1
+
+" Relative line number
+" set rnu!
+
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = "✗"
+let g:ale_sign_warning = "⚠"
+let g:ale_linters = { 'rust': ['analyzer'], 'python': ['pyls'], 'c': ['ccls'], 'javascript': ['flow']}
+let g:ale_rust_cargo_use_clippy = 1
+let g:airline#extensions#ale#enabled = 1
+
+nmap K :ALEHover<CR>
+nmap gd :ALEGoToDefinition<CR>

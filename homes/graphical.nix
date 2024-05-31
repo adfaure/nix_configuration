@@ -90,6 +90,7 @@
       discord
       telegram-desktop
       element-desktop
+      dino
 
       mob
       lazygit
