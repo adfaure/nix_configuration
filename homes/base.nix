@@ -33,11 +33,22 @@
       difftastic.enable = true;
       userName = "Adrien Faure";
       userEmail = "adrien.faure@protonmail.com";
+      
       aliases = {
         ds = "diff --staged";
         l = "log --pretty=format:'%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%ad %C(auto,green)%aN %C(auto,reset)%s%C(auto)% gD%d' --graph --date=format:'%Y-%m-%d %H:%M:%S' --decorate-refs-exclude='refs/remotes/*/HEAD'";
         st = "status";
         chk = "checkout";
+      };
+      extraConfig = {
+        # init = {
+        #   defaultBranch = "master";
+        # };
+        # push.default = "current";
+        # safe.bareRepository = "explicit";
+        # rebase.instructionFormat = "%d %s";
+        merge.conflictstyle = "diff3";
+        # commit.verbose = true;
       };
     };
 

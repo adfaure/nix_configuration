@@ -5,6 +5,7 @@
   unstable,
 }: {
   plugins = with vimPlugins; [
+    telescope-nvim
     # lib for some plugins
     vim-misc
     # Multi vim cursor

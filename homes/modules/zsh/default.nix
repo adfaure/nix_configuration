@@ -15,10 +15,14 @@ in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
 
     shellAliases = {
       r = "ranger";
+      t1 = "tree -L 1";
+      t2 = "tree -L 2";
+      t3 = "tree -L 3";
+
       v = "vim";
       vim = "nvim";
       t = "task";
