@@ -42,7 +42,7 @@ with lib; {
 
     gnupg.agent = {
       enable = true;
-      pinentryFlavor = "qt";
+      # pinentryFlavor = "qt";
       enableSSHSupport = true;
     };
 

@@ -34,7 +34,7 @@ with lib; {
 
     # Needed for printer discovery
     avahi.enable = true;
-    avahi.nssmdns = true;
+    avahi.nssmdns4 = true;
   };
 
   services.pipewire = {
