@@ -47,6 +47,7 @@
       myEmacs = pkgs.callPackage ./pkgs/emacs {inherit my-dotfiles;};
       simplematch = unstable.callPackage ./pkgs/simplematch {};
       ExifRead = unstable.callPackage ./pkgs/exifread {};
+      kcc = unstable.callPackage ./pkgs/kcc {};
       organize = unstable.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       obsidian-nvim = pkgs.callPackage ./pkgs/obsidian-nvim {};
       nix = unstable.nix;
