@@ -15,6 +15,7 @@
     ./modules/tmux
     ./modules/emacs
     ./modules/vim-tmux-panes
+    ./modules/eza
     # ./modules/nushell
   ];
 
@@ -25,6 +26,7 @@
     # First we activate home-manager
     programs.home-manager.enable = true;
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
+    adfaure.home-modules.eza-alias.enable = true;
     my-programs.emacs.enable = true;
 
     # Small git config (should I make a dedicated module?)
@@ -33,7 +35,6 @@
       difftastic.enable = true;
       userName = "Adrien Faure";
       userEmail = "adrien.faure@protonmail.com";
-      
       aliases = {
         ds = "diff --staged";
         l = "log --pretty=format:'%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%ad %C(auto,green)%aN %C(auto,reset)%s%C(auto)% gD%d' --graph --date=format:'%Y-%m-%d %H:%M:%S' --decorate-refs-exclude='refs/remotes/*/HEAD'";
