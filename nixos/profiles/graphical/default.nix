@@ -10,11 +10,13 @@ with lib; {
     ../../services/sway
     ../../services/gnome
     ../../services/plasma
+    ../../services/hyprland
   ];
 
   adfaure.services.gnome.enable = true;
   adfaure.services.plasma.enable = false;
   adfaure.services.sway.enable = false;
+  adfaure.services.hyprland.enable = false;
 
   programs.light.enable = true;
 
