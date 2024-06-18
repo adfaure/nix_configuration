@@ -8,7 +8,6 @@
   home-module,
   pkgs,
   my-dotfiles,
-  cgvg,
   ...
 }: {
   config = {
@@ -62,7 +61,7 @@
       timewarrior
       nitrokey-app
       jq
-      cgvg
+
       tree
       man-pages
       gcc
@@ -96,6 +95,9 @@
       lazygit
 
       obsidian
+
+      # loaded from this flake default overlay
+      pkgs.cgvg
 
       # # Using this for the moment ... https://github.com/NixOS/nixpkgs/issues/273611
       # (lib.throwIf (lib.versionOlder "1.4.16" pkgs.obsidian.version) "Obsidian no longer requires EOL Electron" (
