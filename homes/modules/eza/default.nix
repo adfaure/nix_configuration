@@ -1,5 +1,10 @@
-{ lib, config, pkgs, home, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  home,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.adfaure.home-modules.eza-alias;
 in {
@@ -15,7 +20,7 @@ in {
     };
 
     home.packages = [
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+      (pkgs.nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
     ];
   };
 }
