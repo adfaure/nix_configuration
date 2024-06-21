@@ -50,6 +50,7 @@
       kcc = unstable.callPackage ./pkgs/kcc {};
       organize = unstable.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       obsidian-nvim = pkgs.callPackage ./pkgs/obsidian-nvim {};
+      cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
       nix = unstable.nix;
     };
 
@@ -67,8 +68,6 @@
       };
       extraSpecialArgs = {
         inherit my-dotfiles home-module unstable;
-        # nixpkgs = nixos-unstable;
-        cgvg = self.packages.${system}.cgvg;
       };
     in {
       # Include programs that need X or wayland
@@ -109,6 +108,7 @@
       organize = self.packages.${system}.organize;
       nixFlakes = self.packages.${system}.nix;
       obsidian-nvim = self.packages.${system}.obsidian-nvim;
+      cgvg-rs = self.packages.${system}.cgvg-rs;
     };
 
     nixosModules.overlay = {pkgs, ...}: {
