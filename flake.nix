@@ -132,7 +132,7 @@
       # nix build .#'nixosConfigurations.vm.config.system.build.vm' ; ./result/bin/run-nixos-vm
       vm = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit my-dotfiles catppuccin;};
+        specialArgs = {inherit my-dotfiles catppuccin nixvim-config;};
         modules = [
           # My overlay
           self.nixosModules.overlay
@@ -173,7 +173,7 @@
             };
 
             home-manager.extraSpecialArgs = {
-              inherit catppuccin unstable my-dotfiles;
+              inherit catppuccin unstable my-dotfiles nixvim-config system;
             };
           }
           # Default linux configuration: users, fonts etc
