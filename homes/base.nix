@@ -27,7 +27,7 @@
     programs.home-manager.enable = true;
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
     adfaure.home-modules.eza-alias.enable = true;
-    my-programs.emacs.enable = true;
+    my-programs.emacs.enable = false;
 
     # Small git config (should I make a dedicated module?)
     programs.git = {

@@ -15,6 +15,7 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim-config.url = "github:adfaure/nixvim-config";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
   };
@@ -27,6 +28,7 @@
     home-manager,
     emacs-overlay,
     catppuccin,
+    nixvim-config,
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -67,7 +69,7 @@
         };
       };
       extraSpecialArgs = {
-        inherit my-dotfiles home-module unstable;
+        inherit my-dotfiles home-module unstable nixvim-config system;
       };
     in {
       # Include programs that need X or wayland
