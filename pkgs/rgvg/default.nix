@@ -12,10 +12,10 @@ rustPlatform.buildRustPackage rec {
     owner = "adfaure";
     repo = "${pname}";
     rev = "refs/heads/main";
-    sha256 = "sha256-8rQkUGtRJ2EvAcR1KxttTjmf2UMQTpfhhyt7LHT5tRA=";
+    sha256 = "sha256-yvQ8vCbpNSkYObdGq9Fji/Bz2mujjZwAJIARXwtc/XU=";
   };
 
-  cargoSha256 = "sha256-Y5HREuHh6Q99kWK2cgzL+2q8dJEIe2HSC++F1+lFx6I=";
+  cargoSha256 = "sha256-lx8M0YXLyvy2ivrIKlV8iyoy0i4pBDX2SV4boFlsNUk=";
 
   meta = with pkgs.lib; {
     description = "Commandline tools for searching and browsing sourcecode";
