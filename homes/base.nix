@@ -98,6 +98,7 @@
       tldr
       # better git diff
       difftastic
+      ripgrep
     ];
   };
 }
