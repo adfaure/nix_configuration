@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "http://uzix.org/cgvg/cgvg-${version}.tar.gz";
-    sha256 = "1wqjk9jg9fjjvpprng56k02fgmnyh43hqvyqm10qi66cmd0zayfq";
+    sha256 = "sha256-2Hn1QavMmIhBqNhvDAeB3tbnBJimPJvv3VK69GSaEvM=";
   };
 
   buildInputs = [perl];
