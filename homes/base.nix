@@ -1,9 +1,4 @@
 {
-  nixpkgs,
-  options,
-  modulesPath,
-  lib,
-  config,
   pkgs,
   my-dotfiles,
   ...

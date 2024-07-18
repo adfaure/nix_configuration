@@ -1,11 +1,5 @@
 {
-  nixpkgs,
   unstable,
-  options,
-  modulesPath,
-  lib,
-  config,
-  home-module,
   pkgs,
   my-dotfiles,
   ...

@@ -8,8 +8,7 @@
   unstable,
   ...
 }: {
-  home.packages =
-    [
-      nixvim-config.packages.${system}.default
-    ];
+  home.packages = [
+    nixvim-config.packages.${system}.default
+  ];
 }
