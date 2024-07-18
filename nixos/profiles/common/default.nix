@@ -18,7 +18,6 @@ with lib; {
 
   adfaure.modules.my-guix.enable = true;
   adfaure.services.syncthing.enable = true;
-  adfaure.my-programs.nushell = true;
 
   # use Vim by default
   environment.shellAliases = {
