@@ -18,9 +18,10 @@
       sha256 = "sha256-cl2Ydy6UP8oYsIAcuU5kXEd/9S5WrQsnvdt23fCRyj4=";
     };
 
+    dontUseCmakeConfigure = true;
+
     nativeBuildInputs = [pkgs.mozjpeg pkgs.cmake];
     propagatedBuildInputs = [python3Packages.cffi];
-    dontUseCmakeConfigure = true;
   };
 in
   python3Packages.buildPythonPackage rec {
@@ -39,8 +40,9 @@ in
       raven
       requests
       # Tests fail because they need this package which doesn't build
-      # pyside6
+      pyside6
     ];
+
     propagatedBuildInputs =
       [pkgs.p7zip]
       ++ (with python3Packages; [
@@ -53,7 +55,7 @@ in
       ]);
 
     # There is an AssertionError
-    doCheck = false;
+    doCheck = true;
 
     meta = with lib; {
       description = "";
