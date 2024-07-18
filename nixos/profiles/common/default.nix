@@ -14,7 +14,6 @@ with lib; {
     ../../modules/cachix
     # Simple guix module with guix sevice enabled and package added to env
     ../../modules/guix
-    ../../modules/nushell
   ];
 
   adfaure.modules.my-guix.enable = true;
