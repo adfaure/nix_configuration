@@ -78,6 +78,12 @@
       '';
     };
 
+    programs.bat = {
+      enable = true;
+      catppuccin.enable = true;
+      catppuccin.flavour = "frappe";
+    };
+
     home.packages = with pkgs; [
       # Linux and dev tools
       any-nix-shell
