@@ -16,7 +16,7 @@
     ./modules/emacs
     ./modules/vim-tmux-panes
     ./modules/eza
-    # ./modules/nushell
+    ./modules/nushell
   ];
 
   # Top level configuration for the user adfaure (me!)
@@ -28,6 +28,7 @@
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
     adfaure.home-modules.eza-alias.enable = true;
     my-programs.emacs.enable = false;
+    my-programs.nushell.enable = true;
 
     # Small git config (should I make a dedicated module?)
     programs.git = {
@@ -55,6 +56,7 @@
 
     programs.starship = {
       enable = true;
+      enableNushellIntegration = true;
       catppuccin.enable = true;
       catppuccin.flavour = "frappe";
 
