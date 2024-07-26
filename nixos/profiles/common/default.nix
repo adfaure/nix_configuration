@@ -1,10 +1,8 @@
 {
-  config,
   lib,
   pkgs,
   ...
-}:
-with lib; {
+}: {
   imports = [
     # syncthings
     ../../services/syncthing

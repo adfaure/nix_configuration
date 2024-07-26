@@ -70,7 +70,7 @@
       };
     in {
       # Include programs that need X or wayland
-      graphical = home-manager.lib.homeManagerConfiguration rec {
+      graphical = home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs pkgs;
         modules = [
           home-module
@@ -81,7 +81,7 @@
       };
 
       # Can be use in VPS for instance without graphical installation
-      base = home-manager.lib.homeManagerConfiguration rec {
+      base = home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
         modules = [
           home-module
@@ -89,7 +89,7 @@
         ];
       };
 
-      wsl = home-manager.lib.homeManagerConfiguration rec {
+      wsl = home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;
         pkgs = unstable;
         modules = [
@@ -137,7 +137,6 @@
           # top level module for this configuration
           ({
             modulesPath,
-            lib,
             ...
           }: {
             imports = [(modulesPath + "/virtualisation/qemu-vm.nix")];
