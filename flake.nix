@@ -44,10 +44,10 @@
       # Programs
       cgvg = pkgs.callPackage ./pkgs/cgvg {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
-      simplematch = unstable.callPackage ./pkgs/simplematch {};
-      ExifRead = unstable.callPackage ./pkgs/exifread {};
       kcc = unstable.callPackage ./pkgs/kcc {};
-      organize = unstable.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
+      simplematch = pkgs.callPackage ./pkgs/simplematch {};
+      ExifRead = pkgs.callPackage ./pkgs/exifread {};
+      organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       obsidian-nvim = pkgs.callPackage ./pkgs/obsidian-nvim {};
       cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
       nix = unstable.nix;

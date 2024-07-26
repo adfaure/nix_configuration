@@ -1,10 +1,8 @@
 {
   lib,
   python3,
-  fetchgit,
   fetchFromGitHub,
   python3Packages,
-  pkgs,
   simplematch,
   ExifRead,
 }:
@@ -29,12 +27,11 @@ python3Packages.buildPythonApplication rec {
     poetry-core
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [
+  propagatedBuildInputs = (with python3.pkgs; [
     # neo4j
     pyyaml
     pydantic
     rich
-    simplematch
     jinja2
     jinja2
     pythonRelaxDepsHook
@@ -50,6 +47,8 @@ python3Packages.buildPythonApplication rec {
     rich
     send2trash
 
+  ]) ++ [
+    simplematch
     simplematch
     ExifRead
   ];
