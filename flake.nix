@@ -16,7 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim-config.url = "github:adfaure/nixvim-config";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
   };
 
@@ -26,7 +25,6 @@
     nixos-unstable,
     my-dotfiles,
     home-manager,
-    emacs-overlay,
     catppuccin,
     nixvim-config,
   }: let
@@ -34,7 +32,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [(import self.inputs.emacs-overlay)];
+      overlays = [ ];
     };
     unstable = import nixos-unstable {
       inherit system;
@@ -46,7 +44,6 @@
       # Programs
       cgvg = pkgs.callPackage ./pkgs/cgvg {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
-      myEmacs = pkgs.callPackage ./pkgs/emacs {inherit my-dotfiles;};
       simplematch = unstable.callPackage ./pkgs/simplematch {};
       ExifRead = unstable.callPackage ./pkgs/exifread {};
       kcc = unstable.callPackage ./pkgs/kcc {};
@@ -106,14 +103,13 @@
     overlays.default = final: prev: {
       cgvg = self.packages.${system}.cgvg;
       myVscode = self.packages.${system}.myVscode;
-      myEmacs = self.packages.${system}.myEmacs;
       organize = self.packages.${system}.organize;
       nixFlakes = self.packages.${system}.nix;
       obsidian-nvim = self.packages.${system}.obsidian-nvim;
       cgvg-rs = self.packages.${system}.cgvg-rs;
     };
 
-    nixosModules.overlay = {pkgs, ...}: {
+    nixosModules.overlay = {...}: {
       nixpkgs.overlays = [self.overlays.default];
     };
 
