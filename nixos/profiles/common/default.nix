@@ -60,7 +60,8 @@ with lib; {
   nixpkgs.config = {
     pulseaudio = true;
     allowUnfree = true;
-    firefox.enableBrowserpass = true;
+    # firefox.enableBrowserpass = true;
+    firefox.nativeMessagingHosts = true;
     packageOverrides = pkgs: {
       sudo = pkgs.sudo.override {withInsults = true;};
     };

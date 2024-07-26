@@ -181,8 +181,9 @@
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-    checks.${system} = with import nixpkgs {inherit system;}; {
-      cgvg = self.packages.${system}.cgvg;
+      checks.${system} = builtins.listToAttrs (map (name: {
+        name = name;
+        value = self.packages.${system}.${name};
+      }) (builtins.attrNames self.packages.${system}));
     };
-  };
 }
