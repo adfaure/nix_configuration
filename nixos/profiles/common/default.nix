@@ -138,6 +138,9 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  programs.singularity.enable = true;
+  programs.singularity.enableFakeroot = true;
+
   environment.systemPackages = with pkgs; [
     # monitoring
     psmisc
