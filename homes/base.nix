@@ -102,6 +102,7 @@
       # better git diff
       difftastic
       ripgrep
+      gh
     ];
   };
 }
