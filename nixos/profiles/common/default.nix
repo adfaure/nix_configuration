@@ -27,7 +27,7 @@
   programs = {
     zsh.enable = true;
     bash = {
-      enableCompletion = true;
+      completion.enable = true;
       # Make shell history shared and saved at each command
       interactiveShellInit = ''
         shopt -s histappend

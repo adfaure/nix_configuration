@@ -19,8 +19,7 @@
   services.blueman.enable = true;
 
   # Use the systemd-boot EFI boot loader.
-  systemd.enableUnifiedCgroupHierarchy = false;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.graphics.enable32Bit = true;
 
   networking = {
     hostName = "gouttelette"; # Define your hostname.

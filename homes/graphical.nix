@@ -70,7 +70,8 @@
       nixfmt-classic
 
       # GUI applications
-      calibre
+      # calibre
+
       spotify
       signal-desktop
       rofi
