@@ -27,8 +27,8 @@ in {
       gnomeExtensions.steal-my-focus-window
       polkit
       polkit_gnome
-      gnome.dconf-editor
-      gnome.gnome-tweaks
+      dconf-editor
+      gnome-tweaks
     ];
 
     environment.gnome.excludePackages =
@@ -36,7 +36,7 @@ in {
         gnome-photos
         gnome-tour
       ])
-      ++ (with pkgs.gnome; [
+      ++ (with pkgs; [
         cheese # webcam tool
         gnome-music
         gnome-terminal

@@ -1,7 +1,7 @@
 {
   description = "My personnal configuration";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:adfaure/dotfiles";
@@ -12,7 +12,7 @@
       flake = false;
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim-config.url = "github:adfaure/nixvim-config";
