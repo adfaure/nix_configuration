@@ -8,16 +8,24 @@
 }:
 python3Packages.buildPythonApplication rec {
   pname = "organize";
-  version = "3.2.1";
+  version = "3.2.5";
   format = "pyproject";
 
   # disabled = python3.pythonOlder "3.9";
+
+  # TODO:How could I handle that better ?
+  #  - Ask upstream to loosen the version
+  #  - Create a package with the deps ?
+  patchPhase = ''
+    substituteInPlace pyproject.toml --replace \
+      'pdfminer-six = "^20231228"' 'pdfminer-six = "^20240706"'
+  '';
 
   src = fetchFromGitHub {
     owner = "tfeldmann";
     repo = "${pname}";
     rev = "v${version}";
-    sha256 = "sha256-m2eY9PhV/Zg0YHOS6f/+8zPCM71C3zP9DGfWI3Giseo=";
+    hash = "sha256-C68S1AFfiOAMuvEU2sBHIgdQkPX6ydied4Kq4ChmLP8=";
   };
 
   # All requirements are pinned
@@ -48,7 +56,6 @@ python3Packages.buildPythonApplication rec {
     send2trash
 
   ]) ++ [
-    simplematch
     simplematch
     ExifRead
   ];
