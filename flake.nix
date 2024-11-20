@@ -44,7 +44,6 @@
       # Programs
       cgvg = pkgs.callPackage ./pkgs/cgvg {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
-      kcc = unstable.callPackage ./pkgs/kcc {};
       simplematch = pkgs.callPackage ./pkgs/simplematch {};
       ExifRead = pkgs.callPackage ./pkgs/exifread {};
       organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
