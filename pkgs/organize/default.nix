@@ -9,30 +9,31 @@
 python3Packages.buildPythonApplication rec {
   pname = "organize";
   version = "3.2.5";
-  format = "pyproject";
-
-  # disabled = python3.pythonOlder "3.9";
-
-  # TODO:How could I handle that better ?
-  #  - Ask upstream to loosen the version
-  #  - Create a package with the deps ?
-  patchPhase = ''
-    substituteInPlace pyproject.toml --replace \
-      'pdfminer-six = "^20231228"' 'pdfminer-six = "^20240706"'
-  '';
+  pyproject = true;
 
   src = fetchFromGitHub {
-    owner = "tfeldmann";
+    owner = "adfaure";
     repo = "${pname}";
-    rev = "v${version}";
-    hash = "sha256-C68S1AFfiOAMuvEU2sBHIgdQkPX6ydied4Kq4ChmLP8=";
+    rev = "uv";
+    hash = "sha256-5LoQLCSi8YzlOOGxzNZBAatFR7Fshu2U4IJOrdurXSE=";
   };
 
-  # All requirements are pinned
-  pythonRelaxDeps = false;
+  build-system = [ python3.pkgs.setuptools ];
 
-  nativeBuildInputs = with python3.pkgs; [
-    poetry-core
+  nativeCheckInputs = [
+    python3Packages.pytestCheckHook
+  ];
+
+  buildInputs = with python3.pkgs; [
+    # Dev dependencies for test
+    coverage
+    mypy
+    pyfakefs
+    pytest-cov
+    pytest
+    requests
+    ruff
+    types-pyyaml
   ];
 
   propagatedBuildInputs = (with python3.pkgs; [
@@ -54,30 +55,18 @@ python3Packages.buildPythonApplication rec {
     pyyaml
     rich
     send2trash
-
   ]) ++ [
     simplematch
     ExifRead
   ];
 
-  pythonImportsCheck = [
-    "poetry.core"
-  ];
+  doCheck = true;
 
-  # Allow for package to use pep420's native namespaces
-  pythonNamespaces = [
-    "poetry"
-  ];
-
-  # https://codeload.github.com/tfeldmann/organize/tar.gz/refs/tags/v3.2.1
-
-  # Tests do not pass
-  doCheck = false;
-  meta = with lib; {
+  meta = {
     description = "";
-    homepage = https://github.com/tfeldmann;
+    homepage = "https://github.com/tfeldmann";
     platforms = python3Packages.pyinotify.meta.platforms;
-    licence = licenses.gpl2;
+    licence = lib.licenses.gpl2;
     longDescription = ''
     '';
   };
