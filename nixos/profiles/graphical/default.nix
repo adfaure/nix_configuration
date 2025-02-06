@@ -52,6 +52,7 @@ with lib; {
   users.users.adfaure.extraGroups = ["adbusers"];
 
   environment.systemPackages = with pkgs; [
+    wl-clipboard
     # For system Monitor plugin
     gobject-introspection
     libgtop

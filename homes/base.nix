@@ -12,6 +12,7 @@
     ./modules/vim-tmux-panes
     ./modules/eza
     ./modules/nushell
+    ./modules/kubernetes
   ];
 
   # Top level configuration for the user adfaure (me!)

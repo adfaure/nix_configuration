@@ -91,6 +91,8 @@
 
       obsidian
 
+      jetbrains.pycharm-community
+
       # loaded from this flake default overlay
       pkgs.cgvg-rs
 
