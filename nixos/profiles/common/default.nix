@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ../../services/restic
     # syncthings
     ../../services/syncthing
     # We want flake activated
