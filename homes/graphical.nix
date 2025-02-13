@@ -51,8 +51,6 @@
       bat # cat with colors for code
       cloc
       pass
-      taskwarrior
-      timewarrior
       nitrokey-app
       jq
 

@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ../../services/restic
     # syncthings
     ../../services/syncthing
     # We want flake activated
@@ -13,10 +12,12 @@
     ../../modules/cachix
     # Simple guix module with guix sevice enabled and package added to env
     ../../modules/guix
+    ../../services/nix-sops
   ];
 
   adfaure.modules.my-guix.enable = true;
   adfaure.services.syncthing.enable = true;
+  adfaure.services.nix-sops.enable = true;
 
   # use Vim by default
   environment.shellAliases = {
