@@ -18,7 +18,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-5LoQLCSi8YzlOOGxzNZBAatFR7Fshu2U4IJOrdurXSE=";
   };
 
-  build-system = [ python3.pkgs.setuptools ];
+  build-system = [python3.pkgs.setuptools];
 
   nativeCheckInputs = [
     python3Packages.pytestCheckHook
@@ -36,29 +36,31 @@ python3Packages.buildPythonApplication rec {
     types-pyyaml
   ];
 
-  propagatedBuildInputs = (with python3.pkgs; [
-    # neo4j
-    pyyaml
-    pydantic
-    rich
-    jinja2
-    jinja2
-    pythonRelaxDepsHook
+  propagatedBuildInputs =
+    (with python3.pkgs; [
+      # neo4j
+      pyyaml
+      pydantic
+      rich
+      jinja2
+      jinja2
+      pythonRelaxDepsHook
 
-    arrow
-    docopt-ng
-    docx2txt
-    # macos-tags
-    natsort
-    pdfminer-six
-    platformdirs
-    pyyaml
-    rich
-    send2trash
-  ]) ++ [
-    simplematch
-    ExifRead
-  ];
+      arrow
+      docopt-ng
+      docx2txt
+      # macos-tags
+      natsort
+      pdfminer-six
+      platformdirs
+      pyyaml
+      rich
+      send2trash
+    ])
+    ++ [
+      simplematch
+      ExifRead
+    ];
 
   doCheck = true;
 

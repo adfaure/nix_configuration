@@ -14,11 +14,10 @@ in {
 
   config = mkIf cfg.enable {
     systemd.user.services.restic-backup = let
-    in
-    {
-      Unit = { 
-        Description = "Restic backup"; 
-        After = [ "sops-nix.service" ];
+    in {
+      Unit = {
+        Description = "Restic backup";
+        After = ["sops-nix.service"];
       };
       Service = {
         CPUSchedulingPolicy = "idle";
@@ -33,15 +32,15 @@ in {
     };
 
     systemd.user.timers.restic-sync = {
-      Unit = { 
-        Description = "Restic periodic backup"; 
-        After = [ "sops-nix.service" ];
+      Unit = {
+        Description = "Restic periodic backup";
+        After = ["sops-nix.service"];
       };
       Timer = {
         Unit = "restic-backup.service";
         OnCalendar = "daily";
       };
-      Install = { WantedBy = [ "timers.target" ]; };
+      Install = {WantedBy = ["timers.target"];};
     };
   };
 }
