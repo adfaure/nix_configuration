@@ -158,5 +158,6 @@
     poppler # PDF
     mediainfo # audio and video
     pinentry-curses
+    restic
   ];
 }
