@@ -164,6 +164,7 @@
 
             home-manager.users.adfaure = {...}: {
               imports = [
+                sops-nix.homeManagerModules.sops
                 catppuccin.homeManagerModules.catppuccin
                 ./homes/graphical.nix
                 ./homes/base.nix
