@@ -2,13 +2,14 @@
   lib,
   config,
   pkgs,
+  private,
   ...
 }:
 let
-  cfg = config.adfaure.modules.restic-conf;
+  cfg = config.adfaure.services.restic-conf;
 in {
 
-  options.adfaure.modules.restic-conf = {
+  options.adfaure.services.restic-conf = {
     enable = lib.mkEnableOption "restic-conf";
   };
 
@@ -17,19 +18,20 @@ in {
       pkgs.restic
     ];
 
-    services.restic.backups = {
+    services.restic.backups = let
+      backup_config = "/home/adfaure/Code/backups";
+    in
+     {
       localbackup = {
-        exclude = [
-          "/home/*/.cache"
-        ];
+        user = "adfaure";
         initialize = true;
-        passwordFile = "/home/adfaure/Code/backups/secret";
-
-        paths = [
-          "/home/adfaure/Sync"
-        ];
-
-        repository = "/home/adfaure/Code/backups/nixos-repository";
+        dynamicFilesFrom = "cat ${backup_config}/paths";
+        passwordFile = "${backup_config}/secret";
+        repository = "${backup_config}/restic-repository";
+        timerConfig = {
+          OnCalendar = "17:33";
+          Persistent = true;
+        };
       };
     };
   };
