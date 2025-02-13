@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  sops,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -12,24 +13,30 @@ in {
   };
 
   config = mkIf cfg.enable {
-
     systemd.user.services.restic-backup = let
-      backup_dir = "/home/adfaure/Code/backups";
     in
     {
-      Unit = { Description = "Restic backup"; };
+      Unit = { 
+        Description = "Restic backup"; 
+        After = [ "sops-nix.service" ];
+      };
       Service = {
         CPUSchedulingPolicy = "idle";
         IOSchedulingClass = "idle";
-        WorkingDirectory = "${backup_dir}";
-        EnvironmentFile = "${backup_dir}/.env";
-        ExecStart = "${backup_dir}/backup.sh";
-        Environment = "PATH=${pkgs.restic}/bin:${pkgs.bash}/bin";
+        EnvironmentFile = "${config.sops.secrets.restic-password.path}";
+        ExecStart = "${lib.getExe pkgs.resticprofile} -c ${config.sops.secrets.restic-profile.path} backup";
+        Environment = [
+          "PATH=${pkgs.restic}/bin:${pkgs.bash}/bin"
+          "RESTIC_REPOSITORY=${config.home.homeDirectory}/.restic-repository"
+        ];
       };
     };
 
     systemd.user.timers.restic-sync = {
-      Unit = { Description = "Restic periodic backup"; };
+      Unit = { 
+        Description = "Restic periodic backup"; 
+        After = [ "sops-nix.service" ];
+      };
       Timer = {
         Unit = "restic-backup.service";
         OnCalendar = "daily";

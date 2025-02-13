@@ -1,6 +1,7 @@
 {
   description = "My personnal configuration";
   inputs = {
+    sops-nix.url = "github:Mic92/sops-nix";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
@@ -27,6 +28,7 @@
     home-manager,
     catppuccin,
     nixvim-config,
+    sops-nix
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -73,6 +75,7 @@
         inherit extraSpecialArgs pkgs;
         modules = [
           home-module
+          sops-nix.homeManagerModules.sops
           catppuccin.homeManagerModules.catppuccin
           ./homes/graphical.nix
           ./homes/base.nix
@@ -84,6 +87,7 @@
         inherit extraSpecialArgs;
         modules = [
           home-module
+          sops-nix.homeManagerModules.sops
           ./homes/base.nix
         ];
       };
