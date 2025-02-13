@@ -28,13 +28,13 @@
     home-manager,
     catppuccin,
     nixvim-config,
-    sops-nix
+    sops-nix,
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [ ];
+      overlays = [];
     };
     unstable = import nixos-unstable {
       inherit system;
@@ -138,10 +138,7 @@
           # Import home-manager module
           home-manager.nixosModules.home-manager
           # top level module for this configuration
-          ({
-            modulesPath,
-            ...
-          }: {
+          ({modulesPath, ...}: {
             imports = [(modulesPath + "/virtualisation/qemu-vm.nix")];
             nixpkgs.hostPlatform = "x86_64-linux";
             virtualisation.memorySize = 4096;
@@ -184,9 +181,9 @@
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-      checks.${system} = builtins.listToAttrs (map (name: {
-        name = name;
-        value = self.packages.${system}.${name};
-      }) (builtins.attrNames self.packages.${system}));
-    };
+    checks.${system} = builtins.listToAttrs (map (name: {
+      name = name;
+      value = self.packages.${system}.${name};
+    }) (builtins.attrNames self.packages.${system}));
+  };
 }
