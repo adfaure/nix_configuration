@@ -13,6 +13,7 @@
     ./modules/eza
     ./modules/nushell
     ./modules/kubernetes
+    ./modules/timers
   ];
 
   # Top level configuration for the user adfaure (me!)
@@ -23,6 +24,7 @@
     programs.home-manager.enable = true;
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
     adfaure.home-modules.eza-alias.enable = true;
+    adfaure.home-modules.user-timers.enable = true;
     my-programs.emacs.enable = false;
     my-programs.nushell.enable = true;
 
