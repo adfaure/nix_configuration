@@ -17,6 +17,8 @@ in {
       defaultSymlinkPath = "/run/user/1000/secrets";
       defaultSecretsMountPoint = "/run/user/1000/secrets.d";
       secrets.restic-password = {};
+      secrets.wasabi-repo-pass = {};
+      secrets.wasabi-token = {};
       secrets.restic-profile = {
         path = "${config.xdg.configHome}/resticprofile/conf.yaml";
       };
