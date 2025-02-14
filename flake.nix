@@ -117,67 +117,13 @@
     };
 
     nixosConfigurations = {
-      gouttelette = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit my-dotfiles;};
-        modules = [
-          self.nixosModules.overlay
-          # Main configuration, includes the hardware file and the module list
-          ./deployments/configuration-gouttelette.nix
-        ];
-      };
-
+      gouttelette = import ./systems/goutelette.nix {inherit system inputs;};
       # Simple VM so I don't need to reboot when I am experimenting
-      # nix build .#'nixosConfigurations.vm.config.system.build.vm' ; ./result/bin/run-nixos-vm
-      vm = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit my-dotfiles catppuccin nixvim-config;};
-        modules = [
-          # My overlay
-          self.nixosModules.overlay
-          # Import home-manager module
-          home-manager.nixosModules.home-manager
-          # top level module for this configuration
-          ({modulesPath, ...}: {
-            imports = [(modulesPath + "/virtualisation/qemu-vm.nix")];
-            nixpkgs.hostPlatform = "x86_64-linux";
-            virtualisation.memorySize = 4096;
-            virtualisation.cores = 4;
+      # # nix build .#'nixosConfigurations.vm.config.system.build.vm'
+      # # ./result/bin/run-nixos-vm
 
-            hardware.pulseaudio = {
-              enable = false;
-              # NixOS allows either a lightweight build (default) or full build of PulseAudio to be installed.
-              # Only the full build has Bluetooth support, so it must be selected here.
-              package = pkgs.pulseaudioFull;
-              extraModules = [];
-              extraConfig = ''
-                load-module module-udev-detect ignore_dB=1
-              '';
-            };
-          })
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.adfaure = {...}: {
-              imports = [
-                sops-nix.homeManagerModules.sops
-                catppuccin.homeManagerModules.catppuccin
-                ./homes/graphical.nix
-                ./homes/base.nix
-              ];
-            };
-
-            home-manager.extraSpecialArgs = {
-              inherit catppuccin unstable my-dotfiles nixvim-config system;
-            };
-          }
-          # Default linux configuration: users, fonts etc
-          nixos/profiles/common
-          # Server X configuration, also activate i3
-          nixos/profiles/graphical
-        ];
-      };
+      # user password: nixos
+      vm = import ./systems/vm.nix {inherit system inputs unstable;};
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

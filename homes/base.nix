@@ -109,6 +109,7 @@
       difftastic
       ripgrep
       gh
+      restic
     ];
   };
 }

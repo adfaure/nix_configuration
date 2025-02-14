@@ -81,7 +81,7 @@
       "docker"
       "users"
     ];
-    openssh.authorizedKeys.keys = [(lib.readFile ../../../deployments/keys/id_rsa.pub)];
+    openssh.authorizedKeys.keys = [(lib.readFile ../../../nixos/deployments/keys/id_rsa.pub)];
     # Set the initial password. Don't forget to change it ASAP.
     initialPassword = "nixos";
     uid = 1000;
