@@ -28,10 +28,10 @@ The configuration uses the new flake feature (still unstable at the time).
 ```
 
 This folder is organized as follows:
-- The folder `deployements` regroups the nix files used for the description of my differents system (the `configuration.nix` and `hardware.nix` files).
 - The folder `nixos` is divided in two categories and contains the differents module to configure nixOS machines.
-	- `profiles` are higher level modules defining an ensemble of services and tools.
-	- `services` for service configurations.
+    - `profiles` are higher level modules defining an ensemble of services and tools.
+    - `services` for service configurations.
+    - The folder `deployements` regroups the nix files used for the description of my differents system (the `configuration.nix` and `hardware.nix` files).
 - `pkgs` contains the definition of my personal packages needed in the deployement such as my website.
 - `homes` Contains the home manager configuration files.
 - `secrets.yaml` file containing different secrets, such as password, keys etc. It works nix `sops-nix`.
