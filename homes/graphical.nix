@@ -37,6 +37,7 @@
       # Terminal
       sakura
       kitty
+      ghostty
 
       # PDF reader
       pdftk
@@ -45,15 +46,12 @@
       # Web
       firefox
 
-      # Lang
-      go
-
+      # Tools
       bat # cat with colors for code
       cloc
       pass
       nitrokey-app
       jq
-
       tree
       man-pages
       gcc
@@ -70,39 +68,28 @@
       # GUI applications
       calibre
 
-      spotify
       signal-desktop
       rofi
       flameshot # Screenshot
 
+      # Photo
       unstable.darktable
-      unstable.super-productivity
 
       # Messaging
       discord
       telegram-desktop
       element-desktop
-      dino
 
+      # Dev / productivity
+      unstable.super-productivity
       mob
       lazygit
-
+      meld
       obsidian
-
       jetbrains.pycharm-community
-
       # loaded from this flake default overlay
       pkgs.cgvg-rs
 
-      # # Using this for the moment ... https://github.com/NixOS/nixpkgs/issues/273611
-      # (lib.throwIf (lib.versionOlder "1.4.16" pkgs.obsidian.version) "Obsidian no longer requires EOL Electron" (
-      #   pkgs.obsidian.override {
-      #     electron = pkgs.electron_25.overrideAttrs (_: {
-      #       preFixup = "patchelf --add-needed ${pkgs.libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-      #       meta.knownVulnerabilities = []; # NixOS/nixpkgs#273611
-      #     });
-      #   }
-      # ))
     ];
   };
 }
