@@ -16,7 +16,9 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim-config.url = "github:adfaure/nixvim-config";
+    nixvim-config = {
+      url = "github:adfaure/nixvim-config";
+    };
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
   };
 
@@ -44,7 +46,7 @@
   in {
     packages.${system} = rec {
       # Programs
-      cgvg = pkgs.callPackage ./pkgs/cgvg {};
+      cgvg = pkgs.callPackage ./pkgs/cgvg/default.nix {};
       myVscode = unstable.callPackage ./pkgs/vscode {};
       simplematch = pkgs.callPackage ./pkgs/simplematch {};
       ExifRead = pkgs.callPackage ./pkgs/exifread {};
