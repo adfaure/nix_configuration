@@ -24,7 +24,7 @@ in {
         CPUSchedulingPolicy = "idle";
         IOSchedulingClass = "idle";
         EnvironmentFile = "${config.sops.secrets.restic-password.path}";
-        ExecStart = "${lib.getExe pkgs.resticprofile} -c ${config.sops.secrets.restic-profile.path}";
+        ExecStart = "${lib.getExe pkgs.resticprofile} -c ${config.sops.secrets.restic-profile.path} backup";
         Environment = [
           "PATH=${pkgs.restic}/bin:${pkgs.bash}/bin"
           "RESTIC_REPOSITORY=${cfg.repository}"
@@ -34,7 +34,6 @@ in {
     systemd.user.timers.restic-sync = {
       Unit = {
         Description = "Restic periodic backup";
-        After = ["sops-nix.service"];
       };
       Timer = {
         Unit = "restic-backup.service";
@@ -64,7 +63,6 @@ in {
     systemd.user.timers.wasabi-restic-sync = {
       Unit = {
         Description = "Restic periodic backup";
-        After = ["sops-nix.service"];
       };
       Timer = {
         Unit = "wasabi-restic-backup.service";
