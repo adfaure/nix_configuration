@@ -19,7 +19,8 @@ in {
     };
 
     home.packages = [
-      (pkgs.nerdfonts.override {fonts = ["FiraCode" "DroidSansMono"];})
+      # TODO: Fix fonts
+      # (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
     ];
   };
 }

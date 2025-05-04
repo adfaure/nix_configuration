@@ -39,6 +39,8 @@ with lib; {
     avahi.nssmdns4 = true;
   };
 
+  hardware.pulseaudio.enable = false;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
