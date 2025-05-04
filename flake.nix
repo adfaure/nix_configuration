@@ -2,7 +2,7 @@
   description = "My personnal configuration";
   inputs = {
     sops-nix.url = "github:Mic92/sops-nix";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:adfaure/dotfiles";
@@ -13,7 +13,7 @@
       flake = false;
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim-config = {
@@ -120,6 +120,7 @@
 
     nixosConfigurations = {
       gouttelette = import ./systems/goutelette.nix {inherit system inputs;};
+      lune = import ./systems/lune.nix {inherit system inputs;};
       # Simple VM so I don't need to reboot when I am experimenting
       # # nix build .#'nixosConfigurations.vm.config.system.build.vm'
       # # ./result/bin/run-nixos-vm

@@ -100,7 +100,8 @@
       # system monitor
       zenith
       # Python organizater
-      organize
+      # TODO: Fix organize
+      # organize
       # Disk space vizualization
       du-dust
       # nice and fast doc

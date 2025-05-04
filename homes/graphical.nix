@@ -63,7 +63,7 @@
       nvtopPackages.full
 
       # Nix file formating
-      nixfmt-classic
+      # nixfmt-classic
 
       # GUI applications
       calibre
@@ -88,7 +88,9 @@
       obsidian
       jetbrains.pycharm-community
       # loaded from this flake default overlay
-      pkgs.cgvg-rs
+
+      # TODO: Fix cgvg
+      # pkgs.cgvg-rs
 
     ];
   };

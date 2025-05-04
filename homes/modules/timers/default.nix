@@ -60,16 +60,17 @@ in {
         ];
       };
     };
-    systemd.user.timers.wasabi-restic-sync = {
-      Unit = {
-        Description = "Restic periodic backup";
-      };
-      Timer = {
-        Unit = "wasabi-restic-backup.service";
-        OnCalendar = "daily";
-        Persistent = true;
-      };
-      Install = {WantedBy = ["timers.target"];};
-    };
+
+    # systemd.user.timers.wasabi-restic-sync = {
+    #   Unit = {
+    #     Description = "Restic periodic backup";
+    #   };
+    #   Timer = {
+    #     Unit = "wasabi-restic-backup.service";
+    #     OnCalendar = "daily";
+    #     Persistent = true;
+    #   };
+    #   Install = {WantedBy = ["timers.target"];};
+    # };
   };
 }
