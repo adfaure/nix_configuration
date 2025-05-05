@@ -51,7 +51,6 @@
       simplematch = pkgs.callPackage ./pkgs/simplematch {};
       ExifRead = pkgs.callPackage ./pkgs/exifread {};
       organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
-      obsidian-nvim = pkgs.callPackage ./pkgs/obsidian-nvim {};
       cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
       nix = unstable.nix;
     };
@@ -110,7 +109,6 @@
       myVscode = self.packages.${system}.myVscode;
       organize = self.packages.${system}.organize;
       nixFlakes = self.packages.${system}.nix;
-      obsidian-nvim = self.packages.${system}.obsidian-nvim;
       cgvg-rs = self.packages.${system}.cgvg-rs;
     };
 
