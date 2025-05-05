@@ -16,6 +16,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoSha256 = "sha256-lx8M0YXLyvy2ivrIKlV8iyoy0i4pBDX2SV4boFlsNUk=";
+  cargoHash = "sha256-1Op5/4g9AOHdG5BzsNMBPfOiiZYxnqIzcs9yOUU04Oo=";
 
   meta = with pkgs.lib; {
     description = "Commandline tools for searching and browsing sourcecode";
