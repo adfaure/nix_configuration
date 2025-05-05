@@ -128,9 +128,10 @@
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-    checks.${system} = builtins.listToAttrs (map (name: {
-      name = name;
-      value = self.packages.${system}.${name};
-    }) (builtins.attrNames self.packages.${system}));
+    checks.${system} =
+      nixpkgs.lib.filterAttrs
+      (_: v: !v.meta.broken)
+      (nixpkgs.lib.genAttrs (nixpkgs.lib.attrNames self.packages.${system})
+        (name: self.packages.${system}.${name}));
   };
 }

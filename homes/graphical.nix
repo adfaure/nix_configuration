@@ -90,7 +90,6 @@
       # loaded from this flake default overlay
 
       pkgs.cgvg-rs
-
     ];
   };
 }

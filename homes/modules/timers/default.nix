@@ -52,9 +52,9 @@ in {
         CPUSchedulingPolicy = "idle";
         IOSchedulingClass = "idle";
         EnvironmentFile = "${config.sops.secrets.wasabi-token.path}";
-        ExecStart = ''${lib.getExe pkgs.restic} \
-                    --from-password-file ${config.sops.secrets.wasabi-repo-pass.path} \
-                    copy --from-repo ${cfg.repository}'';
+        ExecStart = ''          ${lib.getExe pkgs.restic} \
+                              --from-password-file ${config.sops.secrets.wasabi-repo-pass.path} \
+                              copy --from-repo ${cfg.repository}'';
         Environment = [
           "PATH=${pkgs.restic}/bin:${pkgs.bash}/bin"
         ];
