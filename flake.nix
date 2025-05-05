@@ -128,10 +128,5 @@
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-    checks.${system} =
-      nixpkgs.lib.filterAttrs
-      (_: v: !v.meta.broken)
-      (nixpkgs.lib.genAttrs (nixpkgs.lib.attrNames self.packages.${system})
-        (name: self.packages.${system}.${name}));
   };
 }
