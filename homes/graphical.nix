@@ -89,8 +89,7 @@
       jetbrains.pycharm-community
       # loaded from this flake default overlay
 
-      # TODO: Fix cgvg
-      # pkgs.cgvg-rs
+      pkgs.cgvg-rs
 
     ];
   };
