@@ -15,7 +15,7 @@ python3Packages.buildPythonApplication rec {
     owner = "adfaure";
     repo = "${pname}";
     rev = "uv";
-    hash = "sha256-5LoQLCSi8YzlOOGxzNZBAatFR7Fshu2U4IJOrdurXSE=";
+    hash = "sha256-7KBpQpkgR9IFPldgrj7t3g2A8bTq3FZZGcp/h/+731k=";
   };
 
   build-system = [python3.pkgs.setuptools];
@@ -66,7 +66,7 @@ python3Packages.buildPythonApplication rec {
 
   meta = {
     description = "";
-    broken = true;
+    broken = false;
     homepage = "https://github.com/tfeldmann";
     platforms = python3Packages.pyinotify.meta.platforms;
     licence = lib.licenses.gpl2;
