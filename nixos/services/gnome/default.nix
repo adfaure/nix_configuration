@@ -25,10 +25,20 @@ in {
       gnomeExtensions.system-monitor-next
       gnomeExtensions.battery-health-charging
       gnomeExtensions.steal-my-focus-window
+      gnomeExtensions.window-list
       polkit
       polkit_gnome
       dconf-editor
       gnome-tweaks
+
+      # Because I'm curious
+      gnomeExtensions.zen
+      gnomeExtensions.yakuake
+      gnomeExtensions.window-title-is-back
+      gnomeExtensions.window-state-manager
+      gnomeExtensions.window-list-in-panel
+      gnomeExtensions.whoami-in-top-bar
+      gnomeExtensions.wayland-or-x11
     ];
 
     environment.gnome.excludePackages =
