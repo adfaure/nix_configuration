@@ -2,7 +2,7 @@
   description = "My personnal configuration";
   inputs = {
     sops-nix.url = "github:Mic92/sops-nix";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-dotfiles = {
       url = "github:adfaure/dotfiles";
