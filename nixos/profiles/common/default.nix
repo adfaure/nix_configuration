@@ -94,39 +94,33 @@
   };
 
   fonts = {
-    fontDir.enable = true;
-    enableGhostscriptFonts = true;
+    # fontDir.enable = true;
+    # enableGhostscriptFonts = true;
     fontconfig = {
       enable = true;
       allowBitmaps = true;
-      antialias = true;
-      hinting.enable = true;
-      includeUserConf = true;
-      defaultFonts = {
-        monospace = ["Fira Mono"];
-        sansSerif = ["Fira Sans"];
-        serif = ["DejaVu Serif"];
-      };
+      useEmbeddedBitmaps = true;
+
+      # antialias = true;
+      # hinting.enable = true;
+      # includeUserConf = true;
+      # defaultFonts = {
+      #   monospace = ["Fira Mono"];
+      #   sansSerif = ["Fira Sans"];
+      #   serif = ["DejaVu Serif"];
+      # };
     };
 
     packages = with pkgs; [
-      font-awesome_5
-      iosevka-bin
-      iosevka
-
-      emojione
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
       liberation_ttf
+      fira-code
       fira-code-symbols
+      mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-      fira-code
-      fira-mono
-      hasklig
-      wqy_zenhei
-      roboto
-      roboto-slab
-      roboto-mono
-      roboto-serif
     ];
   };
 
