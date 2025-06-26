@@ -95,8 +95,9 @@
       any-nix-shell
       bat # cat with colors for code
       cloc
-
       unzip
+      nixpkgs-review
+
       # system monitor
       zenith
       # Python organizater
@@ -110,6 +111,8 @@
       ripgrep
       gh
       restic
+      alsa-utils
+
     ];
   };
 }
