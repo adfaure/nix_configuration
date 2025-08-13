@@ -73,7 +73,7 @@
       flameshot # Screenshot
 
       # Photo
-      unstable.darktable
+      darktable
 
       # Messaging
       discord
