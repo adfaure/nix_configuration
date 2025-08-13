@@ -53,6 +53,7 @@
       organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
       nix = unstable.nix;
+      hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
     };
 
     # Separated home-manager config for non-nixos machines.
