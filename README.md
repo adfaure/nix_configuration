@@ -50,5 +50,5 @@ Home manager enables to manage dotfiles, and configure programs.
 To activate my home-manager profile (named `adfaure`) run the command:
 
 ```bash
-nix build .#adfaure.activationPackage; ./result/activate
+home-manager --flake .#graphical switch
 ```
