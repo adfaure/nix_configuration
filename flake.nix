@@ -73,7 +73,7 @@
       };
     in {
       # Include programs that need X or wayland
-      graphical = home-manager.lib.homeManagerConfiguration {
+      noco = home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs pkgs;
         modules = [
           home-module
@@ -81,6 +81,21 @@
           catppuccin.homeManagerModules.catppuccin
           ./homes/graphical.nix
           ./homes/base.nix
+        ];
+      };
+
+      lune = home-manager.lib.homeManagerConfiguration {
+        inherit extraSpecialArgs pkgs;
+        modules = [
+          home-module
+          sops-nix.homeManagerModules.sops
+          catppuccin.homeManagerModules.catppuccin
+          ./homes/graphical.nix
+          ./homes/base.nix
+          {
+            adfaure.services.nix-sops.enable = true;
+            adfaure.home-modules.user-timers.enable = true;
+          }
         ];
       };
 

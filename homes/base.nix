@@ -23,10 +23,11 @@
 
     # First we activate home-manager
     programs.home-manager.enable = true;
-    adfaure.services.nix-sops.enable = true;
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
     adfaure.home-modules.eza-alias.enable = true;
-    adfaure.home-modules.user-timers.enable = true;
+
+    adfaure.services.nix-sops.enable = false;
+    adfaure.home-modules.user-timers.enable = false;
 
     my-programs.emacs.enable = false;
     my-programs.nushell.enable = true;
