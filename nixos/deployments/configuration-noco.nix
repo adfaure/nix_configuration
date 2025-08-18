@@ -8,7 +8,7 @@
 }: {
   imports = [
     # Include the results of the hardware scan.
-    # ./hardware-noco.nix
+    ./hardware-noco.nix
 
     ../profiles/common
     ../profiles/graphical
@@ -18,7 +18,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "lune"; # Define your hostname.
+  networking.hostName = "noco"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
