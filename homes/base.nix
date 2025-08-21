@@ -113,7 +113,7 @@
       gh
       restic
       alsa-utils
-
+      just
     ];
   };
 }
