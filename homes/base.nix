@@ -12,7 +12,6 @@
     ./modules/vim-tmux-panes
     ./modules/eza
     ./modules/nushell
-    ./modules/kubernetes
     ./modules/timers
     ./modules/nix-sops
   ];
