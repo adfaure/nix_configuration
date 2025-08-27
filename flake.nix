@@ -81,6 +81,7 @@
           catppuccin.homeManagerModules.catppuccin
           ./homes/graphical.nix
           ./homes/base.nix
+          ./homes/modules/ryax
         ];
       };
 
