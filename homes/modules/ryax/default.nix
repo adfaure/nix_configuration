@@ -4,17 +4,15 @@
   pkgs,
   ...
 }: let
-  cfg = config.ryax;
+  cfg = config.adfaure.ryax;
 in {
-  options = {
-    ryax = {
+  options.adfaure.ryax = {
       enable = lib.mkOption {
         default = false;
         description = ''
           Whether to enable ryax module.
         '';
       };
-    };
   };
 
   config = lib.mkIf cfg.enable {

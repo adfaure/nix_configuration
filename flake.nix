@@ -82,6 +82,9 @@
           ./homes/graphical.nix
           ./homes/base.nix
           ./homes/modules/ryax
+            {
+              adfaure.ryax.enable = true;
+            }
         ];
       };
 
