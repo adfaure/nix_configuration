@@ -62,6 +62,9 @@
       catppuccin.flavour = "frappe";
 
       settings = {
+        kubernetes = {
+          disabled = false;
+        };
         username = {
           disabled = false;
           show_always = true;

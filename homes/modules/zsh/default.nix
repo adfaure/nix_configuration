@@ -5,12 +5,10 @@
   my-dotfiles,
   ...
 }: let
-  zshrc = builtins.readFile "${my-dotfiles}/files/zshrc";
   zshrc_local = pkgs.writeTextFile {
     name = "zshrc.local";
     text = builtins.readFile "${my-dotfiles}/files/zshrc.local";
   };
-  zshrc_theme = builtins.readFile "${my-dotfiles}/files/dadou.zsh-theme";
 in {
   programs.zsh = {
     enable = true;
@@ -39,9 +37,7 @@ in {
     sessionVariables = {EDITOR = "nvim";};
 
     oh-my-zsh = {
-      custom = "${my-dotfiles}/files/custom_zsh";
       enable = true;
-      # theme = "adfaure";
       plugins = ["git" "tig" "themes" "z" "jump" "colored-man-pages" "copybuffer"];
     };
 
