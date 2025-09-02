@@ -30,6 +30,7 @@ in {
       shellAliases = {
         k = "kubectl";
         kr = "kubectl --namespace ryaxns";
+        ks = "kubectl --namespace kube-system";
         kgp = "kubectl get pods --all-namespaces";
         krp = "kubectl get pods --namespace ryaxns";
       };

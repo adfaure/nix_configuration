@@ -84,6 +84,7 @@
           ./homes/modules/ryax
             {
               adfaure.ryax.enable = true;
+              my-programs.atuin.enable = true;
             }
         ];
       };
