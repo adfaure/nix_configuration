@@ -14,6 +14,7 @@
     ./modules/nushell
     ./modules/timers
     ./modules/nix-sops
+    ./modules/atuin
   ];
 
   # Top level configuration for the user adfaure (me!)
