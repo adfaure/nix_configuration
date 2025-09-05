@@ -11,6 +11,6 @@ in
     modules = [
       self.nixosModules.overlay
       # Main configuration, includes the hardware file and the module list
-      ../nixos/deployments/configuration-gouttelette.nix
+      ../deployments/configuration-lune.nix
     ];
   }

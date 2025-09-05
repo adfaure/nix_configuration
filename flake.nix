@@ -100,15 +100,15 @@
     };
 
     nixosConfigurations = {
-      gouttelette = import ./systems/goutelette.nix {inherit system inputs;};
-      lune = import ./systems/lune.nix {inherit system inputs;};
-      noco = import ./systems/noco.nix {inherit system inputs;};
+      gouttelette = import ./nixos/systems/goutelette.nix {inherit system inputs;};
+      lune = import ./nixos/systems/lune.nix {inherit system inputs;};
+      noco = import ./nixos/systems/noco.nix {inherit system inputs;};
       # Simple VM so I don't need to reboot when I am experimenting
       # # nix build .#'nixosConfigurations.vm.config.system.build.vm'
       # # ./result/bin/run-nixos-vm
 
       # user password: nixos
-      vm = import ./systems/vm.nix {inherit system inputs unstable;};
+      vm = import ./nixos/systems/vm.nix {inherit system inputs unstable;};
     };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;

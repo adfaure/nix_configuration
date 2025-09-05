@@ -11,6 +11,6 @@ in
     modules = [
       self.nixosModules.overlay
       # Main configuration, includes the hardware file and the module list
-      ../nixos/deployments/configuration-lune.nix
+      ../deployments/configuration-noco.nix
     ];
   }
