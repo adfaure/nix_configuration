@@ -21,7 +21,6 @@ in {
   config = lib.mkIf cfg.enable {
     programs.atuin.enable = true;
     home.packages = [
-
     ];
   };
 }
