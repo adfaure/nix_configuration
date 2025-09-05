@@ -7,12 +7,12 @@
   cfg = config.adfaure.ryax;
 in {
   options.adfaure.ryax = {
-      enable = lib.mkOption {
-        default = false;
-        description = ''
-          Whether to enable ryax module.
-        '';
-      };
+    enable = lib.mkOption {
+      default = false;
+      description = ''
+        Whether to enable ryax module.
+      '';
+    };
   };
 
   config = lib.mkIf cfg.enable {
