@@ -39,8 +39,8 @@ in
           imports = [
             sops-nix.homeManagerModules.sops
             catppuccin.homeManagerModules.catppuccin
-            ../homes/graphical.nix
-            ../homes/base.nix
+            ../../homes/graphical.nix
+            ../../homes/base.nix
           ];
         };
 
@@ -49,8 +49,8 @@ in
         };
       }
       # Default linux configuration: users, fonts etc
-      ../nixos/profiles/common
+      ../profiles/common
       # Server X configuration, also activate i3
-      ../nixos/profiles/graphical
+      ../profiles/graphical
     ];
   }
