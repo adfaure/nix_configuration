@@ -72,37 +72,8 @@
         inherit my-dotfiles home-module unstable nixvim-config system;
       };
     in {
-      # Include programs that need X or wayland
-      noco = home-manager.lib.homeManagerConfiguration {
-        inherit extraSpecialArgs pkgs;
-        modules = [
-          home-module
-          sops-nix.homeManagerModules.sops
-          catppuccin.homeManagerModules.catppuccin
-          ./homes/graphical.nix
-          ./homes/base.nix
-          ./homes/modules/ryax
-            {
-              adfaure.ryax.enable = true;
-              my-programs.atuin.enable = true;
-            }
-        ];
-      };
-
-      lune = home-manager.lib.homeManagerConfiguration {
-        inherit extraSpecialArgs pkgs;
-        modules = [
-          home-module
-          sops-nix.homeManagerModules.sops
-          catppuccin.homeManagerModules.catppuccin
-          ./homes/graphical.nix
-          ./homes/base.nix
-          {
-            adfaure.services.nix-sops.enable = true;
-            adfaure.home-modules.user-timers.enable = true;
-          }
-        ];
-      };
+      noco = import ./homes/configurations/noco.nix {inherit pkgs home-manager home-module sops-nix catppuccin extraSpecialArgs;};
+      lune = import ./homes/configurations/lune.nix {inherit pkgs home-manager home-module sops-nix catppuccin extraSpecialArgs;};
 
       # Can be use in VPS for instance without graphical installation
       base = home-manager.lib.homeManagerConfiguration {
@@ -111,15 +82,6 @@
           home-module
           sops-nix.homeManagerModules.sops
           ./homes/base.nix
-        ];
-      };
-
-      wsl = home-manager.lib.homeManagerConfiguration {
-        inherit extraSpecialArgs;
-        pkgs = unstable;
-        modules = [
-          home-module
-          ./homes/wsl.nix
         ];
       };
     };
