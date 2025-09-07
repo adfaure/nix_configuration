@@ -12,18 +12,15 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.extraModulePackages = [];
   boot.kernelModules = [
     "kvm-intel"
-    "ideapad_laptop"
-    "snd-sof-pci-intel-tgl"
-    "snd_sof_intel_hda_generic"
   ];
 
   boot.extraModprobeConfig = ''
-    options hda_model=alc28-yoga9-bass-spk-pin
+    options snd_sof_intel_hda_generic hda_model=alc287-yoga9-bass-spk-pin
   '';
 
   hardware.firmware = with pkgs; [sof-firmware];
