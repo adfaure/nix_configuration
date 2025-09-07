@@ -25,6 +25,7 @@
     programs.home-manager.enable = true;
     adfaure.home-modules.vim-tmux-nav-conf.enable = true;
     adfaure.home-modules.eza-alias.enable = true;
+    my-programs.atuin.enable = true;
 
     # adfaure.services.nix-sops.enable = false;
     # adfaure.home-modules.user-timers.enable = false;

@@ -19,7 +19,7 @@ in {
     };
 
     home.packages = [
-      # TODO: Fix fonts
+      # TODO: Fix fonts:
       # (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
     ];
   };

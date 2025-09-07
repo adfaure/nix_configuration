@@ -13,8 +13,8 @@ home-manager.lib.homeManagerConfiguration {
     home-module
     sops-nix.homeManagerModules.sops
     catppuccin.homeManagerModules.catppuccin
-    ./homes/graphical.nix
-    ./homes/base.nix
+    ../graphical.nix
+    ../base.nix
     {
       adfaure.services.nix-sops.enable = true;
       adfaure.home-modules.user-timers.enable = true;
