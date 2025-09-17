@@ -118,6 +118,9 @@
       restic
       alsa-utils
       just
+
+      # Steelseries headset
+      headsetcontrol
     ];
   };
 }

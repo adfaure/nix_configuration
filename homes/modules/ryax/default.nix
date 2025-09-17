@@ -20,6 +20,7 @@ in {
       kubectl
       kubernetes-helm
       scaleway-cli
+      helmfile
     ];
 
     programs.zsh = {
