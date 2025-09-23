@@ -121,6 +121,7 @@
 
       # Steelseries headset
       headsetcontrol
+      protonvpn-gui
     ];
   };
 }
