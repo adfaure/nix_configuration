@@ -244,14 +244,17 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1758636228,
-        "narHash": "sha256-sDcnzB2As0Hf9Y95P6XfvGNK5DoE1i6QVhzmpyQZyUc=",
-        "path": "/home/adfaure/Code/nixvim",
-        "type": "path"
+        "lastModified": 1758644076,
+        "narHash": "sha256-4vGbp7k74PzbNn9zl/In+QvMnXePfoWvufBBNMPPJis=",
+        "owner": "adfaure",
+        "repo": "nixvim",
+        "rev": "22967b8aeb2747c8d2fe67c897cf4e99b71af254",
+        "type": "github"
       },
       "original": {
-        "path": "/home/adfaure/Code/nixvim",
-        "type": "path"
+        "owner": "adfaure",
+        "repo": "nixvim",
+        "type": "github"
       }
     },
     "nixvim-config": {
@@ -261,11 +264,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1758636650,
-        "narHash": "sha256-gm5g/KQfzikbELlsO5lqyHIe112SPzmdaDDPS8Q9syQ=",
+        "lastModified": 1758785359,
+        "narHash": "sha256-11T5rDsr6lP5v4e6F3Qf2IGNroFjGz73ax0Qo2HVFcI=",
         "owner": "adfaure",
         "repo": "nixvim-config",
-        "rev": "14959d9d73e89e8a0306879222c2a6b98b45c427",
+        "rev": "35cf33d5b6626bfb49b04e52238d08daad27f329",
         "type": "github"
       },
       "original": {
