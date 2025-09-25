@@ -18,7 +18,6 @@ home-manager.lib.homeManagerConfiguration {
     ./../modules/ryax
     {
       adfaure.ryax.enable = true;
-      my-programs.atuin.enable = true;
       adfaure.home-modules.user-timers.enable = false;
     }
   ];
