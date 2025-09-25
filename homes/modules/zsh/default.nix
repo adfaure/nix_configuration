@@ -29,6 +29,8 @@ in {
       cat = ''bat --paging=never --style="plain"'';
       ycat = ''bat --paging=never --style="plain" -l yaml'';
       jcat = ''bat --paging=never --style="plain" -l json'';
+      ybat = ''bat --style="plain" -l yaml'';
+      jbat = ''bat --style="plain" -l json'';
       ranger = "ranger --confdir=$HOME/.config/ranger";
       # vim = ''nvim'';
       j = "jump";
