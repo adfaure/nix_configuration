@@ -3,7 +3,7 @@
   system,
   unstable,
 }: let
-  inherit (inputs) nixpkgs home-manager catppuccin nixvim-config my-dotfiles pkgs sops-nix self;
+  inherit (inputs) nixpkgs home-manager catppuccin nixvim-config my-dotfiles pkgs sops-nix self determinate;
 in
   nixpkgs.lib.nixosSystem {
     inherit system;
@@ -11,6 +11,7 @@ in
     modules = [
       # My overlay
       self.nixosModules.overlay
+      determinate.nixosModules.default
       # Import home-manager module
       home-manager.nixosModules.home-manager
       # top level module for this configuration
