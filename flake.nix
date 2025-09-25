@@ -118,14 +118,27 @@
       nixpkgs.overlays = [self.overlays.default];
     };
 
-    nixosConfigurations = {
-      gouttelette = import ./nixos/systems/goutelette.nix {inherit system inputs;};
-      lune = import ./nixos/systems/lune.nix {inherit system inputs;};
-      noco = import ./nixos/systems/noco.nix {inherit system inputs;};
+    nixosConfigurations = let
+      mkSystem = system-configuration: let
+        inherit (inputs) my-dotfiles nixpkgs determinate self;
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {inherit my-dotfiles;};
+          modules = [
+            self.nixosModules.overlay
+            determinate.nixosModules.default
+            # Main configuration, includes the hardware file and the module list
+            system-configuration
+          ];
+        };
+    in {
+      gouttelette = mkSystem ./nixos/deployments/configuration-gouttelette.nix;
+      lune = mkSystem ./nixos/deployments/configuration-lune.nix;
+      noco = mkSystem ./nixos/deployments/configuration-noco.nix;
       # Simple VM so I don't need to reboot when I am experimenting
       # # nix build .#'nixosConfigurations.vm.config.system.build.vm'
       # # ./result/bin/run-nixos-vm
-
       # user password: nixos
       vm = import ./nixos/systems/vm.nix {inherit system inputs unstable;};
     };
