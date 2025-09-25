@@ -2,17 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-lune.nix
-
     ../profiles/common
     ../profiles/graphical
   ];
+
+  # Force use of determinate for testing purpose
+  determinate.enable = lib.mkForce true;
+  adfaure.modules.enable-flake.enable = lib.mkForce false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

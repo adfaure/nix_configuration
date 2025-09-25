@@ -20,6 +20,7 @@
       url = "github:adfaure/nixvim-config";
     };
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
   outputs = inputs @ {
@@ -31,6 +32,7 @@
     catppuccin,
     nixvim-config,
     sops-nix,
+    determinate,
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -72,9 +74,26 @@
         inherit my-dotfiles home-module unstable nixvim-config system;
       };
     in {
-      noco = import ./homes/configurations/noco.nix {inherit pkgs home-manager home-module sops-nix catppuccin extraSpecialArgs;};
-      lune = import ./homes/configurations/lune.nix {inherit pkgs home-manager home-module sops-nix catppuccin extraSpecialArgs;};
-
+      noco = import ./homes/configurations/noco.nix {
+        inherit
+          pkgs
+          home-manager
+          home-module
+          sops-nix
+          catppuccin
+          extraSpecialArgs
+          ;
+      };
+      lune = import ./homes/configurations/lune.nix {
+        inherit
+          pkgs
+          home-manager
+          home-module
+          sops-nix
+          catppuccin
+          extraSpecialArgs
+          ;
+      };
       # Can be use in VPS for instance without graphical installation
       base = home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs;

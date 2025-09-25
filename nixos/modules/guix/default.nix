@@ -1,8 +1,6 @@
 {
   lib,
   config,
-  my-dotfiles,
-  cgvg,
   pkgs,
   ...
 }:

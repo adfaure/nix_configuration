@@ -15,9 +15,11 @@
     ../../modules/vm
   ];
 
+  adfaure.modules.enable-flake.enable = true;
   adfaure.modules.my-guix.enable = true;
   adfaure.modules.vm.enable = true;
   adfaure.services.syncthing.enable = true;
+  determinate.enable = false;
 
   # use Vim by default
   environment.shellAliases = {
