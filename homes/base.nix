@@ -105,6 +105,8 @@
 
       # system monitor
       zenith
+      btop
+      htop
       # Python organizater
       organize
       # Disk space vizualization
