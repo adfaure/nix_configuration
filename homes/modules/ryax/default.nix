@@ -21,6 +21,8 @@ in {
       kubernetes-helm
       scaleway-cli
       helmfile
+      vcluster
+      skopeo
     ];
 
     programs.zsh = {
