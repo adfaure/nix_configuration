@@ -18,6 +18,7 @@
     };
     nixvim-config = {
       url = "github:adfaure/nixvim-config";
+      # url = "/home/adfaure/Code/nixvim-config";
     };
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
