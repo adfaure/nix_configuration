@@ -23,6 +23,7 @@ in {
       helmfile
       vcluster
       skopeo
+      opentofu
     ];
 
     programs.zsh = {
