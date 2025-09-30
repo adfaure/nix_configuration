@@ -25,7 +25,6 @@ in {
       vim = "nvim";
       t = "task";
       b = "bat";
-      ns = "nix-shell";
       cat = ''bat --paging=never --style="plain"'';
       ycat = ''bat --paging=never --style="plain" -l yaml'';
       jcat = ''bat --paging=never --style="plain" -l json'';
@@ -36,6 +35,10 @@ in {
       j = "jump";
       # So remote shells are not completly lost because they don't know kitty
       ssh = "TERM=xterm-color ssh";
+      # nix
+      ns = "nix shell";
+      nd = "nix develop";
+      nr = "nix run";
     };
 
     sessionVariables = {EDITOR = "nvim";};
@@ -50,6 +53,7 @@ in {
 
       # Till they fix: https://github.com/nix-community/home-manager/issues/3100
       export EDITOR=nvim
+      nstart() { nix run nixpkgs#$1 }
     '';
   };
 
