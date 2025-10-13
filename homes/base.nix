@@ -80,7 +80,7 @@
 
     programs.ssh = {
       enable = true;
-      extraConfig = builtins.readFile "${my-dotfiles}/files/ssh_config";
+      # extraConfig = builtins.readFile "${my-dotfiles}/files/ssh_config";
     };
 
     programs.bash = {
