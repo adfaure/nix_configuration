@@ -24,6 +24,7 @@ in {
       vcluster
       skopeo
       opentofu
+      zoom-us
     ];
 
     programs.zsh = {
