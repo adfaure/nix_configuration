@@ -53,7 +53,9 @@ in {
 
       # Till they fix: https://github.com/nix-community/home-manager/issues/3100
       export EDITOR=nvim
-      nstart() { nix run nixpkgs#$1 }
+      nstart() {
+        NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#$1 --impure
+      }
     '';
   };
 
