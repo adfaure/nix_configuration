@@ -3,9 +3,108 @@
   pkgs,
   ...
 }: {
-
-  programs.joshuto = {
+  home.packages = [pkgs.file];
+  programs.joshuto = let
+    preview_script = pkgs.writeShellApplication {
+      name = "joshuto-preview";
+      # This might be a bit expensive to add all
+      # these packages only for preview...
+      runtimeInputs = with pkgs; [
+        pandoc
+        bat
+        poppler-utils
+        exiftool
+        odt2txt
+        pandoc
+        w3m
+        lynx
+        elinks
+        jq
+        mediainfo
+        exiftool
+        catdoc
+        mu
+        djvulibre
+        mupdf-headless
+        catdoc
+      ];
+      text = lib.readFile ./preview.sh;
+    };
+  in {
     enable = true;
+    settings = {
+      preview = {
+        max_preview_size = "20MB";
+        use_preview_script = true;
+        preview_script = "${lib.getExe preview_script}";
+      };
+    };
+    mimetype = {
+      class = {
+        text_default = [{command = "nvim";}];
+      };
+      mimetype.text = {
+        "inherit" = "text_default";
+      };
+      extension = let
+        inherit_default = inherit_mime: extensions:
+          lib.listToAttrs (
+            lib.forEach extensions
+            (e: {
+              name = e;
+              value = {"inherit" = inherit_mime;};
+            })
+          );
+      in
+        (inherit_default "text_default" [
+          "build"
+          "c"
+          "cmake"
+          "conf"
+          "cpp"
+          "css"
+          "csv"
+          "cu"
+          "ebuild"
+          "eex"
+          "env"
+          "ex"
+          "exs"
+          "go"
+          "h"
+          "hpp"
+          "hs"
+          "html"
+          "ini"
+          "java"
+          "js"
+          "json"
+          "kt"
+          "log"
+          "lua"
+          "md"
+          "micro"
+          "ninja"
+          "nix"
+          "norg"
+          "org"
+          "py"
+          "rkt"
+          "rs"
+          "scss"
+          "sh"
+          "srt"
+          "svelte"
+          "toml"
+          "tsx"
+          "txt"
+          "vim"
+          "xml"
+          "yaml"
+          "yml"
+        ])
+        // (inherit_default "video_default" ["mkv"]);
+    };
   };
 
   programs.zsh = {
