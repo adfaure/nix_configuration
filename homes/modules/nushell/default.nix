@@ -21,7 +21,7 @@ in {
     programs.nushell = {
       enable = true;
       shellAliases = {
-        r = "ranger";
+        r = "joshuto";
         t1 = "tree -L 1";
         t2 = "tree -L 2";
         t3 = "tree -L 3";
@@ -32,7 +32,6 @@ in {
         b = "bat";
         ns = "nix-shell";
         cat = ''bat --paging=never --style="plain"'';
-        ranger = "ranger --confdir=$HOME/.config/ranger";
         # vim = ''nvim'';
         j = "jump";
         # So remote shells are not completly lost because they don't know kitty

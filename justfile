@@ -1,8 +1,8 @@
-nixos configuration:
-    nixos-rebuild switch --flake .#{{configuration}} --use-remote-sudo
+nixos:
+    nixos-rebuild switch --flake .#$(hostname)--use-remote-sudo
 
-hm configuration:
-    home-manager --flake .#{{configuration}} switch -b backup
+hm:
+    home-manager --flake .#$(hostname) switch -b backup
 
 update-nixvim:
     nix flake update nixvim-config

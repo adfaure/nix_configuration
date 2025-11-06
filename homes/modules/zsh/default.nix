@@ -16,7 +16,6 @@ in {
     autosuggestion.enable = true;
 
     shellAliases = {
-      r = "ranger";
       t1 = "tree -L 1";
       t2 = "tree -L 2";
       t3 = "tree -L 3";
@@ -30,7 +29,6 @@ in {
       jcat = ''bat --paging=never --style="plain" -l json'';
       ybat = ''bat --style="plain" -l yaml'';
       jbat = ''bat --style="plain" -l json'';
-      ranger = "ranger --confdir=$HOME/.config/ranger";
       # vim = ''nvim'';
       j = "jump";
       # So remote shells are not completly lost because they don't know kitty
