@@ -58,8 +58,6 @@
       # unbind l
       # bind l select-pane -R
 
-      # fix ranger preview
-      set-option -g default-terminal "screen-256color"
     '';
   };
 }
