@@ -6,7 +6,7 @@
   imports = [
     ./modules/vim
     ./modules/zsh
-    ./modules/joshuto
+    ./modules/yazi
     ./modules/tmux
     ./modules/emacs
     ./modules/vim-tmux-panes
