@@ -108,9 +108,9 @@
       btop
       htop
       # Python organizater
-      organize
+      # organize
       # Disk space vizualization
-      du-dust
+      dust
       # nice and fast doc
       tldr
       # better git diff

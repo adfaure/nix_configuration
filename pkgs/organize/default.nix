@@ -66,7 +66,7 @@ python3Packages.buildPythonApplication rec {
 
   meta = {
     description = "";
-    broken = false;
+    broken = true;
     homepage = "https://github.com/tfeldmann";
     platforms = python3Packages.pyinotify.meta.platforms;
     licence = lib.licenses.gpl2;
