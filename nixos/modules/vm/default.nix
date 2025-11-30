@@ -37,7 +37,6 @@ in {
       spice
       spice-gtk
       spice-protocol
-      win-virtio # For Windows guests
       OVMF # For UEFI support
       virtiofsd # For virtiofs filesystem sharing
     ];

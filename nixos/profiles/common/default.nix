@@ -116,7 +116,7 @@
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      # noto-fonts-emoji  # removed in 15.11
       liberation_ttf
       fira-code
       fira-code-symbols
