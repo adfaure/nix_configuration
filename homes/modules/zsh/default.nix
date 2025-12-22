@@ -1,13 +1,40 @@
 {
-  config,
   lib,
   pkgs,
-  my-dotfiles,
   ...
 }: let
   zshrc_local = pkgs.writeTextFile {
     name = "zshrc.local";
-    text = builtins.readFile "${my-dotfiles}/files/zshrc.local";
+    text = ''
+      export PAGER=bat
+
+      # https://github.com/sharkdp/bat/issues/652
+      export MANROFFOPT="-c"
+      export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+      # This enables to use bat as pager without infinite recursion
+      export BAT_PAGER="less -RF"
+      ## Git alias
+
+      export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
+      'avg shared (code):         %X KB'$'\n'\
+      'avg unshared (data/stack): %D KB'$'\n'\
+      'total (sum):               %K KB'$'\n'\
+      'max memory:                %M MB'$'\n'\
+      'page faults from disk:     %F'$'\n'\
+      'other page faults:         %R'
+
+      # Set vim bindings
+      bindkey -v
+
+      # Start ranger file navigator
+      bindkey '^r' history-incremental-search-backward
+
+      # ctrl+space for autosuggest-accept
+      bindkey '^ ' autosuggest-accept
+
+      # nix shell hook
+      any-nix-shell zsh --info-right | source /dev/stdin
+    '';
   };
 in {
   programs.zsh = {
@@ -46,7 +73,7 @@ in {
       plugins = ["git" "tig" "themes" "z" "jump" "colored-man-pages" "copybuffer"];
     };
 
-    initExtraFirst = lib.mkAfter ''
+    initContent = lib.mkAfter ''
       source ${zshrc_local}
 
       # Till they fix: https://github.com/nix-community/home-manager/issues/3100

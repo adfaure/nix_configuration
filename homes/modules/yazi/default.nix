@@ -1,8 +1,5 @@
-{
-  lib,
-  ...
-}: {
-  programs.yazi =  {
+{lib, ...}: {
+  programs.yazi = {
     enable = true;
   };
 
