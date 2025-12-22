@@ -56,7 +56,7 @@
       enable = true;
       enableNushellIntegration = true;
       catppuccin.enable = true;
-      catppuccin.flavour = "frappe";
+      catppuccin.flavour = "mocha";
 
       settings = {
         kubernetes = {
