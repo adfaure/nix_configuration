@@ -28,7 +28,7 @@ in {
     ];
 
     programs.zsh = {
-      initExtraFirst = lib.mkAfter ''
+      initContent = lib.mkAfter ''
         source <(kubectl completion zsh)
       '';
 
