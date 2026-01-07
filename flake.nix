@@ -53,7 +53,10 @@
       myVscode = unstable.callPackage ./pkgs/vscode {};
       simplematch = pkgs.callPackage ./pkgs/simplematch {};
       ExifRead = pkgs.callPackage ./pkgs/exifread {};
-      organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
+      # gradually dropping support for this
+      # 1) too lazy to fix the derivation (package version conflicts)
+      # 2) don't work as expected since a while (file problem when moving file from my camera to my hdd)
+      # organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
       nix = unstable.nix;
       hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
@@ -110,7 +113,7 @@
     overlays.default = final: prev: {
       cgvg = self.packages.${system}.cgvg;
       myVscode = self.packages.${system}.myVscode;
-      organize = self.packages.${system}.organize;
+      # organize = self.packages.${system}.organize;
       nixFlakes = self.packages.${system}.nix;
       cgvg-rs = self.packages.${system}.cgvg-rs;
     };
