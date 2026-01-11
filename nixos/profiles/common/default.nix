@@ -139,6 +139,8 @@
   programs.singularity.enable = true;
   programs.singularity.enableFakeroot = true;
 
+  services.joycond.enable = false;
+
   environment.systemPackages = with pkgs; [
     # monitoring
     psmisc
