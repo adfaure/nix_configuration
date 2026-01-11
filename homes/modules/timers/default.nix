@@ -42,35 +42,5 @@ in {
       };
       Install = {WantedBy = ["timers.target"];};
     };
-
-    systemd.user.services.wasabi-restic-backup = {
-      Unit = {
-        Description = "Restic copy into wasabi bucket";
-        After = ["sops-nix.service"];
-      };
-      Service = {
-        CPUSchedulingPolicy = "idle";
-        IOSchedulingClass = "idle";
-        EnvironmentFile = "${config.sops.secrets.wasabi-token.path}";
-        ExecStart = ''          ${lib.getExe pkgs.restic} \
-                              --from-password-file ${config.sops.secrets.wasabi-repo-pass.path} \
-                              copy --from-repo ${cfg.repository}'';
-        Environment = [
-          "PATH=${pkgs.restic}/bin:${pkgs.bash}/bin"
-        ];
-      };
-    };
-
-    # systemd.user.timers.wasabi-restic-sync = {
-    #   Unit = {
-    #     Description = "Restic periodic backup";
-    #   };
-    #   Timer = {
-    #     Unit = "wasabi-restic-backup.service";
-    #     OnCalendar = "daily";
-    #     Persistent = true;
-    #   };
-    #   Install = {WantedBy = ["timers.target"];};
-    # };
   };
 }
