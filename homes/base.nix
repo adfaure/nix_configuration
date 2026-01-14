@@ -42,6 +42,9 @@
           email = "adrien.faure@protonmail.com";
           name = "Adrien Faure";
         };
+        rerere = {
+          ebabled = 1;
+        };
         alias = {
           ds = "diff --staged";
           l = "log --pretty=format:'%C(auto,yellow)%h%C(auto,magenta) %C(auto,blue)%ad %C(auto,green)%aN %C(auto,reset)%s%C(auto)% gD%d' --graph --date=format:'%Y-%m-%d %H:%M:%S' --decorate-refs-exclude='refs/remotes/*/HEAD'";
