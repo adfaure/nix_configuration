@@ -52,7 +52,12 @@
     options = ["fmask=0077" "dmask=0077"];
   };
 
-  swapDevices = [];
+  swapDevices = [
+   {
+      device = "/swapfile";
+      size = (1024 * 16); # RAM size = 16 G
+    }
+  ];
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {
