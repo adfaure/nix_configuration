@@ -20,133 +20,66 @@
       url = "github:adfaure/nixvim-config";
       # url = "/home/adfaure/Code/nixvim-config";
     };
+
+    # Tooling
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nixos-unstable,
-    my-dotfiles,
-    home-manager,
-    catppuccin,
-    nixvim-config,
-    sops-nix,
-    determinate,
-  }: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [];
-    };
-    unstable = import nixos-unstable {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [];
-    };
-  in {
-    packages.${system} = rec {
-      # Programs
-      cgvg = pkgs.callPackage ./pkgs/cgvg/default.nix {};
-      myVscode = unstable.callPackage ./pkgs/vscode {};
-      simplematch = pkgs.callPackage ./pkgs/simplematch {};
-      ExifRead = pkgs.callPackage ./pkgs/exifread {};
-      # gradually dropping support for this
-      # 1) too lazy to fix the derivation (package version conflicts)
-      # 2) don't work as expected since a while (file problem when moving file from my camera to my hdd)
-      # organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
-      cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
-      nix = unstable.nix;
-      hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
-    };
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./modules/pkgs
+        # To import an internal flake module: ./other.nix
+        # To import an external flake module:
+        #   1. Add foo to inputs
+        #   2. Add foo as a parameter to the outputs function
+        #   3. Add here: foo.flakeModule
+      ];
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
+      perSystem = {
+        config,
+        self',
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: {
+        # Per-system attributes can be defined here. The self' and inputs'
+        # module parameters provide easy access to attributes of the same
+        # system.
 
-    # Separated home-manager config for non-nixos machines.
-    # Activate with: home-manager --flake .#adfaure switch
-    homeConfigurations = let
-      home-module = {
-        nixpkgs.overlays = [self.overlays.default];
-        nixpkgs.config.allowUnfree = true;
-        home = rec {
-          username = "adfaure";
-          homeDirectory = "/home/${username}";
-          stateVersion = "20.09";
-        };
+        # packages.myVscode = inputs'.nixos-unstable.pkgs.callPackage ./pkgs/vscode {};
+        # packages.nix = inputs'.nixos-unstable.nix;
+        formatter = pkgs.alejandra;
       };
-      extraSpecialArgs = {
-        inherit my-dotfiles home-module unstable nixvim-config system;
-      };
-    in {
-      noco = import ./homes/configurations/noco.nix {
-        inherit
-          pkgs
-          home-manager
-          home-module
-          sops-nix
-          catppuccin
-          extraSpecialArgs
-          ;
-      };
-      lune = import ./homes/configurations/lune.nix {
-        inherit
-          pkgs
-          home-manager
-          home-module
-          sops-nix
-          catppuccin
-          extraSpecialArgs
-          ;
-      };
-      # Can be use in VPS for instance without graphical installation
-      base = home-manager.lib.homeManagerConfiguration {
-        inherit extraSpecialArgs;
-        modules = [
-          home-module
-          sops-nix.homeManagerModules.sops
-          ./homes/base.nix
-        ];
+      flake = {
+        # The usual flake attributes can be defined here, including system-
+
+        # agnostic ones like nixosModule and system-enumerating ones, although
+        # those are more easily expressed in perSystem.
       };
     };
 
-    # Overlay to inject my packages in the different modules
-    overlays.default = final: prev: {
-      cgvg = self.packages.${system}.cgvg;
-      myVscode = self.packages.${system}.myVscode;
-      # organize = self.packages.${system}.organize;
-      nixFlakes = self.packages.${system}.nix;
-      cgvg-rs = self.packages.${system}.cgvg-rs;
-    };
+  # outputs = {
+  #   nixpkgs,
+  #   nixos-unstable,
+  # }: let
+  #   system = "x86_64-linux";
+  #   pkgs = import nixpkgs {
+  #     inherit system;
+  #     config.allowUnfree = true;
+  #     overlays = [];
+  #   };
+  #   unstable = import nixos-unstable {
+  #     inherit system;
+  #     config.allowUnfree = true;
+  #     overlays = [];
+  #   };
+  # in {
+  #   packages.${system} = rec {
 
-    nixosModules.overlay = {...}: {
-      nixpkgs.overlays = [self.overlays.default];
-    };
-
-    nixosConfigurations = let
-      mkSystem = system-configuration: let
-        inherit (inputs) my-dotfiles nixpkgs determinate self;
-      in
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {inherit my-dotfiles;};
-          modules = [
-            self.nixosModules.overlay
-            determinate.nixosModules.default
-            # Main configuration, includes the hardware file and the module list
-            system-configuration
-          ];
-        };
-    in {
-      gouttelette = mkSystem ./nixos/deployments/configuration-gouttelette.nix;
-      lune = mkSystem ./nixos/deployments/configuration-lune.nix;
-      noco = mkSystem ./nixos/deployments/configuration-noco.nix;
-      # Simple VM so I don't need to reboot when I am experimenting
-      # # nix build .#'nixosConfigurations.vm.config.system.build.vm'
-      # # ./result/bin/run-nixos-vm
-      # user password: nixos
-      vm = import ./nixos/systems/vm.nix {inherit system inputs unstable;};
-    };
-
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-  };
+  #   };
+  # };
 }
