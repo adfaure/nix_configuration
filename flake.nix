@@ -149,12 +149,12 @@
 
     templates = {
       rust = {
-        path = ./templates/flake-rust.nix;
+        path = ./templates/rust;
         description = "Rust devshell";
       };
 
       python = {
-        path = ./templates/flake-python-simple.nix;
+        path = ./templates/simple-with-python;
         description = "Simple devshell with python example";
       };
     };
