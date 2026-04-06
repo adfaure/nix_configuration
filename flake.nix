@@ -147,6 +147,18 @@
       vm = import ./nixos/systems/vm.nix {inherit system inputs unstable;};
     };
 
+    templates = {
+      rust = {
+        path = ./templates/flake-rust.nix;
+        description = "Rust devshell";
+      };
+
+      python = {
+        path = ./templates/flake-python-simple.nix;
+        description = "Simple devshell with python example";
+      };
+    };
+
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }
