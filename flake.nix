@@ -30,7 +30,10 @@
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
+        # Load home-manager lib
         inputs.home-manager.flakeModules.home-manager
+
+        # My package set
         ./modules/pkgs
 
         # Home modules
@@ -43,16 +46,16 @@
         ./modules/home-modules/vim-tmux-panes
         ./modules/home-modules/yazi
         ./modules/home-modules/zsh
+        ./modules/home-modules/base
 
         # Home configurations
-        ./modules/home-configurations/base
         ./modules/home-configurations/lune
+
+        # Hosts
+        ./modules/hosts/lune
       ];
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
-      perSystem = {
-        pkgs,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         formatter = pkgs.alejandra;
       };
     };

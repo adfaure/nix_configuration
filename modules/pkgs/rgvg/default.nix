@@ -1,6 +1,5 @@
 {
   pkgs,
-  stdenv,
   fetchFromGitHub,
   rustPlatform,
 }:
