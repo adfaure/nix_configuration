@@ -30,12 +30,23 @@
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
+        inputs.home-manager.flakeModules.home-manager
         ./modules/pkgs
-        # To import an internal flake module: ./other.nix
-        # To import an external flake module:
-        #   1. Add foo to inputs
-        #   2. Add foo as a parameter to the outputs function
-        #   3. Add here: foo.flakeModule
+
+        # Home modules
+        ./modules/home-modules/atuin
+        ./modules/home-modules/eza
+        ./modules/home-modules/graphical
+        ./modules/home-modules/nix-sops
+        ./modules/home-modules/timers
+        ./modules/home-modules/user
+        ./modules/home-modules/vim-tmux-panes
+        ./modules/home-modules/yazi
+        ./modules/home-modules/zsh
+
+        # Home configurations
+        ./modules/home-configurations/base
+        ./modules/home-configurations/lune
       ];
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
       perSystem = {

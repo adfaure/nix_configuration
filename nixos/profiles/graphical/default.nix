@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
   lib,
-  my-dotfiles,
   ...
 }:
 with lib; {
