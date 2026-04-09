@@ -1,6 +1,5 @@
-{...}: {
-  flake = {
-    homeModules.eza = {
+{
+    flake.modules.homeModules.eza = {
       lib,
       config,
       ...
@@ -25,5 +24,4 @@
         ];
       };
     };
-  };
 }

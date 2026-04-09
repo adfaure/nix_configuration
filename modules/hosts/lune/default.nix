@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: let
+{inputs, ...}: let
   inherit (inputs) nixpkgs determinate my-dotfiles;
 in {
   # perSystem = {system, ...}: {

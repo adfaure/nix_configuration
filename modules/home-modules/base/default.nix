@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  config,
+  ...
+}: {
   flake = {
     homeModules.base = {pkgs, ...}: {
       imports = [
@@ -7,7 +11,8 @@
         inputs.sops-nix.homeManagerModules.sops
 
         # My modules
-        inputs.self.homeModules.eza
+        config.flake.modules.homeModules.eza
+
         inputs.self.homeModules.user
         inputs.self.homeModules.graphical
         inputs.self.homeModules.nix-sops
