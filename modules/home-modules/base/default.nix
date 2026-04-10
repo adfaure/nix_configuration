@@ -11,7 +11,8 @@
         inputs.sops-nix.homeManagerModules.sops
 
         # My modules
-        config.flake.modules.homeModules.eza
+        config.flake.modules.homeManager.eza
+        config.flake.modules.homeManager.atuin
 
         inputs.self.homeModules.user
         inputs.self.homeModules.graphical

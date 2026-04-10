@@ -32,6 +32,7 @@
       imports = [
         # Load home-manager lib
         inputs.home-manager.flakeModules.home-manager
+        inputs.flake-parts.flakeModules.modules
 
         # My package set
         ./modules/pkgs
