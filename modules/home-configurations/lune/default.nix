@@ -17,8 +17,6 @@
           adfaure.home-modules.user-timers.enable = true;
         }
         config.flake.modules.homeManager.base
-        {
-        }
       ];
     };
   };

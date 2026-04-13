@@ -34,23 +34,28 @@
         inputs.home-manager.flakeModules.home-manager
         inputs.flake-parts.flakeModules.modules
 
+        # Flake-modules
+        ./modules/flake-modules/home-builder
+
         # My package set
         ./modules/pkgs
 
         # Home modules
         ./modules/home-modules/atuin
+        ./modules/home-modules/base
         ./modules/home-modules/eza
         ./modules/home-modules/graphical
         ./modules/home-modules/nix-sops
+        ./modules/home-modules/ryax
         ./modules/home-modules/timers
         ./modules/home-modules/user
         ./modules/home-modules/vim-tmux-panes
         ./modules/home-modules/yazi
         ./modules/home-modules/zsh
-        ./modules/home-modules/base
 
         # Home configurations
         ./modules/home-configurations/lune
+        ./modules/home-configurations/noco
 
         # Hosts
         ./modules/hosts/lune
