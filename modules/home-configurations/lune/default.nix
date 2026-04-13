@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  config,
+  ...
+}: {
   flake = {
     # Concrete Home Manager configuration.
     homeConfigurations.lune = inputs.home-manager.lib.homeManagerConfiguration {
@@ -8,7 +12,13 @@
       pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
 
       modules = [
-        inputs.self.homeModules.base
+        {
+          adfaure.services.nix-sops.enable = true;
+          adfaure.home-modules.user-timers.enable = true;
+        }
+        config.flake.modules.homeManager.base
+        {
+        }
       ];
     };
   };
