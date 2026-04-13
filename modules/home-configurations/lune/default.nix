@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   config,
   ...
@@ -14,7 +15,7 @@
       modules = [
         {
           adfaure.services.nix-sops.enable = true;
-          adfaure.home-modules.user-timers.enable = true;
+          adfaure.home-modules.user-timers.enable = lib.mkForce true;
         }
         config.flake.modules.homeManager.base
       ];

@@ -1,9 +1,7 @@
 { config, inputs, lib, ... }:
 let
-  inherit (builtins) listToAttrs attrNames attrValues foldl' length filter;
   inherit (lib)
-    mkIf mkOption mkDefault mkMerge mapAttrs mkEnableOption types
-    recursiveUpdateUntil isDerivation literalExpression;
+    mkIf mkOption mkEnableOption types literalExpression;
 
   cfg = config.flake-containers;
 

@@ -20,6 +20,7 @@
       config.flake.modules.homeManager.timers
       config.flake.modules.homeManager.yazi
       config.flake.modules.homeManager.zsh
+      config.flake.modules.homeManager.vim-tmux-panes
     ];
 
     # Top level configuration for the user adfaure (me!)
@@ -29,8 +30,8 @@
       # First we activate home-manager
       adfaure.home-modules.eza-alias.enable = true;
 
-      # my-programs.atuin.enable = true;
-      # adfaure.home-modules.vim-tmux-nav-conf.enable = true;
+      my-programs.atuin.enable = true;
+      adfaure.home-modules.vim-tmux-nav-conf.enable = true;
 
       adfaure.services.nix-sops.enable = true;
       adfaure.home-modules.user-timers.enable = false;
