@@ -48,6 +48,7 @@
         ./modules/home-modules/nix-sops
         ./modules/home-modules/ryax
         ./modules/home-modules/timers
+        ./modules/home-modules/tmux
         ./modules/home-modules/user
         ./modules/home-modules/vim-tmux-panes
         ./modules/home-modules/yazi

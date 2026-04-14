@@ -4,7 +4,7 @@
     config,
     ...
   }: let
-    inherit (lib) mkEnableOption mkIf;
+    inherit (lib) mkEnableOption;
     cfg = config.adfaure.services.nix-sops;
   in {
     options.adfaure.services.nix-sops = {

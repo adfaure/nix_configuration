@@ -14,12 +14,14 @@
       config.flake.modules.homeManager.atuin
 
       config.flake.modules.homeManager.user
+      config.flake.modules.homeManager.user
       config.flake.modules.homeManager.graphical
       config.flake.modules.homeManager.nix-sops
       config.flake.modules.homeManager.ryax
       config.flake.modules.homeManager.timers
       config.flake.modules.homeManager.yazi
       config.flake.modules.homeManager.zsh
+      config.flake.modules.homeManager.tmux
       config.flake.modules.homeManager.vim-tmux-panes
     ];
 
