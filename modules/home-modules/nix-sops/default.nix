@@ -15,8 +15,8 @@
       sops = {
         age.keyFile = "/home/${config.home.username}/.config/sops/age/keys.txt";
         defaultSopsFile = ../../../secrets/private.yaml;
-        defaultSymlinkPath = "/run/user/${config.home.username}/secrets";
-        defaultSecretsMountPoint = "/run/user/${config.home.username}/secrets.d";
+        # defaultSymlinkPath = "/run/user/${config.home.username}/secrets";
+        # defaultSecretsMountPoint = "/run/user/${config.home.username}/secrets.d";
         secrets.restic-password = {};
         secrets.wasabi-repo-pass = {};
         secrets.wasabi-token = {};
