@@ -58,6 +58,10 @@
         ./modules/home-configurations/lune
         ./modules/home-configurations/noco
 
+        # Nixos modules
+        ./modules/nixos-modules/common
+        ./modules/nixos-modules/flakes
+
         # Hosts
         ./modules/hosts/lune
       ];

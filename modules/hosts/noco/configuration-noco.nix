@@ -10,7 +10,7 @@
     # Include the results of the hardware scan.
     ./hardware-noco.nix
 
-    ../profiles/common
+    /profiles/common
     ../profiles/graphical
   ];
 
