@@ -34,9 +34,6 @@
         inputs.home-manager.flakeModules.home-manager
         inputs.flake-parts.flakeModules.modules
 
-        # Flake-modules
-        ./modules/flake-modules/home-builder
-
         # My package set
         ./modules/pkgs
 
