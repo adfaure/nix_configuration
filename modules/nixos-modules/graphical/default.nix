@@ -7,6 +7,7 @@
     with lib; {
       imports = [
         config.flake.modules.nixos.gnome
+        config.flake.modules.nixos.vm
       ];
 
       adfaure.services.gnome.enable = true;

@@ -1,23 +1,13 @@
 {config, ...}: {
   flake.modules.nixos.common = {pkgs, ...}: {
+
     imports = [
       config.flake.modules.nixos.flakes
-      # syncthings
-      # ../../services/syncthing
-      # We want flake activated
-      # ../../modules/flakes
-      # Configure cachix
-      # ../../modules/cachix
-      # Simple guix module with guix sevice enabled and package added to env
-      # ../../modules/guix
-
-      # ../../modules/vm
     ];
 
     adfaure.modules.enable-flake.enable = true;
-    # adfaure.modules.my-guix.enable = true;
-    # adfaure.modules.vm.enable = true;
-    # adfaure.services.syncthing.enable = true;
+    adfaure.modules.vm.enable = true;
+
     determinate.enable = false;
 
     # use Vim by default
