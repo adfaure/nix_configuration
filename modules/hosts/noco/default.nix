@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   system,
   ...
@@ -9,9 +10,15 @@ in
     inherit system;
     specialArgs = {inherit my-dotfiles;};
     modules = [
-      self.nixosModules.overlay
+      # self.nixosModules.overlay
       determinate.nixosModules.default
+
       # Main configuration, includes the hardware file and the module list
-      ../deployments/configuration-noco.nix
+      ../configuration.nix
+      ../hardware.nix
+
+      # Main modules
+      config.flake.modules.nixos.common
+      config.flake.modules.nixos.graphical
     ];
   }
