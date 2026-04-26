@@ -23,10 +23,10 @@
         nix-direnv.enable = true;
       };
 
-      programs.vscode = {
-        enable = true;
-        package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
-      };
+      # programs.vscode = {
+      #   enable = true;
+      #   package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
+      # };
 
       home.packages = with pkgs; [
         # Texteditors / IDE
@@ -49,25 +49,11 @@
         cloc
         pass
         nitrokey-app
-        jq
-        tree
-        man-pages
-        gcc
-        wget
-        gdb
-        direnv
-        entr
-        pandoc
-        nvtopPackages.full
-
-        # Nix file formating
-        # nixfmt-classic
 
         # GUI applications
         calibre
 
         signal-desktop
-        rofi
         flameshot # Screenshot
 
         # Photo
@@ -78,17 +64,12 @@
         telegram-desktop
         element-desktop
 
-        # Dev / productivity
-        # nixos-unstable.legacyPackages.super-productivity
-
-        mob
         lazygit
         meld
         obsidian
         jetbrains.pycharm-community
-        # loaded from this flake default overlay
 
-        # TODO: Inject my overlay
+        # TODO
         # pkgs.cgvg-rs
       ];
     };

@@ -1,9 +1,5 @@
 {config, ...}: {
-  flake.modules.nixos.common = {
-    lib,
-    pkgs,
-    ...
-  }: {
+  flake.modules.nixos.common = {pkgs, ...}: {
     imports = [
       config.flake.modules.nixos.flakes
       # syncthings

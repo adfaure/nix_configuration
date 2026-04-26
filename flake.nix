@@ -61,6 +61,8 @@
         # Nixos modules
         ./modules/nixos-modules/common
         ./modules/nixos-modules/flakes
+        ./modules/nixos-modules/graphical
+        ./modules/nixos-modules/gnome
 
         # Hosts
         ./modules/hosts/lune

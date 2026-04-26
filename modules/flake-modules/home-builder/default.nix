@@ -95,8 +95,6 @@ in {
   };
   config = mkIf cfg.enable {
     perSystem = perSystemScope @ {
-      config,
-      self',
       lib,
       pkgs,
       system,

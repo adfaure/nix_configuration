@@ -104,8 +104,20 @@
         any-nix-shell
         bat # cat with colors for code
         cloc
+        tokei
         unzip
         nixpkgs-review
+
+        jq
+        tree
+        man-pages
+        gcc
+        wget
+        gdb
+        direnv
+        entr
+        pandoc
+        nvtopPackages.full
 
         # system monitor
         zenith
