@@ -26,16 +26,31 @@
   hardware.firmware = with pkgs; [sof-firmware];
   hardware.enableAllFirmware = true;
 
+  hardware.nvidia.prime = {
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+    # intelBusId = "PCI:0@0:2:0";
+    # nvidiaBusId = "PCI:1@0:0:0";
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+  };
+
+  services.xserver.videoDrivers = [
+    "modesetting"  # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "nvidia"
+  ];
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    open = false;
+    open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
