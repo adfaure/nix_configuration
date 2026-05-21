@@ -12,6 +12,10 @@ in
       self.nixosModules.overlay
       determinate.nixosModules.default
       # Main configuration, includes the hardware file and the module list
-      ../deployments/configuration-noco.nix
+      ./hardware.nix
+      ./configuration.nix
+
+      ../../modules/graphical
+      ../../modules/common
     ];
   }

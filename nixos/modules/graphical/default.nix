@@ -7,14 +7,10 @@
 }:
 with lib; {
   imports = [
-    ../../services/sway
-    ../../services/gnome
-    ../../services/hyprland
+    ../gnome
   ];
 
   adfaure.services.gnome.enable = true;
-  adfaure.services.sway.enable = false;
-  adfaure.services.hyprland.enable = false;
 
   programs.light.enable = true;
 

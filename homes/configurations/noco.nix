@@ -13,8 +13,8 @@ home-manager.lib.homeManagerConfiguration {
     home-module
     sops-nix.homeManagerModules.sops
     catppuccin.homeManagerModules.catppuccin
-    ./../graphical.nix
-    ./../base.nix
+    ./../modules/graphical.nix
+    ./../modules/base.nix
     ./../modules/ryax
     {
       adfaure.ryax.enable = true;
