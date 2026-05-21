@@ -50,13 +50,6 @@
     packages.${system} = rec {
       # Programs
       cgvg = pkgs.callPackage ./pkgs/cgvg/default.nix {};
-      myVscode = unstable.callPackage ./pkgs/vscode {};
-      simplematch = pkgs.callPackage ./pkgs/simplematch {};
-      ExifRead = pkgs.callPackage ./pkgs/exifread {};
-      # gradually dropping support for this
-      # 1) too lazy to fix the derivation (package version conflicts)
-      # 2) don't work as expected since a while (file problem when moving file from my camera to my hdd)
-      # organize = pkgs.callPackage ./pkgs/organize {inherit simplematch ExifRead;};
       cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
       nix = unstable.nix;
       hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
@@ -78,7 +71,7 @@
         inherit my-dotfiles home-module unstable nixvim-config system;
       };
     in {
-      noco = import ./homes/configurations/noco.nix {
+      noco = import ./homes/configurations/noco {
         inherit
           pkgs
           home-manager
@@ -88,7 +81,7 @@
           extraSpecialArgs
           ;
       };
-      lune = import ./homes/configurations/lune.nix {
+      lune = import ./homes/configurations/lune {
         inherit
           pkgs
           home-manager
@@ -124,7 +117,7 @@
 
     nixosConfigurations = {
       lune = import ./nixos/hosts/lune { inherit system inputs; };
-      noco = import ./nixos/hosts/noco {};
+      noco = import ./nixos/hosts/noco { inherit system inputs; };
     };
 
     templates = {

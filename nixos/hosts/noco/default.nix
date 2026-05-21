@@ -12,10 +12,10 @@ in
       self.nixosModules.overlay
       determinate.nixosModules.default
       # Main configuration, includes the hardware file and the module list
-      ./configuration.nix
       ./hardware.nix
+      ./configuration.nix
 
-      ../profiles/common
-      ../profiles/graphical
+      ../../modules/common
+      ../../modules/graphical
     ];
   }
