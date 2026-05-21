@@ -5,14 +5,14 @@
 }: {
   imports = [
     # syncthings
-    ../../services/syncthing
+    ../syncthing
     # We want flake activated
-    ../../modules/flakes
+    ../flakes
     # Configure cachix
-    ../../modules/cachix
+    ../cachix
     # Simple guix module with guix sevice enabled and package added to env
-    ../../modules/guix
-    ../../modules/vm
+    ../guix
+    ../vm
   ];
 
   adfaure.modules.enable-flake.enable = true;

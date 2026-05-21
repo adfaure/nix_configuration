@@ -1,9 +1,6 @@
 {
   config,
   lib,
-  pkgs,
-  my-dotfiles,
-  wrapCmd,
   ...
 }: let
   cfg = config.my-programs.atuin;

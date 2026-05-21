@@ -1,20 +1,19 @@
 {
   pkgs,
-  my-dotfiles,
   ...
 }: {
   imports = [
-    ./modules/vim
-    ./modules/zsh
-    ./modules/yazi
-    ./modules/tmux
-    ./modules/emacs
-    ./modules/vim-tmux-panes
-    ./modules/eza
-    ./modules/nushell
-    ./modules/timers
-    ./modules/nix-sops
-    ./modules/atuin
+    ../modules/vim
+    ../modules/zsh
+    ../modules/yazi
+    ../modules/tmux
+    ../modules/emacs
+    ../modules/vim-tmux-panes
+    ../modules/eza
+    ../modules/nushell
+    ../modules/timers
+    ../modules/nix-sops
+    ../modules/atuin
   ];
 
   # Top level configuration for the user adfaure (me!)
