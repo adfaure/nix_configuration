@@ -15,7 +15,7 @@ in
       ./hardware.nix
       ./configuration.nix
 
-      ../../modules/common
       ../../modules/graphical
+      ../../modules/common
     ];
   }

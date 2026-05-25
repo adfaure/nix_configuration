@@ -22,116 +22,139 @@
     };
     catppuccin.url = "github:catppuccin/nix/a48e70a31616cb63e4794fd3465bff1835cc4246";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    parts ={
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    systems.url = "github:nix-systems/default";
+    autopilot = {
+      url = "github:stepbrobd/autopilot";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.parts.follows = "parts";
+      inputs.systems.follows = "systems";
+    };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nixos-unstable,
-    my-dotfiles,
-    home-manager,
-    catppuccin,
-    nixvim-config,
-    sops-nix,
-    determinate,
-  }: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [];
-    };
-    unstable = import nixos-unstable {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [];
-    };
-  in {
-    packages.${system} = rec {
-      # Programs
-      cgvg = pkgs.callPackage ./pkgs/cgvg/default.nix {};
-      cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
-      nix = unstable.nix;
-      hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
-    };
+  outputs =
+    { self, ... }@inputs:
+    inputs.autopilot.lib.mkFlake
+      {
+        inherit inputs;
 
-    # Separated home-manager config for non-nixos machines.
-    # Activate with: home-manager --flake .#adfaure switch
-    homeConfigurations = let
-      home-module = {
-        nixpkgs.overlays = [self.overlays.default];
-        nixpkgs.config.allowUnfree = true;
-        home = rec {
-          username = "adfaure";
-          homeDirectory = "/home/${username}";
-          stateVersion = "20.09";
+        autopilot = {
+          lib = {
+            path = ./lib;
+            extender = inputs.nixpkgs.lib;
+            excludes = [ "secrets.yaml" ];
+            extensions = with inputs; [
+              autopilot.lib
+              { std = inputs.std.lib; }
+            ];
+          };
+
+          nixpkgs = {
+            config = {
+              allowUnfree = true;
+              allowDeprecatedx86_64Darwin = true;
+            };
+            overlays = [
+              # self.overlays.default
+            ];
+            instances = {
+              pkgs = inputs.nixpkgs;
+            };
+          };
+          parts.path = ./modules;
         };
+      }
+      {
+        debug = true;
+        systems = import inputs.systems;
       };
-      extraSpecialArgs = {
-        inherit my-dotfiles home-module unstable nixvim-config system;
-      };
-    in {
-      noco = import ./homes/configurations/noco {
-        inherit
-          pkgs
-          home-manager
-          home-module
-          sops-nix
-          catppuccin
-          extraSpecialArgs
-          ;
-      };
-      lune = import ./homes/configurations/lune {
-        inherit
-          pkgs
-          home-manager
-          home-module
-          sops-nix
-          catppuccin
-          extraSpecialArgs
-          ;
-      };
-      # Can be use in VPS for instance without graphical installation
-      base = home-manager.lib.homeManagerConfiguration {
-        inherit extraSpecialArgs;
-        modules = [
-          home-module
-          sops-nix.homeManagerModules.sops
-          ./homes/base.nix
-        ];
-      };
-    };
+  }
 
-    # Overlay to inject my packages in the different modules
-    overlays.default = final: prev: {
-      cgvg = self.packages.${system}.cgvg;
-      myVscode = self.packages.${system}.myVscode;
-      # organize = self.packages.${system}.organize;
-      nixFlakes = self.packages.${system}.nix;
-      cgvg-rs = self.packages.${system}.cgvg-rs;
-    };
 
-    nixosModules.overlay = {...}: {
-      nixpkgs.overlays = [self.overlays.default];
-    };
 
-    nixosConfigurations = {
-      lune = import ./nixos/hosts/lune { inherit system inputs; };
-      noco = import ./nixos/hosts/noco { inherit system inputs; };
-    };
+      # # Separated home-manager config for non-nixos machines.
+      # # Activate with: home-manager --flake .#adfaure switch
+      # homeConfigurations = let
+      #   home-module = {
+      #     nixpkgs.overlays = [self.overlays.default];
+      #     nixpkgs.config.allowUnfree = true;
+      #     home = rec {
+      #       username = "adfaure";
+      #       homeDirectory = "/home/${username}";
+      #       stateVersion = "20.09";
+      #     };
+      #   };
+      #   extraSpecialArgs = {
+      #     inherit my-dotfiles home-module unstable nixvim-config system;
+      #   };
+      # in {
+      #   noco = import ./homes/configurations/noco {
+      #     inherit
+      #       pkgs
+      #       home-manager
+      #       home-module
+      #       sops-nix
+      #       catppuccin
+      #       extraSpecialArgs
+      #       ;
+      #   };
+      #   lune = import ./homes/configurations/lune {
+      #     inherit
+      #       pkgs
+      #       home-manager
+      #       home-module
+      #       sops-nix
+      #       catppuccin
+      #       extraSpecialArgs
+      #       ;
+      #   };
+      #   # Can be use in VPS for instance without graphical installation
+      #   base = home-manager.lib.homeManagerConfiguration {
+      #     inherit extraSpecialArgs;
+      #     modules = [
+      #       home-module
+      #       sops-nix.homeManagerModules.sops
+      #       ./homes/base.nix
+      #     ];
+      #   };
+      # };
 
-    templates = {
-      rust = {
-        path = ./templates/rust;
-        description = "Rust devshell";
-      };
+      # packages.${system} = rec {
+      #   # Programs
+      #   cgvg = pkgs.callPackage ./pkgs/cgvg {};
+      #   cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
+      #   nix = unstable.nix;
+      #   hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
+      # };
 
-      python = {
-        path = ./templates/simple-with-python;
-        description = "Simple devshell with python example";
-      };
-    };
+      # # Overlay to inject my packages in the different modules
+      # overlays.default = final: prev: {
+      #   cgvg = self.packages.${system}.cgvg;
+      #   cgvg-rs = self.packages.${system}.cgvg-rs;
+      # };
 
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-  };
-}
+      # nixosModules.overlay = {...}: {
+      #   nixpkgs.overlays = [self.overlays.default];
+      # };
+
+      # nixosConfigurations = {
+      #   lune = import ./nixos/hosts/lune { inherit system inputs; };
+      #   noco = import ./nixos/hosts/noco { inherit system inputs; };
+      # };
+
+      # templates = {
+      #   rust = {
+      #     path = ./templates/rust;
+      #     description = "Rust devshell";
+      #   };
+
+      #   python = {
+      #     path = ./templates/simple-with-python;
+      #     description = "Simple devshell with python example";
+      #   };
+      # };
+
+      # formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
