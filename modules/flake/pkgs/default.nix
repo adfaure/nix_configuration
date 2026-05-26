@@ -4,6 +4,6 @@
     packages =
       lib.mapPackages
       (p: pkgs.callPackage p {})
-      ../pkgs;
+      ../../../pkgs;
   };
 }
