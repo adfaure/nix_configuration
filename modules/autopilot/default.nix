@@ -5,6 +5,7 @@
   flake.nixosModules = (lib.loadAll {
       dir = ../nixos;
       args = { inherit inputs lib; };
+      importer = lib.importApplyWithArgs;
     });
 
   flake = {
@@ -21,7 +22,8 @@
 
       ../../hosts/lune/configuration.nix
       ../../hosts/lune/hardware.nix
+
+      inputs.self.nixosModules.guix
     ];
   };
 }
-
