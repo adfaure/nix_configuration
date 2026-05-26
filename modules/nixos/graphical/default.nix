@@ -1,7 +1,5 @@
-{
-  inputs,
+{inputs, lib, ...}: {
   pkgs,
-  lib,
   ...
 }:
 with lib; {
