@@ -64,7 +64,7 @@
               pkgs = inputs.nixpkgs;
             };
           };
-          parts.path = ./modules;
+          parts.path = ./modules/autopilot;
         };
       }
       {
