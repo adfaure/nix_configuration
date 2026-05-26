@@ -1,6 +1,5 @@
-{ ... }: {
+{ lib, ... }: {
   pkgs,
-  lib,
   ...
 }: let
   folder = ./caches;
