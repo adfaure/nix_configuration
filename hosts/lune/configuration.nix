@@ -9,7 +9,7 @@
 
   # Force use of determinate for testing purpose
   determinate.enable = lib.mkForce true;
-  adfaure.modules.enable-flake.enable = lib.mkForce false;
+  # adfaure.modules.enable-flake.enable = lib.mkForce false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

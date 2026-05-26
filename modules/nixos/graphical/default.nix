@@ -1,13 +1,12 @@
 {
-  config,
+  inputs,
   pkgs,
   lib,
-  my-dotfiles,
   ...
 }:
 with lib; {
   imports = [
-    ../gnome
+    inputs.self.nixosModules.gnome
   ];
 
   adfaure.services.gnome.enable = true;
