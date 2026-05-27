@@ -3,13 +3,13 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption;
-  cfg = config.adfaure.nixosModules.vm;
+  inherit (lib) mkEnableOption mkIf;
+  cfg = config.nixosModules.vm;
 in {
-  options.adfaure.nixosModules.vm = {
+  options.nixosModules.vm = {
     enable = mkEnableOption "vm";
   };
-  config = {
+  config = mkIf cfg.enable {
     # Enable virtualization
     virtualisation = {
       libvirtd = {

@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let
-  cfg = config.adfaure.nixosModules.common;
+  cfg = config.nixosModules.common;
 in {
 
-  options.adfaure.nixosModules.common = {
+  options.nixosModules.common = {
     enable = mkEnableOption "common";
   };
 

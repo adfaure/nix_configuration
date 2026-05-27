@@ -22,14 +22,14 @@
       ../../hosts/lune/hardware.nix
 
       {
-        adfaure.nixosModules.common.enable = true;
-        adfaure.nixosModules.graphical.enable = true;
-        adfaure.nixosModules.gnome.enable = true;
-        adfaure.nixosModules.flakes.enable = true;
-        adfaure.nixosModules.guix.enable = true;
-        adfaure.nixosModules.vm.enable = true;
-        adfaure.nixosModules.syncthing.enable = true;
-        adfaure.nixosModules.cachix.enable = true;
+        nixosModules.common.enable = true;
+        nixosModules.graphical.enable = true;
+        nixosModules.gnome.enable = true;
+        nixosModules.flakes.enable = true;
+        nixosModules.guix.enable = true;
+        nixosModules.vm.enable = true;
+        nixosModules.syncthing.enable = true;
+        nixosModules.cachix.enable = true;
       }
 
       inputs.determinate.nixosModules.default
