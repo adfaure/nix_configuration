@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption;
-  cfg = config.adfaure.modules.vm;
+  cfg = config.adfaure.nixosModules.vm;
 in {
-  options.adfaure.modules.vm = {
+  options.adfaure.nixosModules.vm = {
     enable = mkEnableOption "vm";
   };
   config = {

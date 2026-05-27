@@ -5,7 +5,6 @@
   flake.nixosModules = (lib.loadAll {
       dir = ../nixos;
       args = { inherit inputs lib; };
-      importer = lib.importApplyWithArgs;
     });
 
   flake = {
@@ -18,12 +17,24 @@
   flake.nixosConfigurations.lune = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {};
     modules = [
-      inputs.determinate.nixosModules.default
-
+      # Host configuration
       ../../hosts/lune/configuration.nix
       ../../hosts/lune/hardware.nix
 
-      inputs.self.nixosModules.guix
-    ];
+      {
+        adfaure.nixosModules.common.enable = true;
+        adfaure.nixosModules.graphical.enable = true;
+        adfaure.nixosModules.gnome.enable = true;
+        adfaure.nixosModules.flakes.enable = true;
+        adfaure.nixosModules.guix.enable = true;
+        adfaure.nixosModules.vm.enable = true;
+        adfaure.nixosModules.syncthing.enable = true;
+        adfaure.nixosModules.cachix.enable = true;
+      }
+
+      inputs.determinate.nixosModules.default
+    ] ++
+      # Inject my list of modules
+      (lib.mapAttrsToList (name: value: value) inputs.self.nixosModules);
   };
 }
