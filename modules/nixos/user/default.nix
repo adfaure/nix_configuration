@@ -1,4 +1,4 @@
-{lib, ...}: {config, ...}: let
+{lib, ...}: {config, pkgs, ...}: let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.nixosModules.user;
 in {
