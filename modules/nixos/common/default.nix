@@ -13,8 +13,6 @@ in {
 
   config = mkIf cfg.enable {
 
-  determinate.enable = false;
-
   # use Vim by default
   environment.shellAliases = {
     "vim" = "vim";
