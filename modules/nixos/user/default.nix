@@ -1,23 +1,32 @@
-{...}: {pkgs, ...}: {
-  users.users.adfaure = {
-    isNormalUser = true;
-    home = "/home/adfaure";
-    shell = pkgs.zsh;
+{lib, ...}: {config, ...}: let
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.nixosModules.user;
+in {
+  options.nixosModules.user = {
+    enable = mkEnableOption "user";
+  };
 
-    extraGroups = [
-      "audio"
-      "wheel"
-      "networkmanager"
-      "vboxusers"
-      "lp"
-      "perf_users"
-      "docker"
-      "users"
-    ];
+  config = mkIf cfg.enable {
+    users.users.adfaure = {
+      isNormalUser = true;
+      home = "/home/adfaure";
+      shell = pkgs.zsh;
 
-    nix.settings.trusted-users = ["root" "adfaure"];
+      extraGroups = [
+        "audio"
+        "wheel"
+        "networkmanager"
+        "vboxusers"
+        "lp"
+        "perf_users"
+        "docker"
+        "users"
+      ];
 
-    initialPassword = "nixos";
-    uid = 1000;
+      nix.settings.trusted-users = ["root" "adfaure"];
+
+      initialPassword = "nixos";
+      uid = 1000;
+    };
   };
 }
