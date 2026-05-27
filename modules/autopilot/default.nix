@@ -1,4 +1,4 @@
-{ inputs, lib, nixpkgs, getSystem, ... }: {
+{ inputs, lib, ... }: {
   # Import flake modules
   imports = (lib.mapAttrsToList (name: _: ../flake + "/${name}") (lib.readDir ../flake));
 
@@ -7,12 +7,10 @@
       args = { inherit inputs lib; };
     });
 
-  flake = {
-    homeManagerModules = (lib.loadAll {
+  flake.homeManagerModules = (lib.loadAll {
       dir = ../home;
       args = { inherit inputs lib; };
     });
-  };
 
   flake.nixosConfigurations = 
     let
@@ -20,6 +18,7 @@
     in 
       lib.mapAttrs
         (name: value: lib.mkHost {inherit inputs;} (hosts + "/${name}") {
+          # Find a solution for this...
           nixosModules.common.enable = true;
           nixosModules.graphical.enable = true;
           nixosModules.gnome.enable = true;
