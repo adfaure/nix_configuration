@@ -10,6 +10,10 @@ in {
     enable = mkEnableOption "vm";
   };
   config = mkIf cfg.enable {
+    # Singularity
+    programs.singularity.enable = true;
+    programs.singularity.enableFakeroot = true;
+
     # Enable virtualization
     virtualisation = {
       docker.enable = true;
