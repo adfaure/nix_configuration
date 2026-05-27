@@ -1,7 +1,4 @@
-{lib, ...}: {
-  config,
-  ...
-}:
+{lib, ...}: {config, ...}:
 with lib; let
   cfg = config.nixosModules.flakes;
 in {

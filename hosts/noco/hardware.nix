@@ -31,9 +31,9 @@
   };
 
   swapDevices = [
-   {
+    {
       device = "/swapfile";
-      size = (1024 * 16); # RAM size = 16 G
+      size = 1024 * 16; # RAM size = 16 G
     }
   ];
 
