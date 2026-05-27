@@ -3,9 +3,9 @@
   ...
 }:
 with lib; let
-  cfg = config.adfaure.nixosModules.syncthing;
+  cfg = config.nixosModules.syncthing;
 in {
-  options.adfaure.nixosModules.syncthing = {
+  options.nixosModules.syncthing = {
     enable = mkEnableOption "syncthing";
   };
 

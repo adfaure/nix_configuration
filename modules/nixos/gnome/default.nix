@@ -4,9 +4,9 @@
   ...
 }:
 with lib; let
-  cfg = config.adfaure.nixosModules.gnome;
+  cfg = config.nixosModules.gnome;
 in {
-  options.adfaure.nixosModules.gnome = {
+  options.nixosModules.gnome = {
     enable = mkEnableOption "gnome";
   };
 

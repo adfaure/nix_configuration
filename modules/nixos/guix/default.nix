@@ -1,12 +1,12 @@
-{ inputs, lib, ... }: {
+{ lib, ... }: {
   config,
   pkgs,
   ...
 }:
 with lib; let
-  cfg = config.adfaure.nixosModules.guix;
+  cfg = config.nixosModules.guix;
 in {
-  options.adfaure.nixosModules.guix = {
+  options.nixosModules.guix = {
     enable = mkEnableOption "guix";
   };
 

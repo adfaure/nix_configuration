@@ -3,9 +3,9 @@
   ...
 }:
 with lib; let
-  cfg = config.adfaure.nixosModules.flakes;
+  cfg = config.nixosModules.flakes;
 in {
-  options.adfaure.nixosModules.flakes = {
+  options.nixosModules.flakes = {
     enable = mkEnableOption "flakes";
   };
 

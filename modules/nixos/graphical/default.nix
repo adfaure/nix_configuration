@@ -4,10 +4,10 @@
   ...
 }:
 with lib; let 
-  cfg = config.adfaure.nixosModules.graphical;
+  cfg = config.nixosModules.graphical;
 in {
 
-  options.adfaure.nixosModules.graphical = {
+  options.nixosModules.graphical = {
     enable = mkEnableOption "graphical";
   };
 

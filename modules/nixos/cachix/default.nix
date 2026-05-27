@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.adfaure.nixosModules.cachix;
+  cfg = config.nixosModules.cachix;
 
   folder = ./caches;
   toImport = name: value: folder + ("/" + name);
@@ -11,7 +11,7 @@
   # imports = lib.mapAttrsToList toImport (lib.filterAttrs filterCaches (builtins.readDir folder));
 
 in {
-  options.adfaure.nixosModules.cachix = {
+  options.nixosModules.cachix = {
     enable = lib.mkEnableOption "cachix";
   };
 
