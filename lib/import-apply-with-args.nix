@@ -1,7 +1,4 @@
-{ lib }:
-
-modulePath: staticArgs:
-
+{lib}: modulePath: staticArgs:
 # check the implementation of `importApply` in flake-parts and nixpkgs #230588 for details
 let
   inherit (lib) attrNames functionArgs intersectLists isFunction length setDefaultModuleLocation;
@@ -18,18 +15,22 @@ let
   # 2. if `importApplyWithArgs` is used, the module will either be a function that returns a set
   #   or a function of a function that returns a set
   #   and one or more names of the first attrset styled argument will match one of the names in `staticArg`
-  moduleArgNames = if isFunction f then attrNames (functionArgs f) else [ ];
+  moduleArgNames =
+    if isFunction f
+    then attrNames (functionArgs f)
+    else [];
 
   argUsed =
-    if !(isFunction f) then false # short circuit
-    else if length (intersectLists staticArgNames moduleArgNames) > 0 then true # matching args
-    else if isFunction (f (functionArgs f)) then true # or its a function of function
+    if !(isFunction f)
+    then false # short circuit
+    else if length (intersectLists staticArgNames moduleArgNames) > 0
+    then true # matching args
+    else if isFunction (f (functionArgs f))
+    then true # or its a function of function
     else false;
 in
-setDefaultModuleLocation modulePath (
-  if argUsed
-  then
-    f staticArgs
-  else
-    f
-)
+  setDefaultModuleLocation modulePath (
+    if argUsed
+    then f staticArgs
+    else f
+  )

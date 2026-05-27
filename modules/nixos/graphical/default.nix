@@ -1,100 +1,99 @@
-{ lib, ...}: {
+{lib, ...}: {
   config,
   pkgs,
   ...
 }:
-with lib; let 
+with lib; let
   cfg = config.nixosModules.graphical;
 in {
-
   options.nixosModules.graphical = {
     enable = mkEnableOption "graphical";
   };
 
   config = mkIf cfg.enable {
-  programs.light.enable = true;
+    programs.light.enable = true;
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = false;
-    dedicatedServer.openFirewall = false;
-  };
-
-  services = {
-    # Enable CUPS to print documents.
-    printing = {
+    programs.steam = {
       enable = true;
-      browsing = true;
-      drivers = [pkgs.samsung-unified-linux-driver];
+      remotePlay.openFirewall = false;
+      dedicatedServer.openFirewall = false;
     };
 
-    # Needed for printer discovery
-    avahi.enable = true;
-    avahi.nssmdns4 = true;
-  };
+    services = {
+      # Enable CUPS to print documents.
+      printing = {
+        enable = true;
+        browsing = true;
+        drivers = [pkgs.samsung-unified-linux-driver];
+      };
 
-  # hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+      # Needed for printer discovery
+      avahi.enable = true;
+      avahi.nssmdns4 = true;
+    };
 
-  services.dbus.enable = true;
+    # hardware.pulseaudio.enable = false;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
 
-  programs.adb.enable = true;
-  users.users.adfaure.extraGroups = ["adbusers"];
+    services.dbus.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    wl-clipboard
-    # For system Monitor plugin
-    gobject-introspection
-    libgtop
-    json-glib
-    glib-networking
-    arandr
-    # Web
-    # firefox
-    chromium
-    # Dictionnaries
-    aspellDicts.fr
-    aspellDicts.en
-    # Message and RSS
-    # tdesktop
-    liferea
-    # Display my wallpaper
-    feh
-    autorandr
-    # Media
-    vlc
-    # Utils
-    xorg.xkill
-    # llpp
+    programs.adb.enable = true;
+    users.users.adfaure.extraGroups = ["adbusers"];
 
-    # storage
-    ntfs3g
-    exfat
-    parted
-    hdparm
-    sysstat
-    gsmartcontrol
-    linuxPackages.perf
+    environment.systemPackages = with pkgs; [
+      wl-clipboard
+      # For system Monitor plugin
+      gobject-introspection
+      libgtop
+      json-glib
+      glib-networking
+      arandr
+      # Web
+      # firefox
+      chromium
+      # Dictionnaries
+      aspellDicts.fr
+      aspellDicts.en
+      # Message and RSS
+      # tdesktop
+      liferea
+      # Display my wallpaper
+      feh
+      autorandr
+      # Media
+      vlc
+      # Utils
+      xorg.xkill
+      # llpp
 
-    # Password
-    gnupg
+      # storage
+      ntfs3g
+      exfat
+      parted
+      hdparm
+      sysstat
+      gsmartcontrol
+      linuxPackages.perf
 
-    # Graphic tools
-    gcolor3
-    graphviz
-    imagemagick
-    inkscape
-    pavucontrol
+      # Password
+      gnupg
 
-    libreoffice
-    zotero
+      # Graphic tools
+      gcolor3
+      graphviz
+      imagemagick
+      inkscape
+      pavucontrol
 
-    pinentry-qt
-  ];
+      libreoffice
+      zotero
+
+      pinentry-qt
+    ];
   };
 }

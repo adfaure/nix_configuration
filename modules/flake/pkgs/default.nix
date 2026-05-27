@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   perSystem = {pkgs, ...}: {
     packages =
       lib.mapPackages
