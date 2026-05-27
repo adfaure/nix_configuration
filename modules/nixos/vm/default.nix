@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     # Enable virtualization
     virtualisation = {
+      docker.enable = true;
       libvirtd = {
         enable = true;
         qemu = {

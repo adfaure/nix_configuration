@@ -19,6 +19,8 @@ in {
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
+    services.dbus.packages = [pkgs.dconf];
+
     environment.systemPackages = with pkgs; [
       gnomeExtensions.system-monitor-next
       gnomeExtensions.battery-health-charging
