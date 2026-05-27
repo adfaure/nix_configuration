@@ -4,9 +4,9 @@
   ...
 }:
 with lib; let
-  cfg = config.adfaure.modules.my-guix;
+  cfg = config.adfaure.nixosModules.guix;
 in {
-  options.adfaure.modules.my-guix = {
+  options.adfaure.nixosModules.guix = {
     enable = mkEnableOption "guix";
   };
 

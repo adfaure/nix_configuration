@@ -1,14 +1,17 @@
-{inputs, lib, ...}: {
+{ lib, ...}: {
+  config,
   pkgs,
   ...
 }:
-with lib; {
-  imports = [
-    inputs.self.nixosModules.gnome
-  ];
+with lib; let 
+  cfg = config.adfaure.nixosModules.graphical;
+in {
 
-  adfaure.services.gnome.enable = true;
+  options.adfaure.nixosModules.graphical = {
+    enable = mkEnableOption "graphical";
+  };
 
+  config = mkIf cfg.enable {
   programs.light.enable = true;
 
   programs.steam = {
@@ -93,4 +96,5 @@ with lib; {
 
     pinentry-qt
   ];
+  };
 }

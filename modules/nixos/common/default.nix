@@ -1,23 +1,18 @@
-{ ... }: {
+{ lib, ... }: {
+  config,
   pkgs,
   ...
-}: {
-  imports = [
-    # syncthings
-    ../syncthing
-    # We want flake activated
-    ../flakes
-    # Configure cachix
-    ../cachix
-    # Simple guix module with guix sevice enabled and package added to env
-    ../guix
-    ../vm
-  ];
+}:
+with lib; let
+  cfg = config.adfaure.nixosModules.common;
+in {
 
-  adfaure.modules.enable-flake.enable = true;
-  adfaure.modules.my-guix.enable = true;
-  adfaure.modules.vm.enable = true;
-  adfaure.services.syncthing.enable = true;
+  options.adfaure.nixosModules.common = {
+    enable = mkEnableOption "common";
+  };
+
+  config = mkIf cfg.enable {
+
   determinate.enable = false;
 
   # use Vim by default
@@ -157,4 +152,5 @@
     pinentry-curses
     restic
   ];
+  };
 }

@@ -1,19 +1,17 @@
 {lib, ...}: {
-  pkgs,
   config,
   ...
 }:
 with lib; let
-  cfg = config.adfaure.modules.enable-flake;
+  cfg = config.adfaure.nixosModules.flakes;
 in {
-  options.adfaure.modules.enable-flake = {
-    enable = mkEnableOption "enable-flake";
+  options.adfaure.nixosModules.flakes = {
+    enable = mkEnableOption "flakes";
   };
 
   config = mkIf cfg.enable {
     # https://github.com/NixOS/nix/issues/4367 I used the workaround proposed in the issue's description
     nix = {
-      package = pkgs.nixFlakes; # nix-flake.packages.x86_64-linux.nix-static;
       extraOptions = ''
         experimental-features = nix-command flakes
       '';

@@ -1,12 +1,12 @@
-{inputs, lib, ...}: {
+{ lib, ...}: {
   config,
   pkgs,
   ...
 }:
 with lib; let
-  cfg = config.adfaure.services.gnome;
+  cfg = config.adfaure.nixosModules.gnome;
 in {
-  options.adfaure.services.gnome = {
+  options.adfaure.nixosModules.gnome = {
     enable = mkEnableOption "gnome";
   };
 
