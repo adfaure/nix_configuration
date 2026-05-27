@@ -40,6 +40,9 @@ in {
       pulse.enable = true;
     };
 
+    # TODO: should we enable that ?
+    # security.rtkit.enable = true;
+
     services.dbus.enable = true;
 
     programs.adb.enable = true;
