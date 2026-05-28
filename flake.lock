@@ -223,22 +223,6 @@
         "type": "github"
       }
     },
-    "my-dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716562970,
-        "narHash": "sha256-wvoxgEXRtj1HbFgcaeY2477Sc0XWzh8FVL5PZx9aKiQ=",
-        "owner": "adfaure",
-        "repo": "dotfiles",
-        "rev": "fd7ce143415ead4e0d1ed39088e514be5efc54e0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "adfaure",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "nix": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -481,7 +465,6 @@
         "catppuccin": "catppuccin",
         "determinate": "determinate",
         "home-manager": "home-manager",
-        "my-dotfiles": "my-dotfiles",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_3",
         "nixvim-config": "nixvim-config",

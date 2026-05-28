@@ -1,14 +1,13 @@
-{
-  lib,
+{lib, ...}: {
   config,
   pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption mkIf;
-  cfg = config.homeManagerModules.user-timers;
+  cfg = config.homeManagerModules.timers;
 in {
-  options.homeManagerModules.user-timers = {
-    enable = mkEnableOption "user-timers";
+  options.homeManagerModules.timers = {
+    enable = mkEnableOption "timers";
     repository = mkOption {
       default = "${config.home.homeDirectory}/.restic-repository";
     };

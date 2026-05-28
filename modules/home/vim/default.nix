@@ -1,9 +1,8 @@
-{lib, ...}: {
-  config,
-  system,
-  nixvim-config,
+{
+  lib,
+  inputs,
   ...
-}: let
+}: {config, ...}: let
   cfg = config.homeManagerModules.vim;
 in {
   options.homeManagerModules.vim = {
@@ -11,7 +10,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     home.packages = [
-      nixvim-config.packages.${system}.default
+      # inputs.nixvim-config.packages.default
     ];
   };
 }
