@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.adfaure.ryax;
+  cfg = config.homeManagerModules.ryax;
 in {
-  options.adfaure.ryax = {
+  options.homeManagerModules.ryax = {
     enable = lib.mkOption {
       default = false;
       description = ''

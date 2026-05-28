@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption mkIf;
-  cfg = config.adfaure.home-modules.user-timers;
+  cfg = config.homeManagerModules.user-timers;
 in {
-  options.adfaure.home-modules.user-timers = {
+  options.homeManagerModules.user-timers = {
     enable = mkEnableOption "user-timers";
     repository = mkOption {
       default = "${config.home.homeDirectory}/.restic-repository";

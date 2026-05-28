@@ -1,14 +1,12 @@
-{
-  lib,
+{lib, ...}: {
   config,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.adfaure.home-modules.eza-alias;
+  cfg = config.homeManagerModules.eza;
 in {
-  options.adfaure.home-modules.eza-alias = {
-    enable = mkEnableOption "eza-alias";
+  options.homeManagerModules.eza = {
+    enable = mkEnableOption "eza";
   };
 
   # No icons for now

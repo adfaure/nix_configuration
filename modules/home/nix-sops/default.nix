@@ -4,13 +4,13 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.adfaure.services.nix-sops;
+  cfg = config.homeManagerModules.nix-sops;
 in {
-  options.adfaure.services.nix-sops = {
+  options.homeManagerModules.nix-sops = {
     enable = mkEnableOption "nix-sops";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     sops = {
       age.keyFile = "/home/adfaure/.config/sops/age/keys.txt";
       defaultSopsFile = ../../../secrets/private.yaml;

@@ -1,63 +1,70 @@
-{
+{lib, ...}: {
   config,
-  lib,
   pkgs,
-  my-dotfiles,
   ...
-}: {
-  programs.tmux = {
-    enable = true;
-    shell = "${pkgs.zsh}/bin/zsh";
-    extraConfig = ''
-       # Define the prefix
-      set -g prefix C-a
+}:
+let
+  cfg = config.homeManagerModules.tmux;
+in {
+  options.homeManagerModules.tmux = {
+    enable = lib.mkEnableOption "tmux";
+  };
 
-      # Restore emacs behavior
-      set -s escape-time 0
+  config = lib.mkIf cfg.enable {
+    programs.tmux = {
+      enable = true;
+      shell = "${pkgs.zsh}/bin/zsh";
+      extraConfig = ''
+         # Define the prefix
+        set -g prefix C-a
 
-      # Split pane horizontally
-      bind-key - split-window -v -c '#{pane_current_path}'
-      # split pane vertically
-      bind-key / split-window -h -c '#{pane_current_path}'
+        # Restore emacs behavior
+        set -s escape-time 0
 
-      # The windows start at 1 and not 0
-      set -g base-index 1
+        # Split pane horizontally
+        bind-key - split-window -v -c '#{pane_current_path}'
+        # split pane vertically
+        bind-key / split-window -h -c '#{pane_current_path}'
 
-      # Upda the numbering of the windows
-      set -g renumber-windows on
-      set -g mouse on
+        # The windows start at 1 and not 0
+        set -g base-index 1
 
-      # Prefix-r to reload the config
-      bind-key r source-file ~/.tmux.conf
+        # Upda the numbering of the windows
+        set -g renumber-windows on
+        set -g mouse on
 
-      # Create a new window from the current pane path
-      unbind c
-      bind-key c new-window -c '#{pane_current_path}'
+        # Prefix-r to reload the config
+        bind-key r source-file ~/.tmux.conf
 
-      # Status line
-      set -g status-right-length "100"
+        # Create a new window from the current pane path
+        unbind c
+        bind-key c new-window -c '#{pane_current_path}'
 
-      # Use P to paste the content of the buffer
-      bind P paste-buffer
+        # Status line
+        set -g status-right-length "100"
 
-      # Some vim-like behaviour
-      ## Moving around
-      set-window-option -g mode-keys vi
-      # be sure to see note* below
+        # Use P to paste the content of the buffer
+        bind P paste-buffer
 
-      set-option -g status-interval 5
-      set-option -g automatic-rename on
-      set-option -g automatic-rename-format '#{b:pane_current_path}'
+        # Some vim-like behaviour
+        ## Moving around
+        set-window-option -g mode-keys vi
+        # be sure to see note* below
 
-      # unbind h
-      # bind h select-pane -L
-      # unbind j
-      # bind j select-pane -D
-      # unbind k
-      # bind k select-pane -U
-      # unbind l
-      # bind l select-pane -R
+        set-option -g status-interval 5
+        set-option -g automatic-rename on
+        set-option -g automatic-rename-format '#{b:pane_current_path}'
 
-    '';
+        # unbind h
+        # bind h select-pane -L
+        # unbind j
+        # bind j select-pane -D
+        # unbind k
+        # bind k select-pane -U
+        # unbind l
+        # bind l select-pane -R
+
+      '';
+    };
   };
 }
