@@ -1,14 +1,13 @@
-{
-  lib,
+{lib, ...}: {
   config,
   pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.homeManagerModules.vim-tmux-nav-conf;
+  cfg = config.homeManagerModules.vim-tmux-panes;
 in {
-  options.homeManagerModules.vim-tmux-nav-conf = {
-    enable = mkEnableOption "vim-tmux-nav-conf";
+  options.homeManagerModules.vim-tmux-panes = {
+    enable = mkEnableOption "vim-tmux-panes";
   };
   config = mkIf cfg.enable {
     programs.tmux.extraConfig = ''

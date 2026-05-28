@@ -1,8 +1,6 @@
 {lib, ...}: {
   config,
-  unstable,
   pkgs,
-  my-dotfiles,
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
@@ -18,9 +16,6 @@ in {
     nixpkgs.config.allowUnfreePredicate = pkg: true;
     # First we activate home-manager
     programs.home-manager.enable = true;
-
-    home.file.".config/sakura/sakura.conf".text =
-      builtins.readFile "${my-dotfiles}/files/sakura.conf";
 
     programs.browserpass = {
       enable = true;
@@ -89,15 +84,15 @@ in {
       element-desktop
 
       # Dev / productivity
-      unstable.super-productivity
-      mob
+      # unstable.super-productivity
+
       lazygit
       meld
       obsidian
       jetbrains.pycharm-community
       # loaded from this flake default overlay
 
-      pkgs.cgvg-rs
+      # pkgs.cgvg-rs
     ];
   };
 }
