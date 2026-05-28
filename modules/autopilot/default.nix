@@ -36,11 +36,9 @@
     (lib.readDir hosts);
 
   flake.homeConfigurations.adfaure =
+    # TODO: how to properly handle system ?
     lib.mkHome inputs "x86_64-linux" "adfaure"
     [
-      inputs.sops-nix.homeManagerModules.sops
-      inputs.catppuccin.homeManagerModules.catppuccin
-
       # TODO: idk what to do with this
       {
         home = rec {
