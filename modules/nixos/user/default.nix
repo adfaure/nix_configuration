@@ -1,4 +1,8 @@
-{lib, ...}: {config, pkgs, ...}: let
+{lib, ...}: {
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.nixosModules.user;
 in {
@@ -22,7 +26,6 @@ in {
         "docker"
         "users"
       ];
-
 
       initialPassword = "nixos";
       uid = 1000;

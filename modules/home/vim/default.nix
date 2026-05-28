@@ -3,11 +3,9 @@
   system,
   nixvim-config,
   ...
-}:
-let
+}: let
   cfg = config.homeManagerModules.vim;
-in
-{
+in {
   options.homeManagerModules.vim = {
     enable = lib.mkEnableOption "vim";
   };

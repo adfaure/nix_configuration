@@ -1,8 +1,6 @@
-{lib, ...}: {config, ...}: 
-let
+{lib, ...}: {config, ...}: let
   cfg = config.homeManagerModules.yazi;
-in 
-{
+in {
   options.homeManagerModules.yazi = {
     enable = lib.mkEnableOption "yazi";
   };

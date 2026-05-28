@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.homeManagerModules.tmux;
 in {
   options.homeManagerModules.tmux = {
