@@ -7,7 +7,6 @@
 }: let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.homeManagerModules.graphical;
-
 in {
   options.homeManagerModules.graphical = {
     enable = mkEnableOption "graphical";

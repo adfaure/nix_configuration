@@ -1,9 +1,11 @@
-{lib, ...}: {config, pkgs, ...}: 
-let
+{lib, ...}: {
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.homeManagerModules.base;
 in {
-
   options.homeManagerModules.base = {
     enable = mkEnableOption "base";
   };

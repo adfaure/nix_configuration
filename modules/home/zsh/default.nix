@@ -1,7 +1,8 @@
-{
-  lib,
+{lib, ...}: {
+  pkgs,
+  config,
   ...
-}: {pkgs, config, ...}: let
+}: let
   cfg = config.homeManagerModules.zsh;
 
   zshrc_local = pkgs.writeTextFile {
