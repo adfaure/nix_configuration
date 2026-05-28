@@ -31,6 +31,7 @@
         nixosModules.guix.enable = true;
         nixosModules.syncthing.enable = true;
         nixosModules.vm.enable = true;
+        nixosModules.user.enable = true;
       })
     (lib.readDir hosts);
 }

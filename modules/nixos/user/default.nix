@@ -23,7 +23,6 @@ in {
         "users"
       ];
 
-      nix.settings.trusted-users = ["root" "adfaure"];
 
       initialPassword = "nixos";
       uid = 1000;

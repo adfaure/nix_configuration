@@ -23,9 +23,6 @@
     adfaure.home-modules.eza-alias.enable = true;
     my-programs.atuin.enable = true;
 
-    # adfaure.services.nix-sops.enable = false;
-    # adfaure.home-modules.user-timers.enable = false;
-
     my-programs.emacs.enable = false;
     my-programs.nushell.enable = true;
 

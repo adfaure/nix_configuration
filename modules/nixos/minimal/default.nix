@@ -40,12 +40,15 @@ in {
       LC_TIME = "fr_FR.UTF-8";
     };
 
-    gnupg.agent = {
-      enable = true;
-      # pinentryFlavor = "qt";
-      enableSSHSupport = true;
-    };
+    nix.settings.trusted-users = ["root" "adfaure"];
+
     programs = {
+      gnupg.agent = {
+        enable = true;
+        # pinentryFlavor = "qt";
+        enableSSHSupport = true;
+      };
+
       zsh.enable = true;
       bash = {
         completion.enable = true;
