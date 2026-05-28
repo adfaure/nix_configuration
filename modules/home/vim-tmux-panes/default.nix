@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.adfaure.home-modules.vim-tmux-nav-conf;
+  cfg = config.homeManagerModules.vim-tmux-nav-conf;
 in {
-  options.adfaure.home-modules.vim-tmux-nav-conf = {
+  options.homeManagerModules.vim-tmux-nav-conf = {
     enable = mkEnableOption "vim-tmux-nav-conf";
   };
   config = mkIf cfg.enable {

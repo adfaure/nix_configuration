@@ -1,20 +1,29 @@
-{pkgs, ...}: {
-  imports = [
-    ../modules/vim
-    ../modules/zsh
-    ../modules/yazi
-    ../modules/tmux
-    ../modules/emacs
-    ../modules/vim-tmux-panes
-    ../modules/eza
-    ../modules/nushell
-    ../modules/timers
-    ../modules/nix-sops
-    ../modules/atuin
-  ];
+{lib, ...}: {config, pkgs, ...}: 
+let
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.homeManagerModules.base;
+in {
+
+  options.homeManagerModules.base = {
+    enable = mkEnableOption "base";
+  };
+
+  # imports = [
+  #   ../modules/vim
+  #   ../modules/zsh
+  #   ../modules/yazi
+  #   ../modules/tmux
+  #   ../modules/emacs
+  #   ../modules/vim-tmux-panes
+  #   ../modules/eza
+  #   ../modules/nushell
+  #   ../modules/timers
+  #   ../modules/nix-sops
+  #   ../modules/atuin
+  # ];
 
   # Top level configuration for the user adfaure (me!)
-  config = {
+  config = mkIf cfg.enable {
     home.stateVersion = "20.09";
 
     # First we activate home-manager

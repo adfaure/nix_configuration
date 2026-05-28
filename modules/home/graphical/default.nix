@@ -1,10 +1,19 @@
-{
+{lib, ...}: {
+  config,
   unstable,
   pkgs,
   my-dotfiles,
   ...
-}: {
-  config = {
+}: let
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.homeManagerModules.graphical;
+
+in {
+  options.homeManagerModules.graphical = {
+    enable = mkEnableOption "graphical";
+  };
+
+  config = mkIf cfg.enable {
     nixpkgs.config.allowUnfree = true;
     # https://github.com/nix-community/home-manager/issues/2942#issuecomment-1119760100
     nixpkgs.config.allowUnfreePredicate = pkg: true;

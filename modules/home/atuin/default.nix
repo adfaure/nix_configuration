@@ -1,21 +1,17 @@
-{...}: {
+{lib, ...}: {
   config,
-  lib,
   ...
 }: let
-  cfg = config.my-programs.atuin;
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.homeManagerModules.atuin;
 in {
   options = {
-    my-programs.atuin = {
-      enable = lib.mkOption {
-        default = false;
-        description = ''
-          Whether to enable atuin module.
-        '';
-      };
+   homeManagerModules.atuin = {
+      enable = mkEnableOption "atuin";
     };
+
   };
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.atuin.enable = true;
     programs.atuin.settings = {
       enter_accept = false;

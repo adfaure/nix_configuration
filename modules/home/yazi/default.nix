@@ -1,25 +1,35 @@
-{lib, ...}: {
-  programs.yazi = {
-    enable = true;
+{lib, ...}: {config, ...}: 
+let
+  cfg = config.homeManagerModules.yazi;
+in 
+{
+  options.homeManagerModules.yazi = {
+    enable = lib.mkEnableOption "yazi";
   };
 
-  programs.zsh = {
-    initExtra = lib.mkAfter ''
-      # Add ctrl+N shortcut to navigate with yazi and zsh
+  config = lib.mkIf cfg.enable {
+    programs.yazi = {
+      enable = true;
+    };
 
-      # FIXME: do it with home manager if its slows down zsh start too much
-      mkdir -p $HOME/.config/yazi/
+    programs.zsh = {
+      initExtra = lib.mkAfter ''
+        # Add ctrl+N shortcut to navigate with yazi and zsh
 
-      function _yazi() {
-        yazi --cwd-file $HOME/.config/yazi/cwd_file "$(pwd)" <$TTY
+        # FIXME: do it with home manager if its slows down zsh start too much
+        mkdir -p $HOME/.config/yazi/
 
-        print -n "\033[A"
-        zle && zle -I
-        cd "$(cat $HOME/.config/yazi/cwd_file)"
-      }
+        function _yazi() {
+          yazi --cwd-file $HOME/.config/yazi/cwd_file "$(pwd)" <$TTY
 
-      zle -N _yazi
-      bindkey -v '^N' _yazi
-    '';
+          print -n "\033[A"
+          zle && zle -I
+          cd "$(cat $HOME/.config/yazi/cwd_file)"
+        }
+
+        zle -N _yazi
+        bindkey -v '^N' _yazi
+      '';
+    };
   };
 }
