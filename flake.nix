@@ -27,7 +27,7 @@
     };
   };
 
-  outputs = {self, ...} @ inputs:
+  outputs = {...} @ inputs:
     inputs.autopilot.lib.mkFlake
     {
       inherit inputs;
@@ -63,80 +63,3 @@
       systems = import inputs.systems;
     };
 }
-# # Separated home-manager config for non-nixos machines.
-# # Activate with: home-manager --flake .#adfaure switch
-# homeConfigurations = let
-#   home-module = {
-#     nixpkgs.overlays = [self.overlays.default];
-#     nixpkgs.config.allowUnfree = true;
-#     home = rec {
-#       username = "adfaure";
-#       homeDirectory = "/home/${username}";
-#       stateVersion = "20.09";
-#     };
-#   };
-#   extraSpecialArgs = {
-#     inherit my-dotfiles home-module unstable nixvim-config system;
-#   };
-# in {
-#   noco = import ./homes/configurations/noco {
-#     inherit
-#       pkgs
-#       home-manager
-#       home-module
-#       sops-nix
-#       catppuccin
-#       extraSpecialArgs
-#       ;
-#   };
-#   lune = import ./homes/configurations/lune {
-#     inherit
-#       pkgs
-#       home-manager
-#       home-module
-#       sops-nix
-#       catppuccin
-#       extraSpecialArgs
-#       ;
-#   };
-#   # Can be use in VPS for instance without graphical installation
-#   base = home-manager.lib.homeManagerConfiguration {
-#     inherit extraSpecialArgs;
-#     modules = [
-#       home-module
-#       sops-nix.homeManagerModules.sops
-#       ./homes/base.nix
-#     ];
-#   };
-# };
-# packages.${system} = rec {
-#   # Programs
-#   cgvg = pkgs.callPackage ./pkgs/cgvg {};
-#   cgvg-rs = pkgs.callPackage ./pkgs/rgvg {};
-#   nix = unstable.nix;
-#   hakuneko-nightly = pkgs.callPackage ./pkgs/hakuneko-nightly {};
-# };
-# # Overlay to inject my packages in the different modules
-# overlays.default = final: prev: {
-#   cgvg = self.packages.${system}.cgvg;
-#   cgvg-rs = self.packages.${system}.cgvg-rs;
-# };
-# nixosModules.overlay = {...}: {
-#   nixpkgs.overlays = [self.overlays.default];
-# };
-# nixosConfigurations = {
-#   lune = import ./nixos/hosts/lune { inherit system inputs; };
-#   noco = import ./nixos/hosts/noco { inherit system inputs; };
-# };
-# templates = {
-#   rust = {
-#     path = ./templates/rust;
-#     description = "Rust devshell";
-#   };
-#   python = {
-#     path = ./templates/simple-with-python;
-#     description = "Simple devshell with python example";
-#   };
-# };
-# formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-
