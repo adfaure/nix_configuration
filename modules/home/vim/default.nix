@@ -2,7 +2,11 @@
   lib,
   inputs,
   ...
-}: {config, system, ...}: let
+}: {
+  config,
+  system,
+  ...
+}: let
   cfg = config.homeManagerModules.vim;
 in {
   options.homeManagerModules.vim = {

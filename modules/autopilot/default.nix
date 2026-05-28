@@ -20,19 +20,7 @@
     hosts = ../../hosts;
   in
     lib.mapAttrs
-    (name: value:
-      lib.mkHost {inherit inputs;} (hosts + "/${name}") {
-        # Find a solution for this...
-        nixosModules.cachix.enable = true;
-        nixosModules.minimal.enable = true;
-        nixosModules.flakes.enable = true;
-        nixosModules.gnome.enable = true;
-        nixosModules.graphical.enable = true;
-        nixosModules.guix.enable = true;
-        nixosModules.syncthing.enable = true;
-        nixosModules.vm.enable = true;
-        nixosModules.user.enable = true;
-      })
+    (name: value: lib.mkHost {inherit inputs;} (hosts + "/${name}"))
     (lib.readDir hosts);
 
   flake.homeConfigurations.adfaure =
