@@ -6,7 +6,7 @@
 in
   inputs.home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-
+    extraSpecialArgs = { inherit system; };
     modules =
       [
         inputs.sops-nix.homeManagerModules.sops
