@@ -1,3 +1,5 @@
+# This is the "entrypoint" that will be invoked by autopilot and construct the
+# flake tree.
 {
   inputs,
   lib,
