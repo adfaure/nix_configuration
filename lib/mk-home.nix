@@ -1,4 +1,4 @@
-{lib}: inputs: system: user: modules: let
+{lib}: inputs: system: username: let
   # system = "x86_64-linux";
   pkgs = import inputs.nixpkgs {
     inherit system;
@@ -11,8 +11,15 @@ in
       [
         inputs.sops-nix.homeManagerModules.sops
         inputs.catppuccin.homeManagerModules.catppuccin
+        {
+          home = {
+            inherit username;
+            homeDirectory = "/home/${username}";
+          };
+        }
+
+        (../users + "/${username}")
       ]
-      ++ modules
       ++
       # Inject my list of modules
       (lib.mapAttrsToList (name: value: value) inputs.self.homeManagerModules);
