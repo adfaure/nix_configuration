@@ -6,6 +6,8 @@
   # Import flake modules
   imports = lib.mapAttrsToList (name: _: ../flake + "/${name}") (lib.readDir ../flake);
 
+  # Load all modules so that they can be accessed
+  # from inputs.self.{nixosModules,homeManagerModules}
   flake.nixosModules = lib.loadAll {
     dir = ../nixos;
     args = {inherit inputs lib;};
