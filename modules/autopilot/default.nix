@@ -28,6 +28,5 @@
     (lib.readDir hosts);
 
   flake.homeConfigurations.adfaure =
-    # TODO: how to properly handle system ?
     lib.mkHome inputs "x86_64-linux" "adfaure";
 }
