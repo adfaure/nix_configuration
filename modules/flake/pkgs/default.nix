@@ -1,5 +1,13 @@
-{lib, inputs, ...}: {
-  perSystem = {system, pkgs, ...}: {
+{
+  lib,
+  inputs,
+  ...
+}: {
+  perSystem = {
+    system,
+    pkgs,
+    ...
+  }: {
     packages =
       lib.mapPackages
       (p: pkgs.callPackage p {})

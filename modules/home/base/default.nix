@@ -58,6 +58,7 @@ in {
     };
 
     programs.ssh = {
+      enableDefaultConfig = false;
       enable = true;
     };
 
