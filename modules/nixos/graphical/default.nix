@@ -81,7 +81,7 @@ in {
       hdparm
       sysstat
       gsmartcontrol
-      linuxPackages.perf
+      perf
 
       # Password
       gnupg

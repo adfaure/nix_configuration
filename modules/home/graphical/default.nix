@@ -89,7 +89,7 @@ in {
       lazygit
       meld
       obsidian
-      jetbrains.pycharm-community
+      jetbrains.pycharm-oss
       # loaded from this flake default overlay
 
       # pkgs.cgvg-rs

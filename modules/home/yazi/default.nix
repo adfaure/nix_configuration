@@ -11,7 +11,7 @@ in {
     };
 
     programs.zsh = {
-      initExtra = lib.mkAfter ''
+      initContent = lib.mkAfter ''
         # Add ctrl+N shortcut to navigate with yazi and zsh
 
         # FIXME: do it with home manager if its slows down zsh start too much
