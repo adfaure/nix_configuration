@@ -1,5 +1,6 @@
-{lib, ...}: {
+{lib, inputs, ...}: {
   config,
+  system,
   pkgs,
   ...
 }: let
@@ -23,7 +24,7 @@ in {
         CPUSchedulingPolicy = "idle";
         IOSchedulingClass = "idle";
         EnvironmentFile = "${config.sops.secrets.restic-password.path}";
-        ExecStart = "${lib.getExe pkgs.resticprofile} -c ${config.sops.secrets.restic-profile.path} backup";
+        ExecStart = "${lib.getExe inputs.self.packages."${system}".resticprofile} -c ${config.sops.secrets.restic-profile.path} backup";
         Environment = [
           "PATH=${pkgs.restic}/bin:${pkgs.bash}/bin"
           "RESTIC_REPOSITORY=${cfg.repository}"
