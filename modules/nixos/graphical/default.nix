@@ -11,8 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.light.enable = true;
-
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = false;
@@ -42,10 +40,7 @@ in {
 
     # TODO: should we enable that ?
     # security.rtkit.enable = true;
-
     services.dbus.enable = true;
-
-    programs.adb.enable = true;
     users.users.adfaure.extraGroups = ["adbusers"];
 
     environment.systemPackages = with pkgs; [
@@ -70,9 +65,6 @@ in {
       autorandr
       # Media
       vlc
-      # Utils
-      xorg.xkill
-      # llpp
 
       # storage
       ntfs3g

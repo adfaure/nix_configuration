@@ -18,7 +18,9 @@ in {
     home.packages = with pkgs; [
       kubectl
       kubernetes-helm
-      scaleway-cli
+
+      # TODO
+      # scaleway-cli
       helmfile
       vcluster
       skopeo
