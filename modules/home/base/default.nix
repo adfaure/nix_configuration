@@ -1,6 +1,7 @@
-{lib, ...}: {
+{lib, inputs, ...}: {
   config,
   pkgs,
+  system,
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
@@ -104,6 +105,9 @@ in {
       headsetcontrol
       protonvpn-gui
       thunderbird
+
+      # Someday create an overlay for my packages
+      inputs.self.packages."${system}".rgvg
     ];
   };
 }
