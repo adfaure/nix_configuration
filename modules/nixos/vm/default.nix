@@ -14,6 +14,12 @@ in {
     programs.singularity.enable = true;
     programs.singularity.enableFakeroot = true;
 
+    virtualisation.vmVariant = {
+      virtualisation.memorySize = 4096;
+      virtualisation.diskSize = 8192;
+      virtualisation.useNixStoreImage = false;
+    };
+
     # Enable virtualization
     virtualisation = {
       docker.enable = true;

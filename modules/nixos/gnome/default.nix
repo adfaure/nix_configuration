@@ -12,10 +12,8 @@ in {
 
   config = mkIf cfg.enable {
     # Enable the GNOME Desktop Environment.
-
     services.xserver.enable = true;
     services.displayManager.gdm.enable = true;
-
     services.desktopManager.gnome.enable = true;
 
     services.gnome.gnome-keyring.enable = true;
@@ -26,7 +24,6 @@ in {
       gnomeExtensions.battery-health-charging
       gnomeExtensions.steal-my-focus-window
       gnomeExtensions.window-list
-      polkit
       polkit_gnome
       dconf-editor
       gnome-tweaks
