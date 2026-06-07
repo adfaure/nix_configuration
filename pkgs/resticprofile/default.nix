@@ -10,7 +10,6 @@
   testers,
   resticprofile,
 }:
-
 buildGoModule (finalAttrs: {
   pname = "resticprofile";
   version = "0.33.0";
@@ -40,7 +39,7 @@ buildGoModule (finalAttrs: {
     "-X main.builtBy=nixpkgs"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [installShellFiles];
 
   preCheck = ''
     rm batt/battery_test.go # tries to get battery data
@@ -56,14 +55,12 @@ buildGoModule (finalAttrs: {
     rm util/tempdir_test.go # expects normal environment
   '';
 
-  checkFlags =
-    let
-      skippedTests = [
-        # mount: fusermount: exec: "fusermount": executable file not found in $PATH
-        "TestMemFS"
-      ];
-    in
-    [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
+  checkFlags = let
+    skippedTests = [
+      # mount: fusermount: exec: "fusermount": executable file not found in $PATH
+      "TestMemFS"
+    ];
+  in ["-skip=^${builtins.concatStringsSep "$|^" skippedTests}$"];
 
   installPhase = ''
     runHook preInstall

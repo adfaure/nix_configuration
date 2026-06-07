@@ -119,6 +119,7 @@ in {
       pmutils
       nmap
       htop
+      polkit
       # tools
       tmux
       libcaca # video

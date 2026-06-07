@@ -6,6 +6,8 @@ lib.nixosSystem {
       (toplevel + "/configuration.nix")
       (toplevel + "/hardware.nix")
 
+      inputs.home-manager.nixosModules.home-manager
+
       # Wire-up all my modules
       # TODO: Find a better solution
       {
@@ -18,6 +20,7 @@ lib.nixosSystem {
         nixosModules.syncthing.enable = true;
         nixosModules.vm.enable = true;
         nixosModules.user.enable = true;
+        nixosModules.adfaure.enable = true;
       }
     ]
     ++
