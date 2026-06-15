@@ -8,5 +8,5 @@ in
     inherit pkgs;
     extraSpecialArgs = {inherit system;};
 
-    modules = lib.mkHomeModule inputs username;
+    modules = (lib.mkHomeModule inputs username).modules;
   }
