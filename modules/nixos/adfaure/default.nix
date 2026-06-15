@@ -1,4 +1,8 @@
-{lib, inputs, ...}: {config, ...}:
+{
+  lib,
+  inputs,
+  ...
+}: {config, ...}:
 with lib; let
   cfg = config.nixosModules.adfaure;
 in {
@@ -10,10 +14,10 @@ in {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     # Lucky me only one kind of system for now
-    home-manager.extraSpecialArgs = { system = "x86_64-linux"; };
+    home-manager.extraSpecialArgs = {system = "x86_64-linux";};
     users.users.adfaure.isNormalUser = true;
 
-    home-manager.users.adfaure = { ... }: {
+    home-manager.users.adfaure = {...}: {
       imports = (lib.mkHomeModule inputs "adfaure").modules;
     };
   };
