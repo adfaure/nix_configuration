@@ -19,6 +19,14 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     systems.url = "github:nix-systems/default";
+
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia-qs.url = "github:noctalia-dev/noctalia-qs";
+    noctalia-qs.inputs.nixpkgs.follows = "nixpkgs";
+    noctalia-qs.inputs.systems.follows = "systems";
+
     autopilot = {
       url = "github:stepbrobd/autopilot";
       inputs.nixpkgs.follows = "nixpkgs";
