@@ -11,6 +11,8 @@
   homeManagerModules.vim-tmux-panes.enable = true;
   homeManagerModules.yazi.enable = true;
   homeManagerModules.zsh.enable = true;
+  homeManagerModules.niri.enable = true;
+  homeManagerModules.noctalia.enable = true;
 
   home.stateVersion = "20.09";
 }

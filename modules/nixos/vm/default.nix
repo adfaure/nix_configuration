@@ -14,11 +14,15 @@ in {
     programs.singularity.enable = true;
     programs.singularity.enableFakeroot = true;
 
-    # virtualisation.vmVariant = {
-    #   virtualisation.memorySize = 4096;
-    #   virtualisation.diskSize = 8192;
-    #   virtualisation.useNixStoreImage = false;
-    # };
+    virtualisation.vmVariant = {
+      virtualisation.memorySize = 4096;
+      virtualisation.diskSize = 8192;
+      virtualisation.useNixStoreImage = false;
+      virtualisation.qemu.options = [
+        "-device virtio-vga-gl"        # virtio GPU with OpenGL support
+        "-display gtk,gl=on"           # or sdl,gl=on — enables host OpenGL context
+      ];
+    };
 
     # Enable virtualization
     virtualisation = {
