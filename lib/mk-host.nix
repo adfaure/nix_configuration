@@ -1,7 +1,10 @@
-{lib}: {inputs, getSystem}: toplevel:
+{lib}: {
+  inputs,
+  getSystem,
+}: toplevel:
 lib.nixosSystem {
   # TODO: understand that.
-  specialArgs = { unstable  = (getSystem "x86_64-linux").allModuleArgs.unstable; };
+  specialArgs = {unstable = (getSystem "x86_64-linux").allModuleArgs.unstable;};
   modules =
     [
       (toplevel + "/configuration.nix")

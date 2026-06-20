@@ -12,7 +12,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-
     # login manager: use gtkgreet, and use gtklock for locker
     services.greetd = {
       enable = true;
@@ -48,7 +47,7 @@ in {
     services.power-profiles-daemon.enable = true;
 
     # locker
-    security.pam.services.gtklock = { };
+    security.pam.services.gtklock = {};
     security.pam.services.login.enableGnomeKeyring = true;
     security.pam.services.greetd.enableGnomeKeyring = true;
     security.pam.services.greetd.fprintAuth = false;
@@ -57,7 +56,7 @@ in {
     security.polkit.enable = true;
 
     services = {
-      dbus.packages = with pkgs; [ gcr ];
+      dbus.packages = with pkgs; [gcr];
       gnome.gnome-keyring.enable = true;
     };
 
@@ -79,5 +78,4 @@ in {
       unstable.nirimon
     ];
   };
-
 }
