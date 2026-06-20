@@ -26,6 +26,9 @@ in {
         spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh"
         spawn-at-startup "noctalia-shell"
 
+        // TODO: Assumes a profile called meson has been manually configured
+        spawn-at-startup "nirimon -profile maison"
+
         input {
           keyboard {
             xkb {
