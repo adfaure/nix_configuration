@@ -4,7 +4,6 @@
   homeManagerModules.eza.enable = true;
   homeManagerModules.graphical.enable = true;
   homeManagerModules.nix-sops.enable = true;
-  homeManagerModules.ryax.enable = true;
   homeManagerModules.timers.enable = true;
   homeManagerModules.tmux.enable = true;
   homeManagerModules.vim.enable = true;

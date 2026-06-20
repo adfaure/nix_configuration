@@ -1,13 +1,16 @@
 {lib, ...}: {
   config,
   pkgs,
+  osConfig,
   ...
 }: let
   cfg = config.homeManagerModules.ryax;
+  hasTag = lib.hasTag osConfig.networking.hostName;
 in {
+
   options.homeManagerModules.ryax = {
     enable = lib.mkOption {
-      default = false;
+      default = hasTag "ryax";
       description = ''
         Whether to enable ryax module.
       '';
