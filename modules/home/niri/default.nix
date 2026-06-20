@@ -95,10 +95,10 @@ in {
         Mod+O { toggle-overview; }
 
         // noctalia shell IPC
-        Mod+S        { ${ipc ''"volume" "togglePanel"''}; }
+        Alt+Return     { spawn "kitty"; }
         Mod+Space    { ${ipc ''"launcher" "toggle"''}; }
         Mod+M        { ${ipc ''"sessionMenu" "toggle"''}; }
-        Alt+L { ${ipc ''"lockScreen" "lock"''}; }
+        Ctrl+Alt+L   { ${ipc ''"lockScreen" "lock"''}; }
 
         // window management
         Mod+Q { close-window; }
@@ -154,6 +154,7 @@ in {
         Mod+underscore { focus-workspace 8; }
         Mod+ccedilla { focus-workspace 9; }
         Mod+agrave { focus-workspace 10; }
+
         Mod+Ctrl+ampersand { move-window-to-workspace 1; }
         Mod+Ctrl+eacute { move-window-to-workspace 2; }
         Mod+Ctrl+quotedbl { move-window-to-workspace 3; }
@@ -186,8 +187,8 @@ in {
       pkgs.alacritty
       pkgs.xev
 
-      # TODO: Fix fonts:
-      # (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
+      # File explorer
+      pkgs.nemo
     ];
   };
 }
