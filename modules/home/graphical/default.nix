@@ -90,12 +90,6 @@ in {
       meld
       obsidian
       jetbrains.pycharm-oss
-
-      # whatsapp wrapper ?
-      karere
-      # loaded from this flake default overlay
-
-      # pkgs.cgvg-rs
     ];
   };
 }
