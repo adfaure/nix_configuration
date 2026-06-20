@@ -65,13 +65,23 @@ in {
     # xdg
     xdg.portal = {
       enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk 
+        pkgs.xdg-desktop-portal-gnome
+      ];
+      xdgOpenUsePortal = true;
+
       lxqt.enable = true;
       wlr.enable = true;
-      config.common.default = "*";
+
+      config = {
+        common.default = [ "gnome" ];
+      };
     };
 
     # Small module to enable niri on nixos
     programs.niri.enable = true;
+
 
     # Import home module specific to niri and noctalia
     home-manager.users.adfaure.imports = [

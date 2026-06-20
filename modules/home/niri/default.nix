@@ -21,13 +21,12 @@ in {
       ''
         // IDK
         spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-        // TODO: Understand
         spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh"
         spawn-at-startup "noctalia-shell"
 
         // TODO: Assumes a profile called meson has been manually configured
-        spawn-at-startup "nirimon -profile maison"
+        spawn-at-startup "nirimon "-profile" "maison"
 
         input {
           keyboard {
