@@ -183,9 +183,10 @@ in {
           XF86MonBrightnessDown { ${ipc ''"brightness" "decrease"''}; }
 
           // screenshots
-          Mod+Shift+eacute { screenshot-screen; }
-          Mod+Shift+apostrophe { screenshot; }
-          Mod+Shift+parenleft { screenshot-window; }
+          Mod+Shift+eacute { screenshot-screen; } // 2
+          Mod+Shift+parenleft { screenshot-window; } // 5
+
+          Print { screenshot; };
         }
       '';
 
