@@ -45,6 +45,7 @@ in {
 
     # Noctalia needs it
     services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
 
     # locker
     security.pam.services.gtklock = {};
