@@ -1,5 +1,6 @@
 {lib, ...}: {
   config,
+  unstable,
   pkgs,
   ...
 }:
@@ -43,6 +44,9 @@ in {
       _JAVA_AWT_WM_NONREPARENTING = 1;
     };
 
+    # Noctalia needs it
+    services.power-profiles-daemon.enable = true;
+
     # locker
     security.pam.services.gtklock = { };
     security.pam.services.login.enableGnomeKeyring = true;
@@ -72,6 +76,7 @@ in {
       pkgs.cage
       pkgs.gtkgreet
       pkgs.xwayland-satellite
+      unstable.nirimon
     ];
   };
 

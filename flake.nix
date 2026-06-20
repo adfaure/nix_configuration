@@ -20,12 +20,15 @@
     };
     systems.url = "github:nix-systems/default";
 
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
+    noctalia.inputs.noctalia-qs.follows = "noctalia-qs";
 
     noctalia-qs.url = "github:noctalia-dev/noctalia-qs";
     noctalia-qs.inputs.nixpkgs.follows = "nixpkgs";
     noctalia-qs.inputs.systems.follows = "systems";
+
+    # noctalia-qs.inputs.treefmt-nix.follows = "treefmt";
 
     autopilot = {
       url = "github:stepbrobd/autopilot";
@@ -60,6 +63,7 @@
           ];
           instances = {
             pkgs = inputs.nixpkgs;
+            unstable = inputs.nixos-unstable;
           };
         };
         parts.path = ./modules/autopilot;
