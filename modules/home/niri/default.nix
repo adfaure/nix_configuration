@@ -1,6 +1,7 @@
 {lib, ...}: {
   config,
   pkgs,
+  unstable,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -26,7 +27,7 @@ in {
         spawn-at-startup "noctalia-shell"
 
         // TODO: Assumes a profile called meson has been manually configured
-        spawn-at-startup "nirimon "-profile" "maison"
+        spawn-at-startup "${unstable.nirimon}/bin/nirimon" "-profile" "maison"
 
         input {
           keyboard {
@@ -62,10 +63,12 @@ in {
             off
           }
         }
+
         layer-rule {
           match namespace=r#"^noctalia-overview*"#
           place-within-backdrop true
         }
+
         window-rule {
           default-column-width { proportion 0.95; }
           geometry-corner-radius 8 8 8 8
@@ -103,7 +106,7 @@ in {
           Mod+O { toggle-overview; }
 
           // noctalia shell IPC
-          Alt+Return     { spawn "kitty"; }
+          Alt+Return   { spawn "kitty"; }
           Mod+Space    { ${ipc ''"launcher" "toggle"''}; }
           Mod+M        { ${ipc ''"sessionMenu" "toggle"''}; }
           Ctrl+Alt+L   { ${ipc ''"lockScreen" "lock"''}; }

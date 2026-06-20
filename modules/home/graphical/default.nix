@@ -79,7 +79,9 @@ in {
       darktable
 
       # Messaging
-      discord
+      # discord
+      vesktop
+
       telegram-desktop
       element-desktop
 

@@ -4,6 +4,7 @@
   ...
 }: {
   pkgs,
+  unstable,
   config,
   ...
 }:
@@ -38,7 +39,7 @@ in {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     # Lucky me only one kind of system for now
-    home-manager.extraSpecialArgs = {system = "x86_64-linux";};
+    home-manager.extraSpecialArgs = {system = "x86_64-linux"; inherit unstable; };
 
     home-manager.users.adfaure = {...}: {
       imports = (lib.mkHomeModule inputs "adfaure").modules;
