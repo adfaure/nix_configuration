@@ -105,7 +105,7 @@ in {
 
       # Steelseries headset
       headsetcontrol
-      protonvpn-gui
+      proton-vpn
       thunderbird
 
       # Someday create an overlay for my packages
