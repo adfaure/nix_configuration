@@ -56,12 +56,11 @@ in {
       x11.enable = true;
     };
 
-
     programs.noctalia-shell.enable = true;
     programs.noctalia-shell.settings = {
       package =
         inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override
         {calendarSupport = true;};
-    };
+    } // (import ./config.nix);
   };
 }
