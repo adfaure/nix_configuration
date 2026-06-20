@@ -2,7 +2,7 @@
   lib,
   inputs,
   ...
-}: {config, ...}:
+}: {pkgs, config, ...}:
 with lib; let
   cfg = config.nixosModules.adfaure;
 in {
@@ -11,11 +11,30 @@ in {
   };
 
   config = mkIf cfg.enable {
+    users.users.adfaure = {
+      isNormalUser = true;
+      home = "/home/adfaure";
+      shell = pkgs.zsh;
+
+      extraGroups = [
+        "audio"
+        "wheel"
+        "networkmanager"
+        "vboxusers"
+        "lp"
+        "perf_users"
+        "docker"
+        "users"
+      ];
+
+      initialPassword = "nixos";
+      uid = 1000;
+    };
+
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     # Lucky me only one kind of system for now
     home-manager.extraSpecialArgs = {system = "x86_64-linux";};
-    users.users.adfaure.isNormalUser = true;
 
     home-manager.users.adfaure = {...}: {
       imports = (lib.mkHomeModule inputs "adfaure").modules;

@@ -59,6 +59,7 @@ in {
     services = {
       dbus.packages = with pkgs; [gcr];
       gnome.gnome-keyring.enable = true;
+      gnome.evolution-data-server.enable = true;
     };
 
     # xdg
@@ -71,6 +72,15 @@ in {
 
     # Small module to enable niri on nixos
     programs.niri.enable = true;
+
+    # Import home module specific to niri and noctalia
+    home-manager.users.adfaure.imports = [
+      {
+        homeManagerModules.niri.enable = true;
+        homeManagerModules.noctalia.enable = true;
+      }
+    ];
+
     environment.systemPackages = [
       pkgs.niri
       pkgs.cage

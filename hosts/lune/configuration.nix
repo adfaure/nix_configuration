@@ -9,7 +9,6 @@
   nixosModules.guix.enable = true;
   nixosModules.syncthing.enable = true;
   nixosModules.vm.enable = true;
-  nixosModules.user.enable = true;
   nixosModules.adfaure.enable = true;
 
   nixosModules.gnome.enable = false;

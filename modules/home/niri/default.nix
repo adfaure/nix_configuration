@@ -19,7 +19,6 @@ in {
       kdl
       */
       ''
-
         // IDK
         spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
         // TODO: Understand
