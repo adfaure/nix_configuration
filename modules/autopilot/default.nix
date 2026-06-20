@@ -3,6 +3,7 @@
 {
   inputs,
   lib,
+  getSystem,
   ...
 }: {
   # Import flake modules
@@ -24,7 +25,7 @@
     hosts = ../../hosts;
   in
     lib.mapAttrs
-    (name: value: lib.mkHost {inherit inputs;} (hosts + "/${name}"))
+    (name: value: lib.mkHost {inherit inputs getSystem;} (hosts + "/${name}"))
     (lib.readDir hosts);
 
   flake.homeConfigurations.adfaure =

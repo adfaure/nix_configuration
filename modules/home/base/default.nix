@@ -46,7 +46,6 @@ in {
       enableNushellIntegration = true;
       catppuccin.enable = true;
       catppuccin.flavour = "mocha";
-
       settings = {
         kubernetes = {
           disabled = false;
@@ -55,7 +54,6 @@ in {
           disabled = false;
           show_always = true;
         };
-
         hostname = {
           ssh_only = false;
         };

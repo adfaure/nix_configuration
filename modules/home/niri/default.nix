@@ -12,6 +12,14 @@ in {
   config = mkIf cfg.enable {
 
     xdg.configFile."niri/config.kdl".text = /* kdl */ ''
+
+      // IDK
+      spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+      // TODO: Understand
+      spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+      spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh"
+      spawn-at-startup "noctalia-shell"
+
       input {
         keyboard {
           xkb {
@@ -36,24 +44,20 @@ in {
       layout {
         gaps 4
         default-column-width { proportion 0.95; }
-
         border {
           on
           width 2
           active-color "#4c566a"
           inactive-color "#2e3440"
         }
-
         focus-ring {
           off
         }
       }
-
       layer-rule {
         match namespace=r#"^noctalia-overview*"#
         place-within-backdrop true
       }
-
       window-rule {
         default-column-width { proportion 0.95; }
         geometry-corner-radius 8 8 8 8
@@ -70,6 +74,7 @@ in {
       hotkey-overlay {
         skip-at-startup
       }
+
       cursor {
         xcursor-theme "Nordzy-cursors"
         xcursor-size 24
@@ -82,12 +87,6 @@ in {
         XCURSOR_SIZE "24"
       }
 
-      spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
-      spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-      spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh"
-      spawn-at-startup "noctalia-shell"
-      spawn-at-startup "fcitx5" "-d"
-
       binds {
         // terminal
         Mod+T { spawn "kitty"; }
@@ -99,7 +98,7 @@ in {
         Mod+S        { ${ipc ''"volume" "togglePanel"''}; }
         Mod+Space    { ${ipc ''"launcher" "toggle"''}; }
         Mod+M        { ${ipc ''"sessionMenu" "toggle"''}; }
-        Ctrl+Super+Q { ${ipc ''"lockScreen" "lock"''}; }
+        Alt+L { ${ipc ''"lockScreen" "lock"''}; }
 
         // window management
         Mod+Q { close-window; }
@@ -177,15 +176,16 @@ in {
         XF86MonBrightnessDown { ${ipc ''"brightness" "decrease"''}; }
 
         // screenshots
-        Mod+Shift+3 { screenshot-screen; }
-        Mod+Shift+4 { screenshot; }
-        Mod+Shift+5 { screenshot-window; }
+        Mod+Shift+eacute { screenshot-screen; }
+        Mod+Shift+apostrophe { screenshot; }
+        Mod+Shift+parenleft { screenshot-window; }
       }
     '';
 
     home.packages = [
       pkgs.alacritty
       pkgs.xev
+
       # TODO: Fix fonts:
       # (builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts))
     ];
