@@ -2,7 +2,11 @@
   lib,
   inputs,
   ...
-}: {pkgs, config, ...}:
+}: {
+  pkgs,
+  config,
+  ...
+}:
 with lib; let
   cfg = config.nixosModules.adfaure;
 in {

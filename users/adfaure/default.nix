@@ -11,5 +11,6 @@
   homeManagerModules.vim-tmux-panes.enable = true;
   homeManagerModules.yazi.enable = true;
   homeManagerModules.zsh.enable = true;
+
   home.stateVersion = "20.09";
 }

@@ -4,7 +4,6 @@
     barType = "framed";
     position = "top";
     monitors = [
-
     ];
     density = "spacious";
     showOutline = false;
@@ -50,7 +49,6 @@
         }
         {
           blacklist = [
-
           ];
           chevronColor = "none";
           colorizeIcons = false;
@@ -58,7 +56,6 @@
           hidePassive = false;
           id = "Tray";
           pinned = [
-
           ];
         }
       ];
@@ -173,7 +170,6 @@
     rightClickFollowMouse = true;
     rightClickCommand = "";
     screenOverrides = [
-
     ];
   };
   general = {
@@ -211,7 +207,6 @@
     clockFormat = "hh\\nmm";
     passwordChars = false;
     lockScreenMonitors = [
-
     ];
     lockScreenBlur = 0;
     lockScreenTint = 0;
@@ -293,7 +288,6 @@
     overviewEnabled = false;
     directory = "/home/adfaure/Pictures/Wallpapers";
     monitorDirectories = [
-
     ];
     enableMultiMonitorDirectories = false;
     showHiddenFiles = false;
@@ -336,7 +330,6 @@
     wallhavenResolutionHeight = "";
     sortOrder = "name";
     favorites = [
-
     ];
   };
   appLauncher = {
@@ -350,7 +343,6 @@
     clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
     position = "center";
     pinnedApps = [
-
     ];
     sortByMostUsed = true;
     terminalCommand = "alacritty -e";
@@ -465,10 +457,8 @@
     size = 1;
     onlySameOutput = true;
     monitors = [
-
     ];
     pinnedApps = [
-
     ];
     colorizeIcons = false;
     showLauncherIcon = false;
@@ -551,7 +541,6 @@
     enableMarkdown = false;
     density = "default";
     monitors = [
-
     ];
     location = "top_right";
     overlayLayer = true;
@@ -591,7 +580,6 @@
       2
     ];
     monitors = [
-
     ];
   };
   audio = {
@@ -601,7 +589,6 @@
     visualizerType = "linear";
     spectrumMirrored = true;
     mprisBlacklist = [
-
     ];
     preferredPlayer = "";
     volumeFeedback = false;
@@ -612,7 +599,6 @@
     enforceMinimum = true;
     enableDdcSupport = false;
     backlightDeviceMappings = [
-
     ];
   };
   colorSchemes = {
@@ -628,7 +614,6 @@
   };
   templates = {
     activeTemplates = [
-
     ];
     enableUserTheming = false;
   };
@@ -677,7 +662,6 @@
     gridSnap = false;
     gridSnapScale = false;
     monitorWidgets = [
-
     ];
   };
 }

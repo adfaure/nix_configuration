@@ -11,7 +11,4 @@
   nixosModules.syncthing.enable = true;
   nixosModules.vm.enable = true;
   nixosModules.adfaure.enable = true;
-
-  nixosModules.gnome.enable = true;
-  nixosModules.niri.enable = false;
 }
