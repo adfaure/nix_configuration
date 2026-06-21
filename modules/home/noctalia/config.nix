@@ -1,4 +1,4 @@
-{
+{username}: {
   settingsVersion = 59;
   bar = {
     barType = "framed";
@@ -173,7 +173,7 @@
     ];
   };
   general = {
-    avatarImage = "/home/adfaure/.face";
+    avatarImage = "/home/${username}/.face";
     dimmerOpacity = 0.2;
     showScreenCorners = false;
     forceBlackScreenCorners = false;
@@ -286,7 +286,7 @@
   wallpaper = {
     enabled = true;
     overviewEnabled = false;
-    directory = "/home/adfaure/Pictures/Wallpapers";
+    directory = "/home/${username}/Pictures/Wallpapers";
     monitorDirectories = [
     ];
     enableMultiMonitorDirectories = false;

@@ -1,4 +1,4 @@
-{lib, ...}: {config, ...}: let
+{lib, ...}: {config, username, ...}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.homeManagerModules.nix-sops;
 in {
@@ -8,7 +8,7 @@ in {
 
   config = mkIf cfg.enable {
     sops = {
-      age.keyFile = "/home/adfaure/.config/sops/age/keys.txt";
+      age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
       defaultSopsFile = ../../../secrets/private.yaml;
       defaultSymlinkPath = "/run/user/1000/secrets";
       defaultSecretsMountPoint = "/run/user/1000/secrets.d";

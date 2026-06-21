@@ -6,7 +6,7 @@
 in
   inputs.home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = {inherit system;};
+    extraSpecialArgs = {inherit system username;};
 
     modules = (lib.mkHomeModule inputs username).modules;
   }

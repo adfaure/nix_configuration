@@ -5,6 +5,7 @@
 }: {
   config,
   pkgs,
+  username,
   ...
 }: let
   cfg = config.homeManagerModules.noctalia;
@@ -63,6 +64,6 @@ in {
           inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override
           {calendarSupport = true;};
       }
-      // (import ./config.nix);
+      // (import ./config.nix { inherit username; });
   };
 }
