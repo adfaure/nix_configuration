@@ -7,6 +7,7 @@
   nixosModules.minimal.enable = true;
   nixosModules.flakes.enable = true;
   nixosModules.graphical.enable = true;
+  nixosModules.graphical.desktopEnvironment = "niri";
   nixosModules.guix.enable = true;
   nixosModules.syncthing.enable = true;
   nixosModules.vm.enable = true;

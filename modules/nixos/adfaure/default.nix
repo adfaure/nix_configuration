@@ -14,7 +14,7 @@ with lib; let
 
 in {
   options.nixosModules.adfaure = {
-    enable = mkEnableOption "user";
+    enable = mkEnableOption "adfaure";
   };
 
   config = mkIf cfg.enable {

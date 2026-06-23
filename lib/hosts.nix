@@ -5,6 +5,6 @@
   };
   noco = {
     name = "noco";
-    tags = ["gnome" "ryax"];
+    tags = ["niri" "ryax"];
   };
 }
