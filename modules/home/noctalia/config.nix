@@ -39,15 +39,6 @@
           useDistroLogo = false;
         }
         {
-          clockColor = "none";
-          customFont = "";
-          formatHorizontal = "HH:mm ddd, MMM dd";
-          formatVertical = "HH mm - dd MM";
-          id = "Clock";
-          tooltipFormat = "HH:mm ddd, MMM dd";
-          useCustomFont = false;
-        }
-        {
           blacklist = [
           ];
           chevronColor = "none";
@@ -60,6 +51,15 @@
         }
       ];
       center = [
+        {
+          clockColor = "none";
+          customFont = "";
+          formatHorizontal = "HH:mm ddd, MMM dd";
+          formatVertical = "HH mm - dd MM";
+          id = "Clock";
+          tooltipFormat = "HH:mm ddd, MMM dd";
+          useCustomFont = false;
+        }
         {
           characterCount = 2;
           colorizeIcons = false;
@@ -111,13 +111,6 @@
           displayMode = "onhover";
           iconColor = "none";
           id = "VPN";
-          textColor = "none";
-        }
-        {
-          applyToAllMonitors = false;
-          displayMode = "onhover";
-          iconColor = "none";
-          id = "Brightness";
           textColor = "none";
         }
         {
@@ -203,7 +196,7 @@
     lockScreenCountdownDuration = 10000;
     autoStartAuth = false;
     allowPasswordWithFprintd = false;
-    clockStyle = "custom";
+    clockStyle = "analog";
     clockFormat = "hh\\nmm";
     passwordChars = false;
     lockScreenMonitors = [
@@ -643,9 +636,9 @@
     notifyUpdates = true;
   };
   idle = {
-    enabled = false;
-    screenOffTimeout = 600;
-    lockTimeout = 660;
+    enabled = true;
+    screenOffTimeout = 300;
+    lockTimeout = 360;
     suspendTimeout = 1800;
     fadeDuration = 5;
     screenOffCommand = "";

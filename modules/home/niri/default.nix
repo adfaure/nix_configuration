@@ -118,6 +118,11 @@ in {
           Mod+A { center-column; }
           Mod+X { consume-or-expel-window-left; }
 
+          // Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+          // Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+          Mod+WheelScrollUp      { focus-column-left; }
+          Mod+WheelScrollDown    { focus-column-right; }
+
           // focus
           Mod+H { focus-column-left; }
           Mod+L { focus-column-right; }
@@ -192,6 +197,7 @@ in {
           Mod+Shift+parenleft { screenshot-window; } // 5
 
           Print { screenshot; };
+          // twosuperiro {  };
         }
       '';
 
