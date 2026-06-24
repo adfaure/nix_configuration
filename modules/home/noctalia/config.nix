@@ -142,6 +142,19 @@
           showPowerProfiles = true;
         }
         {
+          defaultSettings= {
+            activeColor= "primary";
+            camFilterRegex= "";
+            enableToast= true;
+            hideInactive= false;
+            iconSpacing= 4;
+            inactiveColor= "none";
+            micFilterRegex= "";
+            removeMargins= false;
+          };
+          id="plugin:privacy-indicator";
+        }
+        {
           colorizeDistroLogo = false;
           colorizeSystemIcon = "none";
           colorizeSystemText = "none";
@@ -255,7 +268,7 @@
     showCalendarEvents = true;
     showCalendarWeather = true;
     analogClockInCalendar = false;
-    firstDayOfWeek = -1;
+    firstDayOfWeek = 1;
     hideWeatherTimezone = false;
     hideWeatherCityName = false;
     autoLocate = false;
