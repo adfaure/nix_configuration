@@ -66,6 +66,7 @@ in {
       # Dictionnaries
       aspellDicts.fr
       aspellDicts.en
+      gnome-calendar
       # Message and RSS
       # tdesktop
       liferea
