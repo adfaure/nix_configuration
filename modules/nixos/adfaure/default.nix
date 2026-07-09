@@ -11,7 +11,6 @@
 with lib; let
   cfg = config.nixosModules.adfaure;
   username = "adfaure";
-
 in {
   options.nixosModules.adfaure = {
     enable = mkEnableOption "adfaure";
@@ -41,11 +40,13 @@ in {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     # Lucky me only one kind of system for now
-    home-manager.extraSpecialArgs = {system = "x86_64-linux"; inherit unstable username; };
+    home-manager.extraSpecialArgs = {
+      system = "x86_64-linux";
+      inherit unstable username;
+    };
 
     home-manager.users."${username}" = {...}: {
       imports = (lib.mkHomeModule inputs username).modules;
     };
-
   };
 }

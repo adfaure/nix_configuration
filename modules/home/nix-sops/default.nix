@@ -1,4 +1,8 @@
-{lib, ...}: {config, username, ...}: let
+{lib, ...}: {
+  config,
+  username,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.homeManagerModules.nix-sops;
 in {

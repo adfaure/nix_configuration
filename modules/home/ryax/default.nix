@@ -7,7 +7,6 @@
   cfg = config.homeManagerModules.ryax;
   hasTag = lib.hasTag osConfig.networking.hostName;
 in {
-
   options.homeManagerModules.ryax = {
     enable = lib.mkOption {
       default = hasTag "ryax";

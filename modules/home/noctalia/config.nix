@@ -52,6 +52,17 @@
       ];
       center = [
         {
+          defaultSettings = {
+            customColor = "none";
+            showConditionIcon = true;
+            showTempUnit = true;
+            showTempValue = true;
+            tooltipOption = "everything";
+          };
+          id = "plugin:weather-indicator";
+        }
+
+        {
           clockColor = "none";
           customFont = "";
           formatHorizontal = "HH:mm ddd, MMM dd";
@@ -142,17 +153,17 @@
           showPowerProfiles = true;
         }
         {
-          defaultSettings= {
-            activeColor= "primary";
-            camFilterRegex= "";
-            enableToast= true;
-            hideInactive= false;
-            iconSpacing= 4;
-            inactiveColor= "none";
-            micFilterRegex= "";
-            removeMargins= false;
+          defaultSettings = {
+            activeColor = "primary";
+            camFilterRegex = "";
+            enableToast = true;
+            hideInactive = false;
+            iconSpacing = 4;
+            inactiveColor = "none";
+            micFilterRegex = "";
+            removeMargins = false;
           };
-          id="plugin:privacy-indicator";
+          id = "plugin:privacy-indicator";
         }
         {
           colorizeDistroLogo = false;

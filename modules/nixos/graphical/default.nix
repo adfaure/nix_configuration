@@ -9,13 +9,12 @@ in {
   options.nixosModules.graphical = {
     enable = mkEnableOption "graphical";
     desktopEnvironment = mkOption {
-      type = types.enum [ "gnome" "niri" ];
+      type = types.enum ["gnome" "niri"];
       default = "gnome";
     };
   };
 
   config = mkIf cfg.enable {
-
     # Select a desktop environment
     nixosModules.gnome.enable = cfg.desktopEnvironment == "gnome";
     nixosModules.niri.enable = cfg.desktopEnvironment == "niri";
