@@ -22,6 +22,8 @@ in {
     services.blueman.enable = true;
     networking.networkmanager.enable = true;
 
+    services.fwupd.enable = true;
+
     environment.variables = {
       LC_ALL = "en_US.UTF-8";
     };
