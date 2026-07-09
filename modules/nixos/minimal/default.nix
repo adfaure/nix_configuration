@@ -22,7 +22,11 @@ in {
     services.blueman.enable = true;
     networking.networkmanager.enable = true;
 
+    # Firmware update ?
     services.fwupd.enable = true;
+
+    # Thunderbolt support
+    services.hardware.bolt.enable = true;
 
     environment.variables = {
       LC_ALL = "en_US.UTF-8";
@@ -117,6 +121,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       # monitoring
+      lm_sensors
       psmisc
       pmutils
       nmap

@@ -3,8 +3,8 @@
   ...
 }:
 with lib; let
-  cfg = config.nixosModules.guix;
-  hasTag = lib.hasTag osConfig.networking.hostName;
+  cfg = config.nixosModules.intel;
+  hasTag = lib.hasTag config.networking.hostName;
 in {
   options.nixosModules.intel = {
     enable = lib.mkOption {

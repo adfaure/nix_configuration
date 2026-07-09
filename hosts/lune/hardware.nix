@@ -21,7 +21,7 @@
   boot.initrd.kernelModules = [];
   boot.extraModulePackages = [];
   boot.kernelModules = [
-    "kvm-intel"
+    "kvm-intel" "yogafan"
   ];
 
   boot.extraModprobeConfig = ''
@@ -29,7 +29,7 @@
   '';
 
   # Thunderbolt support
-  hardware.bolt.enable = true;
+  services.hardware.bolt.enable = true;
 
   hardware.firmware = with pkgs; [sof-firmware];
   hardware.enableAllFirmware = true;
