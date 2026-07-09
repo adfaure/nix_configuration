@@ -10,6 +10,7 @@
   homeManagerModules.vim-tmux-panes.enable = true;
   homeManagerModules.yazi.enable = true;
   homeManagerModules.zsh.enable = true;
+  homeManagerModules.firefox-open-focus.enable = true;
 
   home.stateVersion = "20.09";
 }
