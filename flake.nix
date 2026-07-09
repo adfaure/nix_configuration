@@ -28,6 +28,7 @@
     noctalia-qs.inputs.nixpkgs.follows = "nixpkgs";
     noctalia-qs.inputs.systems.follows = "systems";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     # noctalia-qs.inputs.treefmt-nix.follows = "treefmt";
 
     autopilot = {

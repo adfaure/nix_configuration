@@ -10,12 +10,14 @@
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    inputs.nixos-hardware.nixosModules.lenovo-ideapad-14imh9
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.extraModulePackages = [];
@@ -26,6 +28,9 @@
   boot.extraModprobeConfig = ''
     options snd_sof_intel_hda_generic hda_model=alc287-yoga9-bass-spk-pin
   '';
+
+  # Thunderbolt support
+  hardware.bolt.enable = true;
 
   hardware.firmware = with pkgs; [sof-firmware];
   hardware.enableAllFirmware = true;
@@ -51,6 +56,7 @@
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
+    dynamicBoost.enable = true;
   };
 
   hardware.graphics.enable = true;

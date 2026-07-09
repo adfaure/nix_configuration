@@ -1,10 +1,10 @@
 {...}: {
   lune = {
     name = "lune";
-    tags = ["niri"];
+    tags = ["niri" "intel"];
   };
   noco = {
     name = "noco";
-    tags = ["niri" "ryax"];
+    tags = ["niri" "ryax" "intel"];
   };
 }

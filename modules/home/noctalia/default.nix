@@ -24,6 +24,7 @@ in {
       ddcutil
       wl-clipboard
       wireplumber
+      fastfetch
     ];
 
     home.sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
