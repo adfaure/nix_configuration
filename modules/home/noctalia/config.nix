@@ -29,6 +29,28 @@
     widgets = {
       left = [
         {
+          compactMode = true;
+          diskPath = "/";
+          iconColor = "none";
+          id = "SystemMonitor";
+          showCpuCores = false;
+          showCpuFreq = false;
+          showCpuTemp = true;
+          showCpuUsage = true;
+          showDiskAvailable = false;
+          showDiskUsage = false;
+          showDiskUsageAsPercent = false;
+          showGpuTemp = false;
+          showLoadAverage = false;
+          showMemoryAsPercent = false;
+          showMemoryUsage = true;
+          showNetworkStats = false;
+          showSwapUsage = false;
+          textColor = "none";
+          useMonospaceFont = true;
+          usePadding = false;
+        }
+        {
           colorizeSystemIcon = "none";
           colorizeSystemText = "none";
           customIconPath = "";

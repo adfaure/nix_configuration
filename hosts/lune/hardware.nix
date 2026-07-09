@@ -21,7 +21,8 @@
   boot.initrd.kernelModules = [];
   boot.extraModulePackages = [];
   boot.kernelModules = [
-    "kvm-intel" "yogafan"
+    "kvm-intel"
+    "yogafan"
   ];
 
   boot.extraModprobeConfig = ''
