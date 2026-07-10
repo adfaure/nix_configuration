@@ -25,7 +25,7 @@
   };
 
   # Thunderbolt support
-  hardware.bolt.enable = true;
+  services.hardware.bolt.enable = true;
 
   boot.initrd.luks.devices."luks-b6fff2f0-11d0-4a84-92a6-7c7af87db26b".device = "/dev/disk/by-uuid/b6fff2f0-11d0-4a84-92a6-7c7af87db26b";
 
