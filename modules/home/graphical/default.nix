@@ -91,7 +91,7 @@ in {
       lazygit
       meld
       obsidian
-      jetbrains.pycharm-oss
+      #jetbrains.pycharm-oss
     ];
   };
 }
