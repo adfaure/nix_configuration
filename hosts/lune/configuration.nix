@@ -12,7 +12,7 @@
   };
 
   nixosModules.guix.enable = true;
-  nixosModules.syncthing.enable = true;
+  nixosModules.syncthing.enable = false;
   nixosModules.vm.enable = true;
   nixosModules.adfaure.enable = true;
 }
