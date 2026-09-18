@@ -28,6 +28,14 @@ in {
     # Thunderbolt support
     services.hardware.bolt.enable = true;
 
+    programs.localsend = {
+      enable = true;
+      openFirewall = true;
+    };
+
+    # Some programms need it
+    programs.dconf.enable = true;
+
     environment.variables = {
       LC_ALL = "en_US.UTF-8";
     };
