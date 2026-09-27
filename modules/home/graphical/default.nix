@@ -22,6 +22,19 @@ in {
       browsers = ["firefox"];
     };
 
+    programs.firefox = {
+      enable = true;
+      profiles.default = {
+        settings."toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        userChrome = ''
+          /* Tabs are displayed in the tree-style sidebar. */
+          #TabsToolbar {
+            visibility: collapse !important;
+          }
+        '';
+      };
+    };
+
     programs.direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
@@ -45,9 +58,6 @@ in {
       # PDF reader
       pdftk
       evince
-
-      # Web
-      firefox
 
       # Tools
       bat # cat with colors for code
