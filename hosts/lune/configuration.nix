@@ -16,4 +16,5 @@
   nixosModules.vm.enable = true;
   nixosModules.adfaure.enable = true;
   nixosModules.actual.enable = true;
+  nixosModules.nix-ld.enable = true;
 }
