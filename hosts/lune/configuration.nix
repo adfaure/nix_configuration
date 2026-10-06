@@ -8,7 +8,7 @@
 
   nixosModules.graphical = {
     enable = true;
-    desktopEnvironment = "niri";
+    desktopEnvironment = "gnome";
   };
 
   nixosModules.guix.enable = true;
