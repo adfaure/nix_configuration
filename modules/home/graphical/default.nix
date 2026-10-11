@@ -41,6 +41,14 @@ in {
       nix-direnv.enable = true;
     };
 
+    # Neovim running in Kitty inherits this font.  The regular OpenDyslexic
+    # face is proportional, so use its genuinely monospaced Nerd Font variant
+    # for terminal cells and coding glyphs.
+    programs.kitty = {
+      enable = true;
+      font.name = "OpenDyslexicM Nerd Font Mono";
+    };
+
     programs.vscode = {
       enable = true;
       package = pkgs.vscode.fhsWithPackages (ps: with ps; [rustup zlib openssl.dev pkg-config]);
@@ -52,8 +60,8 @@ in {
 
       # Terminal
       sakura
-      kitty
       ghostty
+      nerd-fonts.open-dyslexic
 
       # PDF reader
       pdftk

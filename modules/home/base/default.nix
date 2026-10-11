@@ -108,6 +108,7 @@ in {
       proton-vpn
       thunderbird
 
+      open-dyslexic
       # Someday create an overlay for my packages
       inputs.self.packages."${system}".rgvg
       inputs.self.packages."${system}".neo

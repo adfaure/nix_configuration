@@ -115,6 +115,7 @@ in {
         mplus-outline-fonts.githubRelease
         dina-font
         proggyfonts
+        open-dyslexic
       ];
     };
 
