@@ -47,6 +47,9 @@ in {
     programs.kitty = {
       enable = true;
       font.name = "OpenDyslexicM Nerd Font Mono";
+      settings = {
+        enable_audio_bell = false;
+      };
     };
 
     programs.vscode = {
