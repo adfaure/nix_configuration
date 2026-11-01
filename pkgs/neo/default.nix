@@ -38,11 +38,11 @@ buildNpmPackage rec {
   src = fetchFromGitHub {
     owner = "hughhowey";
     repo = "neo";
-    rev = "v1.4.7";
-    sha256 = "sha256-GYtu1useZaydidhMk0g0mbOkpZYSEz85zb/9mswlV5M=";
+    rev = "v1.6.1";
+    sha256 = "sha256-5gCNYTC8lnfNnbwmJln3hdrW7jaG7suMnNgAHt4Urso=";
   };
 
-  npmDepsHash = "sha256-ox+S+j6nC6n1WrpGXDHvbY6PZbsjwKMudVI/x9VEGJE="; # you will get an error about mismatching hash the first time. Just copy the hash here
+  npmDepsHash = "sha256-Z9MB8PR3xfYiVk8uB2TrtzxLW/JFnco9VMkBJ6lvVQE=="; # you will get an error about mismatching hash the first time. Just copy the hash here
 
   # Useful for debugging, just run "nix-shell" and then "electron ."
   nativeBuildInputs = [
